@@ -53,10 +53,13 @@ export function SiteFooter() {
 
       <div className="border-t border-paper/10">
         <div className="mx-auto flex max-w-6xl flex-wrap gap-x-6 gap-y-1 px-5 py-6 text-[13px] text-paper/55 lg:px-8">
-          <span>{site.fullName}</span>
+          <span>{site.legalName}</span>
           <span>대표 {site.owner}</span>
-          {site.businessNumber && <span>사업자등록번호 {site.businessNumber}</span>}
-          {site.mailOrderNumber && <span>통신판매업 {site.mailOrderNumber}</span>}
+          <span>사업자등록번호 {site.businessNumber}</span>
+          <span>통신판매업 {site.mailOrderNumber}</span>
+          <span>
+            ({site.postalCode}) {site.businessAddress}
+          </span>
         </div>
       </div>
     </footer>

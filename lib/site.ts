@@ -14,7 +14,8 @@ export const site = {
   tagline: "남도의 으뜸맛떡",
   description:
     "사라졌던 나주 절굿대떡을 되살려 인공첨가물 없이 재래방식으로 빚습니다. 나주 징고샅길의 떡카페에서 맛보고, 만들어 볼 수 있습니다.",
-  owner: "김화수",
+  /** 사업자등록증상 대표자. 관광두레 책자에는 복원자로 "김화수 대표"가 나온다 — 두 사람의 관계 확인 필요. */
+  owner: "김은아",
   since: 2016,
 
   tel: "061-336-6969",
@@ -33,9 +34,14 @@ export const site = {
   /** TODO(클라이언트): 인스타그램 등 */
   instagramUrl: null as string | null,
 
-  /** TODO(클라이언트): 사업자등록번호 · 통신판매업 신고번호 (하단 법적 표기에 필요) */
-  businessNumber: null as string | null,
-  mailOrderNumber: null as string | null,
+  /** 법인명. 화면에 보이는 이름은 site.name(절굿대달토끼), 법적 표기는 이쪽이다. */
+  legalName: "농업회사법인주식회사절굿대",
+  businessNumber: "794-88-01567",
+  corporateNumber: "205511-0063933",
+  mailOrderNumber: "제2020-전남나주-0086호",
+  /** 사업자등록증상 소재지. ⚠️ 관광두레 책자의 매장 주소(징고샅길 7-3)와 번지가 다르다 — 확인 필요. */
+  businessAddress: "전라남도 나주시 징고샅길 7-1",
+  postalCode: "58257",
 } as const;
 
 /** 헤더·푸터가 함께 쓰는 메뉴. 순서가 곧 정보 구조다. */
@@ -115,8 +121,8 @@ export const products: Product[] = [
     detail:
       "나주배청으로 반죽해 겉은 바삭하고 속은 촉촉합니다. 절굿대 분말을 함께 넣고, 참깨·땅콩·해바라기씨·호박씨를 비롯한 여섯 가지 견과를 더해 고소합니다. 합성첨가물과 색소, 방부제를 넣지 않습니다. 낱개로 포장해 바삭함이 오래갑니다.",
     image: "/images/styling-flatlay.jpg",
-    price: null,
-    unit: null,
+    price: 30000,
+    unit: "1박스",
     occasions: ["답례", "선물"],
     storeUrl: null,
     // 상세페이지 이미지에서 읽어낸 값. 원재료 전체 표기는 판독이 불완전해
@@ -159,7 +165,7 @@ export const timeline = [
     phase: 0.35,
     when: "복원",
     title: "맛을 좇아 전국을 돌다",
-    body: "김화수 대표가 유년 시절 먹던 그 맛을 잊지 못해 복원에 매달렸습니다. 절굿대를 직접 무농약으로 길렀고, 지금은 마을 어르신들께 위탁해 재배합니다.",
+    body: "대표가 유년 시절 먹던 그 맛을 잊지 못해 복원에 매달렸습니다. 절굿대를 직접 무농약으로 길렀고, 지금은 마을 어르신들께 위탁해 재배합니다.",
   },
   {
     phase: 0.7,
