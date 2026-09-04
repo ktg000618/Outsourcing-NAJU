@@ -13,37 +13,38 @@ export default function HomePage() {
   return (
     <>
       {/*
-        1. 히어로 — 사진이 화면을 지배하고, 글은 아래 한 귀퉁이에서 조용히 받친다.
-        이 사진은 위쪽 현수막에 붓글씨와 전화번호가 크게 박혀 있으므로 글자를 아래
-        떡판 위에만 올린다. 제목 자리에는 활자 대신 브랜드의 붓글씨 로고를 쓴다 —
-        타이포그래피로 흉내 낼 수 없는 획이 이미 있다.
+        1. 히어로 — 매장 외관.
+        대표가 떡판을 든 사진은 배경 현수막에 「절굿대떡」 붓글씨와 전화번호가 크게
+        박혀 있어서, 그 위에 같은 붓글씨 로고를 얹으면 화면에 같은 글자가 두 번 나온다.
+        외관 사진은 경쟁하는 글자가 없고 원형 엠블럼 간판이 자연스럽게 들어온다.
+        (그 사진은 「이야기」에서 인물 컷으로 쓴다.)
       */}
       <section className="relative isolate">
-        <div className="relative aspect-[4/5] w-full sm:aspect-[3/2] lg:aspect-[21/9]">
+        <div className="relative aspect-[4/5] w-full sm:aspect-[16/10] lg:aspect-[16/8]">
           <Image
-            src="/images/hero-maker.jpg"
-            alt="절굿대달토끼 대표가 갓 쳐낸 떡판을 들고 있다"
+            src="/images/store-exterior.jpg"
+            alt="달토끼 엠블럼 간판이 걸린 절굿대달토끼 매장 외관"
             fill
             priority
             sizes="100vw"
-            className="object-cover object-center"
+            className="object-cover object-[50%_35%]"
           />
           <div
             aria-hidden
-            className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/70 via-black/25 to-transparent"
+            className="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-ink/85 via-ink/40 to-transparent"
           />
-          <div className="absolute inset-x-0 bottom-0 mx-auto max-w-6xl px-5 pb-9 lg:px-8 lg:pb-14">
-            <Image
-              src="/brand/brush-jeolgutdaetteok.png"
-              alt="절굿대떡"
-              width={1087}
-              height={266}
-              priority
-              className="h-14 w-auto brightness-0 invert lg:h-20"
-            />
-            <p className="mt-5 max-w-md text-[15px] leading-relaxed text-white/90 lg:text-base">
-              목사골 양반들이 이바지로 쓰던 나주의 떡. 사라졌던 그 맛을
-              무농약 절굿대와 나주배 농축액으로 다시 빚습니다.
+          <div className="absolute inset-x-0 bottom-0 mx-auto max-w-6xl px-5 pb-10 lg:px-8 lg:pb-16">
+            <p className="text-[13px] tracking-wide text-moon lg:text-sm">
+              나주 징고샅길, {site.since}년부터
+            </p>
+            <h1 className="mt-3 text-3xl leading-tight text-paper sm:text-4xl lg:text-5xl">
+              사라졌던 떡을
+              <br />
+              다시 빚습니다
+            </h1>
+            <p className="mt-5 max-w-md text-[15px] leading-relaxed text-paper/85 lg:text-base">
+              목사골 양반들이 이바지로 쓰던 나주 절굿대떡. 무농약 절굿대와
+              나주배 농축액만으로, 재래방식 그대로 만듭니다.
             </p>
           </div>
         </div>
