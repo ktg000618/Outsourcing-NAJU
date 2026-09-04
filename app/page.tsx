@@ -110,7 +110,7 @@ export default function HomePage() {
             className="object-cover"
           />
         </div>
-        <div className="flex flex-col justify-center bg-bark px-5 py-16 text-paper lg:px-14 lg:py-24 xl:px-20">
+        <div className="section-y-tight flex flex-col justify-center bg-bark px-5 text-paper lg:px-14 xl:px-20">
           <h2 className="text-h2 lg:text-h2-lg">
             넣지 않는 것으로
             <br />
@@ -132,7 +132,7 @@ export default function HomePage() {
 
       {/* 4. 브랜드 문구 밴드 — 체험 */}
       <section className="rise grid lg:grid-cols-2">
-        <div className="flex flex-col justify-center bg-paper-2 px-5 py-16 lg:order-1 lg:px-14 lg:py-24 xl:px-20">
+        <div className="section-y-tight flex flex-col justify-center bg-paper-2 px-5 lg:order-1 lg:px-14 xl:px-20">
           <h2 className="text-h2 lg:text-h2-lg">
             직접 빚어 보는
             <br />
@@ -162,7 +162,7 @@ export default function HomePage() {
       </section>
 
       {/* 5. 브랜드 소개 */}
-      <section className="rise mx-auto max-w-3xl px-5 py-20 text-center lg:px-8 lg:py-28">
+      <section className="section-y rise mx-auto max-w-3xl px-5 text-center lg:px-8">
         <p className="text-caption text-mint-link">ABOUT</p>
         <h2 className="mt-4 text-h2 font-light lg:text-h2-lg">
           천금의 가치가 있다던 떡
@@ -191,7 +191,7 @@ export default function HomePage() {
 
       {/* 6. 전체 제품 */}
       <section className="rise bg-paper-2">
-        <div className="mx-auto max-w-6xl px-5 py-20 lg:px-8 lg:py-24">
+        <div className="section-y mx-auto max-w-6xl px-5 lg:px-8">
           <h2 className="text-center text-h3 font-bold lg:text-h1">
             빚는 것들
           </h2>
@@ -218,7 +218,7 @@ export default function HomePage() {
       </section>
 
       {/* 7. 방문·문의 */}
-      <section className="rise mx-auto grid max-w-6xl gap-4 px-5 py-20 sm:grid-cols-2 lg:px-8 lg:py-24">
+      <section className="section-y rise mx-auto grid max-w-6xl gap-4 px-5 sm:grid-cols-2 lg:px-8">
         <Link
           href="/visit"
           className="group pressable relative isolate flex min-h-56 flex-col justify-end overflow-hidden rounded-2xl bg-ink p-8"

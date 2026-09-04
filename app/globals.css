@@ -158,6 +158,27 @@
     to   { opacity: 1; transform: none; }
   }
 
+  /*
+    섹션 세로 리듬.
+
+    이전에는 17개 섹션에 9종이 흩어져 데스크톱 값만 64·80·96·112·128 다섯이었다.
+    홈에서 이야기로 넘어가면 섹션 호흡이 96 → 112 로 바뀌어 같은 사이트인데
+    페이지마다 리듬이 달랐다. 압도적 다수였던 20/28 을 기본으로 삼는다.
+
+    tight 는 사진이 절반을 채우는 분할 밴드용이다 — 사진 높이가 이미 여백
+    역할을 하므로 한 단 낮춰야 균형이 맞는다. 의도된 예외다.
+  */
+  .section-y {
+    padding-block: calc(var(--spacing) * 20);
+  }
+  .section-y-tight {
+    padding-block: calc(var(--spacing) * 16);
+  }
+  @media (width >= 64rem) {
+    .section-y { padding-block: calc(var(--spacing) * 28); }
+    .section-y-tight { padding-block: calc(var(--spacing) * 24); }
+  }
+
   /* 눌림 피드백. 터치 기기에는 hover 가 없어 이것 말고는 단서가 없다. */
   .pressable {
     transition: transform 140ms ease-out, opacity 140ms ease-out;

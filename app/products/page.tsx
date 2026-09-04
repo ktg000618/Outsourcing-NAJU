@@ -152,7 +152,7 @@ export default function ProductsPage() {
       </div>
       {/* 주문 경로가 셋인데 어디에도 안 적혀 있었다. 전화 주문 비중이 큰 곳이다. */}
       <section className="rise bg-paper-2">
-        <div className="mx-auto max-w-6xl px-5 py-16 lg:px-8 lg:py-20">
+        <div className="section-y-tight mx-auto max-w-6xl px-5 lg:px-8">
           <h2 className="text-h3 lg:text-h2-lg">
             주문하는 방법
           </h2>
@@ -198,7 +198,7 @@ export default function ProductsPage() {
       </section>
 
       {/* 제품별 spec 에만 흩어져 있던 보관·해동을 한자리에. 가장 많이 묻는 것이다. */}
-      <section className="rise mx-auto max-w-6xl px-5 py-16 lg:px-8 lg:py-20">
+      <section className="section-y-tight rise mx-auto max-w-6xl px-5 lg:px-8">
         <h2 className="text-h3 lg:text-h2-lg">
           보관과 해동
         </h2>
@@ -251,7 +251,7 @@ export default function ProductsPage() {
 
       {/* 신뢰 근거. 홈에만 있고 정작 물건을 고르는 자리엔 없었다. */}
       <section className="rise border-t border-ink/10">
-        <div className="mx-auto max-w-6xl px-5 py-14 lg:px-8 lg:py-16">
+        <div className="section-y-tight mx-auto max-w-6xl px-5 lg:px-8">
           <ul className="grid gap-x-8 gap-y-7 sm:grid-cols-2 lg:grid-cols-4">
             {credentials.map((c) => (
               <li key={c.label}>

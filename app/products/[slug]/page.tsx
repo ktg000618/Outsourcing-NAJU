@@ -68,7 +68,7 @@ export default async function ProductPage({
         </Link>
       </div>
 
-      <article className="mx-auto grid max-w-6xl gap-10 px-5 py-10 lg:grid-cols-2 lg:gap-16 lg:px-8 lg:py-16">
+      <article className="section-y-tight mx-auto grid max-w-6xl gap-10 px-5 lg:grid-cols-2 lg:gap-16 lg:px-8">
         <div>
           <div className="relative aspect-square overflow-hidden rounded-2xl bg-paper-2">
             <Image
@@ -188,7 +188,7 @@ export default async function ProductPage({
 
       {product.reviewVideo && (
         <section className="rise border-t border-ink/10 bg-paper-2">
-          <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-16 lg:grid-cols-[minmax(0,auto)_minmax(0,1fr)] lg:gap-14 lg:px-8 lg:py-20">
+          <div className="section-y-tight mx-auto grid max-w-6xl items-center gap-10 px-5 lg:grid-cols-[minmax(0,auto)_minmax(0,1fr)] lg:gap-14 lg:px-8">
             {/* 세로 영상이라 폭을 묶어 둔다. 안 묶으면 데스크톱에서 혼자 커진다. */}
             <video
               aria-label={product.reviewVideo.label}
@@ -214,7 +214,7 @@ export default async function ProductPage({
       )}
 
       <section className="rise border-t border-ink/10">
-        <div className="mx-auto max-w-6xl px-5 py-16 lg:px-8 lg:py-20">
+        <div className="section-y-tight mx-auto max-w-6xl px-5 lg:px-8">
           <h2 className="text-2xl">다른 제품</h2>
           <ul className="mt-8 grid grid-cols-2 gap-x-5 gap-y-8 lg:grid-cols-4 lg:gap-x-8">
             {others.map((p) => (

@@ -48,7 +48,7 @@ export default function StoryPage() {
       </section>
 
       {/* 연표 — 달이 차오른다 */}
-      <section className="rise mx-auto max-w-3xl px-5 py-20 lg:px-8 lg:py-28">
+      <section className="section-y rise mx-auto max-w-3xl px-5 lg:px-8">
         <ol className="space-y-14">
           {timeline.map((t) => (
             <li key={t.title} className="flex gap-6">
@@ -67,7 +67,7 @@ export default function StoryPage() {
 
       {/* 약재로서의 절굿대 */}
       <section className="rise bg-ink text-paper">
-        <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 lg:grid-cols-2 lg:items-center lg:gap-20 lg:px-8 lg:py-28">
+        <div className="section-y mx-auto grid max-w-6xl gap-12 px-5 lg:grid-cols-2 lg:items-center lg:gap-20 lg:px-8">
           <div>
             <h2 className="text-h2 lg:text-h2-lg">
               누로(漏蘆), 천금과 같다는 뿌리
@@ -99,7 +99,7 @@ export default function StoryPage() {
       </section>
 
       {/* 만드는 방식 */}
-      <section className="rise mx-auto max-w-6xl px-5 py-20 lg:px-8 lg:py-28">
+      <section className="section-y rise mx-auto max-w-6xl px-5 lg:px-8">
         <h2 className="text-h2 lg:text-h2-lg">
           정직한 천연 재료만 사용합니다
         </h2>

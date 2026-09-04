@@ -67,7 +67,7 @@ export default function VisitPage() {
       </section>
 
       {/* 체험 */}
-      <section className="rise mx-auto max-w-6xl px-5 py-20 lg:px-8 lg:py-28">
+      <section className="section-y rise mx-auto max-w-6xl px-5 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
             <h2 className="text-h2 lg:text-h2-lg">
@@ -138,7 +138,7 @@ export default function VisitPage() {
       {/* 진행 순서. 실제로 손이 무엇을 하는지가 인솔자에겐 프로그램 설명이다.
           문안과 체험 사진으로 확인된 세 단계만 적는다. */}
       <section className="rise bg-paper-2">
-        <div className="mx-auto max-w-6xl px-5 py-16 lg:px-8 lg:py-20">
+        <div className="section-y-tight mx-auto max-w-6xl px-5 lg:px-8">
           <h2 className="text-h3 lg:text-h2-lg">
             이렇게 진행합니다
           </h2>
@@ -160,7 +160,7 @@ export default function VisitPage() {
 
       {/* 오시는 길 */}
       <section className="rise bg-ink text-paper">
-        <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 lg:grid-cols-2 lg:gap-16 lg:px-8 lg:py-28">
+        <div className="section-y mx-auto grid max-w-6xl gap-12 px-5 lg:grid-cols-2 lg:gap-16 lg:px-8">
           <div>
             <h2 className="text-h2 lg:text-h2-lg">오시는 길</h2>
             <address className="mt-8 space-y-5 not-italic">
