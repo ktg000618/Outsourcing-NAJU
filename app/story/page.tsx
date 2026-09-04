@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { MoonMark } from "@/components/moon-mark";
-import { credentials, site, timeline } from "@/lib/site";
+import { credentials, history, site, timeline } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "이야기",
@@ -23,17 +23,16 @@ export default function StoryPage() {
           className="object-cover opacity-45"
         />
         <div className="relative mx-auto max-w-3xl px-5 py-24 text-center lg:px-8 lg:py-32">
-          <p className="text-sm text-mint-deep lg:text-base">
-            맛의방주 등재 품목
-          </p>
+          <p className="text-sm text-moon lg:text-base">맛의방주 등재 품목</p>
           <h1 className="mt-4 text-[2.25rem] leading-[1.2] text-paper lg:text-[3.25rem]">
             천금의 가치가
             <br />
             있다던 떡
           </h1>
           <p className="mx-auto mt-6 max-w-prose text-paper/80">
-            지역에서 으뜸가는 떡이라 하여 목사골 나주 양반들이 이바지에 썼습니다.
-            한동안은 어르신들 사이에 전설처럼 이름만 남아 있었습니다.
+            절굿대떡은 한때 목사골 양반들의 이바지 떡으로 쓰일 만큼 귀한 대접을
+            받았습니다. 세월이 흐르며 자취를 감추고, 어르신들의 기억 속 전설로만
+            남아 있었습니다.
           </p>
         </div>
       </section>
@@ -91,19 +90,19 @@ export default function StoryPage() {
       {/* 만드는 방식 */}
       <section className="mx-auto max-w-6xl px-5 py-20 lg:px-8 lg:py-28">
         <h2 className="text-[2rem] leading-[1.25] lg:text-[2.875rem]">
-          넣지 않는 것으로 말합니다
+          정직한 천연 재료만 사용합니다
         </h2>
         <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:gap-16">
           <div className="space-y-5 text-ink-soft">
             <p className="max-w-prose">
-              절굿대떡에는 유화제나 인공감미료 같은 것을 전혀 쓰지 않습니다.
-              재래방식 그대로 만들고, 단맛은 선별한 나주배 농축액으로만 냅니다.
-              그래서 첫맛은 담백하고, 씹을수록 은은한 단맛이 뒤따릅니다.
+              절굿대떡은 유화제나 인공감미료를 전혀 넣지 않고, 전통 방식 그대로
+              정성껏 빚어냅니다. 나주의 특산물 배즙으로 자연스러운 단맛을 더하고,
+              찹쌀의 쫄깃한 식감은 소화에도 부담이 없습니다.
             </p>
             <p className="max-w-prose">
-              떡에 들어가는 절굿대는 김은아 대표가 직접 무농약으로 길렀습니다. 지금은
-              마을 어르신들께 위탁해 재배하고 있습니다. 나주시 사회적기업으로
-              지정된 것도 이 방식과 무관하지 않습니다.
+              아침 식사 대용은 물론 아이들 영양 간식으로도 안심하고 즐기실 수
+              있습니다. 떡에 들어가는 절굿대는 깊은 산속에서만 자생하던 것을
+              육묘에 성공해 직접 기르고, 지금은 마을 어르신들께 위탁해 재배합니다.
             </p>
           </div>
           <div className="relative aspect-4/3 overflow-hidden rounded-2xl">
@@ -127,6 +126,25 @@ export default function StoryPage() {
             </li>
           ))}
         </ul>
+
+        {/* 연혁 — 인증·표창·업무협약까지 사실로 뒷받침하는 자리 */}
+        <div className="mt-20 border-t border-ink/10 pt-14">
+          <h2 className="text-[1.75rem] font-bold leading-none lg:text-4xl">
+            Since 2016
+          </h2>
+          <ol className="mt-10 space-y-7">
+            {history.map((h) => (
+              <li key={h.year} className="flex flex-col gap-1 sm:flex-row sm:gap-8">
+                <p className="w-16 shrink-0 font-semibold text-mocha">{h.year}</p>
+                <ul className="space-y-1.5 text-[15px] leading-relaxed text-ink-soft">
+                  {h.items.map((it) => (
+                    <li key={it}>{it}</li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ol>
+        </div>
 
         <div className="mt-14 flex flex-wrap gap-3">
           <Link

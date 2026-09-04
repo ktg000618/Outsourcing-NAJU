@@ -34,19 +34,21 @@ export default function HomePage() {
           />
           <div
             aria-hidden
-            className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/35 to-ink/10"
+            className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/45 to-ink/5"
           />
-          <div className="absolute inset-x-0 bottom-0 mx-auto max-w-6xl px-5 pb-10 lg:px-8 lg:pb-16">
-            <p className="text-[13px] tracking-wide text-moon lg:text-sm">
-              나주 징고샅길 · {site.since}년부터
-            </p>
-            <h1 className="mt-3 text-[2rem] leading-[1.25] text-paper sm:text-[2.75rem] lg:text-[3.25rem]">
-              <span className="block font-extralight">사라졌던 나주의 떡을</span>
-              <span className="block font-semibold">다시 빚습니다</span>
+          <div className="absolute inset-x-0 bottom-0 mx-auto max-w-6xl px-5 pb-11 lg:px-8 lg:pb-16">
+            {/*
+              굵기 대비로 읽는다 — 얇은 줄(300)이 위, 굵은 줄(700)이 아래.
+              200 은 밝은 밭 사진 위에서 획이 사라져 못 쓴다.
+              문구는 클라이언트가 쓰는 표현을 그대로 가져왔다.
+            */}
+            <h1 className="text-[2rem] leading-[1.22] text-paper sm:text-[2.75rem] lg:text-[3.5rem]">
+              <span className="block font-light tracking-tight">50년 만에 돌아온</span>
+              <span className="block font-bold tracking-tight">나주의 절굿대떡</span>
             </h1>
-            <p className="mt-5 max-w-md text-[15px] leading-relaxed text-paper/85 lg:text-base">
-              목사골 양반들이 이바지로 쓰던 나주 절굿대떡. 마을 어르신들이 무농약으로
-              기른 절굿대와 나주배 농축액만으로, 재래방식 그대로 빚습니다.
+            <p className="mt-5 max-w-lg text-[15px] leading-relaxed text-paper/90 lg:text-[1.0625rem]">
+              목사골 양반들이 이바지로 쓰던 귀한 떡. 깊은 산속에서만 자생하던
+              절굿대를 육묘에 성공해 되살렸습니다.
             </p>
           </div>
         </div>

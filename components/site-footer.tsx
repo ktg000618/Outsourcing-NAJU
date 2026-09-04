@@ -25,6 +25,9 @@ export function SiteFooter() {
                 {site.tel}
               </a>
             </p>
+            <p className="text-paper/60">
+              {site.mobile} · {site.mobile2}
+            </p>
             {site.hours && <p>{site.hours}</p>}
             {site.closedDays && <p>휴무 {site.closedDays}</p>}
           </address>

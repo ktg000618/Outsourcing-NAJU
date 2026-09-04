@@ -23,12 +23,18 @@
   --color-paper: #ffffff;
   --color-paper-2: #f6f4f0;
 
-  /* 브랜드 색 — 전부 로고에서 추출한 실측값 */
-  --color-mint: #97c7c7;
-  --color-mint-deep: #5f9b9b;
+  /*
+    브랜드 색 — 브랜드 가이드 정본값.
+    가이드 설명: "달과 하늘의 색을 메인으로, 서브색상은 절굿대 꽃에서 차용".
+    (이전에 로고 이미지에서 눈대중으로 뽑은 값과 로즈가 달랐다 — 정본이 더 진하다.)
+  */
+  --color-moon: #dfc05d;
+  --color-mint: #95c5c6;
+  --color-rose: #c6a3a8;
+  /* 가이드에는 없지만 엠블럼 테두리·워드마크 갈색 버전에 쓰인 보조색 */
   --color-mocha: #a48a76;
-  --color-moon: #e0c05c;
-  --color-rose: #ddc4c4;
+  /* 민트 위에 흰 글씨는 대비가 안 나온다. 링크·포커스용으로 어둡게 파생한 값. */
+  --color-mint-deep: #4f8a8b;
   --color-oxblood: #5d080d;
 
   --font-sans: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", system-ui,
