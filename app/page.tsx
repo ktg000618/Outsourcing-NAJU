@@ -17,46 +17,50 @@ export default function HomePage() {
         원본은 홍보 문구가 얹힌 SNS 카드였는데 사진 영역만 잘라내 4500px 원본을 살렸다.
         (매장 외관과 대표 인물 컷은 간판·현수막 글자가 헤드라인과 겹쳐 히어로에 못 쓴다.)
       */}
-      <section className="relative isolate">
-        {/*
-            비율(aspect)로 잡으면 넓은 화면일수록 히어로가 세로로 커져서 아래가 안 보인다.
-            뷰포트 높이 기준으로 잡아 헤더+히어로가 첫 화면의 3분의 2를 넘지 않게 한다 —
-            대표 제품이 살짝 걸쳐 보여야 스크롤을 내린다.
-          */}
-          <div className="relative h-[54svh] min-h-[360px] w-full sm:h-[58svh] lg:h-[62svh] lg:max-h-[620px]">
-          {/*
-            받은 사진 전부를 같은 폭으로 맞춰 재보면 이 컷만 원본이 4317px 이고
-            나머지는 2260~3315px 라 확대 없이 못 버틴다. 앞서 쓰던 밭 사진은
-            2600px 이라 레티나 전폭에서 늘어나 뭉갰다 — 압축이 아니라 원본 한계였다.
-          */}
-          <Image
-            src="/images/hero-maker-wide.jpg"
-            alt="김화수 대표가 갓 쳐낸 절굿대떡 판을 들어 보이고 있다"
-            fill
-            priority
-            quality={92}
-            sizes="100vw"
-            className="object-cover object-[50%_12%]"
-          />
-          {/* 위쪽까지 덮으면 사진이 탁해진다. 글자가 앉는 아래 절반만 어둡게. */}
-          <div
-            aria-hidden
-            className="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-ink/90 via-ink/55 to-transparent"
-          />
-          <div className="absolute inset-x-0 bottom-0 mx-auto max-w-6xl px-5 pb-11 lg:px-8 lg:pb-16">
-            {/*
-              굵기 대비로 읽는다 — 얇은 줄(300)이 위, 굵은 줄(700)이 아래.
-              200 은 밝은 밭 사진 위에서 획이 사라져 못 쓴다.
-              문구는 클라이언트가 쓰는 표현을 그대로 가져왔다.
-            */}
-            <h1 className="text-[2rem] leading-[1.22] text-paper sm:text-[2.75rem] lg:text-[3.5rem]">
+      {/*
+          전폭 띠(2.27)에 4:3 사진을 넣으면 세로가 통째로 잘려 떡판이 날아간다.
+          사진을 자르는 대신 히어로를 사진 비율에 맞췄다 — 글자는 왼쪽, 사진은
+          오른쪽에 온전히. 스크림도 필요 없어져서 사진이 탁해지지 않는다.
+        */}
+      <section className="border-b border-ink/10">
+        <div className="mx-auto grid max-w-6xl items-center gap-8 px-5 pb-12 pt-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-14 lg:px-8 lg:pb-16 lg:pt-14">
+          <div>
+            {/* 굵기 대비로 읽는다 — 얇은 줄(300)이 위, 굵은 줄(700)이 아래.
+                문구는 클라이언트가 쓰는 표현을 그대로 가져왔다. */}
+            <h1 className="text-[2rem] leading-[1.22] sm:text-[2.75rem] lg:text-[3.25rem]">
               <span className="block font-light tracking-tight">50년 만에 돌아온</span>
               <span className="block font-bold tracking-tight">나주의 절굿대떡</span>
             </h1>
-            <p className="mt-5 max-w-lg text-[15px] leading-relaxed text-paper/90 lg:text-[1.0625rem]">
+            <p className="mt-6 max-w-prose text-[15px] leading-relaxed text-ink-soft lg:text-[1.0625rem]">
               목사골 양반들이 이바지로 쓰던 귀한 떡. 깊은 산속에서만 자생하던
               절굿대를 육묘에 성공해 되살렸습니다.
             </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                href="/products"
+                className="border border-ink bg-ink px-7 py-3 text-[15px] text-paper transition-opacity hover:opacity-90"
+              >
+                제품 보기
+              </Link>
+              <Link
+                href="/story"
+                className="border border-ink/25 px-7 py-3 text-[15px] transition-colors hover:border-ink"
+              >
+                이야기
+              </Link>
+            </div>
+          </div>
+
+          <div className="relative aspect-4/3 overflow-hidden rounded-2xl bg-paper-2">
+            <Image
+              src="/images/hero-maker-wide.jpg"
+              alt="김화수 대표가 갓 쳐낸 절굿대떡 판을 들어 보이고 있다"
+              fill
+              priority
+              quality={92}
+              sizes="(min-width: 1024px) 55vw, 100vw"
+              className="object-cover"
+            />
           </div>
         </div>
       </section>
