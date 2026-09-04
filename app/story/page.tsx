@@ -15,13 +15,13 @@ export default function StoryPage() {
     <>
       {/* 홈 히어로와 같은 규칙 — 헤더 안쪽 폭(max-w-6xl)에 맞춘 중앙 정렬,
           틀 비율은 잘라 낸 사진의 비율(2.18) 그대로다.
-          위아래를 쳐내 얼굴·상반신만 남겼다 — 모바일은 세로가 좁아 5:4·16:9 로 받는다.
-          (세로 틀로 두면 두 사람이 가로로 잘린다.) */}
+          사진은 상세 카드(4500px)에서 뽑은 절굿대 꽃 — 브랜드 이름의 유래이자
+          이 세트에서 가장 큰 원본이다. 아웃포커스라 헤드라인이 그 위에서 잘 읽힌다. */}
       <section className="mx-auto w-full max-w-6xl px-5 pt-6 lg:px-8 lg:pt-8">
         <div className="relative isolate flex aspect-5/4 items-end overflow-hidden rounded-2xl bg-ink sm:aspect-16/9 lg:aspect-[2.18/1]">
           <Image
-            src="/images/field-harvest-portrait.jpg"
-            alt="밭에서 갓 수확한 절굿대를 담은 소쿠리를 든 두 사람"
+            src="/images/thistle-bloom.jpg"
+            alt="보랏빛 구체로 피어난 절굿대 꽃"
             fill
             priority
             sizes="(min-width: 1200px) 1152px, 100vw"
