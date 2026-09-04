@@ -1,26 +1,70 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/*
+  절굿대달토끼 디자인 토큰.
+
+  색은 매장 실물에서 가져왔다 — 간판이 초록이고, 쑥떡과 절굿대 잎이 초록이고,
+  제품 스타일링에 쓰는 보자기가 노랑이다. 클라이언트가 가진 기존 팔레트
+  (골드 #8F7D60 · 민트 #7FB5CD · 핑크 #C4A3A8)는 인쇄물 기준이라 사진과 부딪힌다.
+  웹에서는 초록을 주역으로 다시 잡고, 핑크만 선물 맥락에 남긴다.
+*/
+@theme {
+  --color-moss-900: #16291e;
+  --color-moss: #22402f;
+  --color-moss-600: #3d5c4a;
+  --color-moss-300: #8ba192;
+
+  --color-paper: #edf0ea;
+  --color-paper-dim: #e3e8dd;
+
+  --color-signage: #6fa644;
+  --color-bojagi: #e4bf4a;
+  --color-bean: #d6c8ac;
+  --color-gift: #c4a3a8;
+
+  --font-display: var(--font-gowun-batang), "Apple SD Gothic Neo", serif;
+  --font-sans: var(--font-plex-kr), "Apple SD Gothic Neo", sans-serif;
+
+  /* 본문 한 줄은 한글 40자 안쪽으로. 한글은 라틴보다 글자폭이 넓다. */
+  --container-prose: 34rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    scroll-behavior: smooth;
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-moss);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* 한글 제목은 자간을 좁혀야 덩어리로 읽힌다. keep-all 로 어절 중간 줄바꿈을 막는다. */
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    line-height: 1.35;
+    word-break: keep-all;
+  }
+
+  p, li { word-break: keep-all; }
+
+  :focus-visible {
+    outline: 2px solid var(--color-signage);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
 }

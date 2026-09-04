@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "daltokki",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-lc", "cd \"$HOME/naju-daltokki\" && npm run dev -- --port 3001"],
+      "port": 3001
+    }
+  ]
+}
