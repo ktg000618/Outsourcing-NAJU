@@ -35,7 +35,7 @@ export const site = {
   storeUrl: null as string | null,
 
   /** TODO(클라이언트): 인스타그램 등 */
-  instagramUrl: null as string | null,
+  instagramUrl: "https://www.instagram.com/jeol_gutdae/" as string | null,
 
   /** 법인명. 화면에 보이는 이름은 site.name(절굿대달토끼), 법적 표기는 이쪽이다. */
   legalName: "농업회사법인주식회사절굿대",
@@ -222,6 +222,38 @@ export const history = [
   },
   { year: "2024", items: ["나주시 고향사랑 답례품 선정 (절굿대떡, 나주배촉촉오란다)"] },
 ] as const;
+
+/**
+ * 체험 프로그램.
+ *
+ * 인원·시간·가격은 클라이언트 확인 대기다. 제품 가격과 같은 규칙으로,
+ * null 이면 화면이 그 줄을 "전화 문의" 로 대체한다 — 값이 들어오면
+ * 이 파일만 고치면 되고 화면은 안 건드린다.
+ *
+ * 학교·단체 인솔자는 예산을 짜야 해서 이 세 값이 없으면 전화를 못 건다.
+ * 그래서 이 항목들이 이 사업에서 가장 급한 미수령 자료다.
+ */
+export const experience = {
+  name: "'절굿대떡' 만들기 체험",
+  target: "학교·단체·가족 (개인 참여도 가능)",
+  /** TODO(클라이언트): 최소·최대 인원 */
+  minPeople: null as number | null,
+  maxPeople: null as number | null,
+  /** TODO(클라이언트): 소요 시간. 예) "약 90분" */
+  duration: null as string | null,
+  /** TODO(클라이언트): 1인 참가비 (원) */
+  pricePerPerson: null as number | null,
+  /** TODO(클라이언트): 가능한 요일·시간대. 예) "평일 10:00 / 14:00" */
+  availability: null as string | null,
+  /** TODO(클라이언트): 체험 후 가져가는 것 */
+  takeaway: null as string | null,
+  /** 진행 순서. 클라이언트 문안과 체험 사진에서 확인된 것만 적는다. */
+  steps: [
+    { title: "반죽 치기", detail: "쌀 반죽을 손으로 칩니다." },
+    { title: "모양 빚기", detail: "빚은 떡에 나무 떡살로 문양을 찍습니다." },
+    { title: "콩고물 입히기", detail: "고물을 입혀 마무리합니다." },
+  ],
+} as const;
 
 /** 신뢰 근거. 사진이 아니라 사실로 말하는 자리다. */
 export const credentials = [

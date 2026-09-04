@@ -1,6 +1,6 @@
 import Image from "next/image";
 import type { Metadata } from "next";
-import { site } from "@/lib/site";
+import { experience, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "체험·매장",
@@ -10,6 +10,28 @@ export const metadata: Metadata = {
 const mapQuery = encodeURIComponent(`${site.address} ${site.name}`);
 
 export default function VisitPage() {
+  const { minPeople, maxPeople, duration, pricePerPerson, availability, takeaway } =
+    experience;
+  const rows: { label: string; value: string | null }[] = [
+    { label: "대상", value: experience.target },
+    {
+      label: "인원",
+      value:
+        minPeople && maxPeople ? `${minPeople}~${maxPeople}명` : null,
+    },
+    { label: "소요 시간", value: duration },
+    {
+      label: "참가비",
+      value:
+        pricePerPerson !== null
+          ? `1인 ${pricePerPerson.toLocaleString("ko-KR")}원`
+          : null,
+    },
+    { label: "운영", value: availability },
+    { label: "가져가는 것", value: takeaway },
+    { label: "예약", value: "인원과 날짜에 따라 준비가 필요합니다. 미리 문의해 주세요." },
+  ];
+
   return (
     <>
       {/* 홈 히어로와 같은 규칙 — 헤더 안쪽 폭(max-w-6xl)에 맞춘 중앙 정렬,
@@ -55,31 +77,33 @@ export default function VisitPage() {
               반죽을 치고 모양을 빚어 콩고물을 입히기까지, 손으로 해 봅니다.
               어린이 단체부터 어른 모임까지 참여할 수 있습니다.
             </p>
+            {/*
+              인솔자는 예산을 짜야 해서 인원·시간·참가비 없이는 전화를 못 건다.
+              값이 아직 없으므로 자리를 만들어 두고 "전화 문의" 로 대체한다 —
+              제품 가격과 같은 규칙이다. lib/site.ts 만 고치면 여기가 채워진다.
+            */}
             <dl className="mt-9 divide-y divide-ink/10 border-y border-ink/10">
-              <div className="flex gap-6 py-4">
-                <dt className="w-24 shrink-0 text-[15px] text-ink-faint">대상</dt>
-                <dd className="text-[15px]">
-                  학교·단체·가족 (개인 참여도 가능)
-                </dd>
-              </div>
-              <div className="flex gap-6 py-4">
-                <dt className="w-24 shrink-0 text-[15px] text-ink-faint">예약</dt>
-                <dd className="text-[15px]">
-                  전화로 미리 문의해 주세요. 인원과 날짜에 따라 준비가 필요합니다.
-                </dd>
-              </div>
-              <div className="flex gap-6 py-4">
-                <dt className="w-24 shrink-0 text-[15px] text-ink-faint">문의</dt>
-                <dd className="text-[15px]">
-                  <a
-                    href={`tel:${site.tel.replace(/-/g, "")}`}
-                    className="border-b border-ink/25 pb-0.5 hover:border-mint hover:text-mint"
-                  >
-                    {site.tel}
-                  </a>
-                </dd>
-              </div>
+              {rows.map((r) => (
+                <div key={r.label} className="flex gap-6 py-4">
+                  <dt className="w-24 shrink-0 text-[15px] text-ink-faint">
+                    {r.label}
+                  </dt>
+                  <dd className="text-[15px]">
+                    {r.value ?? (
+                      <span className="text-ink-soft">전화로 문의해 주세요</span>
+                    )}
+                  </dd>
+                </div>
+              ))}
             </dl>
+
+            <a
+              aria-label={`전화 걸기 ${site.tel}`}
+              className="pressable mt-8 inline-block border border-ink bg-ink px-7 py-3 text-[15px] text-paper transition-colors hover:bg-ink-soft"
+              href={`tel:${site.tel.replace(/-/g, "")}`}
+            >
+              체험 문의 {site.tel}
+            </a>
           </div>
 
           {/*
@@ -108,6 +132,29 @@ export default function VisitPage() {
               />
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* 진행 순서. 실제로 손이 무엇을 하는지가 인솔자에겐 프로그램 설명이다.
+          문안과 체험 사진으로 확인된 세 단계만 적는다. */}
+      <section className="rise bg-paper-2">
+        <div className="mx-auto max-w-6xl px-5 py-16 lg:px-8 lg:py-20">
+          <h2 className="text-[1.75rem] leading-tight lg:text-[2.5rem]">
+            이렇게 진행합니다
+          </h2>
+          <ol className="mt-9 grid gap-8 lg:grid-cols-3">
+            {experience.steps.map((step, i) => (
+              <li key={step.title} className="border-t-2 border-moon pt-5">
+                <p className="font-mono text-[13px] tracking-widest text-ink-faint">
+                  {String(i + 1).padStart(2, "0")}
+                </p>
+                <h3 className="mt-2 text-lg">{step.title}</h3>
+                <p className="mt-2 text-[15px] leading-relaxed text-ink-soft">
+                  {step.detail}
+                </p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
