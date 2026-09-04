@@ -76,6 +76,11 @@ export type Product = {
   gallery?: { src: string; alt: string }[];
   /** 소리 없는 짧은 루프. 사진으로는 안 보이는 질감을 보여주는 자리다. */
   video?: { src: string; poster: string; label: string };
+  /**
+   * 후기 영상. 루프가 아니라 눌러서 보는 것이라 네이티브 controls 를 쓴다
+   * — 사람이 말하는 27초짜리를 자동 반복하면 산만하다.
+   */
+  reviewVideo?: { src: string; poster: string; label: string; caption: string };
   accent: "signage" | "bojagi" | "gift";
 };
 
@@ -140,6 +145,14 @@ export const products: Product[] = [
       src: "/video/oranda-texture.mp4",
       poster: "/video/oranda-poster.jpg",
       label: "장갑 낀 손으로 오란다를 쪼개면 견과가 붙은 단면이 드러난다",
+    },
+    /* 남도장터 판매 당시 업체가 전달받은 소재(사용 권리 확인 완료).
+       소리가 없고 자막이 화면에 박혀 있어 음소거 상태로도 내용이 전달된다. */
+    reviewVideo: {
+      src: "/video/review.mp4",
+      poster: "/video/review-poster.jpg",
+      label: "나주배 촉촉오란다를 손에 들고 소개하는 후기 영상",
+      caption: "영양간식으로 드시는 분이 많습니다",
     },
     accent: "bojagi",
   },

@@ -156,6 +156,33 @@ export default async function ProductPage({
         </div>
       </article>
 
+      {product.reviewVideo && (
+        <section className="rise border-t border-ink/10 bg-paper-2">
+          <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-16 lg:grid-cols-[minmax(0,auto)_minmax(0,1fr)] lg:gap-14 lg:px-8 lg:py-20">
+            {/* 세로 영상이라 폭을 묶어 둔다. 안 묶으면 데스크톱에서 혼자 커진다. */}
+            <video
+              aria-label={product.reviewVideo.label}
+              className="w-full max-w-[300px] rounded-2xl bg-ink lg:max-w-[340px]"
+              controls
+              playsInline
+              poster={product.reviewVideo.poster}
+              preload="metadata"
+              src={product.reviewVideo.src}
+            />
+            <div>
+              <p className="text-sm text-mint-link">후기</p>
+              <p className="mt-3 text-[1.75rem] leading-tight lg:text-[2.25rem]">
+                {product.reviewVideo.caption}
+              </p>
+              <p className="mt-5 max-w-prose text-ink-soft">
+                합성첨가물과 색소, 방부제를 넣지 않고 낱개로 포장합니다.
+                아이 간식이나 어른 답례로 두루 나갑니다.
+              </p>
+            </div>
+          </div>
+        </section>
+      )}
+
       <section className="rise border-t border-ink/10">
         <div className="mx-auto max-w-6xl px-5 py-16 lg:px-8 lg:py-20">
           <h2 className="text-2xl">다른 제품</h2>
