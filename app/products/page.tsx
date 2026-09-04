@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { products } from "@/lib/site";
+import { credentials, products, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "제품",
@@ -9,8 +9,17 @@ export const metadata: Metadata = {
     "절굿대떡, 제비쑥떡, 호박고지떡, 나주배 촉촉오란다, 선물세트. 인공첨가물 없이 재래방식으로 빚습니다.",
 };
 
-/** 쓰임새로 먼저 훑고, 그다음 제품을 고르는 순서다. */
-const occasions = ["이바지", "명절", "답례", "선물", "예단"];
+/**
+ * 쓰임새로 먼저 훑고, 그다음 제품을 고르는 순서다.
+ * 목록을 손으로 적지 않고 제품 데이터에서 뽑는다 — 손으로 적으면 제품을
+ * 추가할 때 한쪽만 고쳐져서 "그 쓰임새엔 아무것도 없음"이 된다.
+ */
+const byOccasion = products
+  .flatMap((p) => p.occasions.map((o) => [o, p] as const))
+  .reduce<Map<string, typeof products>>((m, [o, p]) => {
+    m.set(o, [...(m.get(o) ?? []), p]);
+    return m;
+  }, new Map());
 
 export default function ProductsPage() {
   const [lead, ...rest] = products;
@@ -50,17 +59,35 @@ export default function ProductsPage() {
           유화제나 인공감미료를 넣지 않습니다. 무농약으로 기른 절굿대와
           나주배 농축액으로만 단맛을 냅니다.
         </p>
-        <ul className="mt-8 flex flex-wrap gap-2">
-          {occasions.map((o) => (
-            <li
-              key={o}
-              className="border border-ink/20 px-4 py-1.5 text-[14px] text-ink-soft"
-            >
-              {o}
+      </header>
+
+      {/* 쓰임새 → 제품. 떡은 "무엇인가"보다 "언제 쓰는가"로 찾는 손님이 많다. */}
+      <section className="rise mx-auto max-w-6xl px-5 pb-16 lg:px-8 lg:pb-20">
+        <h2 className="text-[1.75rem] leading-tight lg:text-[2.5rem]">
+          쓰임새로 고르기
+        </h2>
+        <ul className="mt-8 grid gap-x-8 gap-y-7 sm:grid-cols-2 lg:grid-cols-3">
+          {[...byOccasion.entries()].map(([occasion, list]) => (
+            <li key={occasion} className="border-t border-ink/15 pt-4">
+              <p className="inline-block bg-rose/25 px-3 py-1 text-[14px] text-ink">
+                {occasion}
+              </p>
+              <ul className="mt-3 flex flex-col gap-1.5">
+                {list.map((p) => (
+                  <li key={p.slug}>
+                    <Link
+                      className="text-[15px] text-ink-soft underline decoration-ink/20 underline-offset-4 transition-colors hover:text-mint-link hover:decoration-mint-link"
+                      href={`/products/${p.slug}`}
+                    >
+                      {p.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </li>
           ))}
         </ul>
-      </header>
+      </section>
 
       {/* 왼쪽 대표 이미지 + 오른쪽 카드 그리드 */}
       <div className="rise mx-auto max-w-6xl px-5 pb-24 lg:px-8 lg:pb-32">
@@ -123,6 +150,122 @@ export default function ProductsPage() {
           </ul>
         </div>
       </div>
+      {/* 주문 경로가 셋인데 어디에도 안 적혀 있었다. 전화 주문 비중이 큰 곳이다. */}
+      <section className="rise bg-paper-2">
+        <div className="mx-auto max-w-6xl px-5 py-16 lg:px-8 lg:py-20">
+          <h2 className="text-[1.75rem] leading-tight lg:text-[2.5rem]">
+            주문하는 방법
+          </h2>
+          <ul className="mt-9 grid gap-8 lg:grid-cols-3">
+            <li className="border-t-2 border-moon pt-5">
+              <h3 className="text-lg">전화 주문</h3>
+              <p className="mt-2 text-[15px] leading-relaxed text-ink-soft">
+                수량과 구성을 상의해 정합니다. 이바지·예단처럼 구성이 정해지지
+                않은 주문은 이쪽이 빠릅니다.
+              </p>
+              <a
+                aria-label={`전화 걸기 ${site.tel}`}
+                className="pressable mt-4 inline-block border border-ink bg-ink px-6 py-2.5 text-[15px] text-paper transition-colors hover:bg-ink-soft"
+                href={`tel:${site.tel.replace(/-/g, "")}`}
+              >
+                {site.tel}
+              </a>
+            </li>
+            <li className="border-t-2 border-mint pt-5">
+              <h3 className="text-lg">네이버 스마트스토어</h3>
+              <p className="mt-2 text-[15px] leading-relaxed text-ink-soft">
+                구성이 정해진 제품은 스토어에서 바로 결제하실 수 있습니다.
+              </p>
+              {/* TODO(클라이언트): 스토어 주소 수령 후 링크로 교체. */}
+              <p className="mt-4 text-[15px] text-ink-faint">준비 중입니다</p>
+            </li>
+            <li className="border-t-2 border-rose pt-5">
+              <h3 className="text-lg">매장 방문</h3>
+              <p className="mt-2 text-[15px] leading-relaxed text-ink-soft">
+                {site.address}
+                <br />
+                {site.hours}
+              </p>
+              <Link
+                className="mt-4 inline-block text-[15px] underline decoration-ink/25 underline-offset-4 transition-colors hover:text-mint-link"
+                href="/visit"
+              >
+                오시는 길
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      {/* 제품별 spec 에만 흩어져 있던 보관·해동을 한자리에. 가장 많이 묻는 것이다. */}
+      <section className="rise mx-auto max-w-6xl px-5 py-16 lg:px-8 lg:py-20">
+        <h2 className="text-[1.75rem] leading-tight lg:text-[2.5rem]">
+          보관과 해동
+        </h2>
+        <div className="mt-8 grid gap-x-12 gap-y-8 lg:grid-cols-2">
+          <div>
+            <h3 className="text-lg">떡 — 절굿대떡·제비쑥떡</h3>
+            <dl className="mt-4 divide-y divide-ink/10 border-y border-ink/10 text-[15px]">
+              <div className="flex gap-6 py-4">
+                <dt className="w-20 shrink-0 text-ink-faint">보관</dt>
+                <dd className="text-ink-soft">남은 떡은 굳기 전에 냉동해 주세요</dd>
+              </div>
+              <div className="flex gap-6 py-4">
+                <dt className="w-20 shrink-0 text-ink-faint">해동</dt>
+                <dd className="text-ink-soft">
+                  실온에서 1~2시간, 또는 찜기·전자레인지로 말랑하게
+                </dd>
+              </div>
+              <div className="flex gap-6 py-4">
+                <dt className="w-20 shrink-0 text-ink-faint">드시는 법</dt>
+                <dd className="text-ink-soft">
+                  인절미 그대로가 가장 좋지만, 기호에 따라 청이나 콩가루를
+                  곁들이셔도 됩니다
+                </dd>
+              </div>
+            </dl>
+          </div>
+          <div>
+            <h3 className="text-lg">오란다 — 나주배 촉촉오란다</h3>
+            <dl className="mt-4 divide-y divide-ink/10 border-y border-ink/10 text-[15px]">
+              <div className="flex gap-6 py-4">
+                <dt className="w-20 shrink-0 text-ink-faint">소비기한</dt>
+                <dd className="text-ink-soft">제조일로부터 6개월</dd>
+              </div>
+              <div className="flex gap-6 py-4">
+                <dt className="w-20 shrink-0 text-ink-faint">보관</dt>
+                <dd className="text-ink-soft">
+                  상온 보관 가능. 오래 두실 경우 냉장·냉동을 권합니다
+                </dd>
+              </div>
+              <div className="flex gap-6 py-4">
+                <dt className="w-20 shrink-0 text-ink-faint">먹는 법</dt>
+                <dd className="text-ink-soft">
+                  냉동 보관 시 30분 전 상온 해동, 또는 전자레인지 15초
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      {/* 신뢰 근거. 홈에만 있고 정작 물건을 고르는 자리엔 없었다. */}
+      <section className="rise border-t border-ink/10">
+        <div className="mx-auto max-w-6xl px-5 py-14 lg:px-8 lg:py-16">
+          <ul className="grid gap-x-8 gap-y-7 sm:grid-cols-2 lg:grid-cols-4">
+            {credentials.map((c) => (
+              <li key={c.label}>
+                <span aria-hidden className="mb-3 block h-px w-8 bg-moon" />
+                <p className="font-semibold">{c.label}</p>
+                <p className="mt-1 text-[15px] leading-relaxed text-ink-soft">
+                  {c.detail}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
     </>
   );
 }
