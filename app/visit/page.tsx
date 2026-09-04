@@ -12,36 +12,35 @@ const mapQuery = encodeURIComponent(`${site.address} ${site.name}`);
 export default function VisitPage() {
   return (
     <>
-      {/* 카운터 컷은 밝아서 흐린 배경으로 깔면 검게 뭉갠다. 홈 히어로처럼
-          사진을 온전히 보여주고 글자는 아래쪽 스크림 위에 올린다. */}
-      {/*
-          두 사람이 주인공인 컷이라 글자를 얼굴 위에 올리지 않는다. 사진은 사진대로
-          다 보여 주고 문구는 아래 검은 띠로 내린다 — 창 높이에 따라 얼굴이 잘리던
-          svh 계산도 같이 사라진다(폭으로 높이가 정해진다).
-        */}
-      <section className="bg-ink">
-        <div className="relative aspect-16/10 w-full sm:aspect-16/8 lg:aspect-[16/6.5]">
+      {/* 홈 히어로와 같은 규칙 — 헤더 안쪽 폭(max-w-6xl)에 맞춘 중앙 정렬,
+          틀 비율은 사진 원본 비율(1.6) 그대로라 잘려 나가는 곳이 없다. */}
+      <section className="mx-auto w-full max-w-6xl px-5 pt-6 lg:px-8 lg:pt-8">
+        <div className="relative isolate flex aspect-4/5 items-end overflow-hidden rounded-2xl bg-ink sm:aspect-16/10 lg:aspect-[1.6/1]">
           <Image
             src="/images/owners-counter.jpg"
             alt="떡카페 카운터에 선 절굿대달토끼 부부"
             fill
             priority
-            sizes="100vw"
+            sizes="(min-width: 1200px) 1152px, 100vw"
             quality={92}
             className="object-cover object-[50%_25%]"
           />
-        </div>
-        <div className="mx-auto max-w-3xl px-5 pb-16 pt-10 text-center lg:pb-20 lg:pt-12">
-          <p className="text-sm text-paper/60 lg:text-base">
-            {site.addressLocality} 징고샅길
-          </p>
-          <h1 className="mt-3 text-[2.25rem] leading-[1.2] text-paper lg:text-[3.25rem]">
-            빚어 보러 오세요
-          </h1>
-          <p className="mx-auto mt-5 max-w-prose text-paper/85">
-            떡을 파는 데 그치지 않고, 직접 만들고 맛보는 체험장을 함께
-            운영합니다. 학교와 단체가 자주 찾습니다.
-          </p>
+          <div
+            aria-hidden
+            className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-ink/85 via-ink/40 to-transparent"
+          />
+          <div className="relative w-full px-6 pb-10 lg:px-10 lg:pb-12">
+            <p className="text-sm text-paper/70 lg:text-base">
+              {site.addressLocality} 징고샅길
+            </p>
+            <h1 className="mt-3 text-[2.25rem] leading-[1.2] text-paper lg:text-[3rem]">
+              빚어 보러 오세요
+            </h1>
+            <p className="mt-5 max-w-md text-[15px] leading-relaxed text-paper/85 lg:text-base">
+              떡을 파는 데 그치지 않고, 직접 만들고 맛보는 체험장을 함께
+              운영합니다. 학교와 단체가 자주 찾습니다.
+            </p>
+          </div>
         </div>
       </section>
 

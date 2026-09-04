@@ -13,28 +13,35 @@ export const metadata: Metadata = {
 export default function StoryPage() {
   return (
     <>
-      <section className="relative isolate overflow-hidden bg-ink">
-        <Image
-          src="/images/field-harvest.jpg"
-          alt="밭에서 갓 수확한 절굿대를 담은 소쿠리"
-          fill
-          priority
-          sizes="100vw"
-          quality={88}
-          className="object-cover opacity-45"
-        />
-        <div className="relative mx-auto max-w-3xl px-5 py-24 text-center lg:px-8 lg:py-32">
-          <p className="text-sm text-moon lg:text-base">맛의방주 등재 품목</p>
-          <h1 className="mt-4 text-[2.25rem] leading-[1.2] text-paper lg:text-[3.25rem]">
-            천금의 가치가
-            <br />
-            있다던 떡
-          </h1>
-          <p className="mx-auto mt-6 max-w-prose text-paper/80">
-            절굿대떡은 한때 목사골 양반들의 이바지 떡으로 쓰일 만큼 귀한 대접을
-            받았습니다. 세월이 흐르며 자취를 감추고, 어르신들의 기억 속 전설로만
-            남아 있었습니다.
-          </p>
+      {/* 홈 히어로와 같은 규칙 — 헤더 안쪽 폭(max-w-6xl)에 맞춘 중앙 정렬,
+          틀 비율은 사진 원본 비율(1.52) 그대로라 잘려 나가는 곳이 없다. */}
+      <section className="mx-auto w-full max-w-6xl px-5 pt-6 lg:px-8 lg:pt-8">
+        <div className="relative isolate flex aspect-4/5 items-end overflow-hidden rounded-2xl bg-ink sm:aspect-16/10 lg:aspect-[1.52/1]">
+          <Image
+            src="/images/field-harvest.jpg"
+            alt="밭에서 갓 수확한 절굿대를 담은 소쿠리"
+            fill
+            priority
+            sizes="(min-width: 1200px) 1152px, 100vw"
+            quality={92}
+            className="object-cover object-center"
+          />
+          <div
+            aria-hidden
+            className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-ink/85 via-ink/40 to-transparent"
+          />
+          <div className="relative w-full px-6 pb-10 lg:px-10 lg:pb-12">
+            <p className="text-sm text-moon lg:text-base">맛의방주 등재 품목</p>
+            <h1 className="mt-3 text-[2.25rem] leading-[1.2] text-paper lg:text-[3rem]">
+              천금의 가치가
+              <br />
+              있다던 떡
+            </h1>
+            <p className="mt-5 max-w-md text-[15px] leading-relaxed text-paper/85 lg:text-base">
+              한때 목사골 양반들의 이바지 떡으로 쓰일 만큼 귀한 대접을 받았고,
+              세월이 흐르며 자취를 감췄던 떡입니다.
+            </p>
+          </div>
         </div>
       </section>
 

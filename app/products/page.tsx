@@ -17,9 +17,36 @@ export default function ProductsPage() {
 
   return (
     <>
-      <header className="mx-auto max-w-6xl px-5 pb-12 pt-16 lg:px-8 lg:pb-16 lg:pt-24">
-        <h1 className="text-[2.25rem] leading-[1.2] lg:text-[3rem]">빚는 것들</h1>
-        <p className="mt-5 max-w-prose text-ink-soft">
+      {/* 홈 히어로와 같은 규칙 — 헤더 안쪽 폭에 맞춘 중앙 정렬,
+          틀 비율은 사진 원본 비율(1.5) 그대로라 잘려 나가는 곳이 없다. */}
+      <section className="mx-auto w-full max-w-6xl px-5 pt-6 lg:px-8 lg:pt-8">
+        <div className="relative isolate flex aspect-4/5 items-end overflow-hidden rounded-2xl bg-ink sm:aspect-16/10 lg:aspect-[1.5/1]">
+          <Image
+            src="/images/product-gift-scene.jpg"
+            alt="떡카페 테이블에 놓인 절굿대떡 선물세트"
+            fill
+            priority
+            sizes="(min-width: 1200px) 1152px, 100vw"
+            quality={92}
+            className="object-cover object-center"
+          />
+          <div
+            aria-hidden
+            className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-ink/85 via-ink/40 to-transparent"
+          />
+          <div className="relative w-full px-6 pb-10 lg:px-10 lg:pb-12">
+            <h1 className="text-[2.25rem] leading-[1.2] text-paper lg:text-[3rem]">
+              빚는 것들
+            </h1>
+            <p className="mt-5 max-w-md text-[15px] leading-relaxed text-paper/85 lg:text-base">
+              이바지·명절·답례에 두루 나갑니다. 낱개 포장이라 나눠 드리기 좋습니다.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <header className="mx-auto max-w-6xl px-5 pb-12 pt-14 lg:px-8 lg:pb-16 lg:pt-20">
+        <p className="max-w-prose text-ink-soft">
           유화제나 인공감미료를 넣지 않습니다. 무농약으로 기른 절굿대와
           나주배 농축액으로만 단맛을 냅니다.
         </p>

@@ -147,12 +147,6 @@ export const products: Product[] = [
     unit: null,
     occasions: ["이바지", "명절", "예단", "회사 선물"],
     storeUrl: null,
-    gallery: [
-      {
-        src: "/images/product-gift-scene.jpg",
-        alt: "떡카페 테이블에 놓인 절굿대떡 선물세트",
-      },
-    ],
     accent: "gift",
   },
 ];
