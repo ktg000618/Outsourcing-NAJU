@@ -95,8 +95,8 @@ export default function HomePage() {
       <section className="grid lg:grid-cols-2">
         <div className="relative aspect-4/3 lg:aspect-auto lg:min-h-[30rem]">
           <Image
-            src="/images/thistle-flower.jpg"
-            alt="보랏빛 구체로 피는 절굿대 꽃"
+            src="/images/ingredients-board.jpg"
+            alt="나무 도마에 올린 절굿대떡과 콩고물"
             fill
             sizes="(min-width: 1024px) 50vw, 100vw"
             quality={88}
