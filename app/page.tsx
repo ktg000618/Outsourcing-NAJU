@@ -36,7 +36,7 @@ export default function HomePage() {
             priority
             quality={92}
             sizes="100vw"
-            className="object-cover object-[50%_22%]"
+            className="object-cover object-[50%_12%]"
           />
           {/* 위쪽까지 덮으면 사진이 탁해진다. 글자가 앉는 아래 절반만 어둡게. */}
           <div
