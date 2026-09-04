@@ -51,17 +51,28 @@ export default async function ProductPage({
             />
           </div>
           {product.gallery && (
-            <ul className="mt-4 grid grid-cols-3 gap-4">
+            /* 한 장뿐일 때 썸네일 줄로 깔면 왼쪽에 홀로 남아 빠진 자리처럼 보인다. */
+            <ul
+              className={
+                product.gallery.length === 1
+                  ? "mt-4"
+                  : "mt-4 grid grid-cols-3 gap-4"
+              }
+            >
               {product.gallery.map((g) => (
                 <li
                   key={g.src}
-                  className="relative aspect-square overflow-hidden rounded-xl bg-paper-2"
+                  className={`relative overflow-hidden rounded-xl bg-paper-2 ${
+                    product.gallery!.length === 1
+                      ? "aspect-4/3"
+                      : "aspect-square"
+                  }`}
                 >
                   <Image
                     src={g.src}
                     alt={g.alt}
                     fill
-                    sizes="(min-width: 1024px) 15vw, 30vw"
+                    sizes="(min-width: 1024px) 45vw, 90vw"
                     quality={88}
                     className="object-cover"
                   />
