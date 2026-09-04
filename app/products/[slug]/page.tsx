@@ -61,7 +61,7 @@ export default async function ProductPage({
             ))}
           </ul>
 
-          <h1 className="mt-5 text-4xl lg:text-5xl">
+          <h1 className="mt-5 text-[2.25rem] leading-[1.2] lg:text-[3rem]">
             {product.name}
           </h1>
           <p className="mt-3 text-lg text-ink-soft">{product.summary}</p>

@@ -15,7 +15,7 @@ const posts: { id: string; title: string; date: string; body: string }[] = [];
 export default function NewsPage() {
   return (
     <div className="mx-auto max-w-3xl px-5 pb-24 pt-16 lg:px-8 lg:pb-32 lg:pt-24">
-      <h1 className="text-4xl lg:text-5xl">소식</h1>
+      <h1 className="text-[2.25rem] leading-[1.2] lg:text-[3rem]">소식</h1>
       <p className="mt-5 text-ink-soft">
         휴무와 신제품, 행사 소식을 이곳에 올립니다.
       </p>

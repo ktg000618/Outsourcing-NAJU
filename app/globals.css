@@ -11,14 +11,17 @@
   간판은 건물 사인이고, 브랜드의 실제 색 체계는 파스텔이다. 초록으로 돌아가지 말 것.
 */
 @theme {
-  /* 글자·선. 검정이 아니라 워드마크의 모카 계열을 어둡게 쓴다. */
-  --color-ink: #453a32;
-  --color-ink-soft: #7b6b5d;
-  --color-ink-faint: #a99a8c;
+  /*
+    글자·바탕. 레퍼런스(압구정공주떡) 실측값을 따른다 — 흰 바탕에 근검정 글자.
+    크림 바탕에 갈색 글자로 가면 사진·카드까지 전부 같은 톤이 되어 위계가 사라진다.
+    브랜드의 파스텔은 액센트로만 쓰고, 색은 사진이 낸다.
+  */
+  --color-ink: #161616;
+  --color-ink-soft: #4a4a4a;
+  --color-ink-faint: #8c8c8c;
 
-  /* 바탕. 라벨 배경의 크림. */
-  --color-paper: #faf7f2;
-  --color-paper-2: #f1eae0;
+  --color-paper: #ffffff;
+  --color-paper-2: #f6f4f0;
 
   /* 브랜드 색 — 전부 로고에서 추출한 실측값 */
   --color-mint: #97c7c7;

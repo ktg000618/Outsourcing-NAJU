@@ -26,7 +26,7 @@ export default function StoryPage() {
           <p className="text-sm text-mint-deep lg:text-base">
             맛의방주 등재 품목
           </p>
-          <h1 className="mt-4 text-4xl text-paper lg:text-6xl">
+          <h1 className="mt-4 text-[2.25rem] leading-[1.2] text-paper lg:text-[3.25rem]">
             천금의 가치가
             <br />
             있다던 떡
@@ -60,7 +60,7 @@ export default function StoryPage() {
       <section className="bg-ink text-paper">
         <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 lg:grid-cols-2 lg:items-center lg:gap-20 lg:px-8 lg:py-28">
           <div>
-            <h2 className="text-3xl lg:text-4xl">
+            <h2 className="text-[2rem] leading-[1.25] lg:text-[2.875rem]">
               누로(漏蘆), 천금과 같다는 뿌리
             </h2>
             <div className="mt-6 space-y-5 text-paper/80">
@@ -90,7 +90,7 @@ export default function StoryPage() {
 
       {/* 만드는 방식 */}
       <section className="mx-auto max-w-6xl px-5 py-20 lg:px-8 lg:py-28">
-        <h2 className="text-3xl lg:text-4xl">
+        <h2 className="text-[2rem] leading-[1.25] lg:text-[2.875rem]">
           넣지 않는 것으로 말합니다
         </h2>
         <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:gap-16">

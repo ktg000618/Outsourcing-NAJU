@@ -35,10 +35,9 @@ export default function HomePage() {
             <p className="text-[13px] tracking-wide text-moon lg:text-sm">
               나주 징고샅길 · {site.since}년부터
             </p>
-            <h1 className="mt-3 text-[2rem] leading-[1.2] text-paper sm:text-5xl lg:text-6xl">
-              사라졌던 떡을
-              <br />
-              다시 빚습니다
+            <h1 className="mt-3 text-[2rem] leading-[1.25] text-paper sm:text-[2.75rem] lg:text-[3.25rem]">
+              <span className="block font-extralight">사라졌던 나주의 떡을</span>
+              <span className="block font-semibold">다시 빚습니다</span>
             </h1>
             <p className="mt-5 max-w-md text-[15px] leading-relaxed text-paper/85 lg:text-base">
               목사골 양반들이 이바지로 쓰던 나주 절굿대떡. 마을 어르신들이 무농약으로
@@ -50,7 +49,7 @@ export default function HomePage() {
 
       {/* 2. 대표 제품 */}
       <section className="mx-auto max-w-6xl px-5 py-20 lg:px-8 lg:py-24">
-        <h2 className="text-center text-3xl lg:text-4xl">대표 제품</h2>
+        <h2 className="text-center text-[1.75rem] font-bold leading-none lg:text-4xl">대표 제품</h2>
         <ul className="mt-12 grid gap-x-6 gap-y-10 sm:grid-cols-3 lg:gap-x-8">
           {best.map((p) => (
             <li key={p.slug}>
@@ -95,7 +94,7 @@ export default function HomePage() {
           />
         </div>
         <div className="flex flex-col justify-center bg-ink px-5 py-16 text-paper lg:px-16 lg:py-20">
-          <h2 className="text-3xl lg:text-4xl">
+          <h2 className="text-[2rem] leading-[1.25] lg:text-[2.875rem]">
             넣지 않는 것으로
             <br />
             말합니다
@@ -116,7 +115,7 @@ export default function HomePage() {
       {/* 4. 브랜드 문구 밴드 — 체험 */}
       <section className="grid lg:grid-cols-2">
         <div className="flex flex-col justify-center bg-paper-2 px-5 py-16 lg:order-1 lg:px-16 lg:py-20">
-          <h2 className="text-3xl lg:text-4xl">
+          <h2 className="text-[2rem] leading-[1.25] lg:text-[2.875rem]">
             직접 빚어 보는
             <br />
             자리가 있습니다
@@ -146,7 +145,9 @@ export default function HomePage() {
       {/* 5. 브랜드 소개 */}
       <section className="mx-auto max-w-3xl px-5 py-20 text-center lg:px-8 lg:py-28">
         <p className="text-sm text-mint-deep">ABOUT</p>
-        <h2 className="mt-4 text-3xl lg:text-4xl">천금의 가치가 있다던 떡</h2>
+        <h2 className="mt-4 text-[2rem] font-light leading-[1.3] lg:text-[2.875rem]">
+          천금의 가치가 있다던 떡
+        </h2>
         <div className="mt-7 space-y-5 text-ink-soft">
           <p>
             지역에서 으뜸가는 떡이라 하여 목사골 나주 양반들이 이바지에 썼습니다.
@@ -172,15 +173,9 @@ export default function HomePage() {
       {/* 6. 전체 제품 */}
       <section className="bg-paper-2">
         <div className="mx-auto max-w-6xl px-5 py-20 lg:px-8 lg:py-24">
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <h2 className="text-3xl lg:text-4xl">빚는 것들</h2>
-            <Link
-              href="/products"
-              className="border-b border-ink/30 pb-0.5 text-[15px] transition-colors hover:border-mint-deep hover:text-mint-deep"
-            >
-              제품 전체 보기
-            </Link>
-          </div>
+          <h2 className="text-center text-[1.75rem] font-bold leading-none lg:text-4xl">
+            빚는 것들
+          </h2>
           <ul className="mt-12 grid grid-cols-2 gap-x-6 gap-y-12 lg:grid-cols-5 lg:gap-x-8">
             {products.map((p) => (
               <li key={p.slug}>

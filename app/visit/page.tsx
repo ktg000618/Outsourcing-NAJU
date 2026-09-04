@@ -25,7 +25,7 @@ export default function VisitPage() {
           <p className="text-sm text-mint-deep lg:text-base">
             {site.addressLocality} 징고샅길
           </p>
-          <h1 className="mt-4 text-4xl text-paper lg:text-6xl">
+          <h1 className="mt-4 text-[2.25rem] leading-[1.2] text-paper lg:text-[3.25rem]">
             빚어 보러 오세요
           </h1>
           <p className="mx-auto mt-6 max-w-prose text-paper/80">
@@ -39,7 +39,7 @@ export default function VisitPage() {
       <section className="mx-auto max-w-6xl px-5 py-20 lg:px-8 lg:py-28">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
-            <h2 className="text-3xl lg:text-4xl">
+            <h2 className="text-[2rem] leading-[1.25] lg:text-[2.875rem]">
               절굿대떡 만들기 체험
             </h2>
             <p className="mt-6 max-w-prose text-ink-soft">
@@ -118,7 +118,7 @@ export default function VisitPage() {
       <section className="bg-ink text-paper">
         <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 lg:grid-cols-2 lg:gap-16 lg:px-8 lg:py-28">
           <div>
-            <h2 className="text-3xl lg:text-4xl">오시는 길</h2>
+            <h2 className="text-[2rem] leading-[1.25] lg:text-[2.875rem]">오시는 길</h2>
             <address className="mt-8 space-y-5 not-italic">
               <div>
                 <p className="text-[14px] text-paper/50">주소</p>

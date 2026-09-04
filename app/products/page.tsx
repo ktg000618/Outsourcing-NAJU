@@ -18,7 +18,7 @@ export default function ProductsPage() {
   return (
     <>
       <header className="mx-auto max-w-6xl px-5 pb-12 pt-16 lg:px-8 lg:pb-16 lg:pt-24">
-        <h1 className="text-4xl lg:text-5xl">빚는 것들</h1>
+        <h1 className="text-[2.25rem] leading-[1.2] lg:text-[3rem]">빚는 것들</h1>
         <p className="mt-5 max-w-prose text-ink-soft">
           유화제나 인공감미료를 넣지 않습니다. 무농약으로 기른 절굿대와
           나주배 농축액으로만 단맛을 냅니다.
