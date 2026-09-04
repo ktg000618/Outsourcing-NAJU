@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function StoryPage() {
   return (
     <>
-      <section className="relative isolate overflow-hidden bg-moss-900">
+      <section className="relative isolate overflow-hidden bg-ink">
         <Image
           src="/images/field-thistle.jpg"
           alt="마을 어르신들이 위탁 재배하는 절굿대밭"
@@ -23,10 +23,10 @@ export default function StoryPage() {
           className="object-cover opacity-45"
         />
         <div className="relative mx-auto max-w-3xl px-5 py-24 text-center lg:px-8 lg:py-32">
-          <p className="font-display text-sm text-signage lg:text-base">
+          <p className="text-sm text-mint-deep lg:text-base">
             맛의방주 등재 품목
           </p>
-          <h1 className="mt-4 font-display text-4xl text-paper lg:text-6xl">
+          <h1 className="mt-4 text-4xl text-paper lg:text-6xl">
             천금의 가치가
             <br />
             있다던 떡
@@ -43,11 +43,11 @@ export default function StoryPage() {
         <ol className="space-y-14">
           {timeline.map((t) => (
             <li key={t.title} className="flex gap-6">
-              <MoonMark phase={t.phase} size={32} className="mt-1 shrink-0 text-moss" />
+              <MoonMark phase={t.phase} size={32} className="mt-1 shrink-0 text-ink" />
               <div>
-                <p className="text-[14px] text-moss-300">{t.when}</p>
-                <h2 className="mt-1 font-display text-2xl">{t.title}</h2>
-                <p className="mt-3 max-w-prose leading-relaxed text-moss-600">
+                <p className="text-[14px] text-ink-faint">{t.when}</p>
+                <h2 className="mt-1 text-2xl">{t.title}</h2>
+                <p className="mt-3 max-w-prose leading-relaxed text-ink-soft">
                   {t.body}
                 </p>
               </div>
@@ -57,10 +57,10 @@ export default function StoryPage() {
       </section>
 
       {/* 약재로서의 절굿대 */}
-      <section className="bg-moss text-paper">
+      <section className="bg-ink text-paper">
         <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 lg:grid-cols-2 lg:items-center lg:gap-20 lg:px-8 lg:py-28">
           <div>
-            <h2 className="font-display text-3xl lg:text-4xl">
+            <h2 className="text-3xl lg:text-4xl">
               누로(漏蘆), 천금과 같다는 뿌리
             </h2>
             <div className="mt-6 space-y-5 text-paper/80">
@@ -90,11 +90,11 @@ export default function StoryPage() {
 
       {/* 만드는 방식 */}
       <section className="mx-auto max-w-6xl px-5 py-20 lg:px-8 lg:py-28">
-        <h2 className="font-display text-3xl lg:text-4xl">
+        <h2 className="text-3xl lg:text-4xl">
           넣지 않는 것으로 말합니다
         </h2>
         <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:gap-16">
-          <div className="space-y-5 text-moss-600">
+          <div className="space-y-5 text-ink-soft">
             <p className="max-w-prose">
               절굿대떡에는 유화제나 인공감미료 같은 것을 전혀 쓰지 않습니다.
               재래방식 그대로 만들고, 단맛은 선별한 나주배 농축액으로만 냅니다.
@@ -117,11 +117,11 @@ export default function StoryPage() {
           </div>
         </div>
 
-        <ul className="mt-16 grid gap-x-8 gap-y-8 border-t border-moss/10 pt-12 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="mt-16 grid gap-x-8 gap-y-8 border-t border-ink/10 pt-12 sm:grid-cols-2 lg:grid-cols-4">
           {credentials.map((c) => (
             <li key={c.label}>
-              <p className="font-display text-lg">{c.label}</p>
-              <p className="mt-1 text-[15px] leading-relaxed text-moss-600">
+              <p className="text-lg">{c.label}</p>
+              <p className="mt-1 text-[15px] leading-relaxed text-ink-soft">
                 {c.detail}
               </p>
             </li>
@@ -131,13 +131,13 @@ export default function StoryPage() {
         <div className="mt-14 flex flex-wrap gap-3">
           <Link
             href="/products"
-            className="rounded-full bg-moss px-6 py-3 text-[15px] text-paper transition-opacity hover:opacity-90"
+            className="border border-ink bg-ink px-7 py-3 text-[15px] text-paper transition-opacity hover:opacity-90"
           >
             제품 보기
           </Link>
           <Link
             href="/visit"
-            className="rounded-full border border-moss/25 px-6 py-3 text-[15px] transition-colors hover:border-signage hover:text-signage"
+            className="border border-ink/30 px-7 py-3 text-[15px] transition-colors hover:border-mint-deep hover:text-mint-deep"
           >
             {site.addressLocality} 매장 안내
           </Link>

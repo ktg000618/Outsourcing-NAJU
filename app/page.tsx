@@ -13,49 +13,38 @@ export default function HomePage() {
   return (
     <>
       {/*
-        1. 히어로 — 분할형.
-        이 사진은 배경 현수막에 "절굿대떡" 붓글씨와 전화번호가 크게 박혀 있어서
-        위에 글자를 얹으면 서로 겹쳐 읽히지 않는다. 흰 현수막이라 어둡게 덮어도
-        대비가 안 나온다. 사진과 문구를 좌우로 나누면 둘 다 살아난다.
+        1. 히어로 — 사진이 화면을 지배하고, 글은 아래 한 귀퉁이에서 조용히 받친다.
+        이 사진은 위쪽 현수막에 붓글씨와 전화번호가 크게 박혀 있으므로 글자를 아래
+        떡판 위에만 올린다. 제목 자리에는 활자 대신 브랜드의 붓글씨 로고를 쓴다 —
+        타이포그래피로 흉내 낼 수 없는 획이 이미 있다.
       */}
-      <section className="grid lg:min-h-[calc(100svh-5rem)] lg:grid-cols-2">
-        <div className="relative order-1 aspect-4/3 lg:order-2 lg:aspect-auto">
+      <section className="relative isolate">
+        <div className="relative aspect-[4/5] w-full sm:aspect-[3/2] lg:aspect-[21/9]">
           <Image
             src="/images/hero-maker.jpg"
             alt="절굿대달토끼 대표가 갓 쳐낸 떡판을 들고 있다"
             fill
             priority
-            sizes="(min-width: 1024px) 50vw, 100vw"
+            sizes="100vw"
             className="object-cover object-center"
           />
-        </div>
-
-        <div className="order-2 flex flex-col justify-center bg-moss-900 px-5 py-16 text-paper lg:order-1 lg:px-16 lg:py-24 xl:px-20">
-          <p className="text-sm text-signage lg:text-base">
-            나주 징고샅길 · {site.since}년부터
-          </p>
-          <h1 className="mt-4 text-4xl sm:text-5xl lg:text-[3.4rem]">
-            사라졌던 떡을
-            <br />
-            다시 빚습니다
-          </h1>
-          <p className="mt-6 max-w-prose text-paper/80">
-            나주 절굿대떡은 목사골 양반들이 이바지로 쓰던 귀한 떡이었습니다.
-            무농약 절굿대와 나주배 농축액만으로, 재래방식 그대로 만듭니다.
-          </p>
-          <div className="mt-9 flex flex-wrap gap-3">
-            <Link
-              href="/products"
-              className="rounded-full bg-signage px-6 py-3 text-[15px] font-medium text-moss-900 transition-opacity hover:opacity-90"
-            >
-              제품 보기
-            </Link>
-            <Link
-              href="/story"
-              className="rounded-full border border-paper/40 px-6 py-3 text-[15px] transition-colors hover:border-signage hover:text-signage"
-            >
-              복원 이야기
-            </Link>
+          <div
+            aria-hidden
+            className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/70 via-black/25 to-transparent"
+          />
+          <div className="absolute inset-x-0 bottom-0 mx-auto max-w-6xl px-5 pb-9 lg:px-8 lg:pb-14">
+            <Image
+              src="/brand/brush-jeolgutdaetteok.png"
+              alt="절굿대떡"
+              width={1087}
+              height={266}
+              priority
+              className="h-14 w-auto brightness-0 invert lg:h-20"
+            />
+            <p className="mt-5 max-w-md text-[15px] leading-relaxed text-white/90 lg:text-base">
+              목사골 양반들이 이바지로 쓰던 나주의 떡. 사라졌던 그 맛을
+              무농약 절굿대와 나주배 농축액으로 다시 빚습니다.
+            </p>
           </div>
         </div>
       </section>
@@ -67,7 +56,7 @@ export default function HomePage() {
           {best.map((p) => (
             <li key={p.slug}>
               <Link href={`/products/${p.slug}`} className="group block">
-                <div className="relative aspect-4/3 overflow-hidden rounded-xl bg-paper-dim">
+                <div className="relative aspect-4/3 overflow-hidden rounded-xl bg-paper-2">
                   <Image
                     src={p.image}
                     alt={p.name}
@@ -77,14 +66,14 @@ export default function HomePage() {
                   />
                 </div>
                 <h3 className="mt-5 text-lg">{p.name}</h3>
-                <p className="mt-1 text-[15px] leading-relaxed text-moss-600">
+                <p className="mt-1 text-[15px] leading-relaxed text-ink-soft">
                   {p.summary}
                 </p>
                 <p className="mt-2 font-medium">
                   {p.price !== null ? (
                     `${p.price.toLocaleString("ko-KR")}원`
                   ) : (
-                    <span className="text-[15px] font-normal text-moss-300">
+                    <span className="text-[15px] font-normal text-ink-faint">
                       가격 문의 {site.tel}
                     </span>
                   )}
@@ -106,7 +95,7 @@ export default function HomePage() {
             className="object-cover"
           />
         </div>
-        <div className="flex flex-col justify-center bg-moss px-5 py-16 text-paper lg:px-16 lg:py-20">
+        <div className="flex flex-col justify-center bg-ink px-5 py-16 text-paper lg:px-16 lg:py-20">
           <h2 className="text-3xl lg:text-4xl">
             넣지 않는 것으로
             <br />
@@ -118,7 +107,7 @@ export default function HomePage() {
           </p>
           <Link
             href="/story"
-            className="mt-8 self-start border-b border-paper/35 pb-1 text-[15px] transition-colors hover:border-signage hover:text-signage"
+            className="mt-8 self-start border-b border-paper/35 pb-1 text-[15px] transition-colors hover:border-mint-deep hover:text-mint-deep"
           >
             복원 이야기 보러가기
           </Link>
@@ -127,19 +116,19 @@ export default function HomePage() {
 
       {/* 4. 브랜드 문구 밴드 — 체험 */}
       <section className="grid lg:grid-cols-2">
-        <div className="flex flex-col justify-center bg-paper-dim px-5 py-16 lg:order-1 lg:px-16 lg:py-20">
+        <div className="flex flex-col justify-center bg-paper-2 px-5 py-16 lg:order-1 lg:px-16 lg:py-20">
           <h2 className="text-3xl lg:text-4xl">
             직접 빚어 보는
             <br />
             자리가 있습니다
           </h2>
-          <p className="mt-6 max-w-prose text-moss-600">
+          <p className="mt-6 max-w-prose text-ink-soft">
             반죽을 치고 모양을 빚어 콩고물을 입히기까지 손으로 해 봅니다.
             학교와 단체가 자주 찾고, 여행길에 들르는 분들도 참여할 수 있습니다.
           </p>
           <Link
             href="/visit"
-            className="mt-8 self-start border-b border-moss/30 pb-1 text-[15px] transition-colors hover:border-signage hover:text-signage"
+            className="mt-8 self-start border-b border-ink/30 pb-1 text-[15px] transition-colors hover:border-mint-deep hover:text-mint-deep"
           >
             체험·매장 보러가기
           </Link>
@@ -157,9 +146,9 @@ export default function HomePage() {
 
       {/* 5. 브랜드 소개 */}
       <section className="mx-auto max-w-3xl px-5 py-20 text-center lg:px-8 lg:py-28">
-        <p className="text-sm text-signage">ABOUT</p>
+        <p className="text-sm text-mint-deep">ABOUT</p>
         <h2 className="mt-4 text-3xl lg:text-4xl">천금의 가치가 있다던 떡</h2>
-        <div className="mt-7 space-y-5 text-moss-600">
+        <div className="mt-7 space-y-5 text-ink-soft">
           <p>
             지역에서 으뜸가는 떡이라 하여 목사골 나주 양반들이 이바지에 썼습니다.
             한동안은 어르신들 사이에 이름만 전설처럼 남아 있던 떡입니다.
@@ -169,11 +158,11 @@ export default function HomePage() {
             생물다양성재단의 맛의방주에 나주 절굿대떡이 등재되었습니다.
           </p>
         </div>
-        <ul className="mt-14 grid gap-x-8 gap-y-8 border-t border-moss/10 pt-12 text-left sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="mt-14 grid gap-x-8 gap-y-8 border-t border-ink/10 pt-12 text-left sm:grid-cols-2 lg:grid-cols-4">
           {credentials.map((c) => (
             <li key={c.label}>
               <p className="font-semibold">{c.label}</p>
-              <p className="mt-1 text-[15px] leading-relaxed text-moss-600">
+              <p className="mt-1 text-[15px] leading-relaxed text-ink-soft">
                 {c.detail}
               </p>
             </li>
@@ -182,13 +171,13 @@ export default function HomePage() {
       </section>
 
       {/* 6. 전체 제품 */}
-      <section className="bg-paper-dim">
+      <section className="bg-paper-2">
         <div className="mx-auto max-w-6xl px-5 py-20 lg:px-8 lg:py-24">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <h2 className="text-3xl lg:text-4xl">빚는 것들</h2>
             <Link
               href="/products"
-              className="border-b border-moss/30 pb-0.5 text-[15px] transition-colors hover:border-signage hover:text-signage"
+              className="border-b border-ink/30 pb-0.5 text-[15px] transition-colors hover:border-mint-deep hover:text-mint-deep"
             >
               제품 전체 보기
             </Link>
@@ -218,7 +207,7 @@ export default function HomePage() {
       <section className="mx-auto grid max-w-6xl gap-4 px-5 py-20 sm:grid-cols-2 lg:px-8 lg:py-24">
         <Link
           href="/visit"
-          className="group relative isolate flex min-h-56 flex-col justify-end overflow-hidden rounded-2xl bg-moss-900 p-8"
+          className="group relative isolate flex min-h-56 flex-col justify-end overflow-hidden rounded-2xl bg-ink p-8"
         >
           <Image
             src="/images/store-exterior.jpg"
@@ -234,7 +223,7 @@ export default function HomePage() {
         </Link>
         <a
           href={`tel:${site.tel.replace(/-/g, "")}`}
-          className="flex min-h-56 flex-col justify-end rounded-2xl bg-moss p-8 text-paper transition-opacity hover:opacity-90"
+          className="flex min-h-56 flex-col justify-end rounded-2xl bg-ink p-8 text-paper transition-opacity hover:opacity-90"
         >
           <p className="text-[14px] text-paper/70">주문·체험 문의는 전화로</p>
           <p className="mt-1 text-2xl">{site.tel}</p>

@@ -12,7 +12,7 @@ const mapQuery = encodeURIComponent(`${site.address} ${site.name}`);
 export default function VisitPage() {
   return (
     <>
-      <section className="relative isolate overflow-hidden bg-moss-900">
+      <section className="relative isolate overflow-hidden bg-ink">
         <Image
           src="/images/store-exterior.jpg"
           alt="초록 간판이 걸린 절굿대달토끼 매장 외관"
@@ -22,10 +22,10 @@ export default function VisitPage() {
           className="object-cover object-center opacity-55"
         />
         <div className="relative mx-auto max-w-3xl px-5 py-24 text-center lg:px-8 lg:py-32">
-          <p className="font-display text-sm text-signage lg:text-base">
+          <p className="text-sm text-mint-deep lg:text-base">
             {site.addressLocality} 징고샅길
           </p>
-          <h1 className="mt-4 font-display text-4xl text-paper lg:text-6xl">
+          <h1 className="mt-4 text-4xl text-paper lg:text-6xl">
             빚어 보러 오세요
           </h1>
           <p className="mx-auto mt-6 max-w-prose text-paper/80">
@@ -39,32 +39,32 @@ export default function VisitPage() {
       <section className="mx-auto max-w-6xl px-5 py-20 lg:px-8 lg:py-28">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
-            <h2 className="font-display text-3xl lg:text-4xl">
+            <h2 className="text-3xl lg:text-4xl">
               절굿대떡 만들기 체험
             </h2>
-            <p className="mt-6 max-w-prose text-moss-600">
+            <p className="mt-6 max-w-prose text-ink-soft">
               반죽을 치고 모양을 빚어 콩고물을 입히기까지, 손으로 해 봅니다.
               어린이 단체부터 어른 모임까지 참여할 수 있습니다.
             </p>
-            <dl className="mt-9 divide-y divide-moss/10 border-y border-moss/10">
+            <dl className="mt-9 divide-y divide-ink/10 border-y border-ink/10">
               <div className="flex gap-6 py-4">
-                <dt className="w-24 shrink-0 text-[15px] text-moss-300">대상</dt>
+                <dt className="w-24 shrink-0 text-[15px] text-ink-faint">대상</dt>
                 <dd className="text-[15px]">
                   학교·단체·가족 (개인 참여도 가능)
                 </dd>
               </div>
               <div className="flex gap-6 py-4">
-                <dt className="w-24 shrink-0 text-[15px] text-moss-300">예약</dt>
+                <dt className="w-24 shrink-0 text-[15px] text-ink-faint">예약</dt>
                 <dd className="text-[15px]">
                   전화로 미리 문의해 주세요. 인원과 날짜에 따라 준비가 필요합니다.
                 </dd>
               </div>
               <div className="flex gap-6 py-4">
-                <dt className="w-24 shrink-0 text-[15px] text-moss-300">문의</dt>
+                <dt className="w-24 shrink-0 text-[15px] text-ink-faint">문의</dt>
                 <dd className="text-[15px]">
                   <a
                     href={`tel:${site.tel.replace(/-/g, "")}`}
-                    className="border-b border-moss/25 pb-0.5 hover:border-signage hover:text-signage"
+                    className="border-b border-ink/25 pb-0.5 hover:border-mint-deep hover:text-mint-deep"
                   >
                     {site.tel}
                   </a>
@@ -115,10 +115,10 @@ export default function VisitPage() {
       </section>
 
       {/* 오시는 길 */}
-      <section className="bg-moss text-paper">
+      <section className="bg-ink text-paper">
         <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 lg:grid-cols-2 lg:gap-16 lg:px-8 lg:py-28">
           <div>
-            <h2 className="font-display text-3xl lg:text-4xl">오시는 길</h2>
+            <h2 className="text-3xl lg:text-4xl">오시는 길</h2>
             <address className="mt-8 space-y-5 not-italic">
               <div>
                 <p className="text-[14px] text-paper/50">주소</p>
@@ -128,7 +128,7 @@ export default function VisitPage() {
                 <p className="text-[14px] text-paper/50">전화</p>
                 <p className="mt-1 text-lg">
                   <a
-                    className="hover:text-signage"
+                    className="hover:text-mint-deep"
                     href={`tel:${site.tel.replace(/-/g, "")}`}
                   >
                     {site.tel}
@@ -154,7 +154,7 @@ export default function VisitPage() {
                 href={`https://map.kakao.com/?q=${mapQuery}`}
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-full bg-signage px-6 py-3 text-[15px] font-medium text-moss-900 transition-opacity hover:opacity-90"
+                className="border border-ink px-7 py-3 text-[15px] text-ink transition-opacity hover:opacity-90"
               >
                 카카오맵으로 길찾기
               </a>
@@ -162,7 +162,7 @@ export default function VisitPage() {
                 href={`https://map.naver.com/p/search/${mapQuery}`}
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-full border border-paper/35 px-6 py-3 text-[15px] transition-colors hover:border-signage hover:text-signage"
+                className="border border-paper/50 px-7 py-3 text-[15px] transition-colors hover:border-mint-deep hover:text-mint-deep"
               >
                 네이버 지도
               </a>

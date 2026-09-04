@@ -7,21 +7,21 @@ import { nav, site } from "@/lib/site";
  */
 export function SiteFooter() {
   return (
-    <footer className="mt-24 bg-moss-900 text-paper/80">
+    <footer className="mt-24 bg-ink text-paper/80">
       <div className="mx-auto grid max-w-6xl gap-12 px-5 py-16 lg:grid-cols-[1.2fr_1fr_1fr] lg:px-8 lg:py-20">
         <div>
-          <p className="font-display text-2xl text-paper">{site.name}</p>
+          <p className="text-2xl text-paper">{site.name}</p>
           <p className="mt-3 max-w-xs text-[15px] leading-relaxed">
             {site.tagline} · {site.since}년부터 나주에서
           </p>
         </div>
 
         <div>
-          <h2 className="font-display text-base text-paper">찾아오시는 길</h2>
+          <h2 className="text-base text-paper">찾아오시는 길</h2>
           <address className="mt-3 space-y-1 text-[15px] not-italic leading-relaxed">
             <p>{site.address}</p>
             <p>
-              <a className="hover:text-signage" href={`tel:${site.tel.replace(/-/g, "")}`}>
+              <a className="hover:text-mint-deep" href={`tel:${site.tel.replace(/-/g, "")}`}>
                 {site.tel}
               </a>
             </p>
@@ -31,18 +31,18 @@ export function SiteFooter() {
         </div>
 
         <div>
-          <h2 className="font-display text-base text-paper">둘러보기</h2>
+          <h2 className="text-base text-paper">둘러보기</h2>
           <ul className="mt-3 space-y-1 text-[15px]">
             {nav.map((item) => (
               <li key={item.href}>
-                <Link className="hover:text-signage" href={item.href}>
+                <Link className="hover:text-mint-deep" href={item.href}>
                   {item.label}
                 </Link>
               </li>
             ))}
             {site.instagramUrl && (
               <li>
-                <a className="hover:text-signage" href={site.instagramUrl} rel="noreferrer" target="_blank">
+                <a className="hover:text-mint-deep" href={site.instagramUrl} rel="noreferrer" target="_blank">
                   인스타그램
                 </a>
               </li>

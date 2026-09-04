@@ -18,8 +18,8 @@ export default function ProductsPage() {
   return (
     <>
       <header className="mx-auto max-w-6xl px-5 pb-12 pt-16 lg:px-8 lg:pb-16 lg:pt-24">
-        <h1 className="font-display text-4xl lg:text-5xl">빚는 것들</h1>
-        <p className="mt-5 max-w-prose text-moss-600">
+        <h1 className="text-4xl lg:text-5xl">빚는 것들</h1>
+        <p className="mt-5 max-w-prose text-ink-soft">
           유화제나 인공감미료를 넣지 않습니다. 무농약으로 기른 절굿대와
           나주배 농축액으로만 단맛을 냅니다.
         </p>
@@ -27,7 +27,7 @@ export default function ProductsPage() {
           {occasions.map((o) => (
             <li
               key={o}
-              className="rounded-full border border-moss/20 px-4 py-1.5 text-[14px] text-moss-600"
+              className="border border-ink/20 px-4 py-1.5 text-[14px] text-ink-soft"
             >
               {o}
             </li>
@@ -40,7 +40,7 @@ export default function ProductsPage() {
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:gap-10">
           <Link
             href={`/products/${lead.slug}`}
-            className="group relative block aspect-square overflow-hidden rounded-2xl bg-paper-dim lg:aspect-auto"
+            className="group relative block aspect-square overflow-hidden rounded-2xl bg-paper-2 lg:aspect-auto"
           >
             <Image
               src={lead.image}
@@ -52,10 +52,10 @@ export default function ProductsPage() {
             />
             <div
               aria-hidden
-              className="absolute inset-0 bg-gradient-to-t from-moss-900/75 via-moss-900/10 to-transparent"
+              className="absolute inset-0 bg-gradient-to-t from-ink/75 via-ink/10 to-transparent"
             />
             <div className="absolute inset-x-0 bottom-0 p-7 lg:p-9">
-              <p className="font-display text-2xl text-paper lg:text-3xl">
+              <p className="text-2xl text-paper lg:text-3xl">
                 {lead.name}
               </p>
               <p className="mt-1.5 text-[15px] text-paper/80">{lead.summary}</p>
@@ -66,7 +66,7 @@ export default function ProductsPage() {
             {rest.map((p) => (
               <li key={p.slug}>
                 <Link href={`/products/${p.slug}`} className="group block">
-                  <div className="relative aspect-square overflow-hidden rounded-xl bg-paper-dim">
+                  <div className="relative aspect-square overflow-hidden rounded-xl bg-paper-2">
                     <Image
                       src={p.image}
                       alt={p.name}
@@ -75,8 +75,8 @@ export default function ProductsPage() {
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>
-                  <h2 className="mt-4 font-display text-lg">{p.name}</h2>
-                  <p className="mt-0.5 text-[14px] leading-relaxed text-moss-600">
+                  <h2 className="mt-4 text-lg">{p.name}</h2>
+                  <p className="mt-0.5 text-[14px] leading-relaxed text-ink-soft">
                     {p.summary}
                   </p>
                   {p.price !== null ? (
@@ -84,7 +84,7 @@ export default function ProductsPage() {
                       {p.price.toLocaleString("ko-KR")}원
                     </p>
                   ) : (
-                    <p className="mt-2 text-[14px] text-moss-300">
+                    <p className="mt-2 text-[14px] text-ink-faint">
                       가격 문의 {site.tel}
                     </p>
                   )}

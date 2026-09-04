@@ -3,30 +3,35 @@
 /*
   절굿대달토끼 디자인 토큰.
 
-  색은 매장 실물에서 가져왔다 — 간판이 초록이고, 쑥떡과 절굿대 잎이 초록이고,
-  제품 스타일링에 쓰는 보자기가 노랑이다. 클라이언트가 가진 기존 팔레트
-  (골드 #8F7D60 · 민트 #7FB5CD · 핑크 #C4A3A8)는 인쇄물 기준이라 사진과 부딪힌다.
-  웹에서는 초록을 주역으로 다시 잡고, 핑크만 선물 맥락에 남긴다.
+  색은 브랜드 아이덴티티 원본(절굿대달토끼.eps)에서 직접 뽑았다.
+  민트·모카·달노랑은 워드마크와 엠블럼에 실제로 쓰인 값이고, 오크블러드는
+  붓글씨 「절굿대떡」 로고(절굿대떡-로고.ai)의 먹색이다.
+
+  ⚠️ 초기에 매장 간판이 초록이라는 이유로 짙은 초록을 주역으로 잡았다가 폐기했다.
+  간판은 건물 사인이고, 브랜드의 실제 색 체계는 파스텔이다. 초록으로 돌아가지 말 것.
 */
 @theme {
-  --color-moss-900: #16291e;
-  --color-moss: #22402f;
-  --color-moss-600: #3d5c4a;
-  --color-moss-300: #8ba192;
+  /* 글자·선. 검정이 아니라 워드마크의 모카 계열을 어둡게 쓴다. */
+  --color-ink: #453a32;
+  --color-ink-soft: #7b6b5d;
+  --color-ink-faint: #a99a8c;
 
-  --color-paper: #edf0ea;
-  --color-paper-dim: #e3e8dd;
+  /* 바탕. 라벨 배경의 크림. */
+  --color-paper: #faf7f2;
+  --color-paper-2: #f1eae0;
 
-  --color-signage: #6fa644;
-  --color-bojagi: #e4bf4a;
-  --color-bean: #d6c8ac;
-  --color-gift: #c4a3a8;
+  /* 브랜드 색 — 전부 로고에서 추출한 실측값 */
+  --color-mint: #97c7c7;
+  --color-mint-deep: #5f9b9b;
+  --color-mocha: #a48a76;
+  --color-moon: #e0c05c;
+  --color-rose: #ddc4c4;
+  --color-oxblood: #5d080d;
 
   --font-sans: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", system-ui,
     sans-serif;
-  --font-display: var(--font-sans);
 
-  /* 본문 한 줄은 한글 40자 안쪽으로. 한글은 라틴보다 글자폭이 넓다. */
+  /* 본문 한 줄은 한글 40자 안쪽. 한글은 라틴보다 글자폭이 넓다. */
   --container-prose: 34rem;
 }
 
@@ -46,7 +51,7 @@
 
   body {
     background-color: var(--color-paper);
-    color: var(--color-moss);
+    color: var(--color-ink);
     font-family: var(--font-sans);
     font-size: 1.0625rem;
     line-height: 1.8;
@@ -55,7 +60,6 @@
 
   /* 한글 제목은 자간을 좁혀야 덩어리로 읽힌다. keep-all 로 어절 중간 줄바꿈을 막는다. */
   h1, h2, h3 {
-    font-family: var(--font-display);
     font-weight: 700;
     letter-spacing: -0.035em;
     line-height: 1.3;
@@ -65,7 +69,7 @@
   p, li { word-break: keep-all; }
 
   :focus-visible {
-    outline: 2px solid var(--color-signage);
+    outline: 2px solid var(--color-mint-deep);
     outline-offset: 3px;
     border-radius: 2px;
   }
