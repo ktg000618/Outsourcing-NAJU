@@ -131,14 +131,14 @@ export default async function ProductPage({
                 href={product.storeUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-block border border-ink bg-ink px-8 py-3.5 text-paper transition-opacity hover:opacity-90"
+                className="inline-block border border-ink bg-ink px-8 py-3.5 text-paper pressable transition-colors hover:bg-ink-soft hover:border-ink-soft"
               >
                 네이버 스마트스토어에서 구매
               </a>
             ) : (
               <a
                 href={`tel:${site.tel.replace(/-/g, "")}`}
-                className="inline-block border border-ink bg-ink px-8 py-3.5 text-paper transition-opacity hover:opacity-90"
+                className="inline-block border border-ink bg-ink px-8 py-3.5 text-paper pressable transition-colors hover:bg-ink-soft hover:border-ink-soft"
               >
                 전화로 주문 {site.tel}
               </a>
@@ -150,13 +150,13 @@ export default async function ProductPage({
         </div>
       </article>
 
-      <section className="border-t border-ink/10">
+      <section className="rise border-t border-ink/10">
         <div className="mx-auto max-w-6xl px-5 py-16 lg:px-8 lg:py-20">
           <h2 className="text-2xl">다른 제품</h2>
           <ul className="mt-8 grid grid-cols-2 gap-x-5 gap-y-8 lg:grid-cols-4 lg:gap-x-8">
             {others.map((p) => (
               <li key={p.slug}>
-                <Link href={`/products/${p.slug}`} className="group block">
+                <Link href={`/products/${p.slug}`} className="group pressable block">
                   <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2">
                     <Image
                       src={p.image}
@@ -167,7 +167,7 @@ export default async function ProductPage({
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>
-                  <p className="mt-4 text-center text-lg">
+                  <p className="mt-4 text-center text-lg transition-colors group-hover:text-mint-link">
                     {p.name}
                   </p>
                 </Link>

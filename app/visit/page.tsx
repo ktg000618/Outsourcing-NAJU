@@ -45,7 +45,7 @@ export default function VisitPage() {
       </section>
 
       {/* 체험 */}
-      <section className="mx-auto max-w-6xl px-5 py-20 lg:px-8 lg:py-28">
+      <section className="rise mx-auto max-w-6xl px-5 py-20 lg:px-8 lg:py-28">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
             <h2 className="text-[2rem] leading-[1.25] lg:text-[2.875rem]">
@@ -112,7 +112,7 @@ export default function VisitPage() {
       </section>
 
       {/* 오시는 길 */}
-      <section className="bg-ink text-paper">
+      <section className="rise bg-ink text-paper">
         <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 lg:grid-cols-2 lg:gap-16 lg:px-8 lg:py-28">
           <div>
             <h2 className="text-[2rem] leading-[1.25] lg:text-[2.875rem]">오시는 길</h2>
@@ -152,7 +152,7 @@ export default function VisitPage() {
                 href={`https://map.kakao.com/?q=${mapQuery}`}
                 target="_blank"
                 rel="noreferrer"
-                className="border border-paper bg-paper px-7 py-3 text-[15px] text-ink transition-opacity hover:opacity-90"
+                className="pressable border border-paper bg-paper px-7 py-3 text-[15px] text-ink transition-colors hover:border-paper/80 hover:bg-paper/80"
               >
                 카카오맵으로 길찾기
               </a>

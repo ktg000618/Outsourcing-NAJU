@@ -28,7 +28,7 @@ export default function NewsPage() {
           </p>
           <a
             href={`tel:${site.tel.replace(/-/g, "")}`}
-            className="mt-7 inline-block border border-ink bg-ink px-7 py-3 text-[15px] text-paper transition-opacity hover:opacity-90"
+            className="mt-7 inline-block border border-ink bg-ink px-7 py-3 text-[15px] text-paper pressable transition-colors hover:bg-ink-soft hover:border-ink-soft"
           >
             {site.tel}
           </a>

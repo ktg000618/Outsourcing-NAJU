@@ -48,7 +48,7 @@ export default function StoryPage() {
       </section>
 
       {/* 연표 — 달이 차오른다 */}
-      <section className="mx-auto max-w-3xl px-5 py-20 lg:px-8 lg:py-28">
+      <section className="rise mx-auto max-w-3xl px-5 py-20 lg:px-8 lg:py-28">
         <ol className="space-y-14">
           {timeline.map((t) => (
             <li key={t.title} className="flex gap-6">
@@ -66,7 +66,7 @@ export default function StoryPage() {
       </section>
 
       {/* 약재로서의 절굿대 */}
-      <section className="bg-ink text-paper">
+      <section className="rise bg-ink text-paper">
         <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 lg:grid-cols-2 lg:items-center lg:gap-20 lg:px-8 lg:py-28">
           <div>
             <h2 className="text-[2rem] leading-[1.25] lg:text-[2.875rem]">
@@ -99,7 +99,7 @@ export default function StoryPage() {
       </section>
 
       {/* 만드는 방식 */}
-      <section className="mx-auto max-w-6xl px-5 py-20 lg:px-8 lg:py-28">
+      <section className="rise mx-auto max-w-6xl px-5 py-20 lg:px-8 lg:py-28">
         <h2 className="text-[2rem] leading-[1.25] lg:text-[2.875rem]">
           정직한 천연 재료만 사용합니다
         </h2>
@@ -161,7 +161,7 @@ export default function StoryPage() {
         <div className="mt-14 flex flex-wrap gap-3">
           <Link
             href="/products"
-            className="border border-ink bg-ink px-7 py-3 text-[15px] text-paper transition-opacity hover:opacity-90"
+            className="border border-ink bg-ink px-7 py-3 text-[15px] text-paper pressable transition-colors hover:bg-ink-soft hover:border-ink-soft"
           >
             제품 보기
           </Link>

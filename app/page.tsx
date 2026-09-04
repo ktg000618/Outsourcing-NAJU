@@ -56,12 +56,12 @@ export default function HomePage() {
       </section>
 
       {/* 2. 대표 제품 */}
-      <section className="mx-auto max-w-6xl px-5 pb-20 pt-12 lg:px-8 lg:pb-24 lg:pt-16">
+      <section className="rise mx-auto max-w-6xl px-5 pb-20 pt-12 lg:px-8 lg:pb-24 lg:pt-16">
         <h2 className="text-center text-[1.75rem] font-bold leading-none lg:text-4xl">대표 제품</h2>
         <ul className="mt-9 grid gap-x-6 gap-y-10 sm:grid-cols-3 lg:mt-12 lg:gap-x-8">
           {best.map((p) => (
             <li key={p.slug}>
-              <Link href={`/products/${p.slug}`} className="group block">
+              <Link href={`/products/${p.slug}`} className="group pressable block">
                 <div className="relative aspect-4/3 overflow-hidden rounded-xl bg-paper-2">
                   <Image
                     src={p.image}
@@ -72,7 +72,9 @@ export default function HomePage() {
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
-                <h3 className="mt-5 text-lg">{p.name}</h3>
+                <h3 className="mt-5 text-lg transition-colors group-hover:text-mint-link">
+                  {p.name}
+                </h3>
                 <p className="mt-1 text-[15px] leading-relaxed text-ink-soft">
                   {p.summary}
                 </p>
@@ -95,7 +97,7 @@ export default function HomePage() {
       </section>
 
       {/* 3. 브랜드 문구 밴드 — 넣지 않는 것 */}
-      <section className="grid lg:grid-cols-2">
+      <section className="rise grid lg:grid-cols-2">
         <div className="relative aspect-4/3 lg:aspect-auto lg:min-h-[30rem]">
           <Image
             src="/images/ingredients-board.jpg"
@@ -127,7 +129,7 @@ export default function HomePage() {
       </section>
 
       {/* 4. 브랜드 문구 밴드 — 체험 */}
-      <section className="grid lg:grid-cols-2">
+      <section className="rise grid lg:grid-cols-2">
         <div className="flex flex-col justify-center bg-paper-2 px-5 py-16 lg:order-1 lg:px-14 lg:py-24 xl:px-20">
           <h2 className="text-[2rem] leading-[1.25] lg:text-[2.875rem]">
             직접 빚어 보는
@@ -158,7 +160,7 @@ export default function HomePage() {
       </section>
 
       {/* 5. 브랜드 소개 */}
-      <section className="mx-auto max-w-3xl px-5 py-20 text-center lg:px-8 lg:py-28">
+      <section className="rise mx-auto max-w-3xl px-5 py-20 text-center lg:px-8 lg:py-28">
         <p className="text-sm text-mint-link">ABOUT</p>
         <h2 className="mt-4 text-[2rem] font-light leading-[1.3] lg:text-[2.875rem]">
           천금의 가치가 있다던 떡
@@ -186,7 +188,7 @@ export default function HomePage() {
       </section>
 
       {/* 6. 전체 제품 */}
-      <section className="bg-paper-2">
+      <section className="rise bg-paper-2">
         <div className="mx-auto max-w-6xl px-5 py-20 lg:px-8 lg:py-24">
           <h2 className="text-center text-[1.75rem] font-bold leading-none lg:text-4xl">
             빚는 것들
@@ -194,7 +196,7 @@ export default function HomePage() {
           <ul className="mt-12 grid grid-cols-2 gap-x-6 gap-y-12 lg:grid-cols-4 lg:gap-x-10">
             {products.map((p) => (
               <li key={p.slug}>
-                <Link href={`/products/${p.slug}`} className="group block">
+                <Link href={`/products/${p.slug}`} className="group pressable block">
                   <div className="relative aspect-square overflow-hidden rounded-full bg-paper">
                     <Image
                       src={p.image}
@@ -205,7 +207,7 @@ export default function HomePage() {
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>
-                  <h3 className="mt-5 text-center text-base">{p.name}</h3>
+                  <h3 className="mt-5 text-center text-base transition-colors group-hover:text-mint-link">{p.name}</h3>
                 </Link>
               </li>
             ))}
@@ -214,10 +216,10 @@ export default function HomePage() {
       </section>
 
       {/* 7. 방문·문의 */}
-      <section className="mx-auto grid max-w-6xl gap-4 px-5 py-20 sm:grid-cols-2 lg:px-8 lg:py-24">
+      <section className="rise mx-auto grid max-w-6xl gap-4 px-5 py-20 sm:grid-cols-2 lg:px-8 lg:py-24">
         <Link
           href="/visit"
-          className="group relative isolate flex min-h-56 flex-col justify-end overflow-hidden rounded-2xl bg-ink p-8"
+          className="group pressable relative isolate flex min-h-56 flex-col justify-end overflow-hidden rounded-2xl bg-ink p-8"
         >
           <Image
             src="/images/store-exterior.jpg"
@@ -225,7 +227,7 @@ export default function HomePage() {
             fill
             sizes="(min-width: 640px) 45vw, 90vw"
             quality={88}
-            className="object-cover opacity-30 transition-transform duration-700 group-hover:scale-105"
+            className="object-cover opacity-30 transition-transform duration-500 group-hover:scale-105"
           />
           <div className="relative">
             <p className="text-[14px] text-paper/70">방문구매를 원하시면</p>
@@ -234,7 +236,7 @@ export default function HomePage() {
         </Link>
         <a
           href={`tel:${site.tel.replace(/-/g, "")}`}
-          className="flex min-h-56 flex-col justify-end rounded-2xl bg-ink p-8 text-paper transition-opacity hover:opacity-90"
+          className="pressable flex min-h-56 flex-col justify-end rounded-2xl bg-ink p-8 text-paper transition-colors hover:bg-ink-soft"
         >
           <p className="text-[14px] text-paper/70">주문·체험 문의는 전화로</p>
           <p className="mt-1 text-2xl">{site.tel}</p>
