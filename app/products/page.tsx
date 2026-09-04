@@ -32,7 +32,7 @@ export default function ProductsPage() {
           />
           <div
             aria-hidden
-            className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-ink/90 via-ink/60 to-ink/15"
+            className="absolute inset-0 bg-[linear-gradient(to_top,rgba(22,22,22,0.92)_0%,rgba(22,22,22,0.58)_46%,rgba(22,22,22,0)_78%)]"
           />
           <div className="relative w-full px-6 pb-10 lg:px-10 lg:pb-12">
             <h1 className="text-[2.25rem] leading-[1.2] text-paper lg:text-[3rem]">

@@ -38,7 +38,7 @@ export default function HomePage() {
               그쪽은 평평한 초록이라 얇은 그늘만으로 읽힌다. */}
           <div
             aria-hidden
-            className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-ink/90 via-ink/60 to-ink/15"
+            className="absolute inset-0 bg-[linear-gradient(to_top,rgba(22,22,22,0.92)_0%,rgba(22,22,22,0.58)_46%,rgba(22,22,22,0)_78%)]"
           />
           <div className="relative w-full px-6 pb-10 lg:px-10 lg:pb-12">
             {/* 굵기 대비로 읽는다 — 얇은 줄(300)이 위, 굵은 줄(700)이 아래.
