@@ -74,43 +74,27 @@ export default function VisitPage() {
             </dl>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 self-start">
-            <div className="relative aspect-square overflow-hidden rounded-2xl">
+          {/*
+            체험 사진은 얼굴이 들어오지 않는 두 컷만 쓴다. 나머지 자료 사진은
+            참가자 얼굴이 정면으로 크게 나와 초상권 동의 없이는 못 올린다.
+          */}
+          <div className="grid gap-4 self-start sm:grid-cols-2">
+            <div className="relative aspect-4/3 overflow-hidden rounded-2xl sm:aspect-square">
               <Image
-                src="/images/experience-class.jpg"
-                alt="체험장에서 절굿대떡을 빚는 참가자들"
+                src="/images/experience-stamp.jpg"
+                alt="장갑 낀 손으로 나무 떡살을 눌러 떡에 문양을 찍고 있다"
                 fill
-                sizes="(min-width: 1024px) 22vw, 44vw"
+                sizes="(min-width: 1024px) 22vw, 90vw"
                 quality={88}
                 className="object-cover"
               />
             </div>
-            <div className="relative mt-10 aspect-square overflow-hidden rounded-2xl">
+            <div className="relative aspect-4/3 overflow-hidden rounded-2xl sm:mt-10 sm:aspect-square">
               <Image
-                src="/images/experience-kids.jpg"
-                alt="아이들이 떡 모양을 빚는 모습"
+                src="/images/experience-hands.jpg"
+                alt="체험 테이블에 늘어놓은 갓 빚은 절굿대떡과 나뭇잎 모양 떡"
                 fill
-                sizes="(min-width: 1024px) 22vw, 44vw"
-                quality={88}
-                className="object-cover"
-              />
-            </div>
-            <div className="relative -mt-6 aspect-square overflow-hidden rounded-2xl">
-              <Image
-                src="/images/experience-school.jpg"
-                alt="학교 체험에서 만든 떡을 들어 보이는 아이들"
-                fill
-                sizes="(min-width: 1024px) 22vw, 44vw"
-                quality={88}
-                className="object-cover"
-              />
-            </div>
-            <div className="relative mt-4 aspect-square overflow-hidden rounded-2xl">
-              <Image
-                src="/images/store-interior.jpg"
-                alt="원형 장식이 걸린 매장 내부"
-                fill
-                sizes="(min-width: 1024px) 22vw, 44vw"
+                sizes="(min-width: 1024px) 22vw, 90vw"
                 quality={88}
                 className="object-cover"
               />
@@ -177,8 +161,8 @@ export default function VisitPage() {
           {/* TODO(개발): 카카오맵 SDK 임베드. 지금은 지도 앱으로 넘긴다. */}
           <div className="relative aspect-4/3 overflow-hidden rounded-2xl lg:aspect-auto lg:min-h-80">
             <Image
-              src="/images/store-exterior.jpg"
-              alt="매장 외관"
+              src="/images/hero-maker.jpg"
+              alt="김화수 대표가 갓 쳐낸 떡판을 들고 있다"
               fill
               sizes="(min-width: 1024px) 45vw, 90vw"
               quality={88}
