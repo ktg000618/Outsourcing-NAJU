@@ -1,27 +1,9 @@
 import type { Metadata } from "next";
-import { Gowun_Batang, IBM_Plex_Sans_KR } from "next/font/google";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { site } from "@/lib/site";
+import "pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css";
 import "./globals.css";
-
-/*
-  제목은 고운바탕(명조 계열) — 사라진 떡을 되살린 이야기라 붓의 무게가 맞는다.
-  본문은 IBM Plex Sans KR. Pretendard 는 어디서나 쓰여서 이 브랜드의 얼굴이 되기 어렵다.
-*/
-const gowunBatang = Gowun_Batang({
-  weight: ["400", "700"],
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-gowun-batang",
-});
-
-const plexKr = IBM_Plex_Sans_KR({
-  weight: ["400", "500", "600"],
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-plex-kr",
-});
 
 export const metadata: Metadata = {
   title: {
@@ -40,10 +22,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="ko"
-      className={`${gowunBatang.variable} ${plexKr.variable} h-full`}
-    >
+    <html lang="ko" className="h-full">
       <body className="flex min-h-full flex-col">
         <a
           href="#main"

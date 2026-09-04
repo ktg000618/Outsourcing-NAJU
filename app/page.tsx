@@ -1,39 +1,49 @@
 import Image from "next/image";
 import Link from "next/link";
-import { MoonMark } from "@/components/moon-mark";
-import { credentials, products, site, timeline } from "@/lib/site";
+import { credentials, products, site } from "@/lib/site";
 
+/**
+ * 홈 흐름은 참고 사이트(압구정공주떡) 구조를 따른다.
+ * 히어로 → 대표 제품 → 브랜드 문구 밴드 → ABOUT → 전체 제품 → 방문 안내.
+ * 다만 그 사이트에 없는 두 가지, 복원 서사와 체험은 이 브랜드의 무기라 자리를 크게 준다.
+ */
 export default function HomePage() {
+  const best = products.slice(0, 3);
+
   return (
     <>
-      {/* 히어로 — 이 브랜드에서 가장 특징적인 장면은 복원한 사람이 떡판을 든 순간이다. */}
-      <section className="relative isolate min-h-[78svh] overflow-hidden bg-moss-900 lg:min-h-[86svh]">
-        <Image
-          src="/images/hero-maker.jpg"
-          alt="절굿대달토끼 대표가 갓 쳐낸 떡판을 들고 있다"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center opacity-70"
-        />
-        <div
-          aria-hidden
-          className="absolute inset-0 bg-moss-900/55"
-        />
-        <div className="relative mx-auto flex min-h-[78svh] max-w-3xl flex-col items-center justify-center px-5 py-24 text-center lg:min-h-[86svh] lg:px-8">
-          <p className="font-display text-sm text-signage lg:text-base">
+      {/*
+        1. 히어로 — 분할형.
+        이 사진은 배경 현수막에 "절굿대떡" 붓글씨와 전화번호가 크게 박혀 있어서
+        위에 글자를 얹으면 서로 겹쳐 읽히지 않는다. 흰 현수막이라 어둡게 덮어도
+        대비가 안 나온다. 사진과 문구를 좌우로 나누면 둘 다 살아난다.
+      */}
+      <section className="grid lg:min-h-[calc(100svh-5rem)] lg:grid-cols-2">
+        <div className="relative order-1 aspect-4/3 lg:order-2 lg:aspect-auto">
+          <Image
+            src="/images/hero-maker.jpg"
+            alt="절굿대달토끼 대표가 갓 쳐낸 떡판을 들고 있다"
+            fill
+            priority
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            className="object-cover object-center"
+          />
+        </div>
+
+        <div className="order-2 flex flex-col justify-center bg-moss-900 px-5 py-16 text-paper lg:order-1 lg:px-16 lg:py-24 xl:px-20">
+          <p className="text-sm text-signage lg:text-base">
             나주 징고샅길 · {site.since}년부터
           </p>
-          <h1 className="mt-4 font-display text-4xl text-paper sm:text-5xl lg:text-6xl">
+          <h1 className="mt-4 text-4xl sm:text-5xl lg:text-[3.4rem]">
             사라졌던 떡을
             <br />
             다시 빚습니다
           </h1>
-          <p className="mt-6 max-w-prose text-paper/85">
+          <p className="mt-6 max-w-prose text-paper/80">
             나주 절굿대떡은 목사골 양반들이 이바지로 쓰던 귀한 떡이었습니다.
             무농약 절굿대와 나주배 농축액만으로, 재래방식 그대로 만듭니다.
           </p>
-          <div className="mt-9 flex flex-wrap justify-center gap-3">
+          <div className="mt-9 flex flex-wrap gap-3">
             <Link
               href="/products"
               className="rounded-full bg-signage px-6 py-3 text-[15px] font-medium text-moss-900 transition-opacity hover:opacity-90"
@@ -42,7 +52,7 @@ export default function HomePage() {
             </Link>
             <Link
               href="/story"
-              className="rounded-full border border-paper/40 px-6 py-3 text-[15px] text-paper transition-colors hover:border-signage hover:text-signage"
+              className="rounded-full border border-paper/40 px-6 py-3 text-[15px] transition-colors hover:border-signage hover:text-signage"
             >
               복원 이야기
             </Link>
@@ -50,48 +60,34 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 신뢰 근거 — 사진이 아니라 사실로 말하는 자리 */}
-      <section className="bg-moss text-paper">
-        <ul className="mx-auto grid max-w-6xl gap-x-8 gap-y-7 px-5 py-12 sm:grid-cols-2 lg:grid-cols-4 lg:px-8 lg:py-14">
-          {credentials.map((c) => (
-            <li key={c.label}>
-              <p className="font-display text-lg text-signage">{c.label}</p>
-              <p className="mt-1 text-[15px] leading-relaxed text-paper/70">
-                {c.detail}
-              </p>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      {/* 제품 — 사각 카드 대신 원. 로고도 라탄 매트도 매장 벽 장식도 전부 원이다. */}
-      <section className="mx-auto max-w-6xl px-5 py-20 lg:px-8 lg:py-28">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <h2 className="font-display text-3xl lg:text-4xl">빚는 것들</h2>
-          <Link
-            href="/products"
-            className="border-b border-moss/30 pb-0.5 text-[15px] transition-colors hover:border-signage hover:text-signage"
-          >
-            제품 전체 보기
-          </Link>
-        </div>
-
-        <ul className="mt-12 grid grid-cols-2 gap-x-6 gap-y-12 lg:grid-cols-4 lg:gap-x-8">
-          {products.slice(0, 4).map((p) => (
+      {/* 2. 대표 제품 */}
+      <section className="mx-auto max-w-6xl px-5 py-20 lg:px-8 lg:py-24">
+        <h2 className="text-center text-3xl lg:text-4xl">대표 제품</h2>
+        <ul className="mt-12 grid gap-x-6 gap-y-10 sm:grid-cols-3 lg:gap-x-8">
+          {best.map((p) => (
             <li key={p.slug}>
-              <Link href={`/products#${p.slug}`} className="group block">
-                <div className="relative aspect-square overflow-hidden rounded-full bg-paper-dim">
+              <Link href={`/products/${p.slug}`} className="group block">
+                <div className="relative aspect-4/3 overflow-hidden rounded-xl bg-paper-dim">
                   <Image
                     src={p.image}
                     alt={p.name}
                     fill
-                    sizes="(min-width: 1024px) 22vw, 44vw"
+                    sizes="(min-width: 640px) 30vw, 90vw"
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
-                <h3 className="mt-5 font-display text-xl">{p.name}</h3>
+                <h3 className="mt-5 text-lg">{p.name}</h3>
                 <p className="mt-1 text-[15px] leading-relaxed text-moss-600">
                   {p.summary}
+                </p>
+                <p className="mt-2 font-medium">
+                  {p.price !== null ? (
+                    `${p.price.toLocaleString("ko-KR")}원`
+                  ) : (
+                    <span className="text-[15px] font-normal text-moss-300">
+                      가격 문의 {site.tel}
+                    </span>
+                  )}
                 </p>
               </Link>
             </li>
@@ -99,131 +95,150 @@ export default function HomePage() {
         </ul>
       </section>
 
-      {/* 이야기 요약 */}
-      <section className="bg-moss text-paper">
-        <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 lg:grid-cols-2 lg:items-center lg:gap-20 lg:px-8 lg:py-28">
-          <div className="relative aspect-4/5 overflow-hidden rounded-t-full lg:aspect-3/4">
-            <Image
-              src="/images/field-thistle.jpg"
-              alt="마을 어르신들이 위탁 재배하는 절굿대밭"
-              fill
-              sizes="(min-width: 1024px) 45vw, 90vw"
-              className="object-cover"
-            />
-          </div>
-          <div>
-            <h2 className="font-display text-3xl lg:text-4xl">
-              천금의 가치가 있다던 떡
-            </h2>
-            <p className="mt-6 max-w-prose text-paper/80">
-              절굿대의 뿌리는 한방에서 누로(漏蘆)라 부르는 약재입니다. 이를 달인
-              탕약을 천금누로탕이라 했으니, 천금과 같다 하여 붙은 이름입니다.
-              절굿대떡이 이바지에 오른 것은 맛 때문만이 아니었습니다.
-            </p>
-            <ol className="mt-10 space-y-7">
-              {timeline.map((t) => (
-                <li key={t.title} className="flex gap-5">
-                  <MoonMark
-                    phase={t.phase}
-                    className="mt-1.5 shrink-0 text-bojagi"
-                  />
-                  <div>
-                    <p className="font-display text-lg text-paper">
-                      {t.when} · {t.title}
-                    </p>
-                    <p className="mt-1 max-w-prose text-[15px] leading-relaxed text-paper/70">
-                      {t.body}
-                    </p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-            <Link
-              href="/story"
-              className="mt-10 inline-block border-b border-paper/30 pb-0.5 text-[15px] transition-colors hover:border-signage hover:text-signage"
-            >
-              이야기 전체 읽기
-            </Link>
-          </div>
+      {/* 3. 브랜드 문구 밴드 — 넣지 않는 것 */}
+      <section className="grid lg:grid-cols-2">
+        <div className="relative aspect-4/3 lg:aspect-auto lg:min-h-[30rem]">
+          <Image
+            src="/images/field-thistle.jpg"
+            alt="마을 어르신들이 위탁 재배하는 절굿대밭"
+            fill
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            className="object-cover"
+          />
+        </div>
+        <div className="flex flex-col justify-center bg-moss px-5 py-16 text-paper lg:px-16 lg:py-20">
+          <h2 className="text-3xl lg:text-4xl">
+            넣지 않는 것으로
+            <br />
+            말합니다
+          </h2>
+          <p className="mt-6 max-w-prose text-paper/80">
+            유화제도 인공감미료도 쓰지 않습니다. 단맛은 선별한 나주배 농축액으로만
+            냅니다. 떡에 들어가는 절굿대는 마을 어르신들이 무농약으로 기릅니다.
+          </p>
+          <Link
+            href="/story"
+            className="mt-8 self-start border-b border-paper/35 pb-1 text-[15px] transition-colors hover:border-signage hover:text-signage"
+          >
+            복원 이야기 보러가기
+          </Link>
         </div>
       </section>
 
-      {/* 체험 */}
-      <section className="mx-auto max-w-6xl px-5 py-20 lg:px-8 lg:py-28">
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-20">
-          <div className="order-2 lg:order-1">
-            <h2 className="font-display text-3xl lg:text-4xl">
-              직접 빚어 보는 자리
-            </h2>
-            <p className="mt-6 max-w-prose text-moss-600">
-              떡을 파는 데 그치지 않고 만들어 보는 체험장을 함께 운영합니다.
-              학교와 단체가 자주 찾고, 여행길에 들르는 분들도 참여할 수 있습니다.
-            </p>
-            <Link
-              href="/visit"
-              className="mt-8 inline-block rounded-full bg-moss px-6 py-3 text-[15px] text-paper transition-opacity hover:opacity-90"
-            >
-              체험·매장 안내
-            </Link>
-          </div>
-          <div className="order-1 grid grid-cols-2 gap-4 lg:order-2">
-            <div className="relative aspect-square overflow-hidden rounded-2xl">
-              <Image
-                src="/images/experience-class.jpg"
-                alt="체험장에서 절굿대떡을 빚는 참가자들"
-                fill
-                sizes="(min-width: 1024px) 22vw, 44vw"
-                className="object-cover"
-              />
-            </div>
-            <div className="relative mt-8 aspect-square overflow-hidden rounded-2xl">
-              <Image
-                src="/images/experience-school.jpg"
-                alt="학교 체험에서 만든 떡을 들어 보이는 아이들"
-                fill
-                sizes="(min-width: 1024px) 22vw, 44vw"
-                className="object-cover"
-              />
-            </div>
-          </div>
+      {/* 4. 브랜드 문구 밴드 — 체험 */}
+      <section className="grid lg:grid-cols-2">
+        <div className="flex flex-col justify-center bg-paper-dim px-5 py-16 lg:order-1 lg:px-16 lg:py-20">
+          <h2 className="text-3xl lg:text-4xl">
+            직접 빚어 보는
+            <br />
+            자리가 있습니다
+          </h2>
+          <p className="mt-6 max-w-prose text-moss-600">
+            반죽을 치고 모양을 빚어 콩고물을 입히기까지 손으로 해 봅니다.
+            학교와 단체가 자주 찾고, 여행길에 들르는 분들도 참여할 수 있습니다.
+          </p>
+          <Link
+            href="/visit"
+            className="mt-8 self-start border-b border-moss/30 pb-1 text-[15px] transition-colors hover:border-signage hover:text-signage"
+          >
+            체험·매장 보러가기
+          </Link>
+        </div>
+        <div className="relative aspect-4/3 lg:order-2 lg:aspect-auto lg:min-h-[30rem]">
+          <Image
+            src="/images/experience-class.jpg"
+            alt="체험장에서 절굿대떡을 빚는 참가자들"
+            fill
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            className="object-cover"
+          />
         </div>
       </section>
 
-      {/* 오시는 길 */}
-      <section className="bg-paper-dim">
-        <div className="mx-auto grid max-w-6xl gap-10 px-5 py-20 lg:grid-cols-2 lg:items-center lg:gap-20 lg:px-8 lg:py-24">
-          <div className="relative aspect-4/3 overflow-hidden rounded-2xl">
-            <Image
-              src="/images/store-exterior.jpg"
-              alt="초록 간판이 걸린 절굿대달토끼 매장 외관"
-              fill
-              sizes="(min-width: 1024px) 45vw, 90vw"
-              className="object-cover"
-            />
-          </div>
-          <div>
-            <h2 className="font-display text-3xl lg:text-4xl">오시는 길</h2>
-            <address className="mt-6 space-y-2 not-italic text-moss-600">
-              <p className="text-moss">{site.address}</p>
-              <p>
-                <a
-                  href={`tel:${site.tel.replace(/-/g, "")}`}
-                  className="border-b border-moss/25 pb-0.5 hover:border-signage hover:text-signage"
-                >
-                  {site.tel}
-                </a>
+      {/* 5. 브랜드 소개 */}
+      <section className="mx-auto max-w-3xl px-5 py-20 text-center lg:px-8 lg:py-28">
+        <p className="text-sm text-signage">ABOUT</p>
+        <h2 className="mt-4 text-3xl lg:text-4xl">천금의 가치가 있다던 떡</h2>
+        <div className="mt-7 space-y-5 text-moss-600">
+          <p>
+            지역에서 으뜸가는 떡이라 하여 목사골 나주 양반들이 이바지에 썼습니다.
+            한동안은 어르신들 사이에 이름만 전설처럼 남아 있던 떡입니다.
+          </p>
+          <p>
+            대표가 유년 시절의 맛을 좇아 복원에 매달렸고, 2021년 국제슬로푸드
+            생물다양성재단의 맛의방주에 나주 절굿대떡이 등재되었습니다.
+          </p>
+        </div>
+        <ul className="mt-14 grid gap-x-8 gap-y-8 border-t border-moss/10 pt-12 text-left sm:grid-cols-2 lg:grid-cols-4">
+          {credentials.map((c) => (
+            <li key={c.label}>
+              <p className="font-semibold">{c.label}</p>
+              <p className="mt-1 text-[15px] leading-relaxed text-moss-600">
+                {c.detail}
               </p>
-              {site.hours && <p>{site.hours}</p>}
-              {site.closedDays && <p>휴무 {site.closedDays}</p>}
-            </address>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* 6. 전체 제품 */}
+      <section className="bg-paper-dim">
+        <div className="mx-auto max-w-6xl px-5 py-20 lg:px-8 lg:py-24">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <h2 className="text-3xl lg:text-4xl">빚는 것들</h2>
             <Link
-              href="/visit"
-              className="mt-8 inline-block border-b border-moss/30 pb-0.5 text-[15px] transition-colors hover:border-signage hover:text-signage"
+              href="/products"
+              className="border-b border-moss/30 pb-0.5 text-[15px] transition-colors hover:border-signage hover:text-signage"
             >
-              지도와 상세 안내
+              제품 전체 보기
             </Link>
           </div>
+          <ul className="mt-12 grid grid-cols-2 gap-x-6 gap-y-12 lg:grid-cols-5 lg:gap-x-8">
+            {products.map((p) => (
+              <li key={p.slug}>
+                <Link href={`/products/${p.slug}`} className="group block">
+                  <div className="relative aspect-square overflow-hidden rounded-full bg-paper">
+                    <Image
+                      src={p.image}
+                      alt={p.name}
+                      fill
+                      sizes="(min-width: 1024px) 18vw, 44vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                  <h3 className="mt-5 text-center text-base">{p.name}</h3>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
+      </section>
+
+      {/* 7. 방문·문의 */}
+      <section className="mx-auto grid max-w-6xl gap-4 px-5 py-20 sm:grid-cols-2 lg:px-8 lg:py-24">
+        <Link
+          href="/visit"
+          className="group relative isolate flex min-h-56 flex-col justify-end overflow-hidden rounded-2xl bg-moss-900 p-8"
+        >
+          <Image
+            src="/images/store-exterior.jpg"
+            alt=""
+            fill
+            sizes="(min-width: 640px) 45vw, 90vw"
+            className="object-cover opacity-45 transition-transform duration-700 group-hover:scale-105"
+          />
+          <div className="relative">
+            <p className="text-[14px] text-paper/70">방문구매를 원하시면</p>
+            <p className="mt-1 text-2xl text-paper">오시는 길</p>
+          </div>
+        </Link>
+        <a
+          href={`tel:${site.tel.replace(/-/g, "")}`}
+          className="flex min-h-56 flex-col justify-end rounded-2xl bg-moss p-8 text-paper transition-opacity hover:opacity-90"
+        >
+          <p className="text-[14px] text-paper/70">주문·체험 문의는 전화로</p>
+          <p className="mt-1 text-2xl">{site.tel}</p>
+        </a>
       </section>
     </>
   );
