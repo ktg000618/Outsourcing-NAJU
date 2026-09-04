@@ -24,14 +24,19 @@ export default function HomePage() {
             대표 제품이 살짝 걸쳐 보여야 스크롤을 내린다.
           */}
           <div className="relative h-[54svh] min-h-[360px] w-full sm:h-[58svh] lg:h-[62svh] lg:max-h-[620px]">
+          {/*
+            받은 사진 전부를 같은 폭으로 맞춰 재보면 이 컷만 원본이 4317px 이고
+            나머지는 2260~3315px 라 확대 없이 못 버틴다. 앞서 쓰던 밭 사진은
+            2600px 이라 레티나 전폭에서 늘어나 뭉갰다 — 압축이 아니라 원본 한계였다.
+          */}
           <Image
-            src="/images/field-harvest.jpg"
-            alt="밭에서 갓 수확한 절굿대를 담은 소쿠리를 들고 있다"
+            src="/images/hero-maker-wide.jpg"
+            alt="김화수 대표가 갓 쳐낸 절굿대떡 판을 들어 보이고 있다"
             fill
             priority
             quality={92}
             sizes="100vw"
-            className="object-cover object-[55%_38%]"
+            className="object-cover object-[50%_22%]"
           />
           {/* 위쪽까지 덮으면 사진이 탁해진다. 글자가 앉는 아래 절반만 어둡게. */}
           <div

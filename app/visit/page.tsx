@@ -14,22 +14,25 @@ export default function VisitPage() {
     <>
       {/* 카운터 컷은 밝아서 흐린 배경으로 깔면 검게 뭉갠다. 홈 히어로처럼
           사진을 온전히 보여주고 글자는 아래쪽 스크림 위에 올린다. */}
-      <section className="relative isolate flex h-[52svh] min-h-[380px] w-full flex-col justify-end overflow-hidden bg-ink lg:h-[58svh] lg:max-h-[560px]">
-        <Image
-          src="/images/owners-counter.jpg"
-          alt="떡카페 카운터에 선 절굿대달토끼 부부"
-          fill
-          priority
-          sizes="100vw"
-          quality={92}
-          className="object-cover object-[50%_28%]"
-        />
-        <div
-          aria-hidden
-          className="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-ink/95 via-ink/65 to-transparent"
-        />
-        <div className="relative mx-auto w-full max-w-3xl px-5 pb-12 text-center lg:px-8 lg:pb-16">
-          <p className="text-sm text-paper/70 lg:text-base">
+      {/*
+          두 사람이 주인공인 컷이라 글자를 얼굴 위에 올리지 않는다. 사진은 사진대로
+          다 보여 주고 문구는 아래 검은 띠로 내린다 — 창 높이에 따라 얼굴이 잘리던
+          svh 계산도 같이 사라진다(폭으로 높이가 정해진다).
+        */}
+      <section className="bg-ink">
+        <div className="relative aspect-16/10 w-full sm:aspect-16/8 lg:aspect-[16/6.5]">
+          <Image
+            src="/images/owners-counter.jpg"
+            alt="떡카페 카운터에 선 절굿대달토끼 부부"
+            fill
+            priority
+            sizes="100vw"
+            quality={92}
+            className="object-cover object-[50%_25%]"
+          />
+        </div>
+        <div className="mx-auto max-w-3xl px-5 pb-16 pt-10 text-center lg:pb-20 lg:pt-12">
+          <p className="text-sm text-paper/60 lg:text-base">
             {site.addressLocality} 징고샅길
           </p>
           <h1 className="mt-3 text-[2.25rem] leading-[1.2] text-paper lg:text-[3.25rem]">
@@ -166,9 +169,11 @@ export default function VisitPage() {
 
           {/* TODO(개발): 카카오맵 SDK 임베드. 지금은 지도 앱으로 넘긴다. */}
           <div className="relative aspect-4/3 overflow-hidden rounded-2xl lg:aspect-auto lg:min-h-80">
+            {/* 같은 떡판 컷이 홈 히어로로 올라가서, 여기는 밭 사진으로 바꾼다.
+                이 자리는 45vw 라 그 사진의 무름이 드러나지 않는다. */}
             <Image
-              src="/images/hero-maker.jpg"
-              alt="김화수 대표가 갓 쳐낸 떡판을 들고 있다"
+              src="/images/field-harvest.jpg"
+              alt="밭에서 갓 수확한 절굿대를 담은 소쿠리를 들고 있다"
               fill
               sizes="(min-width: 1024px) 45vw, 90vw"
               quality={88}
