@@ -26,15 +26,17 @@ export default function HomePage() {
           <div className="relative h-[54svh] min-h-[360px] w-full sm:h-[58svh] lg:h-[62svh] lg:max-h-[620px]">
           <Image
             src="/images/field-harvest.jpg"
-            alt="김은아 대표와 마을 어르신이 밭에서 갓 수확한 절굿대를 담은 소쿠리를 들고 있다"
+            alt="밭에서 갓 수확한 절굿대를 담은 소쿠리를 들고 있다"
             fill
             priority
+            quality={90}
             sizes="100vw"
-            className="object-cover object-[55%_40%]"
+            className="object-cover object-[55%_38%]"
           />
+          {/* 위쪽까지 덮으면 사진이 탁해진다. 글자가 앉는 아래 절반만 어둡게. */}
           <div
             aria-hidden
-            className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/45 to-ink/5"
+            className="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-ink/90 via-ink/55 to-transparent"
           />
           <div className="absolute inset-x-0 bottom-0 mx-auto max-w-6xl px-5 pb-11 lg:px-8 lg:pb-16">
             {/*
