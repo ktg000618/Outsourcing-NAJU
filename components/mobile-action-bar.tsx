@@ -18,7 +18,7 @@ export function MobileActionBar() {
       <div className="grid grid-cols-2">
         <a
           aria-label={`전화 걸기 ${site.tel}`}
-          className="pressable flex min-h-14 items-center justify-center gap-2 border-r border-ink/10 text-[15px] font-medium transition-colors hover:text-mint-link"
+          className="pressable flex min-h-14 items-center justify-center gap-2 border-r border-ink/10 text-small font-medium transition-colors hover:text-mint-link"
           href={`tel:${site.tel.replace(/-/g, "")}`}
         >
           <svg
@@ -37,7 +37,7 @@ export function MobileActionBar() {
           전화 주문
         </a>
         <a
-          className="pressable flex min-h-14 items-center justify-center gap-2 text-[15px] font-medium transition-colors hover:text-mint-link"
+          className="pressable flex min-h-14 items-center justify-center gap-2 text-small font-medium transition-colors hover:text-mint-link"
           href={`https://map.kakao.com/?q=${mapQuery}`}
           rel="noreferrer"
           target="_blank"

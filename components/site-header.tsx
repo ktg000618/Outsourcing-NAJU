@@ -41,7 +41,7 @@ export function SiteHeader() {
                   <Link
                     href={item.href}
                     aria-current={active ? "page" : undefined}
-                    className={`border-b pb-1 text-[15px] transition-colors ${
+                    className={`border-b pb-1 text-small transition-colors ${
                       active
                         ? "border-mint-deep text-ink"
                         : "border-transparent text-ink-soft hover:text-ink"
@@ -55,7 +55,7 @@ export function SiteHeader() {
             <li>
               <a
                 href={`tel:${site.tel.replace(/-/g, "")}`}
-                className="text-[15px] tracking-tight text-ink-soft transition-colors hover:text-ink"
+                className="text-small tracking-tight text-ink-soft transition-colors hover:text-ink"
               >
                 {site.tel}
               </a>

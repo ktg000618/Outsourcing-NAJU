@@ -62,7 +62,7 @@ export default async function ProductPage({
       <div className="mx-auto max-w-6xl px-5 pt-8 lg:px-8 lg:pt-12">
         <Link
           href="/products"
-          className="text-[14px] text-ink-soft transition-colors hover:text-mint-link"
+          className="text-caption text-ink-soft transition-colors hover:text-mint-link"
         >
           제품 전체
         </Link>
@@ -123,14 +123,14 @@ export default async function ProductPage({
             {product.occasions.map((o) => (
               <li
                 key={o}
-                className="rounded-full bg-paper-2 px-3 py-1 text-[13px] text-ink-soft"
+                className="rounded-full bg-paper-2 px-3 py-1 text-caption text-ink-soft"
               >
                 {o}
               </li>
             ))}
           </ul>
 
-          <h1 className="mt-5 text-[2.25rem] leading-[1.2] lg:text-[3rem]">
+          <h1 className="mt-5 text-h1 lg:text-h1-lg">
             {product.name}
           </h1>
           <p className="mt-3 text-lg text-ink-soft">{product.summary}</p>
@@ -139,7 +139,7 @@ export default async function ProductPage({
             <p className="mt-7 text-2xl">
               {product.price.toLocaleString("ko-KR")}원
               {product.unit && (
-                <span className="ml-2 text-base text-ink-soft">
+                <span className="ml-2 text-body text-ink-soft">
                   {product.unit}
                 </span>
               )}
@@ -151,7 +151,7 @@ export default async function ProductPage({
           </p>
 
           {product.spec && (
-            <dl className="mt-8 divide-y divide-ink/10 border-y border-ink/10 text-[15px]">
+            <dl className="mt-8 divide-y divide-ink/10 border-y border-ink/10 text-small">
               {product.spec.map((row) => (
                 <div key={row.label} className="flex gap-5 py-3">
                   <dt className="w-24 shrink-0 text-ink-faint">{row.label}</dt>
@@ -179,7 +179,7 @@ export default async function ProductPage({
                 전화로 주문 {site.tel}
               </a>
             )}
-            <p className="mt-3 text-[14px] text-ink-faint">
+            <p className="mt-3 text-caption text-ink-faint">
               매장에서도 바로 구매하실 수 있습니다.
             </p>
           </div>
@@ -200,8 +200,8 @@ export default async function ProductPage({
               src={product.reviewVideo.src}
             />
             <div>
-              <p className="text-sm text-mint-link">후기</p>
-              <p className="mt-3 text-[1.75rem] leading-tight lg:text-[2.25rem]">
+              <p className="text-caption text-mint-link">후기</p>
+              <p className="mt-3 text-h3 lg:text-h1">
                 {product.reviewVideo.caption}
               </p>
               <p className="mt-5 max-w-prose text-ink-soft">

@@ -11,14 +11,14 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-6xl gap-12 px-5 py-16 lg:grid-cols-[1.2fr_1fr_1fr] lg:px-8 lg:py-20">
         <div>
           <p className="text-2xl text-paper">{site.name}</p>
-          <p className="mt-3 max-w-xs text-[15px] leading-relaxed">
+          <p className="mt-3 max-w-xs text-small leading-relaxed">
             {site.tagline} · {site.since}년부터 나주에서
           </p>
         </div>
 
         <div>
-          <h2 className="text-base text-paper">찾아오시는 길</h2>
-          <address className="mt-3 space-y-1 text-[15px] not-italic leading-relaxed">
+          <h2 className="text-body text-paper">찾아오시는 길</h2>
+          <address className="mt-3 space-y-1 text-small not-italic leading-relaxed">
             <p>{site.address}</p>
             <p>
               {/* 상시 밑줄이 필요하다. hover 만으로는 터치 기기에서 링크인 줄 모른다. */}
@@ -39,8 +39,8 @@ export function SiteFooter() {
         </div>
 
         <div>
-          <h2 className="text-base text-paper">둘러보기</h2>
-          <ul className="mt-2 text-[15px]">
+          <h2 className="text-body text-paper">둘러보기</h2>
+          <ul className="mt-2 text-small">
             {nav.map((item) => (
               <li key={item.href}>
                 <Link className="block py-1.5 transition-colors hover:text-mint" href={item.href}>
@@ -65,7 +65,7 @@ export function SiteFooter() {
       </div>
 
       <div className="border-t border-paper/10">
-        <div className="mx-auto flex max-w-6xl flex-wrap gap-x-6 gap-y-1 px-5 py-6 text-[13px] text-paper/70 lg:px-8">
+        <div className="mx-auto flex max-w-6xl flex-wrap gap-x-6 gap-y-1 px-5 py-6 text-caption text-paper/70 lg:px-8">
           <span>{site.legalName}</span>
           <span>대표 {site.owner}</span>
           <span>사업자등록번호 {site.businessNumber}</span>

@@ -52,13 +52,13 @@ export default function VisitPage() {
             className="absolute inset-0 bg-[linear-gradient(to_top,rgba(22,22,22,0.92)_0%,rgba(22,22,22,0.58)_46%,rgba(22,22,22,0)_78%)]"
           />
           <div className="relative w-full px-6 pb-10 lg:px-10 lg:pb-12">
-            <p className="text-sm text-paper/70 lg:text-base">
+            <p className="text-caption text-paper/70 lg:text-body">
               {site.addressLocality} 징고샅길
             </p>
-            <h1 className="mt-3 text-[2.25rem] leading-[1.2] text-paper lg:text-[3rem]">
+            <h1 className="mt-3 text-h1 text-paper lg:text-h1-lg">
               빚어 보러 오세요
             </h1>
-            <p className="mt-5 max-w-md text-[15px] leading-relaxed text-paper/85 lg:text-base">
+            <p className="mt-5 max-w-md text-small leading-relaxed text-paper/85 lg:text-body">
               떡을 파는 데 그치지 않고, 직접 만들고 맛보는 체험장을 함께
               운영합니다. 학교와 단체가 자주 찾습니다.
             </p>
@@ -70,7 +70,7 @@ export default function VisitPage() {
       <section className="rise mx-auto max-w-6xl px-5 py-20 lg:px-8 lg:py-28">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
-            <h2 className="text-[2rem] leading-[1.25] lg:text-[2.875rem]">
+            <h2 className="text-h2 lg:text-h2-lg">
               절굿대떡 만들기 체험
             </h2>
             <p className="mt-6 max-w-prose text-ink-soft">
@@ -85,10 +85,10 @@ export default function VisitPage() {
             <dl className="mt-9 divide-y divide-ink/10 border-y border-ink/10">
               {rows.map((r) => (
                 <div key={r.label} className="flex gap-6 py-4">
-                  <dt className="w-24 shrink-0 text-[15px] text-ink-faint">
+                  <dt className="w-24 shrink-0 text-small text-ink-faint">
                     {r.label}
                   </dt>
-                  <dd className="text-[15px]">
+                  <dd className="text-small">
                     {r.value ?? (
                       <span className="text-ink-soft">전화로 문의해 주세요</span>
                     )}
@@ -99,7 +99,7 @@ export default function VisitPage() {
 
             <a
               aria-label={`전화 걸기 ${site.tel}`}
-              className="pressable mt-8 inline-block border border-ink bg-ink px-7 py-3 text-[15px] text-paper transition-colors hover:bg-ink-soft"
+              className="pressable mt-8 inline-block border border-ink bg-ink px-7 py-3 text-small text-paper transition-colors hover:bg-ink-soft"
               href={`tel:${site.tel.replace(/-/g, "")}`}
             >
               체험 문의 {site.tel}
@@ -139,17 +139,17 @@ export default function VisitPage() {
           문안과 체험 사진으로 확인된 세 단계만 적는다. */}
       <section className="rise bg-paper-2">
         <div className="mx-auto max-w-6xl px-5 py-16 lg:px-8 lg:py-20">
-          <h2 className="text-[1.75rem] leading-tight lg:text-[2.5rem]">
+          <h2 className="text-h3 lg:text-h2-lg">
             이렇게 진행합니다
           </h2>
           <ol className="mt-9 grid gap-8 lg:grid-cols-3">
             {experience.steps.map((step, i) => (
               <li key={step.title} className="border-t-2 border-moon pt-5">
-                <p className="font-mono text-[13px] tracking-widest text-ink-faint">
+                <p className="font-mono text-caption tracking-widest text-ink-faint">
                   {String(i + 1).padStart(2, "0")}
                 </p>
                 <h3 className="mt-2 text-lg">{step.title}</h3>
-                <p className="mt-2 text-[15px] leading-relaxed text-ink-soft">
+                <p className="mt-2 text-small leading-relaxed text-ink-soft">
                   {step.detail}
                 </p>
               </li>
@@ -162,14 +162,14 @@ export default function VisitPage() {
       <section className="rise bg-ink text-paper">
         <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 lg:grid-cols-2 lg:gap-16 lg:px-8 lg:py-28">
           <div>
-            <h2 className="text-[2rem] leading-[1.25] lg:text-[2.875rem]">오시는 길</h2>
+            <h2 className="text-h2 lg:text-h2-lg">오시는 길</h2>
             <address className="mt-8 space-y-5 not-italic">
               <div>
-                <p className="text-[14px] text-paper/50">주소</p>
+                <p className="text-caption text-paper/50">주소</p>
                 <p className="mt-1 text-lg">{site.address}</p>
               </div>
               <div>
-                <p className="text-[14px] text-paper/50">전화</p>
+                <p className="text-caption text-paper/50">전화</p>
                 <p className="mt-1 text-lg">
                   <a
                     aria-label={`전화 걸기 ${site.tel}`}
@@ -182,13 +182,13 @@ export default function VisitPage() {
               </div>
               {site.hours && (
                 <div>
-                  <p className="text-[14px] text-paper/50">영업시간</p>
+                  <p className="text-caption text-paper/50">영업시간</p>
                   <p className="mt-1 text-lg">{site.hours}</p>
                 </div>
               )}
               {site.closedDays && (
                 <div>
-                  <p className="text-[14px] text-paper/50">휴무</p>
+                  <p className="text-caption text-paper/50">휴무</p>
                   <p className="mt-1 text-lg">{site.closedDays}</p>
                 </div>
               )}
@@ -199,7 +199,7 @@ export default function VisitPage() {
                 href={`https://map.kakao.com/?q=${mapQuery}`}
                 target="_blank"
                 rel="noreferrer"
-                className="pressable border border-paper bg-paper px-7 py-3 text-[15px] text-ink transition-colors hover:border-paper/80 hover:bg-paper/80"
+                className="pressable border border-paper bg-paper px-7 py-3 text-small text-ink transition-colors hover:border-paper/80 hover:bg-paper/80"
               >
                 카카오맵으로 길찾기
               </a>
@@ -207,7 +207,7 @@ export default function VisitPage() {
                 href={`https://map.naver.com/p/search/${mapQuery}`}
                 target="_blank"
                 rel="noreferrer"
-                className="border border-paper/50 px-7 py-3 text-[15px] transition-colors hover:border-mint hover:text-mint"
+                className="border border-paper/50 px-7 py-3 text-small transition-colors hover:border-mint hover:text-mint"
               >
                 네이버 지도
               </a>

@@ -51,6 +51,26 @@
   --color-mint-link: #3d6f70;
   --color-oxblood: #5d080d;
 
+  /*
+    글자 크기. 이전에는 임의값이 15단계로 흩어져 있었고, 같은 값을 두 표기로
+    적은 쌍도 둘 있었다(text-sm ↔ text-[14px], lg:text-4xl ↔ text-[2.25rem]).
+    행간을 토큰에 묶어 두면 leading-[...] 임의값도 함께 사라진다.
+  */
+  --text-caption: 0.875rem;                 /* 14 — 라벨·메타·법적 표기 */
+  --text-small: 0.9375rem;                  /* 15 — 보조 본문·버튼·내비 */
+  --text-body: 1.0625rem;                   /* 17 — body 와 같은 값 */
+  --text-lead: 1.125rem;                    /* 18 — 카드 제목·주소 */
+  --text-h3: 1.75rem;
+  --text-h3--line-height: 1.2;              /* 28 */
+  --text-h2: 2rem;
+  --text-h2--line-height: 1.25;             /* 32 */
+  --text-h2-lg: 2.875rem;
+  --text-h2-lg--line-height: 1.25;          /* 46 */
+  --text-h1: 2.25rem;
+  --text-h1--line-height: 1.2;              /* 36 */
+  --text-h1-lg: 3rem;
+  --text-h1-lg--line-height: 1.2;           /* 48 */
+
   --font-sans: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", system-ui,
     sans-serif;
 

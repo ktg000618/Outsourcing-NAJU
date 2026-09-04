@@ -44,10 +44,10 @@ export default function ProductsPage() {
             className="absolute inset-0 bg-[linear-gradient(to_top,rgba(22,22,22,0.92)_0%,rgba(22,22,22,0.58)_46%,rgba(22,22,22,0)_78%)]"
           />
           <div className="relative w-full px-6 pb-10 lg:px-10 lg:pb-12">
-            <h1 className="text-[2.25rem] leading-[1.2] text-paper lg:text-[3rem]">
+            <h1 className="text-h1 text-paper lg:text-h1-lg">
               빚는 것들
             </h1>
-            <p className="mt-5 max-w-md text-[15px] leading-relaxed text-paper/85 lg:text-base">
+            <p className="mt-5 max-w-md text-small leading-relaxed text-paper/85 lg:text-body">
               이바지·명절·답례에 두루 나갑니다. 낱개 포장이라 나눠 드리기 좋습니다.
             </p>
           </div>
@@ -63,20 +63,20 @@ export default function ProductsPage() {
 
       {/* 쓰임새 → 제품. 떡은 "무엇인가"보다 "언제 쓰는가"로 찾는 손님이 많다. */}
       <section className="rise mx-auto max-w-6xl px-5 pb-16 lg:px-8 lg:pb-20">
-        <h2 className="text-[1.75rem] leading-tight lg:text-[2.5rem]">
+        <h2 className="text-h3 lg:text-h2-lg">
           쓰임새로 고르기
         </h2>
         <ul className="mt-8 grid gap-x-8 gap-y-7 sm:grid-cols-2 lg:grid-cols-3">
           {[...byOccasion.entries()].map(([occasion, list]) => (
             <li key={occasion} className="border-t border-ink/15 pt-4">
-              <p className="inline-block bg-rose/25 px-3 py-1 text-[14px] text-ink">
+              <p className="inline-block bg-rose/25 px-3 py-1 text-caption text-ink">
                 {occasion}
               </p>
               <ul className="mt-3 flex flex-col gap-1.5">
                 {list.map((p) => (
                   <li key={p.slug}>
                     <Link
-                      className="text-[15px] text-ink-soft underline decoration-ink/20 underline-offset-4 transition-colors hover:text-mint-link hover:decoration-mint-link"
+                      className="text-small text-ink-soft underline decoration-ink/20 underline-offset-4 transition-colors hover:text-mint-link hover:decoration-mint-link"
                       href={`/products/${p.slug}`}
                     >
                       {p.name}
@@ -113,7 +113,7 @@ export default function ProductsPage() {
               <p className="text-2xl text-paper lg:text-3xl">
                 {lead.name}
               </p>
-              <p className="mt-1.5 text-[15px] text-paper/80">{lead.summary}</p>
+              <p className="mt-1.5 text-small text-paper/80">{lead.summary}</p>
             </div>
           </Link>
 
@@ -132,7 +132,7 @@ export default function ProductsPage() {
                     />
                   </div>
                   <h2 className="mt-4 text-lg transition-colors group-hover:text-mint-link">{p.name}</h2>
-                  <p className="mt-0.5 text-[14px] leading-relaxed text-ink-soft">
+                  <p className="mt-0.5 text-caption leading-relaxed text-ink-soft">
                     {p.summary}
                   </p>
                   {p.price !== null ? (
@@ -140,7 +140,7 @@ export default function ProductsPage() {
                       {p.price.toLocaleString("ko-KR")}원
                     </p>
                   ) : (
-                    <p className="mt-2 text-[14px] text-ink-soft">
+                    <p className="mt-2 text-caption text-ink-soft">
                       가격 전화 문의
                     </p>
                   )}
@@ -153,19 +153,19 @@ export default function ProductsPage() {
       {/* 주문 경로가 셋인데 어디에도 안 적혀 있었다. 전화 주문 비중이 큰 곳이다. */}
       <section className="rise bg-paper-2">
         <div className="mx-auto max-w-6xl px-5 py-16 lg:px-8 lg:py-20">
-          <h2 className="text-[1.75rem] leading-tight lg:text-[2.5rem]">
+          <h2 className="text-h3 lg:text-h2-lg">
             주문하는 방법
           </h2>
           <ul className="mt-9 grid gap-8 lg:grid-cols-3">
             <li className="border-t-2 border-moon pt-5">
               <h3 className="text-lg">전화 주문</h3>
-              <p className="mt-2 text-[15px] leading-relaxed text-ink-soft">
+              <p className="mt-2 text-small leading-relaxed text-ink-soft">
                 수량과 구성을 상의해 정합니다. 이바지·예단처럼 구성이 정해지지
                 않은 주문은 이쪽이 빠릅니다.
               </p>
               <a
                 aria-label={`전화 걸기 ${site.tel}`}
-                className="pressable mt-4 inline-block border border-ink bg-ink px-6 py-2.5 text-[15px] text-paper transition-colors hover:bg-ink-soft"
+                className="pressable mt-4 inline-block border border-ink bg-ink px-6 py-2.5 text-small text-paper transition-colors hover:bg-ink-soft"
                 href={`tel:${site.tel.replace(/-/g, "")}`}
               >
                 {site.tel}
@@ -173,21 +173,21 @@ export default function ProductsPage() {
             </li>
             <li className="border-t-2 border-mint pt-5">
               <h3 className="text-lg">네이버 스마트스토어</h3>
-              <p className="mt-2 text-[15px] leading-relaxed text-ink-soft">
+              <p className="mt-2 text-small leading-relaxed text-ink-soft">
                 구성이 정해진 제품은 스토어에서 바로 결제하실 수 있습니다.
               </p>
               {/* TODO(클라이언트): 스토어 주소 수령 후 링크로 교체. */}
-              <p className="mt-4 text-[15px] text-ink-faint">준비 중입니다</p>
+              <p className="mt-4 text-small text-ink-faint">준비 중입니다</p>
             </li>
             <li className="border-t-2 border-rose pt-5">
               <h3 className="text-lg">매장 방문</h3>
-              <p className="mt-2 text-[15px] leading-relaxed text-ink-soft">
+              <p className="mt-2 text-small leading-relaxed text-ink-soft">
                 {site.address}
                 <br />
                 {site.hours}
               </p>
               <Link
-                className="mt-4 inline-block text-[15px] underline decoration-ink/25 underline-offset-4 transition-colors hover:text-mint-link"
+                className="mt-4 inline-block text-small underline decoration-ink/25 underline-offset-4 transition-colors hover:text-mint-link"
                 href="/visit"
               >
                 오시는 길
@@ -199,13 +199,13 @@ export default function ProductsPage() {
 
       {/* 제품별 spec 에만 흩어져 있던 보관·해동을 한자리에. 가장 많이 묻는 것이다. */}
       <section className="rise mx-auto max-w-6xl px-5 py-16 lg:px-8 lg:py-20">
-        <h2 className="text-[1.75rem] leading-tight lg:text-[2.5rem]">
+        <h2 className="text-h3 lg:text-h2-lg">
           보관과 해동
         </h2>
         <div className="mt-8 grid gap-x-12 gap-y-8 lg:grid-cols-2">
           <div>
             <h3 className="text-lg">떡 — 절굿대떡·제비쑥떡</h3>
-            <dl className="mt-4 divide-y divide-ink/10 border-y border-ink/10 text-[15px]">
+            <dl className="mt-4 divide-y divide-ink/10 border-y border-ink/10 text-small">
               <div className="flex gap-6 py-4">
                 <dt className="w-20 shrink-0 text-ink-faint">보관</dt>
                 <dd className="text-ink-soft">남은 떡은 굳기 전에 냉동해 주세요</dd>
@@ -227,7 +227,7 @@ export default function ProductsPage() {
           </div>
           <div>
             <h3 className="text-lg">오란다 — 나주배 촉촉오란다</h3>
-            <dl className="mt-4 divide-y divide-ink/10 border-y border-ink/10 text-[15px]">
+            <dl className="mt-4 divide-y divide-ink/10 border-y border-ink/10 text-small">
               <div className="flex gap-6 py-4">
                 <dt className="w-20 shrink-0 text-ink-faint">소비기한</dt>
                 <dd className="text-ink-soft">제조일로부터 6개월</dd>
@@ -257,7 +257,7 @@ export default function ProductsPage() {
               <li key={c.label}>
                 <span aria-hidden className="mb-3 block h-px w-8 bg-moon" />
                 <p className="font-semibold">{c.label}</p>
-                <p className="mt-1 text-[15px] leading-relaxed text-ink-soft">
+                <p className="mt-1 text-small leading-relaxed text-ink-soft">
                   {c.detail}
                 </p>
               </li>

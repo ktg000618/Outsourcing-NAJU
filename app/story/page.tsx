@@ -33,13 +33,13 @@ export default function StoryPage() {
             className="absolute inset-0 bg-[linear-gradient(to_top,rgba(22,22,22,0.92)_0%,rgba(22,22,22,0.58)_46%,rgba(22,22,22,0)_78%)]"
           />
           <div className="relative w-full px-6 pb-10 lg:px-10 lg:pb-12">
-            <p className="text-sm text-moon lg:text-base">맛의방주 등재 품목</p>
-            <h1 className="mt-3 text-[2.25rem] leading-[1.2] text-paper lg:text-[3rem]">
+            <p className="text-caption text-moon lg:text-body">맛의방주 등재 품목</p>
+            <h1 className="mt-3 text-h1 text-paper lg:text-h1-lg">
               천금의 가치가
               <br />
               있다던 떡
             </h1>
-            <p className="mt-5 max-w-md text-[15px] leading-relaxed text-paper/85 lg:text-base">
+            <p className="mt-5 max-w-md text-small leading-relaxed text-paper/85 lg:text-body">
               한때 목사골 양반들의 이바지 떡으로 쓰일 만큼 귀한 대접을 받았고,
               세월이 흐르며 자취를 감췄던 떡입니다.
             </p>
@@ -54,7 +54,7 @@ export default function StoryPage() {
             <li key={t.title} className="flex gap-6">
               <MoonMark phase={t.phase} size={32} className="mt-1 shrink-0 text-ink" />
               <div>
-                <p className="text-[14px] text-ink-faint">{t.when}</p>
+                <p className="text-caption text-ink-faint">{t.when}</p>
                 <h2 className="mt-1 text-2xl">{t.title}</h2>
                 <p className="mt-3 max-w-prose leading-relaxed text-ink-soft">
                   {t.body}
@@ -69,7 +69,7 @@ export default function StoryPage() {
       <section className="rise bg-ink text-paper">
         <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 lg:grid-cols-2 lg:items-center lg:gap-20 lg:px-8 lg:py-28">
           <div>
-            <h2 className="text-[2rem] leading-[1.25] lg:text-[2.875rem]">
+            <h2 className="text-h2 lg:text-h2-lg">
               누로(漏蘆), 천금과 같다는 뿌리
             </h2>
             <div className="mt-6 space-y-5 text-paper/80">
@@ -100,7 +100,7 @@ export default function StoryPage() {
 
       {/* 만드는 방식 */}
       <section className="rise mx-auto max-w-6xl px-5 py-20 lg:px-8 lg:py-28">
-        <h2 className="text-[2rem] leading-[1.25] lg:text-[2.875rem]">
+        <h2 className="text-h2 lg:text-h2-lg">
           정직한 천연 재료만 사용합니다
         </h2>
         <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:gap-16">
@@ -132,7 +132,7 @@ export default function StoryPage() {
           {credentials.map((c) => (
             <li key={c.label}>
               <p className="text-lg">{c.label}</p>
-              <p className="mt-1 text-[15px] leading-relaxed text-ink-soft">
+              <p className="mt-1 text-small leading-relaxed text-ink-soft">
                 {c.detail}
               </p>
             </li>
@@ -141,14 +141,14 @@ export default function StoryPage() {
 
         {/* 연혁 — 인증·표창·업무협약까지 사실로 뒷받침하는 자리 */}
         <div className="mt-20 border-t border-ink/10 pt-14">
-          <h2 className="text-[1.75rem] font-bold leading-none lg:text-4xl">
+          <h2 className="text-h3 font-bold lg:text-h1">
             Since 2016
           </h2>
           <ol className="mt-10 space-y-7">
             {history.map((h) => (
               <li key={h.year} className="flex flex-col gap-1 sm:flex-row sm:gap-8">
                 <p className="w-16 shrink-0 font-semibold text-mocha">{h.year}</p>
-                <ul className="space-y-1.5 text-[15px] leading-relaxed text-ink-soft">
+                <ul className="space-y-1.5 text-small leading-relaxed text-ink-soft">
                   {h.items.map((it) => (
                     <li key={it}>{it}</li>
                   ))}
@@ -161,13 +161,13 @@ export default function StoryPage() {
         <div className="mt-14 flex flex-wrap gap-3">
           <Link
             href="/products"
-            className="border border-ink bg-ink px-7 py-3 text-[15px] text-paper pressable transition-colors hover:bg-ink-soft hover:border-ink-soft"
+            className="border border-ink bg-ink px-7 py-3 text-small text-paper pressable transition-colors hover:bg-ink-soft hover:border-ink-soft"
           >
             제품 보기
           </Link>
           <Link
             href="/visit"
-            className="border border-ink/30 px-7 py-3 text-[15px] transition-colors hover:border-mint-link hover:text-mint-link"
+            className="border border-ink/30 px-7 py-3 text-small transition-colors hover:border-mint-link hover:text-mint-link"
           >
             {site.addressLocality} 매장 안내
           </Link>
