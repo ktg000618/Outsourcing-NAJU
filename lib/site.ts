@@ -80,7 +80,7 @@ export const products: Product[] = [
     summary: "콩고물을 입힌 나주의 이바지 떡",
     detail:
       "무농약으로 기른 절굿대를 말려 삶아 찹쌀과 함께 쳐냅니다. 첫맛은 달지 않고 담백하지만, 씹을수록 나주배 농축액의 은은한 단맛이 올라옵니다.",
-    image: "/images/product-jeolgutdae.jpg",
+    image: "/images/product-tray.jpg",
     price: null,
     unit: null,
     occasions: ["이바지", "명절", "선물"],
@@ -93,7 +93,7 @@ export const products: Product[] = [
     summary: "봄 쑥을 그대로 넣은 초록 떡",
     detail:
       "절굿대떡과 함께 매장을 지켜 온 또 하나의 주력입니다. 쑥 향이 진하고 뒷맛이 깔끔합니다.",
-    image: "/images/product-jebissuk.jpg",
+    image: "/images/product-jeolgutdae.jpg",
     price: null,
     unit: null,
     occasions: ["선물", "답례"],
@@ -101,25 +101,12 @@ export const products: Product[] = [
     accent: "signage",
   },
   {
-    slug: "hobak",
-    name: "호박고지떡",
-    summary: "말린 호박의 단맛으로만",
-    detail:
-      "설탕을 더하지 않고 말린 호박고지의 단맛에 기댑니다. 아침 식사 대용으로 찾는 분이 많습니다.",
-    image: "/images/board-tteok.jpg",
-    price: null,
-    unit: null,
-    occasions: ["선물", "답례"],
-    storeUrl: null,
-    accent: "bojagi",
-  },
-  {
     slug: "oranda",
     name: "나주배 촉촉오란다",
     summary: "겉은 바삭, 속은 촉촉한 수제 오란다",
     detail:
       "나주배청으로 반죽해 겉은 바삭하고 속은 촉촉합니다. 절굿대 분말을 함께 넣고, 참깨·땅콩·해바라기씨·호박씨를 비롯한 여섯 가지 견과를 더해 고소합니다. 합성첨가물과 색소, 방부제를 넣지 않습니다. 낱개로 포장해 바삭함이 오래갑니다.",
-    image: "/images/styling-flatlay.jpg",
+    image: "/images/product-oranda.jpg",
     price: 30000,
     unit: "1박스",
     occasions: ["답례", "선물"],
