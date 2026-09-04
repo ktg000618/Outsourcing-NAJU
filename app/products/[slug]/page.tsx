@@ -27,8 +27,38 @@ export default async function ProductPage({
 
   const others = products.filter((p) => p.slug !== product.slug).slice(0, 4);
 
+  /*
+    제품 구조화 데이터. 가격이 없는 제품에는 offers 를 붙이지 않는다 —
+    지어낸 가격이나 빈 offers 는 검색엔진이 오류로 잡고, 무엇보다 거짓이다.
+    가격이 들어오면 여기가 저절로 채워진다.
+  */
+  const productJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    description: product.detail,
+    image: `${site.url}${product.image}`,
+    brand: { "@type": "Brand", name: site.name },
+    ...(product.price !== null
+      ? {
+          offers: {
+            "@type": "Offer",
+            price: product.price,
+            priceCurrency: "KRW",
+            availability: "https://schema.org/InStock",
+            url: product.storeUrl ?? `${site.url}/products/${product.slug}`,
+            seller: { "@type": "Organization", name: site.legalName },
+          },
+        }
+      : {}),
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
       <div className="mx-auto max-w-6xl px-5 pt-8 lg:px-8 lg:pt-12">
         <Link
           href="/products"

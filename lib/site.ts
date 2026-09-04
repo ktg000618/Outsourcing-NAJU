@@ -17,6 +17,10 @@ export const site = {
   owner: "김은아",
   since: 2016,
 
+  /* 도메인이 정해지면 NEXT_PUBLIC_SITE_URL 만 바꾼다 — sitemap·OG·구조화
+     데이터가 전부 이 값을 쓴다. */
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://naju-daltokki.vercel.app",
+
   tel: "061-336-6969",
   mobile: "010-6603-0848",
   mobile2: "010-5141-0103",
