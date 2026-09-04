@@ -63,6 +63,8 @@ export type Product = {
    * null 이면 구매 버튼 대신 전화 안내가 나간다.
    */
   storeUrl: string | null;
+  /** 제품 사양. 값이 있는 항목만 상세 페이지에 표로 나간다. */
+  spec?: { label: string; value: string }[];
   accent: "signage" | "bojagi" | "gift";
 };
 
@@ -109,14 +111,22 @@ export const products: Product[] = [
   {
     slug: "oranda",
     name: "나주배 촉촉오란다",
-    summary: "나주배로 반죽한 한과",
+    summary: "겉은 바삭, 속은 촉촉한 수제 오란다",
     detail:
-      "떡이 부담스러운 분께 권합니다. 나주배 농축액으로 촉촉함을 냈고, 아이들이 특히 좋아합니다.",
+      "나주배청으로 반죽해 겉은 바삭하고 속은 촉촉합니다. 절굿대 분말을 함께 넣고, 참깨·땅콩·해바라기씨·호박씨를 비롯한 여섯 가지 견과를 더해 고소합니다. 합성첨가물과 색소, 방부제를 넣지 않습니다. 낱개로 포장해 바삭함이 오래갑니다.",
     image: "/images/styling-flatlay.jpg",
     price: null,
     unit: null,
     occasions: ["답례", "선물"],
     storeUrl: null,
+    // 상세페이지 이미지에서 읽어낸 값. 원재료 전체 표기는 판독이 불완전해
+    // 클라이언트 확인 전까지 싣지 않는다(식품 표기는 틀리면 법적 문제가 된다).
+    spec: [
+      { label: "소비기한", value: "제조일로부터 6개월" },
+      { label: "보관", value: "냉장·냉동 보관 권장 (상온 보관 가능)" },
+      { label: "먹는 법", value: "냉동 보관 시 30분 전 상온 해동, 또는 전자레인지 15초" },
+      { label: "포장", value: "낱개 포장" },
+    ],
     accent: "bojagi",
   },
   {

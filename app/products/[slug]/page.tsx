@@ -81,6 +81,17 @@ export default async function ProductPage({
             {product.detail}
           </p>
 
+          {product.spec && (
+            <dl className="mt-8 divide-y divide-ink/10 border-y border-ink/10 text-[15px]">
+              {product.spec.map((row) => (
+                <div key={row.label} className="flex gap-5 py-3">
+                  <dt className="w-24 shrink-0 text-ink-faint">{row.label}</dt>
+                  <dd className="text-ink-soft">{row.value}</dd>
+                </div>
+              ))}
+            </dl>
+          )}
+
           <div className="mt-9">
             {product.storeUrl ? (
               <a
