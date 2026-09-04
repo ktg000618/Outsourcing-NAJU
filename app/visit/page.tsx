@@ -12,24 +12,30 @@ const mapQuery = encodeURIComponent(`${site.address} ${site.name}`);
 export default function VisitPage() {
   return (
     <>
-      <section className="relative isolate overflow-hidden bg-ink">
+      {/* 카운터 컷은 밝아서 흐린 배경으로 깔면 검게 뭉갠다. 홈 히어로처럼
+          사진을 온전히 보여주고 글자는 아래쪽 스크림 위에 올린다. */}
+      <section className="relative isolate flex h-[52svh] min-h-[380px] w-full flex-col justify-end overflow-hidden bg-ink lg:h-[58svh] lg:max-h-[560px]">
         <Image
           src="/images/owners-counter.jpg"
           alt="떡카페 카운터에 선 절굿대달토끼 부부"
           fill
           priority
           sizes="100vw"
-          quality={88}
-          className="object-cover object-center opacity-55"
+          quality={92}
+          className="object-cover object-[50%_28%]"
         />
-        <div className="relative mx-auto max-w-3xl px-5 py-24 text-center lg:px-8 lg:py-32">
-          <p className="text-sm text-mint-deep lg:text-base">
+        <div
+          aria-hidden
+          className="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-ink/95 via-ink/65 to-transparent"
+        />
+        <div className="relative mx-auto w-full max-w-3xl px-5 pb-12 text-center lg:px-8 lg:pb-16">
+          <p className="text-sm text-paper/70 lg:text-base">
             {site.addressLocality} 징고샅길
           </p>
-          <h1 className="mt-4 text-[2.25rem] leading-[1.2] text-paper lg:text-[3.25rem]">
+          <h1 className="mt-3 text-[2.25rem] leading-[1.2] text-paper lg:text-[3.25rem]">
             빚어 보러 오세요
           </h1>
-          <p className="mx-auto mt-6 max-w-prose text-paper/80">
+          <p className="mx-auto mt-5 max-w-prose text-paper/85">
             떡을 파는 데 그치지 않고, 직접 만들고 맛보는 체험장을 함께
             운영합니다. 학교와 단체가 자주 찾습니다.
           </p>
@@ -143,7 +149,7 @@ export default function VisitPage() {
                 href={`https://map.kakao.com/?q=${mapQuery}`}
                 target="_blank"
                 rel="noreferrer"
-                className="border border-ink px-7 py-3 text-[15px] text-ink transition-opacity hover:opacity-90"
+                className="border border-paper bg-paper px-7 py-3 text-[15px] text-ink transition-opacity hover:opacity-90"
               >
                 카카오맵으로 길찾기
               </a>
