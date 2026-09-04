@@ -24,7 +24,7 @@ export default function HomePage() {
           글자는 아래가 아니라 왼쪽 그늘 위에 앉는다.
         */}
       <section className="mx-auto w-full max-w-6xl px-5 pt-6 lg:px-8 lg:pt-8">
-        <div className="relative isolate flex aspect-4/5 items-end overflow-hidden rounded-2xl bg-ink sm:aspect-16/10 lg:aspect-[1.79/1] lg:items-center">
+        <div className="relative isolate flex aspect-4/5 items-end overflow-hidden rounded-2xl bg-ink sm:aspect-16/10 lg:aspect-[1.79/1]">
           <Image
             src="/images/hero-maker-wide.jpg"
             alt="김화수 대표가 갓 쳐낸 절굿대떡 판을 들어 보이고 있다"
@@ -34,16 +34,13 @@ export default function HomePage() {
             sizes="(min-width: 1200px) 1152px, 100vw"
             className="object-cover object-[58%_50%] lg:object-center"
           />
-          {/* 모바일은 세로 틀이라 아래로, PC 는 옆으로 그늘을 깐다. */}
+          {/* 왼쪽 그늘은 뺐다. 대신 글자를 아래로 내려 떡판 위에 앉힌다 —
+              그쪽은 평평한 초록이라 얇은 그늘만으로 읽힌다. */}
           <div
             aria-hidden
-            className="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-ink/95 via-ink/60 to-transparent lg:hidden"
+            className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-ink/85 via-ink/40 to-transparent"
           />
-          <div
-            aria-hidden
-            className="absolute inset-0 hidden bg-[linear-gradient(90deg,rgba(22,22,22,0.92)_0%,rgba(22,22,22,0.84)_32%,rgba(22,22,22,0.40)_47%,rgba(22,22,22,0.08)_61%,rgba(22,22,22,0)_72%)] lg:block"
-          />
-          <div className="relative w-full px-6 pb-10 lg:px-10 lg:pb-0">
+          <div className="relative w-full px-6 pb-10 lg:px-10 lg:pb-12">
             {/* 굵기 대비로 읽는다 — 얇은 줄(300)이 위, 굵은 줄(700)이 아래.
                 문구는 클라이언트가 쓰는 표현을 그대로 가져왔다. */}
             <h1 className="text-[2rem] leading-[1.22] text-paper sm:text-[2.75rem] lg:text-[3rem]">
