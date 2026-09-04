@@ -19,7 +19,7 @@ export const site = {
 
   tel: "061-336-6969",
   mobile: "010-6603-0848",
-  address: "전라남도 나주시 징고샅길 7-3",
+  address: "전라남도 나주시 징고샅길 7-1",
   addressRegion: "전라남도",
   addressLocality: "나주시",
 
@@ -38,8 +38,6 @@ export const site = {
   businessNumber: "794-88-01567",
   corporateNumber: "205511-0063933",
   mailOrderNumber: "제2020-전남나주-0086호",
-  /** 사업자등록증상 소재지. ⚠️ 관광두레 책자의 매장 주소(징고샅길 7-3)와 번지가 다르다 — 확인 필요. */
-  businessAddress: "전라남도 나주시 징고샅길 7-1",
   postalCode: "58257",
 } as const;
 

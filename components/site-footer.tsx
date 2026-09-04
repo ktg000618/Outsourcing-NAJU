@@ -58,7 +58,7 @@ export function SiteFooter() {
           <span>사업자등록번호 {site.businessNumber}</span>
           <span>통신판매업 {site.mailOrderNumber}</span>
           <span>
-            ({site.postalCode}) {site.businessAddress}
+            ({site.postalCode}) {site.address}
           </span>
         </div>
       </div>
