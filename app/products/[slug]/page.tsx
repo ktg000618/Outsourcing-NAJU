@@ -45,6 +45,7 @@ export default async function ProductPage({
             fill
             priority
             sizes="(min-width: 1024px) 45vw, 90vw"
+            quality={88}
             className="object-cover"
           />
         </div>
@@ -130,6 +131,7 @@ export default async function ProductPage({
                       alt={p.name}
                       fill
                       sizes="(min-width: 1024px) 22vw, 44vw"
+                      quality={88}
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>

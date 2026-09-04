@@ -19,6 +19,7 @@ export default function VisitPage() {
           fill
           priority
           sizes="100vw"
+          quality={88}
           className="object-cover object-center opacity-55"
         />
         <div className="relative mx-auto max-w-3xl px-5 py-24 text-center lg:px-8 lg:py-32">
@@ -80,6 +81,7 @@ export default function VisitPage() {
                 alt="체험장에서 절굿대떡을 빚는 참가자들"
                 fill
                 sizes="(min-width: 1024px) 22vw, 44vw"
+                quality={88}
                 className="object-cover"
               />
             </div>
@@ -89,6 +91,7 @@ export default function VisitPage() {
                 alt="아이들이 떡 모양을 빚는 모습"
                 fill
                 sizes="(min-width: 1024px) 22vw, 44vw"
+                quality={88}
                 className="object-cover"
               />
             </div>
@@ -98,6 +101,7 @@ export default function VisitPage() {
                 alt="학교 체험에서 만든 떡을 들어 보이는 아이들"
                 fill
                 sizes="(min-width: 1024px) 22vw, 44vw"
+                quality={88}
                 className="object-cover"
               />
             </div>
@@ -107,6 +111,7 @@ export default function VisitPage() {
                 alt="원형 장식이 걸린 매장 내부"
                 fill
                 sizes="(min-width: 1024px) 22vw, 44vw"
+                quality={88}
                 className="object-cover"
               />
             </div>
@@ -176,6 +181,7 @@ export default function VisitPage() {
               alt="매장 외관"
               fill
               sizes="(min-width: 1024px) 45vw, 90vw"
+              quality={88}
               className="object-cover"
             />
           </div>

@@ -29,7 +29,7 @@ export default function HomePage() {
             alt="밭에서 갓 수확한 절굿대를 담은 소쿠리를 들고 있다"
             fill
             priority
-            quality={90}
+            quality={92}
             sizes="100vw"
             className="object-cover object-[55%_38%]"
           />
@@ -69,6 +69,7 @@ export default function HomePage() {
                     alt={p.name}
                     fill
                     sizes="(min-width: 640px) 30vw, 90vw"
+                    quality={88}
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
@@ -99,6 +100,7 @@ export default function HomePage() {
             alt="보랏빛 구체로 피는 절굿대 꽃"
             fill
             sizes="(min-width: 1024px) 50vw, 100vw"
+            quality={88}
             className="object-cover"
           />
         </div>
@@ -146,6 +148,7 @@ export default function HomePage() {
             alt="체험장에서 절굿대떡을 빚는 참가자들"
             fill
             sizes="(min-width: 1024px) 50vw, 100vw"
+            quality={88}
             className="object-cover"
           />
         </div>
@@ -195,6 +198,7 @@ export default function HomePage() {
                       alt={p.name}
                       fill
                       sizes="(min-width: 1024px) 18vw, 44vw"
+                      quality={88}
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>
@@ -217,6 +221,7 @@ export default function HomePage() {
             alt=""
             fill
             sizes="(min-width: 640px) 45vw, 90vw"
+            quality={88}
             className="object-cover opacity-45 transition-transform duration-700 group-hover:scale-105"
           />
           <div className="relative">

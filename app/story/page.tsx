@@ -20,6 +20,7 @@ export default function StoryPage() {
           fill
           priority
           sizes="100vw"
+          quality={88}
           className="object-cover opacity-45"
         />
         <div className="relative mx-auto max-w-3xl px-5 py-24 text-center lg:px-8 lg:py-32">
@@ -81,6 +82,7 @@ export default function StoryPage() {
               alt="보자기 위에 차와 함께 놓인 절굿대떡"
               fill
               sizes="(min-width: 1024px) 45vw, 90vw"
+              quality={88}
               className="object-cover"
             />
           </div>
@@ -111,6 +113,7 @@ export default function StoryPage() {
               alt="나무 도마에 놓인 절굿대떡과 콩고물, 절굿대 잎"
               fill
               sizes="(min-width: 1024px) 45vw, 90vw"
+              quality={88}
               className="object-cover"
             />
           </div>

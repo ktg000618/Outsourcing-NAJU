@@ -48,6 +48,7 @@ export default function ProductsPage() {
               fill
               priority
               sizes="(min-width: 1024px) 45vw, 90vw"
+              quality={88}
               className="object-cover transition-transform duration-700 group-hover:scale-105"
             />
             <div
@@ -72,6 +73,7 @@ export default function ProductsPage() {
                       alt={p.name}
                       fill
                       sizes="(min-width: 1024px) 20vw, 45vw"
+                      quality={88}
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>
