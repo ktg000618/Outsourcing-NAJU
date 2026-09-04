@@ -13,38 +13,36 @@ export default function HomePage() {
   return (
     <>
       {/*
-        1. 히어로 — 매장 외관.
-        대표가 떡판을 든 사진은 배경 현수막에 「절굿대떡」 붓글씨와 전화번호가 크게
-        박혀 있어서, 그 위에 같은 붓글씨 로고를 얹으면 화면에 같은 글자가 두 번 나온다.
-        외관 사진은 경쟁하는 글자가 없고 원형 엠블럼 간판이 자연스럽게 들어온다.
-        (그 사진은 「이야기」에서 인물 컷으로 쓴다.)
+        1. 히어로 — 밭에서 절굿대를 수확하는 장면.
+        원본은 홍보 문구가 얹힌 SNS 카드였는데 사진 영역만 잘라내 4500px 원본을 살렸다.
+        (매장 외관과 대표 인물 컷은 간판·현수막 글자가 헤드라인과 겹쳐 히어로에 못 쓴다.)
       */}
       <section className="relative isolate">
-        <div className="relative aspect-[4/5] w-full sm:aspect-[16/10] lg:aspect-[16/8]">
+        <div className="relative aspect-[4/5] w-full sm:aspect-[3/2] lg:aspect-[16/9]">
           <Image
-            src="/images/store-exterior.jpg"
-            alt="달토끼 엠블럼 간판이 걸린 절굿대달토끼 매장 외관"
+            src="/images/field-harvest.jpg"
+            alt="김은아 대표와 마을 어르신이 밭에서 갓 수확한 절굿대를 담은 소쿠리를 들고 있다"
             fill
             priority
             sizes="100vw"
-            className="object-cover object-[50%_35%]"
+            className="object-cover object-[55%_40%]"
           />
           <div
             aria-hidden
-            className="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-ink/85 via-ink/40 to-transparent"
+            className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/35 to-ink/10"
           />
           <div className="absolute inset-x-0 bottom-0 mx-auto max-w-6xl px-5 pb-10 lg:px-8 lg:pb-16">
             <p className="text-[13px] tracking-wide text-moon lg:text-sm">
-              나주 징고샅길, {site.since}년부터
+              나주 징고샅길 · {site.since}년부터
             </p>
-            <h1 className="mt-3 text-3xl leading-tight text-paper sm:text-4xl lg:text-5xl">
+            <h1 className="mt-3 text-[2rem] leading-[1.2] text-paper sm:text-5xl lg:text-6xl">
               사라졌던 떡을
               <br />
               다시 빚습니다
             </h1>
             <p className="mt-5 max-w-md text-[15px] leading-relaxed text-paper/85 lg:text-base">
-              목사골 양반들이 이바지로 쓰던 나주 절굿대떡. 무농약 절굿대와
-              나주배 농축액만으로, 재래방식 그대로 만듭니다.
+              목사골 양반들이 이바지로 쓰던 나주 절굿대떡. 마을 어르신들이 무농약으로
+              기른 절굿대와 나주배 농축액만으로, 재래방식 그대로 빚습니다.
             </p>
           </div>
         </div>
@@ -89,8 +87,8 @@ export default function HomePage() {
       <section className="grid lg:grid-cols-2">
         <div className="relative aspect-4/3 lg:aspect-auto lg:min-h-[30rem]">
           <Image
-            src="/images/field-thistle.jpg"
-            alt="마을 어르신들이 위탁 재배하는 절굿대밭"
+            src="/images/thistle-flower.jpg"
+            alt="보랏빛 구체로 피는 절굿대 꽃"
             fill
             sizes="(min-width: 1024px) 50vw, 100vw"
             className="object-cover"

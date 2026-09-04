@@ -106,7 +106,7 @@ export const products: Product[] = [
     summary: "말린 호박의 단맛으로만",
     detail:
       "설탕을 더하지 않고 말린 호박고지의 단맛에 기댑니다. 아침 식사 대용으로 찾는 분이 많습니다.",
-    image: "/images/product-set.jpg",
+    image: "/images/board-tteok.jpg",
     price: null,
     unit: null,
     occasions: ["선물", "답례"],

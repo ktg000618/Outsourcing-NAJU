@@ -15,8 +15,8 @@ export default function StoryPage() {
     <>
       <section className="relative isolate overflow-hidden bg-ink">
         <Image
-          src="/images/field-thistle.jpg"
-          alt="마을 어르신들이 위탁 재배하는 절굿대밭"
+          src="/images/field-harvest.jpg"
+          alt="밭에서 갓 수확한 절굿대를 담은 소쿠리"
           fill
           priority
           sizes="100vw"
@@ -108,8 +108,8 @@ export default function StoryPage() {
           </div>
           <div className="relative aspect-4/3 overflow-hidden rounded-2xl">
             <Image
-              src="/images/store-counter.jpg"
-              alt="매장 판매대에 진열된 떡"
+              src="/images/board-tteok.jpg"
+              alt="나무 도마에 놓인 절굿대떡과 콩고물, 절굿대 잎"
               fill
               sizes="(min-width: 1024px) 45vw, 90vw"
               className="object-cover"
