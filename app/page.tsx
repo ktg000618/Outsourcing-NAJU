@@ -104,15 +104,16 @@ export default function HomePage() {
             className="object-cover"
           />
         </div>
-        <div className="flex flex-col justify-center bg-ink px-5 py-16 text-paper lg:px-16 lg:py-20">
+        <div className="flex flex-col justify-center bg-bark px-5 py-16 text-paper lg:px-14 lg:py-24 xl:px-20">
           <h2 className="text-[2rem] leading-[1.25] lg:text-[2.875rem]">
             넣지 않는 것으로
             <br />
             말합니다
           </h2>
-          <p className="mt-6 max-w-prose text-paper/80">
-            유화제도 인공감미료도 쓰지 않습니다. 단맛은 선별한 나주배 농축액으로만
-            냅니다. 떡에 들어가는 절굿대는 마을 어르신들이 무농약으로 기릅니다.
+          <p className="mt-6 max-w-md text-[15px] leading-[1.85] text-paper/85 lg:text-[1.0625rem]">
+            유화제나 인공감미료를 전혀 넣지 않고 전통 방식 그대로 빚습니다. 나주
+            특산 배즙으로 자연스러운 단맛을 더했고, 찹쌀의 쫄깃한 식감은 소화에도
+            부담이 없습니다.
           </p>
           <Link
             href="/story"
@@ -125,15 +126,15 @@ export default function HomePage() {
 
       {/* 4. 브랜드 문구 밴드 — 체험 */}
       <section className="grid lg:grid-cols-2">
-        <div className="flex flex-col justify-center bg-paper-2 px-5 py-16 lg:order-1 lg:px-16 lg:py-20">
+        <div className="flex flex-col justify-center bg-paper-2 px-5 py-16 lg:order-1 lg:px-14 lg:py-24 xl:px-20">
           <h2 className="text-[2rem] leading-[1.25] lg:text-[2.875rem]">
             직접 빚어 보는
             <br />
             자리가 있습니다
           </h2>
-          <p className="mt-6 max-w-prose text-ink-soft">
-            반죽을 치고 모양을 빚어 콩고물을 입히기까지 손으로 해 봅니다.
-            학교와 단체가 자주 찾고, 여행길에 들르는 분들도 참여할 수 있습니다.
+          <p className="mt-6 max-w-md text-[15px] leading-[1.85] text-ink-soft lg:text-[1.0625rem]">
+            반죽을 치고 모양을 빚어 콩고물을 입히기까지 손으로 해 봅니다. 학교와
+            단체가 자주 찾고, 여행길에 들르는 분들도 참여할 수 있습니다.
           </p>
           <Link
             href="/visit"
@@ -144,8 +145,8 @@ export default function HomePage() {
         </div>
         <div className="relative aspect-4/3 lg:order-2 lg:aspect-auto lg:min-h-[30rem]">
           <Image
-            src="/images/experience-class.jpg"
-            alt="체험장에서 절굿대떡을 빚는 참가자들"
+            src="/images/experience-hands.jpg"
+            alt="체험 테이블에 늘어놓은 갓 빚은 절굿대떡과 나뭇잎 모양 떡"
             fill
             sizes="(min-width: 1024px) 50vw, 100vw"
             quality={88}
