@@ -217,18 +217,18 @@ export default function VisitPage() {
           {/* TODO(개발): 카카오맵 SDK 임베드. 지금은 지도 앱으로 넘긴다. */}
           <div className="relative aspect-4/3 overflow-hidden rounded-2xl lg:aspect-auto lg:min-h-80">
             {/*
-              한국 지도 서비스(카카오·네이버)는 전부 앱 키 + 도메인 등록이
-              있어야 뜬다. 키를 받기 전까지 구글 임베드로 자리를 채운다 —
-              키 없이 되고, 위치 감을 주는 데는 충분하다. 실제 길찾기는
-              아래 버튼이 카카오·네이버로 넘긴다(한국 사용자가 쓰는 쪽).
+              지도 임베드는 뺐다. 카카오·네이버는 키가 있어야 하고, 키 없이 되는
+              구글은 나주 시골 지역 데이터가 거의 없어 검은 섹션에 빈 사각형만
+              뚫렸다(배포본 확인). 길찾기는 아래 버튼이 카카오·네이버로 넘긴다.
+              키를 받으면 이 자리에 카카오 지도를 넣는다.
             */}
-            <iframe
-              allowFullScreen
-              className="absolute inset-0 h-full w-full border-0"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              src={`https://www.google.com/maps?q=${site.mapLat},${site.mapLng}&z=16&hl=ko&output=embed`}
-              title={`${site.name} 위치`}
+            <Image
+              src="/images/store-front.jpg"
+              alt="초록 간판과 달토끼 엠블럼이 걸린 절굿대달토끼 매장 건물"
+              fill
+              sizes="(min-width: 1024px) 45vw, 90vw"
+              quality={90}
+              className="object-cover"
             />
           </div>
         </div>

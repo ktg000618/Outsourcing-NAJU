@@ -224,7 +224,7 @@ export default function HomePage() {
           className="group pressable relative isolate flex min-h-56 flex-col justify-end overflow-hidden rounded-2xl bg-ink p-8"
         >
           <Image
-            src="/images/store-exterior.jpg"
+            src="/images/store-front.jpg"
             alt=""
             fill
             sizes="(min-width: 640px) 45vw, 90vw"
