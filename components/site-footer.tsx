@@ -21,7 +21,12 @@ export function SiteFooter() {
           <address className="mt-3 space-y-1 text-[15px] not-italic leading-relaxed">
             <p>{site.address}</p>
             <p>
-              <a className="hover:text-mint-deep" href={`tel:${site.tel.replace(/-/g, "")}`}>
+              {/* 상시 밑줄이 필요하다. hover 만으로는 터치 기기에서 링크인 줄 모른다. */}
+              <a
+                aria-label={`전화 걸기 ${site.tel}`}
+                className="underline decoration-paper/50 underline-offset-4 transition-colors hover:decoration-paper"
+                href={`tel:${site.tel.replace(/-/g, "")}`}
+              >
                 {site.tel}
               </a>
             </p>
@@ -35,18 +40,23 @@ export function SiteFooter() {
 
         <div>
           <h2 className="text-base text-paper">둘러보기</h2>
-          <ul className="mt-3 space-y-1 text-[15px]">
+          <ul className="mt-2 text-[15px]">
             {nav.map((item) => (
               <li key={item.href}>
-                <Link className="hover:text-mint-deep" href={item.href}>
+                <Link className="block py-1.5 transition-colors hover:text-mint" href={item.href}>
                   {item.label}
                 </Link>
               </li>
             ))}
             {site.instagramUrl && (
               <li>
-                <a className="hover:text-mint-deep" href={site.instagramUrl} rel="noreferrer" target="_blank">
-                  인스타그램
+                <a
+                  className="block py-1.5 transition-colors hover:text-mint"
+                  href={site.instagramUrl}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  인스타그램<span className="sr-only"> (새 창)</span>
                 </a>
               </li>
             )}
@@ -55,7 +65,7 @@ export function SiteFooter() {
       </div>
 
       <div className="border-t border-paper/10">
-        <div className="mx-auto flex max-w-6xl flex-wrap gap-x-6 gap-y-1 px-5 py-6 text-[13px] text-paper/55 lg:px-8">
+        <div className="mx-auto flex max-w-6xl flex-wrap gap-x-6 gap-y-1 px-5 py-6 text-[13px] text-paper/70 lg:px-8">
           <span>{site.legalName}</span>
           <span>대표 {site.owner}</span>
           <span>사업자등록번호 {site.businessNumber}</span>

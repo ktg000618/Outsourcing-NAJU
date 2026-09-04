@@ -38,7 +38,7 @@ export default function HomePage() {
               그쪽은 평평한 초록이라 얇은 그늘만으로 읽힌다. */}
           <div
             aria-hidden
-            className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-ink/85 via-ink/40 to-transparent"
+            className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-ink/90 via-ink/60 to-ink/15"
           />
           <div className="relative w-full px-6 pb-10 lg:px-10 lg:pb-12">
             {/* 굵기 대비로 읽는다 — 얇은 줄(300)이 위, 굵은 줄(700)이 아래.
@@ -80,8 +80,11 @@ export default function HomePage() {
                   {p.price !== null ? (
                     `${p.price.toLocaleString("ko-KR")}원`
                   ) : (
-                    <span className="text-[15px] font-normal text-ink-faint">
-                      가격 문의 {site.tel}
+                    /* 번호를 카드에 적으면 전화처럼 보이는데 카드 전체가
+                       제품 링크라 눌러도 전화가 안 걸린다. 실제 tel: 는
+                       제품 상세 CTA 에서만 노출한다. */
+                    <span className="text-[15px] font-normal text-ink-soft">
+                      가격 전화 문의
                     </span>
                   )}
                 </p>
@@ -116,7 +119,7 @@ export default function HomePage() {
           </p>
           <Link
             href="/story"
-            className="mt-8 self-start border-b border-paper/35 pb-1 text-[15px] transition-colors hover:border-mint-deep hover:text-mint-deep"
+            className="mt-8 self-start border-b border-paper/35 pb-1 text-[15px] transition-colors hover:border-moon hover:text-moon"
           >
             복원 이야기 보러가기
           </Link>
@@ -137,7 +140,7 @@ export default function HomePage() {
           </p>
           <Link
             href="/visit"
-            className="mt-8 self-start border-b border-ink/30 pb-1 text-[15px] transition-colors hover:border-mint-deep hover:text-mint-deep"
+            className="mt-8 self-start border-b border-ink/30 pb-1 text-[15px] transition-colors hover:border-mint-link hover:text-mint-link"
           >
             체험·매장 보러가기
           </Link>
@@ -156,7 +159,7 @@ export default function HomePage() {
 
       {/* 5. 브랜드 소개 */}
       <section className="mx-auto max-w-3xl px-5 py-20 text-center lg:px-8 lg:py-28">
-        <p className="text-sm text-mint-deep">ABOUT</p>
+        <p className="text-sm text-mint-link">ABOUT</p>
         <h2 className="mt-4 text-[2rem] font-light leading-[1.3] lg:text-[2.875rem]">
           천금의 가치가 있다던 떡
         </h2>
@@ -222,7 +225,7 @@ export default function HomePage() {
             fill
             sizes="(min-width: 640px) 45vw, 90vw"
             quality={88}
-            className="object-cover opacity-45 transition-transform duration-700 group-hover:scale-105"
+            className="object-cover opacity-30 transition-transform duration-700 group-hover:scale-105"
           />
           <div className="relative">
             <p className="text-[14px] text-paper/70">방문구매를 원하시면</p>

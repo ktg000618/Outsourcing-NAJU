@@ -27,7 +27,7 @@ export default function VisitPage() {
           />
           <div
             aria-hidden
-            className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-ink/85 via-ink/40 to-transparent"
+            className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-ink/90 via-ink/60 to-ink/15"
           />
           <div className="relative w-full px-6 pb-10 lg:px-10 lg:pb-12">
             <p className="text-sm text-paper/70 lg:text-base">
@@ -73,7 +73,7 @@ export default function VisitPage() {
                 <dd className="text-[15px]">
                   <a
                     href={`tel:${site.tel.replace(/-/g, "")}`}
-                    className="border-b border-ink/25 pb-0.5 hover:border-mint-deep hover:text-mint-deep"
+                    className="border-b border-ink/25 pb-0.5 hover:border-mint hover:text-mint"
                   >
                     {site.tel}
                   </a>
@@ -125,7 +125,8 @@ export default function VisitPage() {
                 <p className="text-[14px] text-paper/50">전화</p>
                 <p className="mt-1 text-lg">
                   <a
-                    className="hover:text-mint-deep"
+                    aria-label={`전화 걸기 ${site.tel}`}
+                    className="underline decoration-paper/50 underline-offset-4 transition-colors hover:decoration-paper"
                     href={`tel:${site.tel.replace(/-/g, "")}`}
                   >
                     {site.tel}
@@ -159,7 +160,7 @@ export default function VisitPage() {
                 href={`https://map.naver.com/p/search/${mapQuery}`}
                 target="_blank"
                 rel="noreferrer"
-                className="border border-paper/50 px-7 py-3 text-[15px] transition-colors hover:border-mint-deep hover:text-mint-deep"
+                className="border border-paper/50 px-7 py-3 text-[15px] transition-colors hover:border-mint hover:text-mint"
               >
                 네이버 지도
               </a>

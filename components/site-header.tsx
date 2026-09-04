@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { nav, site } from "@/lib/site";
 
 export function SiteHeader() {
@@ -11,7 +11,12 @@ export function SiteHeader() {
   const pathname = usePathname();
 
   // 경로가 바뀌면 열린 메뉴를 닫는다. 모바일에서 항목을 누르고 나면 덮개가 남는다.
-  useEffect(() => setOpen(false), [pathname]);
+  // effect 가 아니라 렌더 중 조정이다 — effect 로 setState 하면 렌더가 한 번 더 돈다.
+  const [routeAtOpen, setRouteAtOpen] = useState(pathname);
+  if (routeAtOpen !== pathname) {
+    setRouteAtOpen(pathname);
+    setOpen(false);
+  }
 
   return (
     <header className="sticky top-0 z-50 border-b border-ink/10 bg-paper/95 backdrop-blur">
@@ -106,7 +111,7 @@ export function SiteHeader() {
             <li>
               <a
                 href={`tel:${site.tel.replace(/-/g, "")}`}
-                className="block py-4 text-lg text-mint-deep"
+                className="block py-4 text-lg text-mint-link"
               >
                 전화 {site.tel}
               </a>

@@ -30,7 +30,7 @@ export default function StoryPage() {
           />
           <div
             aria-hidden
-            className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-ink/85 via-ink/40 to-transparent"
+            className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-ink/90 via-ink/60 to-ink/15"
           />
           <div className="relative w-full px-6 pb-10 lg:px-10 lg:pb-12">
             <p className="text-sm text-moon lg:text-base">맛의방주 등재 품목</p>
@@ -167,7 +167,7 @@ export default function StoryPage() {
           </Link>
           <Link
             href="/visit"
-            className="border border-ink/30 px-7 py-3 text-[15px] transition-colors hover:border-mint-deep hover:text-mint-deep"
+            className="border border-ink/30 px-7 py-3 text-[15px] transition-colors hover:border-mint-link hover:text-mint-link"
           >
             {site.addressLocality} 매장 안내
           </Link>

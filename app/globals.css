@@ -18,7 +18,9 @@
   */
   --color-ink: #161616;
   --color-ink-soft: #4a4a4a;
-  --color-ink-faint: #8c8c8c;
+  /* 4.5:1 을 넘겨야 한다. 이 색이 붙는 자리가 하필 '대상·예약·문의'·'보관·해동'
+     같은 라벨이라, 손님이 실제로 읽어야 하는 정보가 가장 흐렸다. */
+  --color-ink-faint: #6a6a6a;
 
   --color-paper: #ffffff;
   --color-paper-2: #f6f4f0;
@@ -36,8 +38,17 @@
   /* 어두운 패널용. 근검정 슬래브는 파스텔 아이덴티티와 따로 논다 —
      엠블럼 테두리색(모카)을 어둡게 내린 나무빛으로 대신한다. 흰 글씨 대비 8:1. */
   --color-bark: #4f3f34;
-  /* 민트 위에 흰 글씨는 대비가 안 나온다. 링크·포커스용으로 어둡게 파생한 값. */
+  /*
+    민트 위에 흰 글씨는 대비가 안 나온다. 어둡게 파생한 값.
+    ⚠️ 배경마다 값이 다르다 — 하나로 흰 바탕 4.5:1 과 어두운 면을 동시에 못 맞춘다.
+      흰 바탕 글자      → mint-link  #3d6f70 (5.67:1).  mint-deep 은 3.93:1 로 미달.
+      어두운 면 글자    → 브랜드 민트 mint 그대로 (9.72:1). 여기서 mint-deep 을 쓰면
+                          기본 상태(14:1)보다 hover 가 어두워진다.
+      bark 패널 위      → moon (5.65:1). mint 계열은 2.55:1 까지 내려간다.
+      테두리·아이콘     → mint-deep (비텍스트 3:1 기준은 통과).
+  */
   --color-mint-deep: #4f8a8b;
+  --color-mint-link: #3d6f70;
   --color-oxblood: #5d080d;
 
   --font-sans: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", system-ui,
@@ -80,9 +91,14 @@
 
   p, li { word-break: keep-all; }
 
+  /*
+    2겹 링. 먹과 흰색의 대비가 18:1 이라 어떤 배경 위에서도 둘 중 하나는 3:1 을 넘는다
+    — 단색 링은 bark 패널 위에서 2.55:1 로 사라졌다.
+    border-radius 는 넣지 않는다. 넣으면 포커스 순간 rounded-full 카드가 각져 보인다.
+  */
   :focus-visible {
-    outline: 2px solid var(--color-mint-deep);
-    outline-offset: 3px;
-    border-radius: 2px;
+    outline: 3px solid var(--color-ink);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 6px var(--color-paper);
   }
 }

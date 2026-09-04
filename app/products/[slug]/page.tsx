@@ -31,7 +31,7 @@ export default async function ProductPage({
       <div className="mx-auto max-w-6xl px-5 pt-8 lg:px-8 lg:pt-12">
         <Link
           href="/products"
-          className="text-[14px] text-ink-soft transition-colors hover:text-mint-deep"
+          className="text-[14px] text-ink-soft transition-colors hover:text-mint-link"
         >
           제품 전체
         </Link>
