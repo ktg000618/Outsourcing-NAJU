@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { LoopingVideo } from "@/components/looping-video";
 import type { Metadata } from "next";
 import { products, site } from "@/lib/site";
 
@@ -50,6 +51,11 @@ export default async function ProductPage({
               className="object-cover"
             />
           </div>
+          {product.video && (
+            <div className="mt-4 aspect-square">
+              <LoopingVideo {...product.video} />
+            </div>
+          )}
           {product.gallery && (
             /* 한 장뿐일 때 썸네일 줄로 깔면 왼쪽에 홀로 남아 빠진 자리처럼 보인다. */
             <ul

@@ -74,6 +74,8 @@ export type Product = {
   spec?: { label: string; value: string }[];
   /** 대표 이미지 말고 더 보여줄 컷. 상세 페이지에서만 쓴다. */
   gallery?: { src: string; alt: string }[];
+  /** 소리 없는 짧은 루프. 사진으로는 안 보이는 질감을 보여주는 자리다. */
+  video?: { src: string; poster: string; label: string };
   accent: "signage" | "bojagi" | "gift";
 };
 
@@ -134,6 +136,11 @@ export const products: Product[] = [
       { label: "먹는 법", value: "냉동 보관 시 30분 전 상온 해동, 또는 전자레인지 15초" },
       { label: "포장", value: "낱개 포장" },
     ],
+    video: {
+      src: "/video/oranda-texture.mp4",
+      poster: "/video/oranda-poster.jpg",
+      label: "장갑 낀 손으로 오란다를 쪼개면 견과가 붙은 단면이 드러난다",
+    },
     accent: "bojagi",
   },
   {
