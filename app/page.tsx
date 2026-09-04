@@ -18,7 +18,12 @@ export default function HomePage() {
         (매장 외관과 대표 인물 컷은 간판·현수막 글자가 헤드라인과 겹쳐 히어로에 못 쓴다.)
       */}
       <section className="relative isolate">
-        <div className="relative aspect-[4/5] w-full sm:aspect-[3/2] lg:aspect-[16/9]">
+        {/*
+            비율(aspect)로 잡으면 넓은 화면일수록 히어로가 세로로 커져서 아래가 안 보인다.
+            뷰포트 높이 기준으로 잡아 헤더+히어로가 첫 화면의 3분의 2를 넘지 않게 한다 —
+            대표 제품이 살짝 걸쳐 보여야 스크롤을 내린다.
+          */}
+          <div className="relative h-[54svh] min-h-[360px] w-full sm:h-[58svh] lg:h-[62svh] lg:max-h-[620px]">
           <Image
             src="/images/field-harvest.jpg"
             alt="김은아 대표와 마을 어르신이 밭에서 갓 수확한 절굿대를 담은 소쿠리를 들고 있다"
@@ -48,9 +53,9 @@ export default function HomePage() {
       </section>
 
       {/* 2. 대표 제품 */}
-      <section className="mx-auto max-w-6xl px-5 py-20 lg:px-8 lg:py-24">
+      <section className="mx-auto max-w-6xl px-5 pb-20 pt-12 lg:px-8 lg:pb-24 lg:pt-16">
         <h2 className="text-center text-[1.75rem] font-bold leading-none lg:text-4xl">대표 제품</h2>
-        <ul className="mt-12 grid gap-x-6 gap-y-10 sm:grid-cols-3 lg:gap-x-8">
+        <ul className="mt-9 grid gap-x-6 gap-y-10 sm:grid-cols-3 lg:mt-12 lg:gap-x-8">
           {best.map((p) => (
             <li key={p.slug}>
               <Link href={`/products/${p.slug}`} className="group block">
