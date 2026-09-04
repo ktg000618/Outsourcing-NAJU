@@ -189,7 +189,7 @@ export default function HomePage() {
           <h2 className="text-center text-[1.75rem] font-bold leading-none lg:text-4xl">
             빚는 것들
           </h2>
-          <ul className="mt-12 grid grid-cols-2 gap-x-6 gap-y-12 lg:grid-cols-5 lg:gap-x-8">
+          <ul className="mt-12 grid grid-cols-2 gap-x-6 gap-y-12 lg:grid-cols-4 lg:gap-x-10">
             {products.map((p) => (
               <li key={p.slug}>
                 <Link href={`/products/${p.slug}`} className="group block">

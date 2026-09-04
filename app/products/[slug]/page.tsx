@@ -38,16 +38,37 @@ export default async function ProductPage({
       </div>
 
       <article className="mx-auto grid max-w-6xl gap-10 px-5 py-10 lg:grid-cols-2 lg:gap-16 lg:px-8 lg:py-16">
-        <div className="relative aspect-square overflow-hidden rounded-2xl bg-paper-2">
-          <Image
-            src={product.image}
-            alt={product.name}
-            fill
-            priority
-            sizes="(min-width: 1024px) 45vw, 90vw"
-            quality={88}
-            className="object-cover"
-          />
+        <div>
+          <div className="relative aspect-square overflow-hidden rounded-2xl bg-paper-2">
+            <Image
+              src={product.image}
+              alt={product.name}
+              fill
+              priority
+              sizes="(min-width: 1024px) 45vw, 90vw"
+              quality={88}
+              className="object-cover"
+            />
+          </div>
+          {product.gallery && (
+            <ul className="mt-4 grid grid-cols-3 gap-4">
+              {product.gallery.map((g) => (
+                <li
+                  key={g.src}
+                  className="relative aspect-square overflow-hidden rounded-xl bg-paper-2"
+                >
+                  <Image
+                    src={g.src}
+                    alt={g.alt}
+                    fill
+                    sizes="(min-width: 1024px) 15vw, 30vw"
+                    quality={88}
+                    className="object-cover"
+                  />
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
 
         <div className="lg:pt-4">

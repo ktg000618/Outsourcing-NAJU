@@ -72,6 +72,8 @@ export type Product = {
   storeUrl: string | null;
   /** 제품 사양. 값이 있는 항목만 상세 페이지에 표로 나간다. */
   spec?: { label: string; value: string }[];
+  /** 대표 이미지 말고 더 보여줄 컷. 상세 페이지에서만 쓴다. */
+  gallery?: { src: string; alt: string }[];
   accent: "signage" | "bojagi" | "gift";
 };
 
@@ -91,6 +93,12 @@ export const products: Product[] = [
       { label: "보관", value: "남은 떡은 굳기 전에 냉동 보관해 주세요" },
       { label: "해동", value: "실온에서 1~2시간, 또는 찜기·전자레인지로 말랑하게" },
       { label: "드시는 법", value: "인절미 그대로가 가장 좋지만, 기호에 따라 청이나 콩가루를 곁들이셔도 됩니다" },
+    ],
+    gallery: [
+      {
+        src: "/images/product-jeolgutdae-pack.jpg",
+        alt: "낱개 포장한 절굿대떡과 콩고물을 입힌 떡, 곁에 놓인 쑥",
+      },
     ],
     accent: "signage",
   },
@@ -139,6 +147,12 @@ export const products: Product[] = [
     unit: null,
     occasions: ["이바지", "명절", "예단", "회사 선물"],
     storeUrl: null,
+    gallery: [
+      {
+        src: "/images/product-gift-scene.jpg",
+        alt: "떡카페 테이블에 놓인 절굿대떡 선물세트",
+      },
+    ],
     accent: "gift",
   },
 ];

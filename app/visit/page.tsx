@@ -14,8 +14,8 @@ export default function VisitPage() {
     <>
       <section className="relative isolate overflow-hidden bg-ink">
         <Image
-          src="/images/store-exterior.jpg"
-          alt="초록 간판이 걸린 절굿대달토끼 매장 외관"
+          src="/images/owners-counter.jpg"
+          alt="떡카페 카운터에 선 절굿대달토끼 부부"
           fill
           priority
           sizes="100vw"
