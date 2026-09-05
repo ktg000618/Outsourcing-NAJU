@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { MobileActionBar } from "@/components/mobile-action-bar";
+import { MobileActionBarGate } from "@/components/mobile-action-bar-gate";
 import { site } from "@/lib/site";
 import "pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css";
 import "./globals.css";
@@ -96,7 +97,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           {children}
         </main>
         <SiteFooter />
-        <MobileActionBar />
+        <MobileActionBarGate>
+          <MobileActionBar />
+        </MobileActionBarGate>
       </body>
     </html>
   );
