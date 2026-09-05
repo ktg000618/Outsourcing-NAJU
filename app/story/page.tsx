@@ -30,7 +30,7 @@ export default function StoryPage() {
           <p className="mt-5 max-w-md text-ink-soft">
             한때 목사골 양반들의 이바지 떡으로 쓰일 만큼 귀한 대접을 받았고, 세월이 흐르며 자취를 감췄던 떡입니다.
           </p>
-          <div className="relative mt-10 aspect-4/5 overflow-hidden rounded-2xl bg-paper-2 sm:aspect-16/9 lg:aspect-[2.6/1] lg:mt-12 ring-1 ring-inset ring-ink/5">
+          <div className="relative mt-10 aspect-4/3 overflow-hidden rounded-2xl bg-paper-2 sm:aspect-16/9 lg:aspect-[2.6/1] lg:mt-12 ring-1 ring-inset ring-ink/5">
             <Image
               src="/images/thistle-bloom.jpg"
               alt="보랏빛 구체로 피어난 절굿대 꽃"
@@ -209,7 +209,7 @@ export default function StoryPage() {
               육묘에 성공해 직접 기르고, 지금은 마을 어르신들께 위탁해 재배합니다.
             </p>
           </div>
-          <div className="relative aspect-4/3 overflow-hidden rounded-2xl ring-1 ring-inset ring-ink/5">
+          <div className="relative aspect-[2/1] overflow-hidden rounded-2xl ring-1 ring-inset ring-ink/5 lg:aspect-4/3">
             <Image
               src="/images/board-tteok.jpg"
               alt="나무 도마에 놓인 절굿대떡과 콩고물, 절굿대 잎"

@@ -42,7 +42,7 @@ export default function ProductsPage() {
           <p className="mt-5 max-w-md text-ink-soft">
             이바지·명절·답례에 두루 나갑니다. 낱개 포장이라 나눠 드리기 좋습니다.
           </p>
-          <div className="relative mt-10 aspect-4/5 overflow-hidden rounded-2xl bg-paper-2 sm:aspect-16/9 lg:aspect-[2/1] lg:mt-12 ring-1 ring-inset ring-ink/5">
+          <div className="relative mt-10 aspect-4/3 overflow-hidden rounded-2xl bg-paper-2 sm:aspect-16/9 lg:aspect-[2/1] lg:mt-12 ring-1 ring-inset ring-ink/5">
             <Image
               src="/images/product-gift-scene.jpg"
               alt="떡카페 테이블에 놓인 절굿대떡 선물세트"

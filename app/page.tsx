@@ -53,21 +53,28 @@ export default function HomePage() {
           >
             SINCE {site.since} — NAJU
           </p>
-          <div className="relative isolate flex aspect-4/5 items-end overflow-hidden rounded-2xl bg-ink sm:aspect-16/10 lg:aspect-[1.79/1] ring-1 ring-inset ring-ink/5">
-            <Image
-              src="/images/hero-maker-wide.jpg"
-              alt="김화수 대표가 갓 쳐낸 절굿대떡 판을 들어 보이고 있다"
-              fill
-              priority
-              quality={92}
-              sizes="(min-width: 1200px) 1152px, 100vw"
-              className="enter-photo object-cover object-[58%_50%] lg:object-center"
-            />
-            <div
-              aria-hidden
-              className="absolute inset-0 bg-[linear-gradient(to_top,rgba(22,22,22,0.92)_0%,rgba(22,22,22,0.58)_46%,rgba(22,22,22,0)_78%)]"
-            />
-            <div className="relative w-full px-6 pb-10 lg:px-12 lg:pb-14">
+          {/*
+            375px 에서 1.79:1 사진을 4:5 세로 상자에 넣으면 폭의 55% 가 잘려 얼굴만 남았다(실측).
+            모바일(<sm)은 구조를 바꾼다 — 사진은 4:3 으로 위에(잘림 26%), 글은 같은 먹색 카드
+            안 아래에. sm 부터는 사진 위에 글을 얹는 원래 구성(16:10 이면 잘림 11%).
+          */}
+          <div className="relative isolate overflow-hidden rounded-2xl bg-ink ring-1 ring-inset ring-ink/5 sm:flex sm:aspect-16/10 sm:items-end lg:aspect-[1.79/1]">
+            <div className="relative aspect-4/3 w-full sm:absolute sm:inset-0 sm:aspect-auto">
+              <Image
+                src="/images/hero-maker-wide.jpg"
+                alt="김화수 대표가 갓 쳐낸 절굿대떡 판을 들어 보이고 있다"
+                fill
+                priority
+                quality={92}
+                sizes="(min-width: 1200px) 1152px, 100vw"
+                className="enter-photo object-cover object-[58%_50%] lg:object-center"
+              />
+              <div
+                aria-hidden
+                className="absolute inset-0 hidden bg-[linear-gradient(to_top,rgba(22,22,22,0.92)_0%,rgba(22,22,22,0.58)_46%,rgba(22,22,22,0)_78%)] sm:block"
+              />
+            </div>
+            <div className="relative w-full px-6 pb-9 pt-7 sm:pb-10 sm:pt-0 lg:px-12 lg:pb-14">
               {/*
                 굵기로 읽는다 — 얇은 줄(100)이 위, 검은 줄(900)이 아래. 88px 부터
                 이 대비가 표정이 된다. 문구는 클라이언트가 쓰는 표현 그대로.
@@ -218,7 +225,7 @@ export default function HomePage() {
 
       {/* 6. 브랜드 문구 밴드 — 넣지 않는 것 */}
       <section className="rise grid lg:grid-cols-2">
-        <div className="relative aspect-4/3 lg:aspect-auto lg:min-h-[32rem]">
+        <div className="relative aspect-16/9 lg:aspect-auto lg:min-h-[32rem]">
           <Image
             src="/images/ingredients-board.jpg"
             alt="나무 도마에 올린 절굿대떡과 콩고물"

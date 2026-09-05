@@ -51,7 +51,7 @@ export default function VisitPage() {
           <p className="mt-5 max-w-md text-ink-soft">
             떡을 파는 데 그치지 않고, 직접 만들고 맛보는 체험장을 함께 운영합니다. 학교와 단체가 자주 찾습니다.
           </p>
-          <div className="relative mt-10 aspect-4/5 overflow-hidden rounded-2xl bg-paper-2 sm:aspect-16/9 lg:aspect-[2.6/1] lg:mt-12 ring-1 ring-inset ring-ink/5">
+          <div className="relative mt-10 aspect-4/3 overflow-hidden rounded-2xl bg-paper-2 sm:aspect-16/9 lg:aspect-[2.6/1] lg:mt-12 ring-1 ring-inset ring-ink/5">
             <Image
               src="/images/owners-counter.jpg"
               alt="떡카페 카운터에 선 절굿대달토끼 부부"
@@ -110,7 +110,7 @@ export default function VisitPage() {
             참가자 얼굴이 정면으로 크게 나와 초상권 동의 없이는 못 올린다.
           */}
           <div className="grid gap-4 self-start sm:grid-cols-2">
-            <div className="relative aspect-4/3 overflow-hidden rounded-2xl sm:aspect-square ring-1 ring-inset ring-ink/5">
+            <div className="relative aspect-16/10 overflow-hidden rounded-2xl sm:aspect-square ring-1 ring-inset ring-ink/5">
               <Image
                 src="/images/experience-stamp.jpg"
                 alt="장갑 낀 손으로 나무 떡살을 눌러 떡에 문양을 찍고 있다"
