@@ -36,44 +36,22 @@ export function SiteHeader() {
       <header className="sticky top-0 z-50 border-b border-ink/10 border-t-2 border-t-moon bg-paper/95 backdrop-blur">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 lg:h-24 lg:px-8">
           {/*
-          로고는 폭에 따라 구조가 다르다.
-          · 모바일: 엠블럼(원) + 조판 상호. 세로 락업은 56px 에서 흰 글자+민트 외곽선이
-            흰 바탕에 녹아 안 읽힌다(실측). 원은 40px 에서도 형태가 서고 글자는 글자로.
-          · PC: 기존 세로 락업 80px (리더 지시). 판독성은 여전히 약하지만 리더 판단 대기.
+          엠블럼(원) + 조판 상호. 세로 락업은 흰 글자+민트 외곽선이라 흰 헤더 위에선 64/80px 로
+          키워도 안 읽혔다(실측). 락업은 어두운 면(푸터) 전용 — 리더 결정.
         */}
-          <Link
-            href="/"
-            aria-label={`${site.name} 홈`}
-            className="flex items-center gap-3 lg:hidden"
-          >
-            <Image
-              src="/brand/emblem.png"
-              alt=""
-              width={640}
-              height={719}
-              priority
-              className="h-10 w-auto"
-            />
-            <span className="text-lead font-bold tracking-tight">
-              {site.name}
-            </span>
-          </Link>
-          <Link
-            href="/"
-            aria-label={`${site.name} 홈`}
-            className="hidden lg:block"
-          >
-            <Image
-              src="/brand/wordmark.png"
-              alt={site.name}
-              width={640}
-              height={735}
-              priority
-              className="h-20 w-auto"
-            />
-          </Link>
+        <Link href="/" aria-label={`${site.name} 홈`} className="flex items-center gap-3 lg:gap-4">
+          <Image
+            src="/brand/emblem.png"
+            alt=""
+            width={640}
+            height={719}
+            priority
+            className="h-10 w-auto lg:h-14"
+          />
+          <span className="text-lead font-bold tracking-tight lg:text-h3">{site.name}</span>
+        </Link>
 
-          <nav aria-label="주요 메뉴" className="hidden lg:block">
+        <nav aria-label="주요 메뉴" className="hidden lg:block">
             <ul className="flex items-center gap-10">
               {nav.map((item) => {
                 const active = pathname.startsWith(item.href);
