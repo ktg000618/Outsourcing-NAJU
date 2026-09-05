@@ -3,6 +3,8 @@ import { ViewTransition } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { LoopingVideo } from "@/components/looping-video";
+import { ReviewVideo } from "@/components/review-video";
+import { SectionEyebrow } from "@/components/section-eyebrow";
 import type { Metadata } from "next";
 import { products, site } from "@/lib/site";
 
@@ -186,27 +188,28 @@ export default async function ProductPage({
       </article>
 
       {product.reviewVideo && (
-        <section className="rise border-t border-ink/10 bg-paper-2">
-          <div className="section-y-tight mx-auto grid max-w-6xl items-center gap-10 px-5 lg:grid-cols-[minmax(0,auto)_minmax(0,1fr)] lg:gap-14 lg:px-8">
-            {/* 세로 영상이라 폭을 묶어 둔다. 안 묶으면 데스크톱에서 혼자 커진다. */}
-            <video
-              aria-label={product.reviewVideo.label}
-              className="w-full max-w-[300px] rounded-2xl bg-ink lg:max-w-[340px]"
-              controls
-              playsInline
-              poster={product.reviewVideo.poster}
-              preload="metadata"
-              src={product.reviewVideo.src}
-            />
+        /*
+          후기는 어두운 달빛 면 위에. 종이색 밴드 안의 기본 <video> 는 사이트 밖 물건처럼
+          보였다(리더 지적). 인용은 얇은 줄/굵은 줄 문법, 영상은 포스터 + 원형 ▶ 로.
+          모바일은 글 먼저, 영상은 가운데 280px — 세로 영상이 전폭이면 한 화면을 다 먹는다.
+        */
+        <section className="moonlit rise overflow-hidden bg-ink text-paper">
+          <div className="section-y relative mx-auto grid max-w-6xl items-center gap-10 px-5 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-20 lg:px-8">
             <div>
-              <p className="text-caption text-mint-link">후기</p>
-              <p className="mt-3 text-h3 lg:text-h1">
-                {product.reviewVideo.caption}
+              <SectionEyebrow phase={0.75} tone="paper">
+                후기 영상
+              </SectionEyebrow>
+              <p className="mt-5 text-h2 tracking-tight lg:text-h2-lg">
+                <span className="block font-thin">영상으로 보는 후기.</span>
+                <span className="block font-black">{product.reviewVideo.caption}</span>
               </p>
-              <p className="mt-5 max-w-prose text-ink-soft">
+              <p className="mt-6 max-w-prose text-paper/75">
                 합성첨가물과 색소, 방부제를 넣지 않고 낱개로 포장합니다.
                 아이 간식이나 어른 답례로 두루 나갑니다.
               </p>
+            </div>
+            <div className="mx-auto w-full max-w-[280px] lg:mx-0 lg:w-[320px] lg:max-w-none">
+              <ReviewVideo {...product.reviewVideo} />
             </div>
           </div>
         </section>
