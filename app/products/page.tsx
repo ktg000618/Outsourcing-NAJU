@@ -93,37 +93,31 @@ export default function ProductsPage() {
 
       {/* 왼쪽 대표 이미지 + 오른쪽 카드 그리드 */}
       <div className="rise mx-auto max-w-6xl px-5 pb-24 lg:px-8 lg:pb-32">
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:gap-10">
-          <Link
-            href={`/products/${lead.slug}`}
-            className="group pressable relative block aspect-square overflow-hidden rounded-2xl bg-paper-2 lg:aspect-auto"
-          >
-            <Image
-              src={lead.image}
-              alt={lead.name}
-              fill
-              priority
-              sizes="(min-width: 1024px) 45vw, 90vw"
-              quality={88}
-              className="object-cover transition-transform duration-700 ease-[cubic-bezier(.2,.7,.2,1)] group-hover:scale-[1.03]"
-            />
-            <div
-              aria-hidden
-              className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/55 to-transparent"
-            />
-            <div className="absolute inset-x-0 bottom-0 p-7 lg:p-9">
-              <p className="text-2xl text-paper lg:text-3xl">
-                {lead.name}
-              </p>
-              <p className="mt-1.5 text-small text-paper/80">{lead.summary}</p>
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)] lg:items-start lg:gap-14">
+          {/* 이 원이 제품 페이지에서 가장 큰 브랜드 형태다. 글자는 사진 위가 아니라 아래. */}
+          <Link href={`/products/${lead.slug}`} className="group pressable block">
+            <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-inset ring-ink/8">
+              <Image
+                src={lead.image}
+                alt=""
+                fill
+                priority
+                sizes="(min-width: 1024px) 45vw, 90vw"
+                quality={88}
+                className="object-cover transition-transform duration-700 ease-[cubic-bezier(.2,.7,.2,1)] group-hover:scale-[1.03]"
+              />
             </div>
+            <h2 className="mt-6 text-2xl transition-colors group-hover:text-mint-link lg:text-3xl">
+              {lead.name}
+            </h2>
+            <p className="mt-1.5 text-small text-ink-soft">{lead.summary}</p>
           </Link>
 
           <ul className="grid grid-cols-2 gap-x-5 gap-y-9 sm:grid-cols-3 lg:gap-x-6">
             {rest.map((p) => (
               <li key={p.slug}>
                 <Link href={`/products/${p.slug}`} className="group pressable block">
-                  <div className="relative aspect-square overflow-hidden rounded-xl bg-paper-2">
+                  <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-inset ring-ink/8">
                     <Image
                       src={p.image}
                       alt={p.name}

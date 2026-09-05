@@ -74,11 +74,12 @@ export default function HomePage() {
       <section className="rise mx-auto max-w-6xl px-5 pb-20 pt-12 lg:px-8 lg:pb-24 lg:pt-16">
         <SectionEyebrow phase={0.15}>제품</SectionEyebrow>
         <h2 className="mt-3 text-h3 font-bold lg:text-h1">대표 제품</h2>
-        <ul className="mt-9 grid gap-x-6 gap-y-10 sm:grid-cols-3 lg:mt-12 lg:gap-x-8">
+        <ul className="mt-9 grid gap-x-8 gap-y-10 sm:grid-cols-3 lg:mt-12 lg:gap-x-10">
           {best.map((p) => (
             <li key={p.slug}>
               <Link href={`/products/${p.slug}`} className="group pressable block">
-                <div className="relative aspect-4/3 overflow-hidden rounded-xl bg-paper-2">
+                {/* 원 = 제품. 사이트 어디서든 원이면 살 수 있는 것이다. */}
+                <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-inset ring-ink/8">
                   <Image
                     src={p.image}
                     alt={p.name}
@@ -214,7 +215,7 @@ export default function HomePage() {
             {products.map((p) => (
               <li key={p.slug}>
                 <Link href={`/products/${p.slug}`} className="group pressable block">
-                  <div className="relative aspect-square overflow-hidden rounded-full bg-paper">
+                  <div className="relative aspect-square overflow-hidden rounded-full bg-paper ring-1 ring-inset ring-ink/8">
                     <Image
                       src={p.image}
                       alt={p.name}

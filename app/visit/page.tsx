@@ -219,7 +219,8 @@ export default function VisitPage() {
           </div>
 
           {/* TODO(개발): 카카오맵 SDK 임베드. 지금은 지도 앱으로 넘긴다. */}
-          <div className="relative aspect-4/3 overflow-hidden rounded-2xl lg:aspect-auto lg:min-h-80">
+          {/* 아치 = 장소. 브랜드 라벨(public/brand/label.png)의 아치형 문에서 온 형태다. 매장 사진 한 종류에만 쓴다. */}
+          <div className="relative aspect-4/5 overflow-hidden rounded-t-full lg:aspect-auto lg:min-h-96">
             {/*
               지도 임베드는 뺐다. 카카오·네이버는 키가 있어야 하고, 키 없이 되는
               구글은 나주 시골 지역 데이터가 거의 없어 검은 섹션에 빈 사각형만

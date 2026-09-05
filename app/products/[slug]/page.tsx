@@ -70,7 +70,7 @@ export default async function ProductPage({
 
       <article className="section-y-tight mx-auto grid max-w-6xl gap-10 px-5 lg:grid-cols-2 lg:gap-16 lg:px-8">
         <div>
-          <div className="relative aspect-square overflow-hidden rounded-2xl bg-paper-2">
+          <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-inset ring-ink/8">
             <Image
               src={product.image}
               alt={product.name}
@@ -87,22 +87,12 @@ export default async function ProductPage({
             </div>
           )}
           {product.gallery && (
-            /* 한 장뿐일 때 썸네일 줄로 깔면 왼쪽에 홀로 남아 빠진 자리처럼 보인다. */
-            <ul
-              className={
-                product.gallery.length === 1
-                  ? "mt-4"
-                  : "mt-4 grid grid-cols-3 gap-4"
-              }
-            >
+            /* 보조 컷도 원. 한 장이면 3열 중 첫 칸에 작게 — 전폭 원은 메인과 겹쳐 보인다. */
+            <ul className="mt-4 grid grid-cols-3 gap-4">
               {product.gallery.map((g) => (
                 <li
                   key={g.src}
-                  className={`relative overflow-hidden rounded-xl bg-paper-2 ${
-                    product.gallery!.length === 1
-                      ? "aspect-4/3"
-                      : "aspect-square"
-                  }`}
+                  className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-inset ring-ink/8"
                 >
                   <Image
                     src={g.src}
@@ -123,7 +113,7 @@ export default async function ProductPage({
             {product.occasions.map((o) => (
               <li
                 key={o}
-                className="rounded-full bg-paper-2 px-3 py-1 text-caption text-ink-soft"
+                className="bg-rose/25 px-3 py-1 text-caption text-ink"
               >
                 {o}
               </li>
@@ -220,7 +210,7 @@ export default async function ProductPage({
             {others.map((p) => (
               <li key={p.slug}>
                 <Link href={`/products/${p.slug}`} className="group pressable block">
-                  <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2">
+                  <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-inset ring-ink/8">
                     <Image
                       src={p.image}
                       alt={p.name}

@@ -92,7 +92,8 @@ export default function StoryPage() {
               </p>
             </div>
           </div>
-          <div className="relative aspect-4/5 overflow-hidden rounded-t-full">
+          {/* 장면 사진은 사각. 원은 제품, 아치는 매장에만 — 도형이 셋을 넘으면 규칙이 흐려진다. */}
+          <div className="relative aspect-4/5 overflow-hidden rounded-2xl">
             <Image
               src="/images/styling-table.jpg"
               alt="보자기 위에 차와 함께 놓인 절굿대떡"
