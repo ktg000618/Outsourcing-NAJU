@@ -34,7 +34,7 @@ export function SiteHeader() {
     <>
       {/* 맨 위 2px 달노랑 선 — 스크롤 후에도 남는 유일한 브랜드 서명. 넓게 칠하지 않는다. */}
       <header className="sticky top-0 z-50 border-b border-ink/10 border-t-2 border-t-moon bg-paper/95 backdrop-blur">
-        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 lg:h-24 lg:px-8">
+        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 lg:h-20 lg:px-8">
           {/*
           엠블럼(원) + 조판 상호. 세로 락업은 흰 글자+민트 외곽선이라 흰 헤더 위에선 64/80px 로
           키워도 안 읽혔다(실측). 락업은 어두운 면(푸터) 전용 — 리더 결정.
@@ -46,7 +46,7 @@ export function SiteHeader() {
             width={640}
             height={719}
             priority
-            className="h-10 w-auto lg:h-14"
+            className="h-10 w-auto lg:h-12"
           />
           <span className="text-lead font-bold tracking-tight lg:text-h3">{site.name}</span>
         </Link>

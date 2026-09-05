@@ -1,6 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
-import { nav, site } from "@/lib/site";
+import { site } from "@/lib/site";
 
 /**
  * 주소·전화·영업시간은 매장에 오려는 사람이 어느 페이지에서든 찾는 정보라
@@ -32,47 +31,37 @@ export function SiteFooter() {
           <h2 className="text-body text-paper">찾아오시는 길</h2>
           <address className="mt-3 space-y-1 text-small not-italic leading-relaxed">
             <p>{site.address}</p>
-            <p>
-              {/* 상시 밑줄이 필요하다. hover 만으로는 터치 기기에서 링크인 줄 모른다. */}
-              <a
-                aria-label={`전화 걸기 ${site.tel}`}
-                className="underline decoration-paper/50 underline-offset-4 transition-colors hover:decoration-paper"
-                href={`tel:${site.tel.replace(/-/g, "")}`}
-              >
-                {site.tel}
-              </a>
-            </p>
             <p className="text-paper/60">
               {site.mobile} · {site.mobile2}
             </p>
-            {site.hours && <p>{site.hours}</p>}
             {site.closedDays && <p>휴무 {site.closedDays}</p>}
           </address>
         </div>
 
+        {/*
+          둘러보기(헤더 메뉴 4개 복제)는 4페이지 사이트에서 템플릿 관성이었다. 그 자리에
+          모바일 메뉴 하단과 같은 문의 블록 — 푸터에 닿은 손님이 다음에 할 일은 전화다.
+        */}
         <div>
-          <h2 className="text-body text-paper">둘러보기</h2>
-          <ul className="mt-2 text-small">
-            {nav.map((item) => (
-              <li key={item.href}>
-                <Link className="inline-block py-1.5 transition-colors hover:text-mint" href={item.href}>
-                  <span className="link-draw">{item.label}</span>
-                </Link>
-              </li>
-            ))}
-            {site.instagramUrl && (
-              <li>
-                <a
-                  className="block py-1.5 transition-colors hover:text-mint"
-                  href={site.instagramUrl}
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  인스타그램<span className="sr-only"> (새 창)</span>
-                </a>
-              </li>
-            )}
-          </ul>
+          <p className="text-caption text-paper/55">주문·체험 문의</p>
+          <a
+            aria-label={`전화 걸기 ${site.tel}`}
+            href={`tel:${site.tel.replace(/-/g, "")}`}
+            className="mt-2 block font-black tracking-tighter tabular-nums text-paper text-h2 transition-colors hover:text-moon lg:text-h2-lg"
+          >
+            {site.tel}
+          </a>
+          {site.hours && <p className="mt-2 text-small text-paper/70">{site.hours}</p>}
+          {site.instagramUrl && (
+            <a
+              className="link-draw mt-5 inline-block text-small transition-colors hover:text-mint"
+              href={site.instagramUrl}
+              rel="noreferrer"
+              target="_blank"
+            >
+              인스타그램<span className="sr-only"> (새 창)</span>
+            </a>
+          )}
         </div>
       </div>
 

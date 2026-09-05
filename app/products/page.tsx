@@ -45,7 +45,7 @@ export default function ProductsPage() {
             유화제나 인공감미료 없이 무농약 절굿대와 나주배 농축액으로만 단맛을 냅니다.
           </p>
           </div>
-          <div className="relative mt-10 aspect-4/3 overflow-hidden rounded-2xl bg-paper-2 sm:aspect-16/9 lg:aspect-[2/1] lg:mt-12 ring-1 ring-inset ring-ink/5">
+          <div className="relative mt-10 aspect-4/3 overflow-hidden rounded-2xl bg-paper-2 sm:aspect-16/9 lg:aspect-[2.6/1] lg:mt-12 ring-1 ring-inset ring-ink/5">
             <Image
               src="/images/product-gift-scene.jpg"
               alt="떡카페 테이블에 놓인 절굿대떡 선물세트"
