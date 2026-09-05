@@ -30,7 +30,7 @@ export default function HomePage() {
           */}
           <div
             aria-hidden
-            className="absolute -right-4 -top-5 z-10 size-20 rounded-full bg-moon shadow-[0_0_60px_12px_rgba(223,192,93,0.35)] lg:-right-10 lg:-top-10 lg:size-36"
+            className="enter-moon absolute -right-4 -top-5 z-10 size-20 rounded-full bg-moon shadow-[0_0_60px_12px_rgba(223,192,93,0.35)] lg:-right-10 lg:-top-10 lg:size-36"
           />
           {/* 세로 라벨. 편집 디자인의 여백은 비어 있지 않고 작은 글자가 지킨다. */}
           <p
@@ -39,7 +39,7 @@ export default function HomePage() {
           >
             SINCE {site.since} — NAJU
           </p>
-          <div className="relative isolate flex aspect-4/5 items-end overflow-hidden rounded-2xl bg-ink sm:aspect-16/10 lg:aspect-[1.79/1]">
+          <div className="relative isolate flex aspect-4/5 items-end overflow-hidden rounded-2xl bg-ink sm:aspect-16/10 lg:aspect-[1.79/1] ring-1 ring-inset ring-ink/5">
             <Image
               src="/images/hero-maker-wide.jpg"
               alt="김화수 대표가 갓 쳐낸 절굿대떡 판을 들어 보이고 있다"
@@ -47,7 +47,7 @@ export default function HomePage() {
               priority
               quality={92}
               sizes="(min-width: 1200px) 1152px, 100vw"
-              className="object-cover object-[58%_50%] lg:object-center"
+              className="enter-photo object-cover object-[58%_50%] lg:object-center"
             />
             <div
               aria-hidden
@@ -59,10 +59,10 @@ export default function HomePage() {
                 이 대비가 표정이 된다. 문구는 클라이언트가 쓰는 표현 그대로.
               */}
               <h1 className="text-h1 text-paper lg:text-hero">
-                <span className="block font-thin tracking-tight">50년 만에 돌아온</span>
-                <span className="block font-black tracking-tighter">나주의 절굿대떡</span>
+                <span className="enter-1 block font-thin tracking-tight">50년 만에 돌아온</span>
+                <span className="enter-2 block font-black tracking-tighter">나주의 절굿대떡</span>
               </h1>
-              <p className="mt-6 max-w-md text-small leading-relaxed text-paper/85 lg:text-body">
+              <p className="enter-3 mt-6 max-w-md text-small leading-relaxed text-paper/85 lg:text-body">
                 목사골 양반들이 이바지로 쓰던 귀한 떡. 깊은 산속에서만 자생하던
                 절굿대를 육묘에 성공해 되살렸습니다.
               </p>
@@ -129,7 +129,7 @@ export default function HomePage() {
             <li key={p.slug} className={i === 1 ? "sm:mt-14" : ""}>
               {/* 가운데 원만 내려서 비대칭 — 셋이 나란하면 스톡 템플릿이다 */}
               <Link href={`/products/${p.slug}`} className="group pressable block">
-                <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-inset ring-ink/8">
+                <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-inset ring-ink/8 transition-[box-shadow] duration-300 group-hover:ring-mint">
                   <Image
                     src={p.image}
                     alt=""
@@ -274,7 +274,7 @@ export default function HomePage() {
             {products.map((p) => (
               <li key={p.slug}>
                 <Link href={`/products/${p.slug}`} className="group pressable block">
-                  <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-inset ring-ink/8">
+                  <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-inset ring-ink/8 transition-[box-shadow] duration-300 group-hover:ring-mint">
                     <Image
                       src={p.image}
                       alt=""

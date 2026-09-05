@@ -19,7 +19,8 @@ export function SiteHeader() {
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b border-ink/10 bg-paper/95 backdrop-blur">
+    /* 맨 위 2px 달노랑 선 — 스크롤 후에도 남는 유일한 브랜드 서명. 넓게 칠하지 않는다. */
+    <header className="sticky top-0 z-50 border-b border-ink/10 border-t-2 border-t-moon bg-paper/95 backdrop-blur">
       {/* 로고가 세로로 안 크니 헤더가 두꺼울 이유가 없다 */}
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 lg:h-20 lg:px-8">
         {/*

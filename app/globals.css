@@ -178,11 +178,16 @@
     tight 는 사진이 절반을 채우는 분할 밴드용이다 — 사진 높이가 이미 여백
     역할을 하므로 한 단 낮춰야 균형이 맞는다. 의도된 예외다.
   */
+  /* 모바일은 16/12 — 375px 에서 80px 여백은 화면의 1/10 이라 빈 공간으로 읽힌다. */
   .section-y {
-    padding-block: calc(var(--spacing) * 20);
+    padding-block: calc(var(--spacing) * 16);
   }
   .section-y-tight {
-    padding-block: calc(var(--spacing) * 16);
+    padding-block: calc(var(--spacing) * 12);
+  }
+  @media (width >= 40rem) {
+    .section-y { padding-block: calc(var(--spacing) * 20); }
+    .section-y-tight { padding-block: calc(var(--spacing) * 16); }
   }
   @media (width >= 64rem) {
     .section-y { padding-block: calc(var(--spacing) * 28); }
@@ -286,6 +291,32 @@
     color: transparent;
     -webkit-text-stroke: 1px var(--color-ink);
   }
+
+  /*
+    첫 화면 등장. 사이트에서 유일한 로드 시퀀스 — 홈 히어로에만 쓴다.
+    사진 → 얇은 줄 → 굵은 줄 → 본문 → 달 순서로, 총 1.1초 안에 끝난다.
+    스크롤 페이드업(.rise)과 달리 시간 기반이라 @supports 가 필요 없고,
+    prefers-reduced-motion 은 전역 규칙이 0.01ms 로 죽인다.
+    `both` 라 로드 전에도 시작 상태(투명)로 잡히지만 히어로는 priority 이미지라
+    첫 페인트에 이미 애니메이션이 돌고 있다.
+  */
+  @keyframes enter-up {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: none; }
+  }
+  @keyframes enter-fade {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @keyframes enter-moon {
+    from { opacity: 0; transform: scale(0.6); }
+    to   { opacity: 1; transform: none; }
+  }
+  .enter-photo { animation: enter-fade 900ms ease-out both; }
+  .enter-1 { animation: enter-up 700ms cubic-bezier(0.2, 0.7, 0.2, 1) 250ms both; }
+  .enter-2 { animation: enter-up 700ms cubic-bezier(0.2, 0.7, 0.2, 1) 400ms both; }
+  .enter-3 { animation: enter-up 700ms cubic-bezier(0.2, 0.7, 0.2, 1) 560ms both; }
+  .enter-moon { animation: enter-moon 900ms cubic-bezier(0.2, 0.7, 0.2, 1) 700ms both; }
 
   /* 눌림 피드백. 터치 기기에는 hover 가 없어 이것 말고는 단서가 없다. */
   .pressable {

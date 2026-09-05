@@ -70,7 +70,7 @@ export default async function ProductPage({
 
       <article className="section-y-tight mx-auto grid max-w-6xl gap-10 px-5 lg:grid-cols-2 lg:gap-16 lg:px-8">
         <div>
-          <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-inset ring-ink/8">
+          <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-inset ring-ink/8 transition-[box-shadow] duration-300 group-hover:ring-mint">
             <Image
               src={product.image}
               alt={product.name}
@@ -92,7 +92,7 @@ export default async function ProductPage({
               {product.gallery.map((g) => (
                 <li
                   key={g.src}
-                  className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-inset ring-ink/8"
+                  className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-inset ring-ink/8 transition-[box-shadow] duration-300 group-hover:ring-mint"
                 >
                   <Image
                     src={g.src}
@@ -209,7 +209,7 @@ export default async function ProductPage({
             {others.map((p) => (
               <li key={p.slug}>
                 <Link href={`/products/${p.slug}`} className="group pressable block">
-                  <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-inset ring-ink/8">
+                  <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-inset ring-ink/8 transition-[box-shadow] duration-300 group-hover:ring-mint">
                     <Image
                       src={p.image}
                       alt={p.name}

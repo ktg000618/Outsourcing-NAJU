@@ -41,7 +41,7 @@ export default function ProductsPage() {
           <p className="mt-5 max-w-md text-ink-soft">
             이바지·명절·답례에 두루 나갑니다. 낱개 포장이라 나눠 드리기 좋습니다.
           </p>
-          <div className="relative mt-10 aspect-4/5 overflow-hidden rounded-2xl bg-paper-2 sm:aspect-16/9 lg:aspect-[2/1] lg:mt-12">
+          <div className="relative mt-10 aspect-4/5 overflow-hidden rounded-2xl bg-paper-2 sm:aspect-16/9 lg:aspect-[2/1] lg:mt-12 ring-1 ring-inset ring-ink/5">
             <Image
               src="/images/product-gift-scene.jpg"
               alt="떡카페 테이블에 놓인 절굿대떡 선물세트"
@@ -95,7 +95,7 @@ export default function ProductsPage() {
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)] lg:items-start lg:gap-14">
           {/* 이 원이 제품 페이지에서 가장 큰 브랜드 형태다. 글자는 사진 위가 아니라 아래. */}
           <Link href={`/products/${lead.slug}`} className="group pressable block">
-            <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-inset ring-ink/8">
+            <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-inset ring-ink/8 transition-[box-shadow] duration-300 group-hover:ring-mint">
               <Image
                 src={lead.image}
                 alt=""
@@ -119,7 +119,7 @@ export default function ProductsPage() {
             {rest.map((p) => (
               <li key={p.slug}>
                 <Link href={`/products/${p.slug}`} className="group pressable block">
-                  <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-inset ring-ink/8">
+                  <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-inset ring-ink/8 transition-[box-shadow] duration-300 group-hover:ring-mint">
                     <Image
                       src={p.image}
                       alt={p.name}
