@@ -171,19 +171,28 @@ export default function HomePage() {
                   />
                   </div>
                 </ViewTransition>
-                <div className="mt-5 flex items-baseline justify-between gap-4">
+                {/*
+                  가격 자리. sm 부터는 이름 옆 오른쪽 끝, 모바일은 설명 아래 한 줄 —
+                  72vw 카드에서 이름 옆에 붙이면 좁고 불편했다(리더 지적). 가격이 없는
+                  '전화 문의' 자리표는 모바일에서 안 보인다(가격은 나중에 들어온다).
+                */}
+                <div className="mt-5 grid gap-y-1 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-baseline sm:gap-x-4">
                   <h3 className="text-lead font-bold transition-colors group-hover:text-mint-link">
                     {p.name}
                   </h3>
-                  <p className="shrink-0 font-mono text-small tabular-nums text-ink-soft">
+                  <p className="text-small leading-relaxed text-ink-soft sm:col-span-2">
+                    {p.summary}
+                  </p>
+                  <p
+                    className={`font-mono text-small tabular-nums text-ink-soft sm:col-start-2 sm:row-start-1 sm:mt-0 ${
+                      p.price !== null ? "mt-1" : "hidden sm:block"
+                    }`}
+                  >
                     {p.price !== null
                       ? `${p.price.toLocaleString("ko-KR")}원`
                       : "전화 문의"}
                   </p>
                 </div>
-                <p className="mt-1 text-small leading-relaxed text-ink-soft">
-                  {p.summary}
-                </p>
               </Link>
             </li>
           ))}
