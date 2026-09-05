@@ -31,98 +31,111 @@ export function SiteHeader() {
   }, [open]);
 
   return (
-    /* 맨 위 2px 달노랑 선 — 스크롤 후에도 남는 유일한 브랜드 서명. 넓게 칠하지 않는다. */
-    <header className="sticky top-0 z-50 border-b border-ink/10 border-t-2 border-t-moon bg-paper/95 backdrop-blur">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 lg:h-24 lg:px-8">
-        {/*
+    <>
+      {/* 맨 위 2px 달노랑 선 — 스크롤 후에도 남는 유일한 브랜드 서명. 넓게 칠하지 않는다. */}
+      <header className="sticky top-0 z-50 border-b border-ink/10 border-t-2 border-t-moon bg-paper/95 backdrop-blur">
+        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 lg:h-24 lg:px-8">
+          {/*
           로고는 폭에 따라 구조가 다르다.
           · 모바일: 엠블럼(원) + 조판 상호. 세로 락업은 56px 에서 흰 글자+민트 외곽선이
             흰 바탕에 녹아 안 읽힌다(실측). 원은 40px 에서도 형태가 서고 글자는 글자로.
           · PC: 기존 세로 락업 80px (리더 지시). 판독성은 여전히 약하지만 리더 판단 대기.
         */}
-        <Link href="/" aria-label={`${site.name} 홈`} className="flex items-center gap-3 lg:hidden">
-          <Image
-            src="/brand/emblem.png"
-            alt=""
-            width={640}
-            height={719}
-            priority
-            className="h-10 w-auto"
-          />
-          <span className="text-lead font-bold tracking-tight">{site.name}</span>
-        </Link>
-        <Link href="/" aria-label={`${site.name} 홈`} className="hidden lg:block">
-          <Image
-            src="/brand/wordmark.png"
-            alt={site.name}
-            width={640}
-            height={735}
-            priority
-            className="h-20 w-auto"
-          />
-        </Link>
-
-        <nav aria-label="주요 메뉴" className="hidden lg:block">
-          <ul className="flex items-center gap-10">
-            {nav.map((item) => {
-              const active = pathname.startsWith(item.href);
-              return (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    aria-current={active ? "page" : undefined}
-                    className={`relative pb-1 text-small transition-colors after:absolute after:left-1/2 after:top-full after:size-1.5 after:-translate-x-1/2 after:rounded-full after:bg-mint-deep after:transition-opacity after:duration-200 ${
-                      active
-                        ? "text-ink after:opacity-100"
-                        : "text-ink-soft after:opacity-0 hover:text-ink hover:after:opacity-50"
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              );
-            })}
-            <li>
-              <a
-                href={`tel:${site.tel.replace(/-/g, "")}`}
-                className="text-small tracking-tight text-ink-soft transition-colors hover:text-ink"
-              >
-                {site.tel}
-              </a>
-            </li>
-          </ul>
-        </nav>
-
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          aria-expanded={open}
-          aria-controls="mobile-nav"
-          className="-mr-3 grid size-11 place-items-center lg:hidden"
-        >
-          <span className="sr-only">{open ? "메뉴 닫기" : "메뉴 열기"}</span>
-          <span aria-hidden className="relative block h-4 w-6">
-            <span
-              className={`absolute left-0 block h-px w-6 bg-ink transition-transform duration-200 ${
-                open ? "top-2 rotate-45" : "top-0"
-              }`}
+          <Link
+            href="/"
+            aria-label={`${site.name} 홈`}
+            className="flex items-center gap-3 lg:hidden"
+          >
+            <Image
+              src="/brand/emblem.png"
+              alt=""
+              width={640}
+              height={719}
+              priority
+              className="h-10 w-auto"
             />
-            <span
-              className={`absolute left-0 top-2 block h-px w-6 bg-ink transition-opacity duration-200 ${
-                open ? "opacity-0" : "opacity-100"
-              }`}
+            <span className="text-lead font-bold tracking-tight">
+              {site.name}
+            </span>
+          </Link>
+          <Link
+            href="/"
+            aria-label={`${site.name} 홈`}
+            className="hidden lg:block"
+          >
+            <Image
+              src="/brand/wordmark.png"
+              alt={site.name}
+              width={640}
+              height={735}
+              priority
+              className="h-20 w-auto"
             />
-            <span
-              className={`absolute left-0 block h-px w-6 bg-ink transition-transform duration-200 ${
-                open ? "top-2 -rotate-45" : "top-4"
-              }`}
-            />
-          </span>
-        </button>
-      </div>
+          </Link>
 
+          <nav aria-label="주요 메뉴" className="hidden lg:block">
+            <ul className="flex items-center gap-10">
+              {nav.map((item) => {
+                const active = pathname.startsWith(item.href);
+                return (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      aria-current={active ? "page" : undefined}
+                      className={`relative pb-1 text-small transition-colors after:absolute after:left-1/2 after:top-full after:size-1.5 after:-translate-x-1/2 after:rounded-full after:bg-mint-deep after:transition-opacity after:duration-200 ${
+                        active
+                          ? "text-ink after:opacity-100"
+                          : "text-ink-soft after:opacity-0 hover:text-ink hover:after:opacity-50"
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                );
+              })}
+              <li>
+                <a
+                  href={`tel:${site.tel.replace(/-/g, "")}`}
+                  className="text-small tracking-tight text-ink-soft transition-colors hover:text-ink"
+                >
+                  {site.tel}
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+            className="-mr-3 grid size-11 place-items-center lg:hidden"
+          >
+            <span className="sr-only">{open ? "메뉴 닫기" : "메뉴 열기"}</span>
+            <span aria-hidden className="relative block h-4 w-6">
+              <span
+                className={`absolute left-0 block h-px w-6 bg-ink transition-transform duration-200 ${
+                  open ? "top-2 rotate-45" : "top-0"
+                }`}
+              />
+              <span
+                className={`absolute left-0 top-2 block h-px w-6 bg-ink transition-opacity duration-200 ${
+                  open ? "opacity-0" : "opacity-100"
+                }`}
+              />
+              <span
+                className={`absolute left-0 block h-px w-6 bg-ink transition-transform duration-200 ${
+                  open ? "top-2 -rotate-45" : "top-4"
+                }`}
+              />
+            </span>
+          </button>
+        </div>
+      </header>
       {/*
         모바일 메뉴 — 전면 오버레이. 목록 다섯 줄이 아니라 이 사이트의 활자로 만든 화면이다.
+        header 밖에 둔다: header 의 backdrop-blur 가 fixed 자손의 containing block 이 되어
+        top-16/bottom-0 이 헤더 66px 안에서 계산됐다(높이 0, 실측).
         항상 렌더하고 hidden 만 토글한다: 조건부 렌더면 닫힌 상태에서 aria-controls 가
         존재하지 않는 id 를 가리킨다.
       */}
@@ -177,6 +190,6 @@ export function SiteHeader() {
           )}
         </div>
       </nav>
-    </header>
+    </>
   );
 }
