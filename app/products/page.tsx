@@ -27,32 +27,30 @@ export default function ProductsPage() {
 
   return (
     <>
-      {/* 홈 히어로와 같은 규칙 — 헤더 안쪽 폭에 맞춘 중앙 정렬,
-          틀 비율은 사진 원본 비율(1.5) 그대로라 잘려 나가는 곳이 없다. */}
-      <section className="mx-auto w-full max-w-6xl px-5 pt-6 lg:px-8 lg:pt-8">
-        <div className="relative isolate flex aspect-4/5 items-end overflow-hidden rounded-2xl bg-ink sm:aspect-16/10 lg:aspect-[1.5/1]">
-          <Image
-            src="/images/product-gift-scene.jpg"
-            alt="떡카페 테이블에 놓인 절굿대떡 선물세트"
-            fill
-            priority
-            sizes="(min-width: 1200px) 1152px, 100vw"
-            quality={92}
-            className="object-cover object-center"
-          />
-          <div
-            aria-hidden
-            className="absolute inset-0 bg-[linear-gradient(to_top,rgba(22,22,22,0.92)_0%,rgba(22,22,22,0.58)_46%,rgba(22,22,22,0)_78%)]"
-          />
-          <div className="relative w-full px-6 pb-10 lg:px-10 lg:pb-12">
-            <h1 className="text-h1 text-paper lg:text-h1-lg">
-              빚는 것들
-            </h1>
-            <p className="mt-5 max-w-md text-small leading-relaxed text-paper/85 lg:text-body">
-              이바지·명절·답례에 두루 나갑니다. 낱개 포장이라 나눠 드리기 좋습니다.
-            </p>
+      {/*
+          서브페이지 히어로. 홈은 사진 위에 글자(+달)이고, 여기는 글자를 사진 밖으로 꺼낸다 —
+          4개 페이지가 똑같은 "사진 위 흰 글씨"면 홈의 한 방이 희석된다. 그라디언트를 걷어
+          사진이 그대로 보이고, 글자는 먹색으로 흰 종이 위에 앉는다.
+        */}
+      <section className="mx-auto w-full max-w-6xl px-5 pt-10 lg:px-8 lg:pt-14">
+          <SectionEyebrow phase={0.1}>제품</SectionEyebrow>
+          <h1 className="mt-4 max-w-[16ch] text-h1 lg:text-h1-lg">
+            빚는 것들
+          </h1>
+          <p className="mt-5 max-w-md text-ink-soft">
+            이바지·명절·답례에 두루 나갑니다. 낱개 포장이라 나눠 드리기 좋습니다.
+          </p>
+          <div className="relative mt-10 aspect-4/5 overflow-hidden rounded-2xl bg-paper-2 sm:aspect-16/9 lg:aspect-[2/1] lg:mt-12">
+            <Image
+              src="/images/product-gift-scene.jpg"
+              alt="떡카페 테이블에 놓인 절굿대떡 선물세트"
+              fill
+              priority
+              sizes="(min-width: 1200px) 1152px, 100vw"
+              quality={88}
+              className="object-cover object-center"
+            />
           </div>
-        </div>
       </section>
 
       <header className="rise mx-auto max-w-6xl px-5 pb-12 pt-14 lg:px-8 lg:pb-16 lg:pt-20">

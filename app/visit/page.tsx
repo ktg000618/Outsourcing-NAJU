@@ -35,36 +35,30 @@ export default function VisitPage() {
 
   return (
     <>
-      {/* 홈 히어로와 같은 규칙 — 헤더 안쪽 폭(max-w-6xl)에 맞춘 중앙 정렬,
-          틀 비율은 사진 원본 비율(1.6) 그대로라 잘려 나가는 곳이 없다. */}
-      <section className="mx-auto w-full max-w-6xl px-5 pt-6 lg:px-8 lg:pt-8">
-        <div className="relative isolate flex aspect-4/5 items-end overflow-hidden rounded-2xl bg-ink sm:aspect-16/10 lg:aspect-[1.6/1]">
-          <Image
-            src="/images/owners-counter.jpg"
-            alt="떡카페 카운터에 선 절굿대달토끼 부부"
-            fill
-            priority
-            sizes="(min-width: 1200px) 1152px, 100vw"
-            quality={92}
-            className="object-cover object-[50%_25%]"
-          />
-          <div
-            aria-hidden
-            className="absolute inset-0 bg-[linear-gradient(to_top,rgba(22,22,22,0.92)_0%,rgba(22,22,22,0.58)_46%,rgba(22,22,22,0)_78%)]"
-          />
-          <div className="relative w-full px-6 pb-10 lg:px-10 lg:pb-12">
-            <p className="text-caption text-paper/70 lg:text-body">
-              {site.addressLocality} 징고샅길
-            </p>
-            <h1 className="mt-3 text-h1 text-paper lg:text-h1-lg">
-              빚어 보러 오세요
-            </h1>
-            <p className="mt-5 max-w-md text-small leading-relaxed text-paper/85 lg:text-body">
-              떡을 파는 데 그치지 않고, 직접 만들고 맛보는 체험장을 함께
-              운영합니다. 학교와 단체가 자주 찾습니다.
-            </p>
+      {/*
+          서브페이지 히어로. 홈은 사진 위에 글자(+달)이고, 여기는 글자를 사진 밖으로 꺼낸다 —
+          4개 페이지가 똑같은 "사진 위 흰 글씨"면 홈의 한 방이 희석된다. 그라디언트를 걷어
+          사진이 그대로 보이고, 글자는 먹색으로 흰 종이 위에 앉는다.
+        */}
+      <section className="mx-auto w-full max-w-6xl px-5 pt-10 lg:px-8 lg:pt-14">
+          <SectionEyebrow phase={0.1}>{site.addressLocality} 징고샅길</SectionEyebrow>
+          <h1 className="mt-4 max-w-[16ch] text-h1 lg:text-h1-lg">
+            빚어 보러 오세요
+          </h1>
+          <p className="mt-5 max-w-md text-ink-soft">
+            떡을 파는 데 그치지 않고, 직접 만들고 맛보는 체험장을 함께 운영합니다. 학교와 단체가 자주 찾습니다.
+          </p>
+          <div className="relative mt-10 aspect-4/5 overflow-hidden rounded-2xl bg-paper-2 sm:aspect-16/9 lg:aspect-[2.6/1] lg:mt-12">
+            <Image
+              src="/images/owners-counter.jpg"
+              alt="떡카페 카운터에 선 절굿대달토끼 부부"
+              fill
+              priority
+              sizes="(min-width: 1200px) 1152px, 100vw"
+              quality={88}
+              className="object-cover object-[50%_25%]"
+            />
           </div>
-        </div>
       </section>
 
       {/* 체험 */}
