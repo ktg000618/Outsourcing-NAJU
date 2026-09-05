@@ -71,7 +71,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. 숫자 밴드 — 활자로 만드는 밀도. 전부 연표·제품 데이터에 있는 사실이다. */}
+      {/* 2. 숫자 밴드 — 활자로 만드는 밀도. 전부 연표·제품 데이터에 있는 사실이다.
+          80px 는 375px 2열에서 '2016' 과 '50' 이 겹친다 → 모바일은 48px. */}
       <section className="rise mx-auto max-w-6xl px-5 pt-16 lg:px-8 lg:pt-20">
         <ul className="grid grid-cols-2 gap-y-10 border-y border-ink/10 py-10 lg:grid-cols-4 lg:py-12">
           {[
@@ -81,7 +82,7 @@ export default function HomePage() {
             { n: String(products.length), unit: "가지", label: "지금 빚는 떡" },
           ].map((s) => (
             <li key={s.label} className="pr-6">
-              <p className="font-black tracking-tighter tabular-nums text-num">
+              <p className="font-black tracking-tighter tabular-nums text-h1-lg lg:text-num">
                 {s.n}
                 <span className="ml-1 align-baseline text-lead font-light tracking-normal text-ink-soft">
                   {s.unit}
