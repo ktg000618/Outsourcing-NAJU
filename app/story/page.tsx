@@ -83,6 +83,11 @@ export default function StoryPage() {
                 같은 값어치가 있다 하여 붙은 이름입니다. 절굿대떡을 이바지에 쓴
                 것은 맛 때문만이 아니라, 건강을 생각한 떡이라는 믿음 때문이었습니다.
               </p>
+              {/* 브랜드 이름을 설명하는 사실인데 사이트 어디에도 없었다. */}
+              <p className="max-w-prose">
+                이름은 꽃에서 왔습니다. 둥근 꽃송이가 곡식을 찧던 절굿공이를
+                닮았다 하여 절굿대입니다.
+              </p>
             </div>
           </div>
           <div className="relative aspect-4/5 overflow-hidden rounded-t-full">
@@ -94,6 +99,60 @@ export default function StoryPage() {
               quality={88}
               className="object-cover"
             />
+          </div>
+        </div>
+      </section>
+
+      {/*
+        사회적기업으로서 하는 일. 클라이언트가 상세페이지에 쓴 원문인데 사이트에는
+        한 줄도 없었다. 인증 배지만 걸어 두는 것보다 무엇을 하는지가 강하다.
+      */}
+      <section className="rise">
+        <div className="relative aspect-[3.12/1] w-full">
+          <Image
+            src="/images/thistle-field.jpg"
+            alt="검정 멀칭 위로 줄지어 자라는 절굿대 밭"
+            fill
+            sizes="100vw"
+            quality={90}
+            className="object-cover"
+          />
+        </div>
+        <div className="section-y mx-auto max-w-6xl px-5 lg:px-8">
+          <p className="text-caption text-mint-link lg:text-small">
+            사회적기업 인증 제2023-247호
+          </p>
+          <h2 className="mt-3 text-h2 lg:text-h2-lg">씨앗을 나눕니다</h2>
+          <div className="mt-8 grid gap-10 lg:grid-cols-2 lg:gap-16">
+            <div className="space-y-5 text-ink-soft">
+              <p className="max-w-prose">
+                씨앗을 나누어 드리고, 소규모 농가에서 직접 재배할 수 있도록
+                지원하여 지역 어르신들에게 새로운 일자리를 제공합니다. 이를 통해
+                단순한 생산 활동을 넘어 안정적인 고용 기반을 마련하고, 어르신들이
+                지속적으로 경제활동에 참여할 수 있는 환경을 만들어가고 있습니다.
+              </p>
+              <p className="max-w-prose">
+                또한 기업의 성장이 지역사회와 함께 이어질 수 있도록 매출의 일부를
+                지역에 환원하며 선순환 구조를 만들어가고자 합니다.
+              </p>
+            </div>
+            {/* 연혁에 흩어져 있던 협약을 한자리에. 말이 아니라 이름으로 뒷받침한다. */}
+            <ul className="space-y-5 border-t border-ink/15 pt-6 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0">
+              {[
+                { year: "2020", body: "장애인복지관·나주시다문화가족센터 등 사회복지시설 업무협약" },
+                { year: "2021", body: "전라남도지사 표창 (사회복지부문)" },
+                { year: "2023", body: "나주시 여성새로일하기센터·국립나주숲체원 업무협약" },
+              ].map((r) => (
+                <li key={r.year} className="flex gap-5">
+                  <span className="w-12 shrink-0 font-mono text-small text-moon">
+                    {r.year}
+                  </span>
+                  <span className="text-small leading-relaxed text-ink-soft">
+                    {r.body}
+                  </span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
