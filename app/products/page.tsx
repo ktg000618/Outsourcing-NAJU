@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ViewTransition } from "react";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { SectionEyebrow } from "@/components/section-eyebrow";
@@ -26,7 +27,7 @@ export default function ProductsPage() {
   const [lead, ...rest] = products;
 
   return (
-    <>
+    <ViewTransition enter="page-in" exit="page-out" default="none">
       {/*
           서브페이지 히어로. 홈은 사진 위에 글자(+달)이고, 여기는 글자를 사진 밖으로 꺼낸다 —
           4개 페이지가 똑같은 "사진 위 흰 글씨"면 홈의 한 방이 희석된다. 그라디언트를 걷어
@@ -95,7 +96,8 @@ export default function ProductsPage() {
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)] lg:items-start lg:gap-14">
           {/* 이 원이 제품 페이지에서 가장 큰 브랜드 형태다. 글자는 사진 위가 아니라 아래. */}
           <Link href={`/products/${lead.slug}`} className="group pressable block">
-            <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-inset ring-ink/8 transition-[box-shadow] duration-300 group-hover:ring-mint">
+            <ViewTransition name={`product-${lead.slug}`} share="morph" default="none">
+              <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-inset ring-ink/8 transition-[box-shadow] duration-300 group-hover:ring-mint">
               <Image
                 src={lead.image}
                 alt=""
@@ -105,7 +107,8 @@ export default function ProductsPage() {
                 quality={88}
                 className="object-cover transition-transform duration-700 ease-[cubic-bezier(.2,.7,.2,1)] group-hover:scale-[1.03]"
               />
-            </div>
+              </div>
+            </ViewTransition>
             <h2 className="mt-6 text-2xl transition-colors group-hover:text-mint-link lg:text-3xl">
               {lead.name}
             </h2>
@@ -127,7 +130,8 @@ export default function ProductsPage() {
                   href={`/products/${p.slug}`}
                   className="group pressable block lg:grid lg:grid-cols-[7rem_minmax(0,1fr)_auto] lg:items-center lg:gap-8 lg:py-7"
                 >
-                  <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-inset ring-ink/8 transition-[box-shadow] duration-300 group-hover:ring-mint">
+                  <ViewTransition name={`product-${p.slug}`} share="morph" default="none">
+                    <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-inset ring-ink/8 transition-[box-shadow] duration-300 group-hover:ring-mint">
                     <Image
                       src={p.image}
                       alt=""
@@ -136,7 +140,8 @@ export default function ProductsPage() {
                       quality={88}
                       className="object-cover transition-transform duration-700 ease-[cubic-bezier(.2,.7,.2,1)] group-hover:scale-[1.03]"
                     />
-                  </div>
+                    </div>
+                  </ViewTransition>
                   <div className="mt-4 lg:mt-0">
                     <h2 className="text-lead font-bold transition-colors group-hover:text-mint-link">
                       {p.name}
@@ -270,6 +275,6 @@ export default function ProductsPage() {
         </div>
       </section>
 
-    </>
+    </ViewTransition>
   );
 }

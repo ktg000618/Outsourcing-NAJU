@@ -318,6 +318,36 @@
   .enter-3 { animation: enter-up 700ms cubic-bezier(0.2, 0.7, 0.2, 1) 560ms both; }
   .enter-moon { animation: enter-moon 900ms cubic-bezier(0.2, 0.7, 0.2, 1) 700ms both; }
 
+  /*
+    페이지 전환 (View Transitions).
+    ① 제품 원 모프 — 목록의 원이 상세의 큰 원으로 이어지며 커진다. "같은 물건"이라는
+       연속성이 생긴다. 이름은 product-<slug>, 한 문서 안에 같은 이름이 둘이면 안 되므로
+       홈에서는 대표 제품 셋만 이름을 갖고 「빚는 것들」은 갖지 않는다.
+    ② 페이지 페이드 — 이동마다 옛 화면이 빨리 빠지고(150ms) 새 화면이 살짝 떠오른다(300ms).
+       비대칭이 의도다: 나가는 건 빨리, 들어오는 건 천천히.
+    미지원 브라우저는 그냥 즉시 바뀐다. reduced-motion 은 전역 규칙이 죽인다.
+  */
+  ::view-transition-group(.morph) {
+    animation-duration: 420ms;
+    animation-timing-function: cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  ::view-transition-image-pair(.morph) {
+    animation-name: via-blur;
+  }
+  @keyframes via-blur {
+    30% { filter: blur(3px); }
+  }
+  ::view-transition-old(.page-out) {
+    animation: 150ms ease-in both page-fade reverse;
+  }
+  ::view-transition-new(.page-in) {
+    animation:
+      300ms ease-out 120ms both page-fade,
+      420ms cubic-bezier(0.2, 0.7, 0.2, 1) both page-rise;
+  }
+  @keyframes page-fade { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes page-rise { from { translate: 0 10px; } to { translate: 0 0; } }
+
   /* 눌림 피드백. 터치 기기에는 hover 가 없어 이것 말고는 단서가 없다. */
   .pressable {
     transition: transform 140ms ease-out, opacity 140ms ease-out;

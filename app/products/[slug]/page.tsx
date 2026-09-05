@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ViewTransition } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { LoopingVideo } from "@/components/looping-video";
@@ -54,7 +55,7 @@ export default async function ProductPage({
   };
 
   return (
-    <>
+    <ViewTransition enter="page-in" exit="page-out" default="none">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
@@ -70,7 +71,8 @@ export default async function ProductPage({
 
       <article className="section-y-tight mx-auto grid max-w-6xl gap-10 px-5 lg:grid-cols-2 lg:gap-16 lg:px-8">
         <div>
-          <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-inset ring-ink/8 transition-[box-shadow] duration-300 group-hover:ring-mint">
+          <ViewTransition name={`product-${product.slug}`} share="morph" default="none">
+            <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-inset ring-ink/8 transition-[box-shadow] duration-300 group-hover:ring-mint">
             <Image
               src={product.image}
               alt={product.name}
@@ -80,7 +82,8 @@ export default async function ProductPage({
               quality={88}
               className="object-cover"
             />
-          </div>
+            </div>
+          </ViewTransition>
           {product.video && (
             <div className="mt-4 aspect-square">
               <LoopingVideo {...product.video} />
@@ -209,7 +212,8 @@ export default async function ProductPage({
             {others.map((p) => (
               <li key={p.slug}>
                 <Link href={`/products/${p.slug}`} className="group pressable block">
-                  <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-inset ring-ink/8 transition-[box-shadow] duration-300 group-hover:ring-mint">
+                  <ViewTransition name={`product-${p.slug}`} share="morph" default="none">
+                    <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-inset ring-ink/8 transition-[box-shadow] duration-300 group-hover:ring-mint">
                     <Image
                       src={p.image}
                       alt={p.name}
@@ -218,7 +222,8 @@ export default async function ProductPage({
                       quality={88}
                       className="object-cover transition-transform duration-700 ease-[cubic-bezier(.2,.7,.2,1)] group-hover:scale-[1.03]"
                     />
-                  </div>
+                    </div>
+                  </ViewTransition>
                   <p className="mt-4 text-center text-lg transition-colors group-hover:text-mint-link">
                     {p.name}
                   </p>
@@ -228,6 +233,6 @@ export default async function ProductPage({
           </ul>
         </div>
       </section>
-    </>
+    </ViewTransition>
   );
 }

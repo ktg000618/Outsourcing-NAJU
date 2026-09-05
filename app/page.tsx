@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ViewTransition } from "react";
 import Link from "next/link";
 import { MoonMark } from "@/components/moon-mark";
 import { SectionEyebrow } from "@/components/section-eyebrow";
@@ -20,7 +21,7 @@ export default function HomePage() {
   const teaser = [timeline[0], timeline[1], timeline[4]];
 
   return (
-    <>
+    <ViewTransition enter="page-in" exit="page-out" default="none">
       {/* 1. 히어로 — 달 + 사진 + 88px 헤드라인 */}
       <section className="mx-auto w-full max-w-6xl px-5 pt-6 lg:px-8 lg:pt-8">
         <div className="relative">
@@ -129,7 +130,8 @@ export default function HomePage() {
             <li key={p.slug} className={i === 1 ? "sm:mt-14" : ""}>
               {/* 가운데 원만 내려서 비대칭 — 셋이 나란하면 스톡 템플릿이다 */}
               <Link href={`/products/${p.slug}`} className="group pressable block">
-                <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-inset ring-ink/8 transition-[box-shadow] duration-300 group-hover:ring-mint">
+                <ViewTransition name={`product-${p.slug}`} share="morph" default="none">
+                  <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-inset ring-ink/8 transition-[box-shadow] duration-300 group-hover:ring-mint">
                   <Image
                     src={p.image}
                     alt=""
@@ -138,7 +140,8 @@ export default function HomePage() {
                     quality={88}
                     className="object-cover transition-transform duration-700 ease-[cubic-bezier(.2,.7,.2,1)] group-hover:scale-[1.03]"
                   />
-                </div>
+                  </div>
+                </ViewTransition>
                 <div className="mt-5 flex items-baseline justify-between gap-4">
                   <h3 className="text-lead font-bold transition-colors group-hover:text-mint-link">
                     {p.name}
@@ -321,6 +324,6 @@ export default function HomePage() {
           <p className="relative mt-1 font-mono text-2xl font-bold tabular-nums">{site.tel}</p>
         </a>
       </section>
-    </>
+    </ViewTransition>
   );
 }
