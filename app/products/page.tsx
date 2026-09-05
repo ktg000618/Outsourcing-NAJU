@@ -34,8 +34,9 @@ export default function ProductsPage() {
         */}
       <section className="mx-auto w-full max-w-6xl px-5 pt-10 lg:px-8 lg:pt-14">
           <SectionEyebrow phase={0.1}>제품</SectionEyebrow>
-          <h1 className="mt-4 max-w-[16ch] text-h1 lg:text-h1-lg">
-            빚는 것들
+          <h1 className="mt-4 max-w-[16ch] text-h1 lg:text-hero">
+            <span className="block font-thin tracking-tight">나주에서</span>
+            <span className="block font-black tracking-tighter">빚는 것들</span>
           </h1>
           <p className="mt-5 max-w-md text-ink-soft">
             이바지·명절·답례에 두루 나갑니다. 낱개 포장이라 나눠 드리기 좋습니다.
@@ -109,6 +110,9 @@ export default function ProductsPage() {
               {lead.name}
             </h2>
             <p className="mt-1.5 text-small text-ink-soft">{lead.summary}</p>
+            <p className="mt-6 max-w-[22ch] font-extralight leading-snug tracking-tight text-h3">
+              {lead.detail.split(". ")[0]}.
+            </p>
           </Link>
 
           <ul className="grid grid-cols-2 gap-x-5 gap-y-9 sm:grid-cols-3 lg:gap-x-6">

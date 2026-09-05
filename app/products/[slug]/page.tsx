@@ -120,19 +120,18 @@ export default async function ProductPage({
             ))}
           </ul>
 
-          <h1 className="mt-5 text-h1 lg:text-h1-lg">
+          <h1 className="mt-5 font-black tracking-tighter text-h1 lg:text-hero">
             {product.name}
           </h1>
           <p className="mt-3 text-lg text-ink-soft">{product.summary}</p>
 
           {product.price !== null && (
-            <p className="mt-7 text-2xl">
-              {product.price.toLocaleString("ko-KR")}원
-              {product.unit && (
-                <span className="ml-2 text-body text-ink-soft">
-                  {product.unit}
-                </span>
-              )}
+            /* 가격은 이 페이지에서 가장 중요한 숫자다. 홈 숫자 밴드와 같은 규격으로. */
+            <p className="mt-8 font-black tracking-tighter tabular-nums text-h1-lg lg:text-num">
+              {product.price.toLocaleString("ko-KR")}
+              <span className="ml-1 text-lead font-light tracking-normal text-ink-soft">
+                원{product.unit ? ` · ${product.unit}` : ""}
+              </span>
             </p>
           )}
 

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { site } from "@/lib/site";
+import { MoonMark } from "@/components/moon-mark";
 
 export const metadata: Metadata = {
   title: "소식",
@@ -21,17 +22,35 @@ export default function NewsPage() {
       </p>
 
       {posts.length === 0 ? (
-        <div className="mt-14 rounded-2xl bg-paper-2 px-7 py-14 text-center">
-          <p className="text-xl">아직 올라온 소식이 없습니다</p>
-          <p className="mt-3 text-small text-ink-soft">
-            급한 문의는 전화로 주시면 가장 빠릅니다.
+        {/* 빈 상태도 디자인이다. 회색 상자 대신 빈 달 + 큰 활자. 소식은 인스타에 먼저 올라간다. */}
+        <div className="mt-14 border-y border-ink/10 py-16 lg:py-24">
+          <MoonMark phase={0} size={40} className="text-ink" />
+          <p className="mt-6 text-h2 lg:text-h2-lg">
+            <span className="block font-thin tracking-tight">아직 올라온</span>
+            <span className="block font-black tracking-tighter">소식이 없습니다</span>
           </p>
-          <a
-            href={`tel:${site.tel.replace(/-/g, "")}`}
-            className="mt-7 inline-block border border-ink bg-ink px-7 py-3 text-small text-paper btn-lift transition-colors hover:bg-ink-soft hover:border-ink-soft"
-          >
-            {site.tel}
-          </a>
+          <p className="mt-5 max-w-prose text-ink-soft">
+            새 소식은 인스타그램에 먼저 올립니다. 급한 문의는 전화가 가장 빠릅니다.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            {site.instagramUrl && (
+              <a
+                href={site.instagramUrl}
+                rel="noreferrer"
+                target="_blank"
+                className="btn-lift inline-block border border-ink bg-ink px-7 py-3 text-small text-paper transition-colors hover:bg-ink-soft"
+              >
+                인스타그램에서 보기<span className="sr-only"> (새 창)</span>
+              </a>
+            )}
+            <a
+              aria-label={`전화 걸기 ${site.tel}`}
+              href={`tel:${site.tel.replace(/-/g, "")}`}
+              className="pressable inline-block border border-ink/25 px-7 py-3 text-small transition-colors hover:border-mint-link hover:text-mint-link"
+            >
+              {site.tel}
+            </a>
+          </div>
         </div>
       ) : (
         <ul className="mt-12 divide-y divide-ink/10 border-y border-ink/10">

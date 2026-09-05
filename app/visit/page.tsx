@@ -42,8 +42,9 @@ export default function VisitPage() {
         */}
       <section className="mx-auto w-full max-w-6xl px-5 pt-10 lg:px-8 lg:pt-14">
           <SectionEyebrow phase={0.1}>{site.addressLocality} 징고샅길</SectionEyebrow>
-          <h1 className="mt-4 max-w-[16ch] text-h1 lg:text-h1-lg">
-            빚어 보러 오세요
+          <h1 className="mt-4 max-w-[16ch] text-h1 lg:text-hero">
+            <span className="block font-thin tracking-tight">빚어 보러</span>
+            <span className="block font-black tracking-tighter">오세요</span>
           </h1>
           <p className="mt-5 max-w-md text-ink-soft">
             떡을 파는 데 그치지 않고, 직접 만들고 맛보는 체험장을 함께 운영합니다. 학교와 단체가 자주 찾습니다.
@@ -142,10 +143,11 @@ export default function VisitPage() {
           <ol className="mt-9 grid gap-8 lg:grid-cols-3">
             {experience.steps.map((step, i) => (
               <li key={step.title} className="border-t-2 border-moon pt-5">
-                <p className="font-mono text-caption tracking-widest text-ink-faint">
+                {/* 번호가 곧 밀도다. 작은 캡션이 아니라 80px 로 세운다. */}
+                <p className="font-black leading-none tracking-tighter tabular-nums text-h1-lg lg:text-num">
                   {String(i + 1).padStart(2, "0")}
                 </p>
-                <h3 className="mt-2 text-lg">{step.title}</h3>
+                <h3 className="mt-4 text-lead font-bold">{step.title}</h3>
                 <p className="mt-2 text-small leading-relaxed text-ink-soft">
                   {step.detail}
                 </p>
@@ -164,14 +166,16 @@ export default function VisitPage() {
             <address className="mt-8 space-y-5 not-italic">
               <div>
                 <p className="text-caption text-paper/50">주소</p>
-                <p className="mt-1 text-lg">{site.address}</p>
+                <p className="mt-2 max-w-[18ch] font-light tracking-tight text-h3 lg:text-h2">
+                  {site.address}
+                </p>
               </div>
               <div>
                 <p className="text-caption text-paper/50">전화</p>
-                <p className="mt-1 text-lg">
+                <p className="mt-2 font-black tracking-tighter tabular-nums text-h3 lg:text-h2">
                   <a
                     aria-label={`전화 걸기 ${site.tel}`}
-                    className="underline decoration-paper/50 underline-offset-4 transition-colors hover:decoration-paper"
+                    className="underline decoration-paper/40 decoration-2 underline-offset-8 transition-colors hover:decoration-moon"
                     href={`tel:${site.tel.replace(/-/g, "")}`}
                   >
                     {site.tel}
@@ -181,7 +185,7 @@ export default function VisitPage() {
               {site.hours && (
                 <div>
                   <p className="text-caption text-paper/50">영업시간</p>
-                  <p className="mt-1 text-lg">{site.hours}</p>
+                  <p className="mt-2 font-light tracking-tight text-h3 lg:text-h2">{site.hours}</p>
                 </div>
               )}
               {site.closedDays && (

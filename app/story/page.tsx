@@ -21,10 +21,9 @@ export default function StoryPage() {
         */}
       <section className="mx-auto w-full max-w-6xl px-5 pt-10 lg:px-8 lg:pt-14">
           <SectionEyebrow phase={0.1}>맛의방주 등재 품목</SectionEyebrow>
-          <h1 className="mt-4 max-w-[16ch] text-h1 lg:text-h1-lg">
-            천금의 가치가
-              <br />
-              있다던 떡
+          <h1 className="mt-4 max-w-[16ch] text-h1 lg:text-hero">
+            <span className="block font-thin tracking-tight">천금의 가치가</span>
+            <span className="block font-black tracking-tighter">있다던 떡</span>
           </h1>
           <p className="mt-5 max-w-md text-ink-soft">
             한때 목사골 양반들의 이바지 떡으로 쓰일 만큼 귀한 대접을 받았고, 세월이 흐르며 자취를 감췄던 떡입니다.
@@ -42,26 +41,59 @@ export default function StoryPage() {
           </div>
       </section>
 
-      {/* 연표 — 달이 차오른다 */}
-      <section className="section-y rise mx-auto max-w-3xl px-5 lg:px-8">
-        <ol className="space-y-14">
-          {timeline.map((t) => (
-            <li key={t.title} className="flex gap-6">
-              <MoonMark phase={t.phase} size={32} className="mt-1 shrink-0 text-ink" />
-              <div>
-                <p className="text-caption text-ink-faint">{t.when}</p>
-                <h2 className="mt-1 text-2xl">{t.title}</h2>
-                <p className="mt-3 max-w-prose leading-relaxed text-ink-soft">
-                  {t.body}
-                </p>
-              </div>
-            </li>
-          ))}
-        </ol>
+      {/*
+        연표 — 달이 차오른다. 연도를 80px Black 으로 세워 숫자 자체가 밀도가 되게 한다.
+        "한때"는 숫자가 아니라 Thin 으로 — 굵기가 곧 "언제인지 안다/모른다"의 표시다.
+      */}
+      <section className="rise border-b border-ink/10">
+        <div className="section-y mx-auto max-w-6xl px-5 lg:px-8">
+          <SectionEyebrow phase={0.2}>연표</SectionEyebrow>
+          <ol className="mt-8 divide-y divide-ink/10 border-t border-ink/10">
+            {timeline.map((t) => {
+              const label = t.when.replace(/년$/, "");
+              const isYear = /^\d{4}$/.test(label);
+              return (
+                <li
+                  key={t.title}
+                  className="grid gap-4 py-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16 lg:py-14"
+                >
+                  <div className="flex items-start gap-5">
+                    <MoonMark phase={t.phase} size={28} className="mt-3 shrink-0 text-ink lg:mt-6" />
+                    <p
+                      className={
+                        isYear
+                          ? "font-black tracking-tighter tabular-nums text-h1-lg lg:text-num"
+                          : "font-thin tracking-tight text-h1-lg lg:text-num"
+                      }
+                    >
+                      {label}
+                      {isYear && (
+                        <span className="ml-1 text-lead font-light tracking-normal text-ink-soft">
+                          년
+                        </span>
+                      )}
+                    </p>
+                  </div>
+                  <div className="lg:pt-3">
+                    <h2 className="text-h3 font-bold lg:text-h2">{t.title}</h2>
+                    <p className="mt-4 max-w-prose leading-relaxed text-ink-soft">{t.body}</p>
+                  </div>
+                </li>
+              );
+            })}
+          </ol>
+        </div>
       </section>
 
       {/* 약재로서의 절굿대 */}
-      <section className="moonlit rise bg-ink text-paper">
+      <section className="moonlit rise overflow-hidden bg-ink text-paper">
+        {/* 워터마크. 큰 활자가 곧 질감이다 — 사진 없이 어두운 면을 채우는 법. */}
+        <p
+          aria-hidden
+          className="pointer-events-none absolute -right-3 -top-4 select-none font-extralight leading-none tracking-tighter text-paper/[0.06] text-[9rem] lg:-top-8 lg:text-[17rem]"
+        >
+          누로
+        </p>
         <div className="section-y relative mx-auto grid max-w-6xl gap-12 px-5 lg:grid-cols-2 lg:items-center lg:gap-20 lg:px-8">
           <div>
             <SectionEyebrow phase={0.4} tone="paper">약재로서의 절굿대</SectionEyebrow>
@@ -201,14 +233,21 @@ export default function StoryPage() {
 
         {/* 연혁 — 인증·표창·업무협약까지 사실로 뒷받침하는 자리 */}
         <div className="mt-20 border-t border-ink/10 pt-14">
-          <h2 className="text-h3 font-bold lg:text-h1">
-            Since 2016
+          <h2 className="text-h2 lg:text-h2-lg">
+            <span className="font-thin tracking-tight">Since </span>
+            <span className="font-black tracking-tighter tabular-nums">2016</span>
           </h2>
-          <ol className="mt-10 space-y-7">
+          {/* 연도를 크게 세운 장부. 인증·표창·협약이 연도 옆에 붙어야 사실로 읽힌다. */}
+          <ol className="mt-10">
             {history.map((h) => (
-              <li key={h.year} className="flex flex-col gap-1 sm:flex-row sm:gap-8">
-                <p className="w-16 shrink-0 font-semibold text-mocha">{h.year}</p>
-                <ul className="space-y-1.5 text-small leading-relaxed text-ink-soft">
+              <li
+                key={h.year}
+                className="grid gap-2 border-t border-ink/10 py-6 sm:grid-cols-[7rem_1fr] sm:gap-8 lg:py-7"
+              >
+                <p className="font-black tracking-tighter tabular-nums text-h2 lg:text-h2-lg">
+                  {h.year}
+                </p>
+                <ul className="space-y-2 text-small leading-relaxed text-ink-soft sm:pt-2">
                   {h.items.map((it) => (
                     <li key={it}>{it}</li>
                   ))}
