@@ -94,24 +94,29 @@ export default function HomePage() {
 
       {/* 2. 숫자 밴드 — 활자로 만드는 밀도. 전부 연표·제품 데이터에 있는 사실이다.
           80px 는 375px 2열에서 '2016' 과 '50' 이 겹친다 → 모바일은 48px.
+          <sm 은 2×2 가 아니라 장부 행(숫자 왼쪽·설명 오른쪽·실선) — 2×2 는 왼쪽 칸 내용이
+          더 넓어 가운데 골이 들쭉날쭉했다(리더 지적). 제품 페이지 PC ledger 와 같은 문법.
           PC 는 균등 4열이 아니라 내용 폭 열 + 균등 간격 — 균등 4열이면 '2016' 이 열을 꽉 채워
           옆 '50' 에 붙고 '50' 뒤는 비어, 간격이 들쭉날쭉했다(리더 지적). */}
       <section className="rise mx-auto max-w-6xl px-5 pt-16 lg:px-8 lg:pt-20">
-        <ul className="grid grid-cols-2 gap-y-10 border-y border-ink/10 py-10 lg:grid-cols-[repeat(4,auto)] lg:justify-between lg:py-12">
+        <ul className="border-y border-ink/10 sm:grid sm:grid-cols-2 sm:gap-y-10 sm:py-10 lg:grid-cols-[repeat(4,auto)] lg:justify-between lg:py-12">
           {[
             { n: "2016", unit: "년", label: "절굿대 육묘 국내 최초 성공" },
             { n: "50", unit: "년 만", label: "사라졌던 떡의 부활" },
             { n: "2022", unit: "년", label: "슬로푸드 맛의방주 등재" },
             { n: String(products.length), unit: "가지", label: "지금 빚는 떡" },
           ].map((s) => (
-            <li key={s.label} className="pr-6 lg:pr-0">
-              <p className="font-black tracking-tighter tabular-nums text-h1-lg lg:text-num">
+            <li
+              key={s.label}
+              className="flex items-baseline justify-between gap-6 border-t border-ink/10 py-5 first:border-t-0 sm:block sm:border-t-0 sm:py-0 sm:pr-6 lg:pr-0"
+            >
+              <p className="shrink-0 font-black tracking-tighter tabular-nums text-h1-lg lg:text-num">
                 {s.n}
                 <span className="ml-1 align-baseline text-lead font-light tracking-normal text-ink-soft">
                   {s.unit}
                 </span>
               </p>
-              <p className="mt-2 text-small text-ink-soft">{s.label}</p>
+              <p className="text-right text-small text-ink-soft sm:mt-2 sm:text-left">{s.label}</p>
             </li>
           ))}
         </ul>
