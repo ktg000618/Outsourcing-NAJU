@@ -24,7 +24,9 @@ type Props = {
  */
 export function LoopingVideo({ src, poster, label, round = false }: Props) {
   const ref = useRef<HTMLVideoElement>(null);
-  const [playing, setPlaying] = useState(true);
+  // 처음은 "멈춤"으로 둔다. autoplay 가 실제로 시작되면 onPlay 가 true 로 올린다 —
+  // 자동재생이 막힌 환경(절전 모드·데이터 절약)에서 ⏸ 를 보여 주던 거짓 상태를 막는다.
+  const [playing, setPlaying] = useState(false);
 
   // 모션을 줄이도록 설정한 사용자에게는 처음부터 멈춰 둔다.
   // pause() 는 외부 시스템(비디오 요소) 조작이라 effect 가 맞는 자리이고,
