@@ -149,9 +149,12 @@ export default function ProductsPage() {
                     </h2>
                     <p className="mt-1 text-small leading-relaxed text-ink-soft">{p.summary}</p>
                   </div>
-                  <p className="mt-1.5 self-start font-mono text-small tabular-nums text-ink-soft sm:mt-2 sm:self-auto lg:mt-0 lg:text-right">
-                    {p.price !== null ? `${p.price.toLocaleString("ko-KR")}원` : "전화 문의"}
-                  </p>
+                  {/* 가격이 없으면 자리표('전화 문의')도 없다 — 가격은 나중에 들어온다(리더 지시). */}
+                  {p.price !== null && (
+                    <p className="mt-1.5 self-start font-mono text-small tabular-nums text-ink-soft sm:mt-2 sm:self-auto lg:mt-0 lg:text-right">
+                      {`${p.price.toLocaleString("ko-KR")}원`}
+                    </p>
+                  )}
                 </Link>
               </li>
             ))}
