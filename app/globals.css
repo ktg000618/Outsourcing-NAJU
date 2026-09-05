@@ -70,6 +70,8 @@
   --text-h1--line-height: 1.2;              /* 36 */
   --text-h1-lg: 3rem;
   --text-h1-lg--line-height: 1.2;           /* 48 */
+  --text-display: 3.75rem;
+  --text-display--line-height: 1.1;         /* 60 — 홈 히어로 한 곳만. 1152px 틀에서 48 은 작다 */
 
   --font-sans: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", system-ui,
     sans-serif;
@@ -93,6 +95,8 @@
   }
 
   body {
+    /* 히어로 밖으로 걸친 달이 뷰포트를 넘는다. clip 은 hidden 과 달리 스크롤 컨테이너를 만들지 않는다. */
+    overflow-x: clip;
     /* 모바일 하단 고정 바(components/mobile-action-bar)가 자리를 차지하지
        않으므로, 그 높이만큼 아래를 비워야 푸터 마지막 줄이 안 가린다. */
     padding-bottom: 3.5rem;

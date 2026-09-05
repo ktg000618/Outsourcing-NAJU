@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { Metadata } from "next";
+import { SectionEyebrow } from "@/components/section-eyebrow";
 import { experience, site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -70,7 +71,8 @@ export default function VisitPage() {
       <section className="section-y rise mx-auto max-w-6xl px-5 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
-            <h2 className="text-h2 lg:text-h2-lg">
+            <SectionEyebrow phase={0.25}>절굿대떡 만들기 체험</SectionEyebrow>
+            <h2 className="mt-3 text-h2 lg:text-h2-lg">
               절굿대떡 만들기 체험
             </h2>
             <p className="mt-6 max-w-prose text-ink-soft">
@@ -139,7 +141,8 @@ export default function VisitPage() {
           문안과 체험 사진으로 확인된 세 단계만 적는다. */}
       <section className="rise bg-paper-2">
         <div className="section-y-tight mx-auto max-w-6xl px-5 lg:px-8">
-          <h2 className="text-h3 lg:text-h2-lg">
+          <SectionEyebrow phase={0.55}>이렇게 진행합니다</SectionEyebrow>
+          <h2 className="mt-3 text-h3 lg:text-h2-lg">
             이렇게 진행합니다
           </h2>
           <ol className="mt-9 grid gap-8 lg:grid-cols-3">
@@ -162,7 +165,8 @@ export default function VisitPage() {
       <section className="moonlit rise bg-ink text-paper">
         <div className="section-y relative mx-auto grid max-w-6xl gap-12 px-5 lg:grid-cols-2 lg:gap-16 lg:px-8">
           <div>
-            <h2 className="text-h2 lg:text-h2-lg">오시는 길</h2>
+            <SectionEyebrow phase={0.9} tone="paper">오시는 길</SectionEyebrow>
+            <h2 className="mt-3 text-h2 lg:text-h2-lg">오시는 길</h2>
             <address className="mt-8 space-y-5 not-italic">
               <div>
                 <p className="text-caption text-paper/50">주소</p>

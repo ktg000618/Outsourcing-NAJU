@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { site } from "@/lib/site";
+import { MoonMark } from "@/components/moon-mark";
 
 export const metadata: Metadata = {
   title: "페이지를 찾을 수 없습니다",
@@ -9,22 +9,14 @@ export const metadata: Metadata = {
 
 /**
  * 404. Next 기본 화면은 영문에 system-ui 라 이 사이트 안에서 이질적이었다.
- * 달토끼 엠블럼을 크게 두고, 갈 곳 셋만 놓는다 — 길 잃은 손님에게 메뉴를
+ * 빈 달(삭)을 두고, 갈 곳 셋만 놓는다 — 길 잃은 손님에게 메뉴를
  * 다 보여줄 필요는 없다.
  */
 export default function NotFound() {
   return (
     <section className="mx-auto flex max-w-3xl flex-col items-center px-5 pb-28 pt-20 text-center lg:px-8 lg:pb-36 lg:pt-28">
-      <div className="relative size-36 lg:size-44">
-        <Image
-          src="/brand/emblem.png"
-          alt=""
-          fill
-          sizes="176px"
-          className="object-contain"
-          priority
-        />
-      </div>
+      {/* 삭(빈 달) = 여기엔 떡이 없다. 엠블럼은 헤더로 갔으니 겹치지 않는다. */}
+      <MoonMark phase={0} size={96} className="text-ink" />
       <p className="mt-10 font-mono text-caption tracking-widest text-ink-faint">
         404
       </p>

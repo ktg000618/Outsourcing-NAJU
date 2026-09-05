@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { SectionEyebrow } from "@/components/section-eyebrow";
 import { credentials, products, site } from "@/lib/site";
 
 /**
@@ -24,6 +25,17 @@ export default function HomePage() {
           글자는 아래가 아니라 왼쪽 그늘 위에 앉는다.
         */}
       <section className="mx-auto w-full max-w-6xl px-5 pt-6 lg:px-8 lg:pt-8">
+        <div className="relative">
+          {/*
+            달. 사진을 못 바꾸는 조건에서 홈을 서브페이지와 갈라 놓는 유일한 수단은 구성이다.
+            엠블럼의 노란 달 원을 CSS 로 재현하면 첫 화면이 곧 로고가 된다.
+            단색 원 + 글로우만 — 테두리·얼굴·그라디언트를 얹는 순간 스티커가 된다.
+            프레임 밖으로 걸쳐야 한다(안에 넣어도 스티커). 이 크기의 달은 사이트에 이 한 곳뿐.
+          */}
+          <div
+            aria-hidden
+            className="absolute -right-4 -top-5 z-10 size-20 rounded-full bg-moon shadow-[0_0_60px_12px_rgba(223,192,93,0.35)] lg:-right-10 lg:-top-10 lg:size-36"
+          />
         <div className="relative isolate flex aspect-4/5 items-end overflow-hidden rounded-2xl bg-ink sm:aspect-16/10 lg:aspect-[1.79/1]">
           <Image
             src="/images/hero-maker-wide.jpg"
@@ -45,7 +57,7 @@ export default function HomePage() {
                 문구는 클라이언트가 쓰는 표현을 그대로 가져왔다.
                 크기·투명도·폭은 다른 페이지 히어로와 같은 값으로 맞췄다 —
                 네 번 복사하는 사이 여기만 32px/90%/max-w-sm 로 갈라져 있었다. */}
-            <h1 className="text-h1 text-paper lg:text-h1-lg">
+            <h1 className="text-h1 text-paper lg:text-display">
               <span className="block font-light tracking-tight">50년 만에 돌아온</span>
               <span className="block font-bold tracking-tight">나주의 절굿대떡</span>
             </h1>
@@ -55,11 +67,13 @@ export default function HomePage() {
             </p>
           </div>
         </div>
+        </div>
       </section>
 
       {/* 2. 대표 제품 */}
       <section className="rise mx-auto max-w-6xl px-5 pb-20 pt-12 lg:px-8 lg:pb-24 lg:pt-16">
-        <h2 className="text-center text-h3 font-bold lg:text-h1">대표 제품</h2>
+        <SectionEyebrow phase={0.15}>대표 제품</SectionEyebrow>
+        <h2 className="mt-3 text-center text-h3 font-bold lg:text-h1">대표 제품</h2>
         <ul className="mt-9 grid gap-x-6 gap-y-10 sm:grid-cols-3 lg:mt-12 lg:gap-x-8">
           {best.map((p) => (
             <li key={p.slug}>
@@ -163,7 +177,7 @@ export default function HomePage() {
 
       {/* 5. 브랜드 소개 */}
       <section className="section-y rise mx-auto max-w-3xl px-5 text-center lg:px-8">
-        <p className="text-caption text-mint-link">ABOUT</p>
+        <SectionEyebrow phase={0.6}>ABOUT</SectionEyebrow>
         <h2 className="mt-4 text-h2 font-light lg:text-h2-lg">
           천금의 가치가 있다던 떡
         </h2>
@@ -192,7 +206,8 @@ export default function HomePage() {
       {/* 6. 전체 제품 */}
       <section className="rise bg-paper-2">
         <div className="section-y mx-auto max-w-6xl px-5 lg:px-8">
-          <h2 className="text-center text-h3 font-bold lg:text-h1">
+          <SectionEyebrow phase={0.8}>빚는 것들</SectionEyebrow>
+          <h2 className="mt-3 text-center text-h3 font-bold lg:text-h1">
             빚는 것들
           </h2>
           <ul className="mt-12 grid grid-cols-2 gap-x-6 gap-y-12 lg:grid-cols-4 lg:gap-x-10">
