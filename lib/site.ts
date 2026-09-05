@@ -89,7 +89,17 @@ export type Product = {
    * 후기 영상. 루프가 아니라 눌러서 보는 것이라 네이티브 controls 를 쓴다
    * — 사람이 말하는 27초짜리를 자동 반복하면 산만하다.
    */
-  reviewVideo?: { src: string; poster: string; label: string; caption: string };
+  reviewVideo?: {
+    src: string;
+    poster: string;
+    label: string;
+    /** 굵은 줄 — 후기 본인의 말을 그대로. */
+    caption: string;
+    /** 출처·길이 한 줄. */
+    source: string;
+    /** 영상 속 말한 대목. 누르면 그 시점으로 간다. t 는 초. */
+    moments: { t: number; text: string }[];
+  };
   accent: "signage" | "bojagi" | "gift";
 };
 
@@ -161,7 +171,16 @@ export const products: Product[] = [
       src: "/video/review.mp4",
       poster: "/video/review-poster.jpg",
       label: "나주배 촉촉오란다를 손에 들고 소개하는 후기 영상",
-      caption: "영양간식으로 드시는 분이 많습니다",
+      caption: "진짜 영양간식임!",
+      source: "남도장터 구매 고객이 올린 영상 · 27초 · 자막 있음",
+      /* 영상에 박힌 자막을 그대로 옮겼다(1초 간격 프레임 OCR). 시점은 그 말이 시작되는 초. */
+      moments: [
+        { t: 9, text: "딱딱하지 않고, 겉바속촉 쫀득한 식감에" },
+        { t: 12, text: "6가지 견과류까지 들어가 있어서 진짜 영양간식" },
+        { t: 15, text: "개별 포장이라 가방에 하나씩 넣고 다니기 딱 좋음" },
+        { t: 18, text: "쫀득하고 부드럽고, 치아 사이에 끼지 않아서" },
+        { t: 21, text: "요즘 아침 식사 대용으로 하나씩 챙겨 먹는 중" },
+      ],
     },
     accent: "bojagi",
   },

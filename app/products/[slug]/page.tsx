@@ -190,27 +190,21 @@ export default async function ProductPage({
       {product.reviewVideo && (
         /*
           후기는 어두운 달빛 면 위에. 종이색 밴드 안의 기본 <video> 는 사이트 밖 물건처럼
-          보였다(리더 지적). 인용은 얇은 줄/굵은 줄 문법, 영상은 포스터 + 원형 ▶ 로.
-          모바일은 글 먼저, 영상은 가운데 280px — 세로 영상이 전폭이면 한 화면을 다 먹는다.
+          보였다(리더 지적). 굵은 줄은 후기 본인의 말, 그 아래 "말한 대목" 목록은 누르면 그
+          시점으로 간다. 모바일은 글·대목 먼저, 영상은 가운데 280px.
         */
         <section className="moonlit rise overflow-hidden bg-ink text-paper">
-          <div className="section-y relative mx-auto grid max-w-6xl items-center gap-10 px-5 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-20 lg:px-8">
-            <div>
+          <div className="section-y relative mx-auto max-w-6xl px-5 lg:px-8">
+            <ReviewVideo {...product.reviewVideo}>
               <SectionEyebrow phase={0.75} tone="paper">
                 후기 영상
               </SectionEyebrow>
               <p className="mt-5 text-h2 tracking-tight lg:text-h2-lg">
-                <span className="block font-thin">영상으로 보는 후기.</span>
-                <span className="block font-black">{product.reviewVideo.caption}</span>
+                <span className="block font-thin">직접 드셔 본 분의 말.</span>
+                <span className="block font-black">「{product.reviewVideo.caption}」</span>
               </p>
-              <p className="mt-6 max-w-prose text-paper/75">
-                합성첨가물과 색소, 방부제를 넣지 않고 낱개로 포장합니다.
-                아이 간식이나 어른 답례로 두루 나갑니다.
-              </p>
-            </div>
-            <div className="mx-auto w-full max-w-[280px] lg:mx-0 lg:w-[320px] lg:max-w-none">
-              <ReviewVideo {...product.reviewVideo} />
-            </div>
+              <p className="mt-5 text-caption text-paper/55">{product.reviewVideo.source}</p>
+            </ReviewVideo>
           </div>
         </section>
       )}
