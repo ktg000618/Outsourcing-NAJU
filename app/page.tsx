@@ -95,12 +95,12 @@ export default function HomePage() {
       </section>
 
       {/* 3. 쓰임새 마퀴 — 떡은 "무엇인가"보다 "언제 쓰는가"로 찾는다 */}
-      <div aria-hidden className="marquee mt-16 lg:mt-20">
+      <div aria-hidden className="marquee mt-16 py-2 lg:mt-20 lg:py-3">
         <div className="marquee__track gap-10 px-5">
           {[...occasions, ...occasions].map((o, i) => (
             <span
               key={`${o}-${i}`}
-              className="outline-text font-black tracking-tight text-h1-lg lg:text-hero"
+              className="outline-text font-black tracking-normal text-h1-lg lg:text-hero"
             >
               {o}
               <span className="ml-10 text-moon [-webkit-text-stroke:0]">·</span>
