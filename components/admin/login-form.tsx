@@ -11,9 +11,13 @@ export function LoginForm({ next }: { next: string }) {
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
 
+  const label = "mb-2 block text-caption tracking-[0.04em] text-ink-faint";
+  const field =
+    "w-full border border-ink/20 bg-paper px-3.5 py-3 text-body outline-none transition-colors placeholder:text-ink/30 focus:border-ink";
+
   return (
     <form
-      className="mt-8 space-y-4"
+      className="mt-8 space-y-5"
       onSubmit={async (e) => {
         e.preventDefault();
         setBusy(true);
@@ -32,26 +36,34 @@ export function LoginForm({ next }: { next: string }) {
         window.location.assign(next);
       }}
     >
-      <label className="block">
-        <span className="text-caption text-ink-faint">이메일</span>
+      <div>
+        <label htmlFor="login-email" className={label}>
+          이메일
+        </label>
         <input
+          id="login-email"
           name="email"
           type="email"
           autoComplete="username"
+          inputMode="email"
           required
-          className="mt-1 w-full border border-ink/25 bg-paper px-3 py-2.5 text-body outline-none focus:border-ink"
+          placeholder="name@example.com"
+          className={field}
         />
-      </label>
-      <label className="block">
-        <span className="text-caption text-ink-faint">비밀번호</span>
+      </div>
+      <div>
+        <label htmlFor="login-password" className={label}>
+          비밀번호
+        </label>
         <input
+          id="login-password"
           name="password"
           type="password"
           autoComplete="current-password"
           required
-          className="mt-1 w-full border border-ink/25 bg-paper px-3 py-2.5 text-body outline-none focus:border-ink"
+          className={field}
         />
-      </label>
+      </div>
       {error && (
         <p role="alert" className="text-small text-rose-deep">
           {error}
@@ -60,7 +72,7 @@ export function LoginForm({ next }: { next: string }) {
       <button
         type="submit"
         disabled={busy}
-        className="btn-lift w-full border border-ink bg-ink px-7 py-3 text-small text-paper transition-colors hover:bg-ink-soft disabled:opacity-60"
+        className="btn-lift w-full border border-ink bg-ink px-7 py-3.5 text-small text-paper transition-colors hover:bg-ink-soft disabled:opacity-60"
       >
         {busy ? "확인 중…" : "들어가기"}
       </button>
