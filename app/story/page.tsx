@@ -108,7 +108,7 @@ export default function StoryPage() {
         한 줄도 없었다. 인증 배지만 걸어 두는 것보다 무엇을 하는지가 강하다.
       */}
       <section className="rise">
-        <div className="relative aspect-[3.12/1] w-full">
+        <div className="relative aspect-[3.19/1] w-full">
           <Image
             src="/images/thistle-field.jpg"
             alt="검정 멀칭 위로 줄지어 자라는 절굿대 밭"
