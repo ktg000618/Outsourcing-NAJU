@@ -21,7 +21,7 @@ export function SiteFooter() {
             alt={site.name}
             width={640}
             height={735}
-            className="h-28 w-auto lg:h-44"
+            className="h-36 w-auto lg:h-60"
           />
           <p className="mt-6 max-w-xs text-small leading-relaxed">
             {site.tagline} · {site.since}년부터 나주에서
