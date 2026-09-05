@@ -106,24 +106,21 @@ export default function StoryPage() {
       {/*
         사회적기업으로서 하는 일. 클라이언트가 상세페이지에 쓴 원문인데 사이트에는
         한 줄도 없었다. 인증 배지만 걸어 두는 것보다 무엇을 하는지가 강하다.
+
+        사진은 일부러 안 넣었다. 이 이야기에 맞는 컷은 밭에서 일하는 사람인데
+        가진 사진이 원본 2600px 이라 전폭으로 깔면 레티나에서 뭉갠다. 밭만
+        찍힌 컷은 검정 멀칭이 화면 절반이라 더 나빴다. 흐린 전폭 사진보다
+        사진 없는 편이 낫다 — 재촬영 때 이 자리를 채운다.
       */}
-      <section className="rise">
-        <div className="relative aspect-[2.31/1] w-full">
-          <Image
-            src="/images/growers-band.jpg"
-            alt="밭에서 갓 딴 절굿대를 소쿠리에 담아 든 두 사람"
-            fill
-            sizes="100vw"
-            quality={90}
-            className="object-cover"
-          />
-        </div>
+      <section className="rise bg-paper-2">
         <div className="section-y mx-auto max-w-6xl px-5 lg:px-8">
           <p className="text-caption text-mint-link lg:text-small">
             사회적기업 인증 제2023-247호
           </p>
-          <h2 className="mt-3 text-h2 lg:text-h2-lg">씨앗을 나눕니다</h2>
-          <div className="mt-8 grid gap-10 lg:grid-cols-2 lg:gap-16">
+          <h2 className="mt-3 max-w-[16ch] text-h2 lg:text-h2-lg">
+            씨앗을 나누고, 일자리로 돌려드립니다
+          </h2>
+          <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:gap-20">
             <div className="space-y-5 text-ink-soft">
               <p className="max-w-prose">
                 씨앗을 나누어 드리고, 소규모 농가에서 직접 재배할 수 있도록
@@ -137,19 +134,16 @@ export default function StoryPage() {
               </p>
             </div>
             {/* 연혁에 흩어져 있던 협약을 한자리에. 말이 아니라 이름으로 뒷받침한다. */}
-            <ul className="space-y-5 border-t border-ink/15 pt-6 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0">
+            <ul className="space-y-6 border-t border-ink/15 pt-7 lg:border-l lg:border-t-0 lg:pl-14 lg:pt-1">
               {[
                 { year: "2020", body: "장애인복지관·나주시다문화가족센터 등 사회복지시설 업무협약" },
                 { year: "2021", body: "전라남도지사 표창 (사회복지부문)" },
                 { year: "2023", body: "나주시 여성새로일하기센터·국립나주숲체원 업무협약" },
               ].map((r) => (
-                <li key={r.year} className="flex gap-5">
-                  <span className="w-12 shrink-0 font-mono text-small text-moon">
-                    {r.year}
-                  </span>
-                  <span className="text-small leading-relaxed text-ink-soft">
-                    {r.body}
-                  </span>
+                <li key={r.year}>
+                  <span aria-hidden className="mb-2 block h-px w-8 bg-moon" />
+                  <p className="font-mono text-caption text-ink-faint">{r.year}</p>
+                  <p className="mt-1 text-small leading-relaxed">{r.body}</p>
                 </li>
               ))}
             </ul>
