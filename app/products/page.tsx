@@ -115,33 +115,37 @@ export default function ProductsPage() {
             </p>
           </Link>
 
-          <ul className="grid grid-cols-2 gap-x-5 gap-y-9 sm:grid-cols-3 lg:gap-x-6">
+          {/*
+            PC 에서는 세로 장부. 작은 원 셋을 위에만 얹으면 큰 원 옆 아래 절반이 비고
+            크기 차이(500 vs 110px)가 극단적이었다. 한 줄에 원·이름·가격을 놓아
+            오른쪽 기둥이 큰 원과 같은 높이로 선다. 모바일은 원형 2열 그대로.
+          */}
+          <ul className="grid grid-cols-2 gap-x-5 gap-y-9 sm:grid-cols-3 lg:flex lg:flex-col lg:gap-0 lg:divide-y lg:divide-ink/10 lg:border-y lg:border-ink/10">
             {rest.map((p) => (
               <li key={p.slug}>
-                <Link href={`/products/${p.slug}`} className="group pressable block">
+                <Link
+                  href={`/products/${p.slug}`}
+                  className="group pressable block lg:grid lg:grid-cols-[7rem_minmax(0,1fr)_auto] lg:items-center lg:gap-8 lg:py-7"
+                >
                   <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-inset ring-ink/8 transition-[box-shadow] duration-300 group-hover:ring-mint">
                     <Image
                       src={p.image}
-                      alt={p.name}
+                      alt=""
                       fill
-                      sizes="(min-width: 1024px) 20vw, 45vw"
+                      sizes="(min-width: 1024px) 112px, 45vw"
                       quality={88}
                       className="object-cover transition-transform duration-700 ease-[cubic-bezier(.2,.7,.2,1)] group-hover:scale-[1.03]"
                     />
                   </div>
-                  <h2 className="mt-4 text-lg transition-colors group-hover:text-mint-link">{p.name}</h2>
-                  <p className="mt-0.5 text-caption leading-relaxed text-ink-soft">
-                    {p.summary}
+                  <div className="mt-4 lg:mt-0">
+                    <h2 className="text-lead font-bold transition-colors group-hover:text-mint-link">
+                      {p.name}
+                    </h2>
+                    <p className="mt-1 text-small leading-relaxed text-ink-soft">{p.summary}</p>
+                  </div>
+                  <p className="mt-2 font-mono text-small tabular-nums text-ink-soft lg:mt-0 lg:text-right">
+                    {p.price !== null ? `${p.price.toLocaleString("ko-KR")}원` : "전화 문의"}
                   </p>
-                  {p.price !== null ? (
-                    <p className="mt-2 font-medium">
-                      {p.price.toLocaleString("ko-KR")}원
-                    </p>
-                  ) : (
-                    <p className="mt-2 text-caption text-ink-soft">
-                      가격 전화 문의
-                    </p>
-                  )}
                 </Link>
               </li>
             ))}
