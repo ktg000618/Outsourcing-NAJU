@@ -44,13 +44,15 @@ export default function VisitPage() {
         */}
       <section className="mx-auto w-full max-w-6xl px-5 pt-10 lg:px-8 lg:pt-14">
           <SectionEyebrow phase={0.1}>{site.addressLocality} 징고샅길</SectionEyebrow>
-          <h1 className="mt-4 max-w-[16ch] text-h1 lg:text-hero">
+          <div className="mt-4 lg:grid lg:grid-cols-[7fr_5fr] lg:items-end lg:gap-16">
+            <h1 className="max-w-[16ch] text-h1 lg:text-hero">
             <span className="block font-thin tracking-tight">빚어 보러</span>
             <span className="block font-black tracking-tighter">오세요</span>
           </h1>
-          <p className="mt-5 max-w-md text-ink-soft">
+            <p className="mt-5 max-w-md text-ink-soft lg:mt-0 lg:pb-3">
             떡을 파는 데 그치지 않고, 직접 만들고 맛보는 체험장을 함께 운영합니다. 학교와 단체가 자주 찾습니다.
           </p>
+          </div>
           <div className="relative mt-10 aspect-4/3 overflow-hidden rounded-2xl bg-paper-2 sm:aspect-16/9 lg:aspect-[2.6/1] lg:mt-12 ring-1 ring-inset ring-ink/5">
             <Image
               src="/images/owners-counter.jpg"
@@ -172,7 +174,7 @@ export default function VisitPage() {
       <section className="moonlit rise bg-ink text-paper">
         <div className="section-y relative mx-auto grid max-w-6xl gap-12 px-5 lg:grid-cols-2 lg:gap-16 lg:px-8">
           <div>
-            <SectionEyebrow phase={0.9} tone="paper">매장</SectionEyebrow>
+            <SectionEyebrow phase={1} tone="paper">매장</SectionEyebrow>
             <h2 className="mt-3 text-h2 lg:text-h2-lg">오시는 길</h2>
             <address className="mt-8 space-y-5 not-italic">
               <div>
@@ -202,7 +204,7 @@ export default function VisitPage() {
               {site.closedDays && (
                 <div>
                   <p className="text-caption text-paper/50">휴무</p>
-                  <p className="mt-1 text-lg">{site.closedDays}</p>
+                  <p className="mt-1 text-lead">{site.closedDays}</p>
                 </div>
               )}
             </address>

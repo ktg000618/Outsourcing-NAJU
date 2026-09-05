@@ -65,7 +65,7 @@ export default async function ProductPage({
       <div className="mx-auto max-w-6xl px-5 pt-8 lg:px-8 lg:pt-12">
         <Link
           href="/products"
-          className="text-caption text-ink-soft transition-colors hover:text-mint-link"
+          className="link-draw text-small text-ink-soft transition-colors hover:text-mint-link"
         >
           제품 전체
         </Link>
@@ -79,18 +79,24 @@ export default async function ProductPage({
           lg 에서 self-start 가 필수 — grid 가 첫 열을 오른쪽 글 높이로 늘리면 bottom-0 이
           원 밑이 아니라 열 바닥이 된다(실측 402px 낙하).
         */}
-        <div className={`relative lg:self-start ${product.video ? "pb-8 lg:pb-12" : ""}`}>
-          <ViewTransition name={`product-${product.slug}`} share="morph" default="none">
-            <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-inset ring-ink/8 transition-[box-shadow] duration-300 group-hover:ring-mint">
-            <Image
-              src={product.image}
-              alt={product.name}
-              fill
-              priority
-              sizes="(min-width: 1024px) 45vw, 90vw"
-              quality={88}
-              className="object-cover"
-            />
+        <div
+          className={`relative lg:self-start ${product.video || product.gallery ? "pb-8 lg:pb-12" : ""}`}
+        >
+          <ViewTransition
+            name={`product-${product.slug}`}
+            share="morph"
+            default="none"
+          >
+            <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-ink/8 transition-[box-shadow] duration-300 group-hover:ring-2 group-hover:ring-mint-deep group-hover:ring-offset-4 group-hover:ring-offset-paper">
+              <Image
+                src={product.image}
+                alt={product.name}
+                fill
+                priority
+                sizes="(min-width: 1024px) 45vw, 90vw"
+                quality={88}
+                className="object-cover"
+              />
             </div>
           </ViewTransition>
           {product.video && (
@@ -99,18 +105,19 @@ export default async function ProductPage({
             </div>
           )}
           {product.gallery && (
-            /* 보조 컷도 원. 한 장이면 3열 중 첫 칸에 작게 — 전폭 원은 메인과 겹쳐 보인다. */
-            <ul className="mt-4 grid grid-cols-3 gap-4">
+            /* 보조 컷도 영상과 같은 자리 — 큰 원 오른쪽 아래에 걸친 작은 원. 3열 첫 칸에 떨어뜨리면
+               같은 "보조 컷"이 제품마다 다른 문법이 된다. 두 장이면 세로로 쌓인다. */
+            <ul className="absolute bottom-0 right-0 grid w-[44%] gap-3 lg:-right-4 lg:w-[40%]">
               {product.gallery.map((g) => (
                 <li
                   key={g.src}
-                  className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-inset ring-ink/8 transition-[box-shadow] duration-300 group-hover:ring-mint"
+                  className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-[6px] ring-paper lg:ring-8"
                 >
                   <Image
                     src={g.src}
                     alt={g.alt}
                     fill
-                    sizes="(min-width: 1024px) 45vw, 90vw"
+                    sizes="(min-width: 1024px) 220px, 40vw"
                     quality={88}
                     className="object-cover"
                   />
@@ -135,7 +142,7 @@ export default async function ProductPage({
           <h1 className="mt-5 font-black tracking-tighter text-h1 lg:text-hero">
             {product.name}
           </h1>
-          <p className="mt-3 text-lg text-ink-soft">{product.summary}</p>
+          <p className="mt-3 text-lead text-ink-soft">{product.summary}</p>
 
           {product.price !== null && (
             /* 가격은 이 페이지에서 가장 중요한 숫자다. 홈 숫자 밴드와 같은 규격으로. */
@@ -168,14 +175,14 @@ export default async function ProductPage({
                 href={product.storeUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-block border border-ink bg-ink px-8 py-3.5 text-paper btn-lift transition-colors hover:bg-ink-soft hover:border-ink-soft"
+                className="btn-lift inline-block border border-ink bg-ink px-7 py-3 text-small text-paper transition-colors hover:border-ink-soft hover:bg-ink-soft"
               >
                 네이버 스마트스토어에서 구매
               </a>
             ) : (
               <a
                 href={`tel:${site.tel.replace(/-/g, "")}`}
-                className="inline-block border border-ink bg-ink px-8 py-3.5 text-paper btn-lift transition-colors hover:bg-ink-soft hover:border-ink-soft"
+                className="btn-lift inline-block border border-ink bg-ink px-7 py-3 text-small text-paper transition-colors hover:border-ink-soft hover:bg-ink-soft"
               >
                 전화로 주문 {site.tel}
               </a>
@@ -201,9 +208,13 @@ export default async function ProductPage({
               </SectionEyebrow>
               <p className="mt-5 text-h2 tracking-tight lg:text-h2-lg">
                 <span className="block font-thin">직접 드셔 본 분의 말.</span>
-                <span className="block font-black">「{product.reviewVideo.caption}」</span>
+                <span className="block font-black">
+                  「{product.reviewVideo.caption}」
+                </span>
               </p>
-              <p className="mt-5 text-caption text-paper/55">{product.reviewVideo.source}</p>
+              <p className="mt-5 text-caption text-paper/55">
+                {product.reviewVideo.source}
+              </p>
             </ReviewVideo>
           </div>
         </section>
@@ -211,21 +222,30 @@ export default async function ProductPage({
 
       <section className="rise border-t border-ink/10">
         <div className="section-y-tight mx-auto max-w-6xl px-5 lg:px-8">
-          <h2 className="text-2xl">다른 제품</h2>
-          <ul className="mt-8 grid grid-cols-3 gap-x-4 gap-y-8 sm:gap-x-5 lg:grid-cols-4 lg:gap-x-8">
+          <SectionEyebrow phase={1}>다른 제품</SectionEyebrow>
+          <h2 className="mt-3 text-h2 lg:text-h2-lg">다른 제품</h2>
+          {/* 제품 4개 − 현재 1 = 항상 3개. 4열이면 마지막 칸이 늘 빈다. */}
+          <ul className="mt-8 grid grid-cols-3 gap-x-4 gap-y-8 sm:gap-x-5 lg:gap-x-10">
             {others.map((p) => (
               <li key={p.slug}>
-                <Link href={`/products/${p.slug}`} className="group pressable block">
-                  <ViewTransition name={`product-${p.slug}`} share="morph" default="none">
-                    <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-inset ring-ink/8 transition-[box-shadow] duration-300 group-hover:ring-mint">
-                    <Image
-                      src={p.image}
-                      alt={p.name}
-                      fill
-                      sizes="(min-width: 1024px) 22vw, 30vw"
-                      quality={88}
-                      className="object-cover transition-transform duration-700 ease-[cubic-bezier(.2,.7,.2,1)] group-hover:scale-[1.03]"
-                    />
+                <Link
+                  href={`/products/${p.slug}`}
+                  className="group pressable block"
+                >
+                  <ViewTransition
+                    name={`product-${p.slug}`}
+                    share="morph"
+                    default="none"
+                  >
+                    <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-ink/8 transition-[box-shadow] duration-300 group-hover:ring-2 group-hover:ring-mint-deep group-hover:ring-offset-4 group-hover:ring-offset-paper">
+                      <Image
+                        src={p.image}
+                        alt={p.name}
+                        fill
+                        sizes="(min-width: 1024px) 22vw, 30vw"
+                        quality={88}
+                        className="object-cover transition-transform duration-700 ease-[cubic-bezier(.2,.7,.2,1)] group-hover:scale-[1.03]"
+                      />
                     </div>
                   </ViewTransition>
                   <p className="mt-3 text-center text-small transition-colors group-hover:text-mint-link sm:mt-4 sm:text-lg">

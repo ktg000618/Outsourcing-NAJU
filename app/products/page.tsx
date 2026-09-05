@@ -35,13 +35,16 @@ export default function ProductsPage() {
         */}
       <section className="mx-auto w-full max-w-6xl px-5 pt-10 lg:px-8 lg:pt-14">
           <SectionEyebrow phase={0.1}>제품</SectionEyebrow>
-          <h1 className="mt-4 max-w-[16ch] text-h1 lg:text-hero">
+          <div className="mt-4 lg:grid lg:grid-cols-[7fr_5fr] lg:items-end lg:gap-16">
+            <h1 className="max-w-[16ch] text-h1 lg:text-hero">
             <span className="block font-thin tracking-tight">나주에서</span>
             <span className="block font-black tracking-tighter">빚는 것들</span>
           </h1>
-          <p className="mt-5 max-w-md text-ink-soft">
+            <p className="mt-5 max-w-md text-ink-soft lg:mt-0 lg:pb-3">
             이바지·명절·답례에 두루 나갑니다. 낱개 포장이라 나눠 드리기 좋습니다.
+            유화제나 인공감미료 없이 무농약 절굿대와 나주배 농축액으로만 단맛을 냅니다.
           </p>
+          </div>
           <div className="relative mt-10 aspect-4/3 overflow-hidden rounded-2xl bg-paper-2 sm:aspect-16/9 lg:aspect-[2/1] lg:mt-12 ring-1 ring-inset ring-ink/5">
             <Image
               src="/images/product-gift-scene.jpg"
@@ -54,13 +57,6 @@ export default function ProductsPage() {
             />
           </div>
       </section>
-
-      <header className="rise mx-auto max-w-6xl px-5 pb-12 pt-14 lg:px-8 lg:pb-16 lg:pt-20">
-        <p className="max-w-prose text-ink-soft">
-          유화제나 인공감미료를 넣지 않습니다. 무농약으로 기른 절굿대와
-          나주배 농축액으로만 단맛을 냅니다.
-        </p>
-      </header>
 
       {/* 쓰임새 → 제품. 떡은 "무엇인가"보다 "언제 쓰는가"로 찾는 손님이 많다. */}
       <section className="rise mx-auto max-w-6xl px-5 pb-16 lg:px-8 lg:pb-20">
@@ -97,7 +93,7 @@ export default function ProductsPage() {
           {/* 이 원이 제품 페이지에서 가장 큰 브랜드 형태다. 글자는 사진 위가 아니라 아래. */}
           <Link href={`/products/${lead.slug}`} className="group pressable block">
             <ViewTransition name={`product-${lead.slug}`} share="morph" default="none">
-              <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-inset ring-ink/8 transition-[box-shadow] duration-300 group-hover:ring-mint">
+              <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-ink/8 transition-[box-shadow] duration-300 group-hover:ring-2 group-hover:ring-mint-deep group-hover:ring-offset-4 group-hover:ring-offset-paper">
               <Image
                 src={lead.image}
                 alt=""
@@ -109,7 +105,7 @@ export default function ProductsPage() {
               />
               </div>
             </ViewTransition>
-            <h2 className="mt-6 text-2xl transition-colors group-hover:text-mint-link lg:text-3xl">
+            <h2 className="mt-6 text-h3 transition-colors group-hover:text-mint-link lg:text-h2">
               {lead.name}
             </h2>
             <p className="mt-1.5 text-small text-ink-soft">{lead.summary}</p>
@@ -132,7 +128,7 @@ export default function ProductsPage() {
                   className="group pressable grid grid-cols-[5rem_minmax(0,1fr)] items-center gap-x-5 py-5 sm:block sm:py-0 lg:grid lg:grid-cols-[7rem_minmax(0,1fr)_auto] lg:gap-8 lg:py-7"
                 >
                   <ViewTransition name={`product-${p.slug}`} share="morph" default="none">
-                    <div className="relative row-span-2 aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-inset ring-ink/8 transition-[box-shadow] duration-300 group-hover:ring-mint sm:row-auto">
+                    <div className="relative row-span-2 aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-ink/8 transition-[box-shadow] duration-300 group-hover:ring-2 group-hover:ring-mint-deep group-hover:ring-offset-4 group-hover:ring-offset-paper sm:row-auto">
                     <Image
                       src={p.image}
                       alt=""
@@ -151,7 +147,7 @@ export default function ProductsPage() {
                   </div>
                   {/* 가격이 없으면 자리표('전화 문의')도 없다 — 가격은 나중에 들어온다(리더 지시). */}
                   {p.price !== null && (
-                    <p className="mt-1.5 self-start font-mono text-small tabular-nums text-ink-soft sm:mt-2 sm:self-auto lg:mt-0 lg:text-right">
+                    <p className="mt-1.5 self-start text-small tabular-nums text-ink-soft sm:mt-2 sm:self-auto lg:mt-0 lg:text-right">
                       {`${p.price.toLocaleString("ko-KR")}원`}
                     </p>
                   )}
@@ -168,31 +164,40 @@ export default function ProductsPage() {
           <h2 className="mt-3 text-h3 lg:text-h2-lg">
             주문하는 방법
           </h2>
-          <ul className="mt-9 grid gap-8 lg:grid-cols-3">
+          {/* 스토어 주소가 없는 동안은 두 열 — "준비 중입니다" 자리표를 주문 섹션 한가운데 두지 않는다. */}
+          <ul className={`mt-9 grid gap-8 ${site.storeUrl ? "lg:grid-cols-3" : "lg:grid-cols-2"}`}>
             <li className="border-t-2 border-moon pt-5">
-              <h3 className="text-lg">전화 주문</h3>
+              <h3 className="text-lead">전화 주문</h3>
               <p className="mt-2 text-small leading-relaxed text-ink-soft">
                 수량과 구성을 상의해 정합니다. 이바지·예단처럼 구성이 정해지지
                 않은 주문은 이쪽이 빠릅니다.
               </p>
               <a
                 aria-label={`전화 걸기 ${site.tel}`}
-                className="btn-lift mt-4 inline-block border border-ink bg-ink px-6 py-2.5 text-small text-paper transition-colors hover:bg-ink-soft"
+                className="btn-lift mt-4 inline-block border border-ink bg-ink px-7 py-3 text-small text-paper transition-colors hover:bg-ink-soft"
                 href={`tel:${site.tel.replace(/-/g, "")}`}
               >
                 {site.tel}
               </a>
             </li>
-            <li className="border-t-2 border-mint pt-5">
-              <h3 className="text-lg">네이버 스마트스토어</h3>
-              <p className="mt-2 text-small leading-relaxed text-ink-soft">
-                구성이 정해진 제품은 스토어에서 바로 결제하실 수 있습니다.
-              </p>
-              {/* TODO(클라이언트): 스토어 주소 수령 후 링크로 교체. */}
-              <p className="mt-4 text-small text-ink-faint">준비 중입니다</p>
-            </li>
+            {site.storeUrl && (
+              <li className="border-t-2 border-mint pt-5">
+                <h3 className="text-lead">네이버 스마트스토어</h3>
+                <p className="mt-2 text-small leading-relaxed text-ink-soft">
+                  구성이 정해진 제품은 스토어에서 바로 결제하실 수 있습니다.
+                </p>
+                <a
+                  href={site.storeUrl}
+                  rel="noreferrer"
+                  target="_blank"
+                  className="link-draw mt-4 inline-block text-small"
+                >
+                  스토어로 가기<span className="sr-only"> (새 창)</span>
+                </a>
+              </li>
+            )}
             <li className="border-t-2 border-rose pt-5">
-              <h3 className="text-lg">매장 방문</h3>
+              <h3 className="text-lead">매장 방문</h3>
               <p className="mt-2 text-small leading-relaxed text-ink-soft">
                 {site.address}
                 <br />
@@ -211,13 +216,13 @@ export default function ProductsPage() {
 
       {/* 제품별 spec 에만 흩어져 있던 보관·해동을 한자리에. 가장 많이 묻는 것이다. */}
       <section className="section-y-tight rise mx-auto max-w-6xl px-5 lg:px-8">
-        <SectionEyebrow phase={0.85}>보관</SectionEyebrow>
+        <SectionEyebrow phase={1}>보관</SectionEyebrow>
         <h2 className="mt-3 text-h3 lg:text-h2-lg">
           보관과 해동
         </h2>
         <div className="mt-8 grid gap-x-12 gap-y-8 lg:grid-cols-2">
           <div>
-            <h3 className="text-lg">떡 — 절굿대떡·제비쑥떡</h3>
+            <h3 className="text-lead">떡 — 절굿대떡·제비쑥떡</h3>
             <dl className="mt-4 divide-y divide-ink/10 border-y border-ink/10 text-small">
               <div className="flex gap-6 py-4">
                 <dt className="w-20 shrink-0 text-ink-faint">보관</dt>
@@ -239,7 +244,7 @@ export default function ProductsPage() {
             </dl>
           </div>
           <div>
-            <h3 className="text-lg">오란다 — 나주배 촉촉오란다</h3>
+            <h3 className="text-lead">오란다 — 나주배 촉촉오란다</h3>
             <dl className="mt-4 divide-y divide-ink/10 border-y border-ink/10 text-small">
               <div className="flex gap-6 py-4">
                 <dt className="w-20 shrink-0 text-ink-faint">소비기한</dt>

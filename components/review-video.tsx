@@ -59,7 +59,7 @@ export function ReviewVideo({ src, poster, label, moments, children }: Props) {
                   }`}
                 >
                   <span
-                    className={`w-10 shrink-0 font-mono text-caption tabular-nums ${
+                    className={`w-10 shrink-0 text-caption tabular-nums ${
                       active ? "text-moon" : "text-paper/45"
                     }`}
                   >

@@ -49,7 +49,7 @@ export default function HomePage() {
           {/* 세로 라벨. 편집 디자인의 여백은 비어 있지 않고 작은 글자가 지킨다. */}
           <p
             aria-hidden
-            className="absolute -left-9 top-8 hidden font-mono text-caption tracking-[0.3em] text-ink-faint [writing-mode:vertical-rl] lg:block"
+            className="absolute -left-9 top-8 hidden text-caption tracking-[0.3em] text-ink-faint [writing-mode:vertical-rl] lg:block"
           >
             SINCE {site.since} — NAJU
           </p>
@@ -160,7 +160,7 @@ export default function HomePage() {
               {/* 가운데 원만 내려서 비대칭 — 셋이 나란하면 스톡 템플릿이다 */}
               <Link href={`/products/${p.slug}`} className="group pressable block">
                 <ViewTransition name={`product-${p.slug}`} share="morph" default="none">
-                  <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-inset ring-ink/8 transition-[box-shadow] duration-300 group-hover:ring-mint">
+                  <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-ink/8 transition-[box-shadow] duration-300 group-hover:ring-2 group-hover:ring-mint-deep group-hover:ring-offset-4 group-hover:ring-offset-paper">
                   <Image
                     src={p.image}
                     alt=""
@@ -173,8 +173,8 @@ export default function HomePage() {
                 </ViewTransition>
                 {/*
                   가격 자리. sm 부터는 이름 옆 오른쪽 끝, 모바일은 설명 아래 한 줄 —
-                  72vw 카드에서 이름 옆에 붙이면 좁고 불편했다(리더 지적). 가격이 없는
-                  '전화 문의' 자리표는 모바일에서 안 보인다(가격은 나중에 들어온다).
+                  72vw 카드에서 이름 옆에 붙이면 좁고 불편했다(리더 지적). 가격이 없으면
+                  자리표('전화 문의')도 없다 — 제품 장부와 같은 규칙(가격은 나중에 들어온다).
                 */}
                 <div className="mt-5 grid gap-y-1 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-baseline sm:gap-x-4">
                   <h3 className="text-lead font-bold transition-colors group-hover:text-mint-link">
@@ -183,15 +183,11 @@ export default function HomePage() {
                   <p className="text-small leading-relaxed text-ink-soft sm:col-span-2">
                     {p.summary}
                   </p>
-                  <p
-                    className={`font-mono text-small tabular-nums text-ink-soft sm:col-start-2 sm:row-start-1 sm:mt-0 ${
-                      p.price !== null ? "mt-1" : "hidden sm:block"
-                    }`}
-                  >
-                    {p.price !== null
-                      ? `${p.price.toLocaleString("ko-KR")}원`
-                      : "전화 문의"}
-                  </p>
+                  {p.price !== null && (
+                    <p className="mt-1 text-small tabular-nums text-ink-soft sm:col-start-2 sm:row-start-1 sm:mt-0">
+                      {`${p.price.toLocaleString("ko-KR")}원`}
+                    </p>
+                  )}
                 </div>
               </Link>
             </li>
@@ -230,7 +226,7 @@ export default function HomePage() {
               <li key={t.title} className="flex gap-6 py-6 lg:gap-8">
                 <MoonMark phase={t.phase} size={28} className="mt-1 shrink-0 text-ink" />
                 <div>
-                  <p className="font-mono text-caption text-ink-faint">{t.when}</p>
+                  <p className="text-caption tabular-nums tracking-[0.08em] text-ink-faint">{t.when}</p>
                   <p className="mt-1 text-lead font-bold">{t.title}</p>
                 </div>
               </li>
@@ -251,11 +247,11 @@ export default function HomePage() {
             className="object-cover"
           />
         </div>
-        <div className="moonlit relative section-y-tight flex flex-col justify-center bg-bark px-5 text-paper lg:px-14 xl:px-20">
+        <div className="moonlit relative section-y-tight flex flex-col justify-center bg-bark px-5 text-paper lg:pl-14 lg:pr-[max(3.5rem,calc((100vw-72rem)/2+2rem))]">
           <SectionEyebrow phase={0.6} tone="paper">
             재료
           </SectionEyebrow>
-          <h2 className="mt-4 text-h2 lg:text-h2-lg">
+          <h2 className="mt-3 text-h2 lg:text-h2-lg">
             <span className="block font-thin">넣지 않는 것으로</span>
             <span className="block font-black">말합니다</span>
           </h2>
@@ -277,9 +273,9 @@ export default function HomePage() {
 
       {/* 7. 브랜드 문구 밴드 — 체험 */}
       <section className="rise grid lg:grid-cols-2">
-        <div className="section-y-tight flex flex-col justify-center bg-paper-2 px-5 lg:order-1 lg:px-14 xl:px-20">
+        <div className="section-y-tight flex flex-col justify-center bg-paper-2 px-5 lg:order-1 lg:pl-[max(3.5rem,calc((100vw-72rem)/2+2rem))] lg:pr-14">
           <SectionEyebrow phase={0.7}>체험</SectionEyebrow>
-          <h2 className="mt-4 text-h2 lg:text-h2-lg">
+          <h2 className="mt-3 text-h2 lg:text-h2-lg">
             <span className="block font-thin">직접 빚어 보는</span>
             <span className="block font-black">자리가 있습니다</span>
           </h2>
@@ -309,13 +305,13 @@ export default function HomePage() {
       {/* 8. 전체 제품 */}
       <section className="rise">
         <div className="section-y mx-auto max-w-6xl px-5 lg:px-8">
-          <SectionEyebrow phase={0.85}>전체 제품</SectionEyebrow>
+          <SectionEyebrow phase={1}>전체 제품</SectionEyebrow>
           <h2 className="mt-3 font-black tracking-tight text-h2 lg:text-h2-lg">빚는 것들</h2>
           <ul className="mt-12 grid grid-cols-2 gap-x-6 gap-y-12 lg:grid-cols-4 lg:gap-x-10">
             {products.map((p) => (
               <li key={p.slug}>
                 <Link href={`/products/${p.slug}`} className="group pressable block">
-                  <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-inset ring-ink/8 transition-[box-shadow] duration-300 group-hover:ring-mint">
+                  <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-ink/8 transition-[box-shadow] duration-300 group-hover:ring-2 group-hover:ring-mint-deep group-hover:ring-offset-4 group-hover:ring-offset-paper">
                     <Image
                       src={p.image}
                       alt=""
@@ -339,7 +335,7 @@ export default function HomePage() {
       <section className="rise mx-auto grid max-w-6xl gap-4 px-5 pb-20 sm:grid-cols-2 lg:px-8 lg:pb-28">
         <Link
           href="/visit"
-          className="group pressable relative isolate flex min-h-56 flex-col justify-end overflow-hidden rounded-2xl bg-ink p-8"
+          className="group pressable relative isolate flex min-h-56 flex-col justify-end overflow-hidden rounded-t-[6rem] rounded-b-2xl bg-ink p-8"
         >
           <Image
             src="/images/store-front.jpg"
@@ -347,11 +343,16 @@ export default function HomePage() {
             fill
             sizes="(min-width: 640px) 45vw, 90vw"
             quality={88}
-            className="object-cover opacity-30 transition-transform duration-700 ease-[cubic-bezier(.2,.7,.2,1)] group-hover:scale-[1.03]"
+            className="object-cover transition-transform duration-700 ease-[cubic-bezier(.2,.7,.2,1)] group-hover:scale-[1.03]"
+          />
+          {/* 사진을 30% 로 흐리면 "dim overlay card" 템플릿이 된다. 히어로처럼 아래만 어둡게. */}
+          <div
+            aria-hidden
+            className="absolute inset-0 bg-[linear-gradient(to_top,rgba(22,22,22,0.88)_0%,rgba(22,22,22,0.35)_45%,rgba(22,22,22,0)_75%)]"
           />
           <div className="relative">
             <p className="text-caption text-paper/70">방문구매를 원하시면</p>
-            <p className="mt-1 text-2xl font-bold text-paper">오시는 길</p>
+            <p className="mt-1 text-h3 font-bold text-paper">오시는 길</p>
           </div>
         </Link>
         <a
@@ -359,7 +360,7 @@ export default function HomePage() {
           className="btn-lift moonlit flex min-h-56 flex-col justify-end rounded-2xl bg-ink p-8 text-paper transition-colors hover:bg-ink-soft"
         >
           <p className="relative text-caption text-paper/70">주문·체험 문의는 전화로</p>
-          <p className="relative mt-1 font-mono text-2xl font-bold tabular-nums">{site.tel}</p>
+          <p className="relative mt-1 font-black tracking-tighter tabular-nums text-h2 lg:text-h2-lg">{site.tel}</p>
         </a>
       </section>
     </ViewTransition>

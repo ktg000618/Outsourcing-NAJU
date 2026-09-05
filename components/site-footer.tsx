@@ -8,7 +8,7 @@ import { nav, site } from "@/lib/site";
  */
 export function SiteFooter() {
   return (
-    <footer className="moonlit mt-24 bg-ink text-paper/80">
+    <footer className="moonlit border-t border-paper/10 bg-ink text-paper/80">
       <div className="relative mx-auto grid max-w-6xl gap-10 px-5 py-14 sm:grid-cols-2 sm:gap-12 lg:grid-cols-[auto_1fr_1fr] lg:gap-16 lg:px-8 lg:py-20">
         {/*
           세로 락업은 원래 헤더용이 아니라 이 비율(1:1.14)로 크게 놓는 자리가 맞다.

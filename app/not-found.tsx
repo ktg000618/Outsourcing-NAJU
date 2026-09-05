@@ -17,7 +17,7 @@ export default function NotFound() {
     <section className="mx-auto flex max-w-3xl flex-col items-center px-5 pb-28 pt-20 text-center lg:px-8 lg:pb-36 lg:pt-28">
       {/* 삭(빈 달) = 여기엔 떡이 없다. 엠블럼은 헤더로 갔으니 겹치지 않는다. */}
       <MoonMark phase={0} size={96} className="text-ink" />
-      <p className="mt-10 font-mono text-caption tracking-widest text-ink-faint">
+      <p className="mt-10 text-caption tracking-widest text-ink-faint">
         404
       </p>
       <h1 className="mt-3 text-h1 lg:text-h1-lg">

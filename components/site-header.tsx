@@ -71,10 +71,10 @@ export function SiteHeader() {
                   </li>
                 );
               })}
-              <li>
+              <li className="ml-2">
                 <a
                   href={`tel:${site.tel.replace(/-/g, "")}`}
-                  className="text-small tracking-tight text-ink-soft transition-colors hover:text-ink"
+                  className="btn-lift inline-block border border-ink px-4 py-2 text-small tabular-nums tracking-tight transition-colors hover:bg-ink hover:text-paper"
                 >
                   {site.tel}
                 </a>
