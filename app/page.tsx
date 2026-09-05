@@ -35,7 +35,7 @@ export default function HomePage() {
           */}
           <div
             aria-hidden
-            className="enter-moon absolute -right-4 -top-5 z-10 size-20 rounded-full shadow-[0_0_60px_12px_rgba(223,192,93,0.35)] lg:-right-10 lg:-top-10 lg:size-36"
+            className="enter-moon absolute -right-4 -top-1 z-10 size-20 rounded-full shadow-[0_0_60px_12px_rgba(223,192,93,0.35)] lg:-right-10 lg:-top-4 lg:size-36"
           >
             <Image
               src="/brand/emblem.png"
