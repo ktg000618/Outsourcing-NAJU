@@ -221,7 +221,7 @@ export default function StoryPage() {
           </div>
         </div>
 
-        <ul className="mt-16 grid gap-x-8 gap-y-8 border-t border-ink/10 pt-12 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="mt-16 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-ink/10 pt-12 sm:gap-x-8 lg:grid-cols-4">
           {credentials.map((c) => (
             <li key={c.label}>
               <p className="text-lg">{c.label}</p>

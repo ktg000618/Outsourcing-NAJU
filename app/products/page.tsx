@@ -121,34 +121,35 @@ export default function ProductsPage() {
           {/*
             PC 에서는 세로 장부. 작은 원 셋을 위에만 얹으면 큰 원 옆 아래 절반이 비고
             크기 차이(500 vs 110px)가 극단적이었다. 한 줄에 원·이름·가격을 놓아
-            오른쪽 기둥이 큰 원과 같은 높이로 선다. 모바일은 원형 2열 그대로.
+            오른쪽 기둥이 큰 원과 같은 높이로 선다.
+            모바일(<sm)도 장부 행 — 원형 2열은 셋이라 한 칸이 비었다(리더 지적). sm 만 원형 3열.
           */}
-          <ul className="grid grid-cols-2 gap-x-5 gap-y-9 sm:grid-cols-3 lg:flex lg:flex-col lg:gap-0 lg:divide-y lg:divide-ink/10 lg:border-y lg:border-ink/10">
+          <ul className="flex flex-col divide-y divide-ink/10 border-y border-ink/10 sm:grid sm:grid-cols-3 sm:gap-x-5 sm:gap-y-9 sm:divide-y-0 sm:border-y-0 lg:flex lg:flex-col lg:gap-0 lg:divide-y lg:border-y">
             {rest.map((p) => (
               <li key={p.slug}>
                 <Link
                   href={`/products/${p.slug}`}
-                  className="group pressable block lg:grid lg:grid-cols-[7rem_minmax(0,1fr)_auto] lg:items-center lg:gap-8 lg:py-7"
+                  className="group pressable grid grid-cols-[5rem_minmax(0,1fr)] items-center gap-x-5 py-5 sm:block sm:py-0 lg:grid lg:grid-cols-[7rem_minmax(0,1fr)_auto] lg:gap-8 lg:py-7"
                 >
                   <ViewTransition name={`product-${p.slug}`} share="morph" default="none">
-                    <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-inset ring-ink/8 transition-[box-shadow] duration-300 group-hover:ring-mint">
+                    <div className="relative row-span-2 aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-inset ring-ink/8 transition-[box-shadow] duration-300 group-hover:ring-mint sm:row-auto">
                     <Image
                       src={p.image}
                       alt=""
                       fill
-                      sizes="(min-width: 1024px) 112px, 45vw"
+                      sizes="(min-width: 1024px) 112px, (min-width: 640px) 30vw, 80px"
                       quality={88}
                       className="object-cover transition-transform duration-700 ease-[cubic-bezier(.2,.7,.2,1)] group-hover:scale-[1.03]"
                     />
                     </div>
                   </ViewTransition>
-                  <div className="mt-4 lg:mt-0">
+                  <div className="self-end sm:mt-4 sm:self-auto lg:mt-0">
                     <h2 className="text-lead font-bold transition-colors group-hover:text-mint-link">
                       {p.name}
                     </h2>
                     <p className="mt-1 text-small leading-relaxed text-ink-soft">{p.summary}</p>
                   </div>
-                  <p className="mt-2 font-mono text-small tabular-nums text-ink-soft lg:mt-0 lg:text-right">
+                  <p className="mt-1.5 self-start font-mono text-small tabular-nums text-ink-soft sm:mt-2 sm:self-auto lg:mt-0 lg:text-right">
                     {p.price !== null ? `${p.price.toLocaleString("ko-KR")}원` : "전화 문의"}
                   </p>
                 </Link>
@@ -261,7 +262,7 @@ export default function ProductsPage() {
       {/* 신뢰 근거. 홈에만 있고 정작 물건을 고르는 자리엔 없었다. */}
       <section className="rise border-t border-ink/10">
         <div className="section-y-tight mx-auto max-w-6xl px-5 lg:px-8">
-          <ul className="grid gap-x-8 gap-y-7 sm:grid-cols-2 lg:grid-cols-4">
+          <ul className="grid grid-cols-2 gap-x-6 gap-y-7 sm:gap-x-8 lg:grid-cols-4">
             {credentials.map((c) => (
               <li key={c.label}>
                 <span aria-hidden className="mb-3 block h-px w-8 bg-moon" />

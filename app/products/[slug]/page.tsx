@@ -208,7 +208,7 @@ export default async function ProductPage({
       <section className="rise border-t border-ink/10">
         <div className="section-y-tight mx-auto max-w-6xl px-5 lg:px-8">
           <h2 className="text-2xl">다른 제품</h2>
-          <ul className="mt-8 grid grid-cols-2 gap-x-5 gap-y-8 lg:grid-cols-4 lg:gap-x-8">
+          <ul className="mt-8 grid grid-cols-3 gap-x-4 gap-y-8 sm:gap-x-5 lg:grid-cols-4 lg:gap-x-8">
             {others.map((p) => (
               <li key={p.slug}>
                 <Link href={`/products/${p.slug}`} className="group pressable block">
@@ -218,13 +218,13 @@ export default async function ProductPage({
                       src={p.image}
                       alt={p.name}
                       fill
-                      sizes="(min-width: 1024px) 22vw, 44vw"
+                      sizes="(min-width: 1024px) 22vw, 30vw"
                       quality={88}
                       className="object-cover transition-transform duration-700 ease-[cubic-bezier(.2,.7,.2,1)] group-hover:scale-[1.03]"
                     />
                     </div>
                   </ViewTransition>
-                  <p className="mt-4 text-center text-lg transition-colors group-hover:text-mint-link">
+                  <p className="mt-3 text-center text-small transition-colors group-hover:text-mint-link sm:mt-4 sm:text-lg">
                     {p.name}
                   </p>
                 </Link>
