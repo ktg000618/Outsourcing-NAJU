@@ -22,7 +22,7 @@ export default function NewsPage() {
       </p>
 
       {posts.length === 0 ? (
-        {/* 빈 상태도 디자인이다. 회색 상자 대신 빈 달 + 큰 활자. 소식은 인스타에 먼저 올라간다. */}
+        /* 빈 상태도 디자인이다. 회색 상자 대신 빈 달 + 큰 활자. 소식은 인스타에 먼저 올라간다. */
         <div className="mt-14 border-y border-ink/10 py-16 lg:py-24">
           <MoonMark phase={0} size={40} className="text-ink" />
           <p className="mt-6 text-h2 lg:text-h2-lg">
