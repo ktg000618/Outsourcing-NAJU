@@ -66,8 +66,8 @@ export default function StoryPage() {
       </section>
 
       {/* 약재로서의 절굿대 */}
-      <section className="rise bg-ink text-paper">
-        <div className="section-y mx-auto grid max-w-6xl gap-12 px-5 lg:grid-cols-2 lg:items-center lg:gap-20 lg:px-8">
+      <section className="moonlit rise bg-ink text-paper">
+        <div className="section-y relative mx-auto grid max-w-6xl gap-12 px-5 lg:grid-cols-2 lg:items-center lg:gap-20 lg:px-8">
           <div>
             <h2 className="text-h2 lg:text-h2-lg">
               누로(漏蘆), 천금과 같다는 뿌리
@@ -225,7 +225,7 @@ export default function StoryPage() {
         <div className="mt-14 flex flex-wrap gap-3">
           <Link
             href="/products"
-            className="border border-ink bg-ink px-7 py-3 text-small text-paper pressable transition-colors hover:bg-ink-soft hover:border-ink-soft"
+            className="border border-ink bg-ink px-7 py-3 text-small text-paper btn-lift transition-colors hover:bg-ink-soft hover:border-ink-soft"
           >
             제품 보기
           </Link>

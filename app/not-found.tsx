@@ -36,7 +36,7 @@ export default function NotFound() {
       </p>
       <div className="mt-10 flex flex-wrap justify-center gap-3">
         <Link
-          className="pressable border border-ink bg-ink px-7 py-3 text-small text-paper transition-colors hover:bg-ink-soft"
+          className="btn-lift border border-ink bg-ink px-7 py-3 text-small text-paper transition-colors hover:bg-ink-soft"
           href="/"
         >
           홈으로

@@ -103,7 +103,7 @@ export default function ProductsPage() {
               priority
               sizes="(min-width: 1024px) 45vw, 90vw"
               quality={88}
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              className="object-cover transition-transform duration-700 ease-[cubic-bezier(.2,.7,.2,1)] group-hover:scale-[1.03]"
             />
             <div
               aria-hidden
@@ -128,7 +128,7 @@ export default function ProductsPage() {
                       fill
                       sizes="(min-width: 1024px) 20vw, 45vw"
                       quality={88}
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="object-cover transition-transform duration-700 ease-[cubic-bezier(.2,.7,.2,1)] group-hover:scale-[1.03]"
                     />
                   </div>
                   <h2 className="mt-4 text-lg transition-colors group-hover:text-mint-link">{p.name}</h2>
@@ -165,7 +165,7 @@ export default function ProductsPage() {
               </p>
               <a
                 aria-label={`전화 걸기 ${site.tel}`}
-                className="pressable mt-4 inline-block border border-ink bg-ink px-6 py-2.5 text-small text-paper transition-colors hover:bg-ink-soft"
+                className="btn-lift mt-4 inline-block border border-ink bg-ink px-6 py-2.5 text-small text-paper transition-colors hover:bg-ink-soft"
                 href={`tel:${site.tel.replace(/-/g, "")}`}
               >
                 {site.tel}

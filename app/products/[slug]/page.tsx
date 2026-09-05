@@ -167,14 +167,14 @@ export default async function ProductPage({
                 href={product.storeUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-block border border-ink bg-ink px-8 py-3.5 text-paper pressable transition-colors hover:bg-ink-soft hover:border-ink-soft"
+                className="inline-block border border-ink bg-ink px-8 py-3.5 text-paper btn-lift transition-colors hover:bg-ink-soft hover:border-ink-soft"
               >
                 네이버 스마트스토어에서 구매
               </a>
             ) : (
               <a
                 href={`tel:${site.tel.replace(/-/g, "")}`}
-                className="inline-block border border-ink bg-ink px-8 py-3.5 text-paper pressable transition-colors hover:bg-ink-soft hover:border-ink-soft"
+                className="inline-block border border-ink bg-ink px-8 py-3.5 text-paper btn-lift transition-colors hover:bg-ink-soft hover:border-ink-soft"
               >
                 전화로 주문 {site.tel}
               </a>
@@ -227,7 +227,7 @@ export default async function ProductPage({
                       fill
                       sizes="(min-width: 1024px) 22vw, 44vw"
                       quality={88}
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="object-cover transition-transform duration-700 ease-[cubic-bezier(.2,.7,.2,1)] group-hover:scale-[1.03]"
                     />
                   </div>
                   <p className="mt-4 text-center text-lg transition-colors group-hover:text-mint-link">

@@ -99,7 +99,7 @@ export default function VisitPage() {
 
             <a
               aria-label={`전화 걸기 ${site.tel}`}
-              className="pressable mt-8 inline-block border border-ink bg-ink px-7 py-3 text-small text-paper transition-colors hover:bg-ink-soft"
+              className="btn-lift mt-8 inline-block border border-ink bg-ink px-7 py-3 text-small text-paper transition-colors hover:bg-ink-soft"
               href={`tel:${site.tel.replace(/-/g, "")}`}
             >
               체험 문의 {site.tel}
@@ -159,8 +159,8 @@ export default function VisitPage() {
       </section>
 
       {/* 오시는 길 */}
-      <section className="rise bg-ink text-paper">
-        <div className="section-y mx-auto grid max-w-6xl gap-12 px-5 lg:grid-cols-2 lg:gap-16 lg:px-8">
+      <section className="moonlit rise bg-ink text-paper">
+        <div className="section-y relative mx-auto grid max-w-6xl gap-12 px-5 lg:grid-cols-2 lg:gap-16 lg:px-8">
           <div>
             <h2 className="text-h2 lg:text-h2-lg">오시는 길</h2>
             <address className="mt-8 space-y-5 not-italic">
@@ -199,7 +199,7 @@ export default function VisitPage() {
                 href={`https://map.kakao.com/?q=${mapQuery}`}
                 target="_blank"
                 rel="noreferrer"
-                className="pressable border border-paper bg-paper px-7 py-3 text-small text-ink transition-colors hover:border-paper/80 hover:bg-paper/80"
+                className="btn-lift border border-paper bg-paper px-7 py-3 text-small text-ink transition-colors hover:border-paper/80 hover:bg-paper/80"
               >
                 카카오맵으로 길찾기
               </a>

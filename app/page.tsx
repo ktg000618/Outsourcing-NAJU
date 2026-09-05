@@ -71,7 +71,7 @@ export default function HomePage() {
                     fill
                     sizes="(min-width: 640px) 30vw, 90vw"
                     quality={88}
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="object-cover transition-transform duration-700 ease-[cubic-bezier(.2,.7,.2,1)] group-hover:scale-[1.03]"
                   />
                 </div>
                 <h3 className="mt-5 text-lg transition-colors group-hover:text-mint-link">
@@ -110,7 +110,7 @@ export default function HomePage() {
             className="object-cover"
           />
         </div>
-        <div className="section-y-tight flex flex-col justify-center bg-bark px-5 text-paper lg:px-14 xl:px-20">
+        <div className="moonlit relative section-y-tight flex flex-col justify-center bg-bark px-5 text-paper lg:px-14 xl:px-20">
           <h2 className="text-h2 lg:text-h2-lg">
             넣지 않는 것으로
             <br />
@@ -123,7 +123,7 @@ export default function HomePage() {
           </p>
           <Link
             href="/story"
-            className="mt-8 self-start border-b border-paper/35 pb-1 text-small transition-colors hover:border-moon hover:text-moon"
+            className="link-draw mt-8 self-start text-small transition-colors hover:text-moon"
           >
             복원 이야기 보러가기
           </Link>
@@ -144,7 +144,7 @@ export default function HomePage() {
           </p>
           <Link
             href="/visit"
-            className="mt-8 self-start border-b border-ink/30 pb-1 text-small transition-colors hover:border-mint-link hover:text-mint-link"
+            className="link-draw mt-8 self-start text-small transition-colors hover:text-mint-link"
           >
             체험·매장 보러가기
           </Link>
@@ -206,7 +206,7 @@ export default function HomePage() {
                       fill
                       sizes="(min-width: 1024px) 18vw, 44vw"
                       quality={88}
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="object-cover transition-transform duration-700 ease-[cubic-bezier(.2,.7,.2,1)] group-hover:scale-[1.03]"
                     />
                   </div>
                   <h3 className="mt-5 text-center text-body transition-colors group-hover:text-mint-link">{p.name}</h3>
@@ -229,7 +229,7 @@ export default function HomePage() {
             fill
             sizes="(min-width: 640px) 45vw, 90vw"
             quality={88}
-            className="object-cover opacity-30 transition-transform duration-500 group-hover:scale-105"
+            className="object-cover opacity-30 transition-transform duration-700 ease-[cubic-bezier(.2,.7,.2,1)] group-hover:scale-[1.03]"
           />
           <div className="relative">
             <p className="text-caption text-paper/70">방문구매를 원하시면</p>

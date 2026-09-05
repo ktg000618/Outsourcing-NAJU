@@ -20,16 +20,26 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-ink/10 bg-paper/95 backdrop-blur">
-      <div className="mx-auto flex h-20 max-w-6xl items-center justify-between px-5 lg:h-26 lg:px-8">
-        <Link href="/" aria-label={`${site.name} 홈`} className="block">
+      {/* 로고가 세로로 안 크니 헤더가 두꺼울 이유가 없다 */}
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 lg:h-20 lg:px-8">
+        {/*
+          세로 락업(wordmark)을 헤더 높이에 끼우면 실측 49x56px — 글자가 40px 폭 얼룩이라
+          상호를 읽을 수 없었다. 엠블럼은 원이라 40px 에서도 형태가 서고, 상호는 글자로 조판한다.
+          36px 아래로 내리지 말 것 — 그 아래서는 엠블럼도 파스텔 뭉치가 된다.
+        */}
+        <Link href="/" aria-label={`${site.name} 홈`} className="flex items-center gap-3">
           <Image
-            src="/brand/wordmark.png"
-            alt={site.name}
-            width={235}
-            height={269}
+            src="/brand/emblem.png"
+            alt=""
+            width={640}
+            height={719}
             priority
-            className="h-14 w-auto lg:h-[4.5rem]"
+            className="h-10 w-auto lg:h-11"
           />
+          <span className="text-lead font-bold tracking-tight">{site.name}</span>
+          <span className="ml-1 hidden text-caption text-ink-faint lg:inline">
+            {site.tagline}
+          </span>
         </Link>
 
         <nav aria-label="주요 메뉴" className="hidden lg:block">
@@ -41,10 +51,10 @@ export function SiteHeader() {
                   <Link
                     href={item.href}
                     aria-current={active ? "page" : undefined}
-                    className={`border-b pb-1 text-small transition-colors ${
+                    className={`relative pb-1 text-small transition-colors after:absolute after:left-1/2 after:top-full after:size-1.5 after:-translate-x-1/2 after:rounded-full after:bg-mint-deep after:transition-opacity after:duration-200 ${
                       active
-                        ? "border-mint-deep text-ink"
-                        : "border-transparent text-ink-soft hover:text-ink"
+                        ? "text-ink after:opacity-100"
+                        : "text-ink-soft after:opacity-0 hover:text-ink hover:after:opacity-50"
                     }`}
                   >
                     {item.label}
