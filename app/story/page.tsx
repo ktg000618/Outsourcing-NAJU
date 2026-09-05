@@ -70,7 +70,7 @@ export default function StoryPage() {
       <section className="moonlit rise bg-ink text-paper">
         <div className="section-y relative mx-auto grid max-w-6xl gap-12 px-5 lg:grid-cols-2 lg:items-center lg:gap-20 lg:px-8">
           <div>
-            <SectionEyebrow phase={0.4} tone="paper">누로(漏蘆), 천금과 같다는 뿌리</SectionEyebrow>
+            <SectionEyebrow phase={0.4} tone="paper">약재로서의 절굿대</SectionEyebrow>
             <h2 className="mt-3 text-h2 lg:text-h2-lg">
               누로(漏蘆), 천금과 같다는 뿌리
             </h2>
@@ -127,7 +127,7 @@ export default function StoryPage() {
           />
         </div>
         <div className="section-y mx-auto max-w-6xl px-5 lg:px-8">
-          <SectionEyebrow phase={0.65}>씨앗을 나누고, 일자리로 돌려드립니다</SectionEyebrow>
+          <SectionEyebrow phase={0.65}>사회적기업 인증 제2023-247호</SectionEyebrow>
           <h2 className="mt-3 max-w-[16ch] text-h2 lg:text-h2-lg">
             씨앗을 나누고, 일자리로 돌려드립니다
           </h2>
@@ -164,7 +164,7 @@ export default function StoryPage() {
 
       {/* 만드는 방식 */}
       <section className="section-y rise mx-auto max-w-6xl px-5 lg:px-8">
-        <SectionEyebrow phase={0.85}>정직한 천연 재료만 사용합니다</SectionEyebrow>
+        <SectionEyebrow phase={0.85}>만드는 방식</SectionEyebrow>
         <h2 className="mt-3 text-h2 lg:text-h2-lg">
           정직한 천연 재료만 사용합니다
         </h2>

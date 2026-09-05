@@ -64,7 +64,7 @@ export default function ProductsPage() {
 
       {/* 쓰임새 → 제품. 떡은 "무엇인가"보다 "언제 쓰는가"로 찾는 손님이 많다. */}
       <section className="rise mx-auto max-w-6xl px-5 pb-16 lg:px-8 lg:pb-20">
-        <SectionEyebrow phase={0.25}>쓰임새로 고르기</SectionEyebrow>
+        <SectionEyebrow phase={0.25}>쓰임새</SectionEyebrow>
         <h2 className="mt-3 text-h3 lg:text-h2-lg">
           쓰임새로 고르기
         </h2>
@@ -155,7 +155,7 @@ export default function ProductsPage() {
       {/* 주문 경로가 셋인데 어디에도 안 적혀 있었다. 전화 주문 비중이 큰 곳이다. */}
       <section className="rise bg-paper-2">
         <div className="section-y-tight mx-auto max-w-6xl px-5 lg:px-8">
-          <SectionEyebrow phase={0.6}>주문하는 방법</SectionEyebrow>
+          <SectionEyebrow phase={0.6}>주문</SectionEyebrow>
           <h2 className="mt-3 text-h3 lg:text-h2-lg">
             주문하는 방법
           </h2>
@@ -202,7 +202,7 @@ export default function ProductsPage() {
 
       {/* 제품별 spec 에만 흩어져 있던 보관·해동을 한자리에. 가장 많이 묻는 것이다. */}
       <section className="section-y-tight rise mx-auto max-w-6xl px-5 lg:px-8">
-        <SectionEyebrow phase={0.85}>보관과 해동</SectionEyebrow>
+        <SectionEyebrow phase={0.85}>보관</SectionEyebrow>
         <h2 className="mt-3 text-h3 lg:text-h2-lg">
           보관과 해동
         </h2>

@@ -72,8 +72,8 @@ export default function HomePage() {
 
       {/* 2. 대표 제품 */}
       <section className="rise mx-auto max-w-6xl px-5 pb-20 pt-12 lg:px-8 lg:pb-24 lg:pt-16">
-        <SectionEyebrow phase={0.15}>대표 제품</SectionEyebrow>
-        <h2 className="mt-3 text-center text-h3 font-bold lg:text-h1">대표 제품</h2>
+        <SectionEyebrow phase={0.15}>제품</SectionEyebrow>
+        <h2 className="mt-3 text-h3 font-bold lg:text-h1">대표 제품</h2>
         <ul className="mt-9 grid gap-x-6 gap-y-10 sm:grid-cols-3 lg:mt-12 lg:gap-x-8">
           {best.map((p) => (
             <li key={p.slug}>
@@ -206,8 +206,8 @@ export default function HomePage() {
       {/* 6. 전체 제품 */}
       <section className="rise bg-paper-2">
         <div className="section-y mx-auto max-w-6xl px-5 lg:px-8">
-          <SectionEyebrow phase={0.8}>빚는 것들</SectionEyebrow>
-          <h2 className="mt-3 text-center text-h3 font-bold lg:text-h1">
+          <SectionEyebrow phase={0.8}>전체 제품</SectionEyebrow>
+          <h2 className="mt-3 text-h3 font-bold lg:text-h1">
             빚는 것들
           </h2>
           <ul className="mt-12 grid grid-cols-2 gap-x-6 gap-y-12 lg:grid-cols-4 lg:gap-x-10">
