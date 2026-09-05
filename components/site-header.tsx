@@ -71,11 +71,27 @@ export function SiteHeader() {
                   </li>
                 );
               })}
+              {/* 외곽선 상자에 숫자만 두면 입력창으로 읽혔다(리더 지적). 하단 고정 바와 같은
+                  전화 아이콘 + 먹색 채움 — 사이트가 이미 쓰는 CTA 언어다. */}
               <li className="ml-2">
                 <a
+                  aria-label={`전화 걸기 ${site.tel}`}
                   href={`tel:${site.tel.replace(/-/g, "")}`}
-                  className="btn-lift inline-block border border-ink px-4 py-2 text-small tabular-nums tracking-tight transition-colors hover:bg-ink hover:text-paper"
+                  className="btn-lift inline-flex items-center gap-2 bg-ink px-4 py-2.5 text-small tabular-nums tracking-tight text-paper transition-colors hover:bg-ink-soft"
                 >
+                  <svg
+                    aria-hidden
+                    className="size-4"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.6"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M4.5 5.5c0-.6.4-1 1-1h2.6c.4 0 .8.3.9.7l1 3c.1.4 0 .8-.3 1l-1.4 1.2a12 12 0 0 0 5.3 5.3l1.2-1.4c.2-.3.6-.4 1-.3l3 1c.4.1.7.5.7.9v2.6c0 .6-.4 1-1 1A15.5 15.5 0 0 1 4.5 5.5Z"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
                   {site.tel}
                 </a>
               </li>
