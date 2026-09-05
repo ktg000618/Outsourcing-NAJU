@@ -9,19 +9,19 @@ import { nav, site } from "@/lib/site";
 export function SiteFooter() {
   return (
     <footer className="moonlit mt-24 bg-ink text-paper/80">
-      <div className="relative mx-auto grid max-w-6xl gap-12 px-5 py-16 lg:grid-cols-[auto_1fr_1fr] lg:gap-16 lg:px-8 lg:py-20">
+      <div className="relative mx-auto grid max-w-6xl gap-10 px-5 py-14 sm:grid-cols-2 sm:gap-12 lg:grid-cols-[auto_1fr_1fr] lg:gap-16 lg:px-8 lg:py-20">
         {/*
           세로 락업은 원래 헤더용이 아니라 이 비율(1:1.14)로 크게 놓는 자리가 맞다.
           흰 글자에 민트 외곽선이라 먹 바탕 위에서 오히려 산다. 브랜드 에셋이
           사이트 안에서 제 크기로 보이는 유일한 자리다.
         */}
-        <div>
+        <div className="sm:col-span-2 lg:col-span-1">
           <Image
             src="/brand/wordmark.png"
             alt={site.name}
             width={640}
             height={735}
-            className="h-36 w-auto lg:h-44"
+            className="h-28 w-auto lg:h-44"
           />
           <p className="mt-6 max-w-xs text-small leading-relaxed">
             {site.tagline} · {site.since}년부터 나주에서

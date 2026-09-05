@@ -138,9 +138,11 @@ export default function HomePage() {
             전체 제품 보기
           </Link>
         </div>
-        <ul className="mt-10 grid gap-x-8 gap-y-10 sm:grid-cols-3 lg:mt-14 lg:gap-x-10">
+        {/* 모바일은 원 셋을 세로로 쌓으면 1,300px 을 먹는다. 옆으로 넘기는 구조로 — 72vw 원 하나씩.
+            스크롤바는 숨기고 스냅으로 한 장씩 멈춘다. sm 부터는 3열 그리드. */}
+        <ul className="-mx-5 mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-2 [scrollbar-width:none] sm:mx-0 sm:grid sm:grid-cols-3 sm:gap-x-8 sm:gap-y-10 sm:overflow-visible sm:px-0 sm:pb-0 lg:mt-14 lg:gap-x-10 [&::-webkit-scrollbar]:hidden">
           {best.map((p, i) => (
-            <li key={p.slug} className={i === 1 ? "sm:mt-14" : ""}>
+            <li key={p.slug} className={`w-[72vw] shrink-0 snap-center sm:w-auto ${i === 1 ? "sm:mt-14" : ""}`}>
               {/* 가운데 원만 내려서 비대칭 — 셋이 나란하면 스톡 템플릿이다 */}
               <Link href={`/products/${p.slug}`} className="group pressable block">
                 <ViewTransition name={`product-${p.slug}`} share="morph" default="none">

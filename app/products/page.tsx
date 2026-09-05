@@ -68,7 +68,7 @@ export default function ProductsPage() {
         <h2 className="mt-3 text-h3 lg:text-h2-lg">
           쓰임새로 고르기
         </h2>
-        <ul className="mt-8 grid gap-x-8 gap-y-7 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-8 grid grid-cols-2 gap-x-6 gap-y-7 sm:gap-x-8 lg:grid-cols-3">
           {[...byOccasion.entries()].map(([occasion, list]) => (
             <li key={occasion} className="border-t border-ink/15 pt-4">
               <p className="inline-block bg-rose/25 px-3 py-1 text-caption text-ink">
