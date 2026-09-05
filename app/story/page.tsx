@@ -150,7 +150,7 @@ export default function StoryPage() {
             alt="절굿대 밭에서 잎을 따 바구니에 담는 손"
             fill
             sizes="100vw"
-            quality={90}
+            quality={88}
             className="object-cover"
           />
         </div>

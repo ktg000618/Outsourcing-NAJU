@@ -232,7 +232,7 @@ export default function VisitPage() {
               alt="초록 간판과 달토끼 엠블럼이 걸린 절굿대달토끼 매장 건물"
               fill
               sizes="(min-width: 1024px) 45vw, 90vw"
-              quality={90}
+              quality={88}
               className="object-cover"
             />
           </div>
