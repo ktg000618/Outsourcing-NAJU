@@ -1,21 +1,21 @@
 import type { Metadata } from "next";
 import { site } from "@/lib/site";
 import { ViewTransition } from "react";
+import Image from "next/image";
 import { MoonMark } from "@/components/moon-mark";
 import { SectionEyebrow } from "@/components/section-eyebrow";
+import { formatNewsDate, getPublishedPosts } from "@/lib/news";
 
 export const metadata: Metadata = {
   title: "소식",
   description: `${site.name}의 휴무·신제품·행사 소식.`,
 };
 
-/**
- * TODO(개발): Supabase 에서 소식을 읽어온다. 어드민에서 사장님이 직접 쓰는 글이다.
- * 지금은 빈 상태만 만들어 두고, 스키마가 서면 이 목록을 채운다.
- */
-const posts: { id: string; title: string; date: string; body: string }[] = [];
+/** 직원이 /admin 에서 쓴 글. 저장 시 revalidatePath 로 바로 갱신되고, 그 밖엔 1시간 캐시. */
+export const revalidate = 3600;
 
-export default function NewsPage() {
+export default async function NewsPage() {
+  const posts = await getPublishedPosts();
   return (
     <ViewTransition enter="page-in" exit="page-out" default="none">
       {/* 형제 페이지와 같은 문법 — 1152 컨테이너, 달 위상, 88px Thin/Black. 이 페이지만 밖에 있었다. */}
@@ -70,12 +70,47 @@ export default function NewsPage() {
         ) : (
           <ul className="mt-12 max-w-3xl divide-y divide-ink/10 border-y border-ink/10">
             {posts.map((post) => (
-              <li key={post.id} className="py-7">
-                <p className="text-caption text-ink-faint">{post.date}</p>
-                <h2 className="mt-1.5 text-lead">{post.title}</h2>
-                <p className="mt-2 leading-relaxed text-ink-soft">
-                  {post.body}
+              <li key={post.id} className="py-8 lg:py-10">
+                <p className="text-caption tabular-nums tracking-[0.08em] text-ink-faint">
+                  {formatNewsDate(post.published_on)}
                 </p>
+                <h2 className="mt-1.5 text-h3 font-bold">{post.title}</h2>
+                {post.body && (
+                  <p className="mt-3 max-w-prose whitespace-pre-line leading-relaxed text-ink-soft">
+                    {post.body}
+                  </p>
+                )}
+                {post.images.length > 0 && (
+                  <ul
+                    className={`mt-5 grid gap-3 ${post.images.length === 1 ? "grid-cols-1 max-w-md" : "grid-cols-2 sm:grid-cols-3"}`}
+                  >
+                    {post.images.map((src) => (
+                      <li
+                        key={src}
+                        className="relative aspect-4/3 overflow-hidden rounded-2xl bg-paper-2 ring-1 ring-inset ring-ink/5"
+                      >
+                        <Image
+                          src={src}
+                          alt=""
+                          fill
+                          sizes="(min-width: 640px) 240px, 45vw"
+                          quality={88}
+                          className="object-cover"
+                        />
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {post.link_url && (
+                  <a
+                    href={post.link_url}
+                    rel="noreferrer"
+                    target="_blank"
+                    className="link-draw mt-4 inline-block text-small text-ink-soft transition-colors hover:text-mint-link"
+                  >
+                    자세히 보기<span className="sr-only"> (새 창)</span>
+                  </a>
+                )}
               </li>
             ))}
           </ul>
