@@ -107,12 +107,23 @@ export default function StoryPage() {
         사회적기업으로서 하는 일. 클라이언트가 상세페이지에 쓴 원문인데 사이트에는
         한 줄도 없었다. 인증 배지만 걸어 두는 것보다 무엇을 하는지가 강하다.
 
-        사진은 일부러 안 넣었다. 이 이야기에 맞는 컷은 밭에서 일하는 사람인데
-        가진 사진이 원본 2600px 이라 전폭으로 깔면 레티나에서 뭉갠다. 밭만
-        찍힌 컷은 검정 멀칭이 화면 절반이라 더 나빴다. 흐린 전폭 사진보다
-        사진 없는 편이 낫다 — 재촬영 때 이 자리를 채운다.
+        사진은 절굿대 밭이다. 사람 컷은 원본이 2600px 뿐이라 전폭에서 뭉개서 못 쓴다.
+        이 컷은 원본 4500px 이라 화질은 버티는데 검정 멀칭이 화면을 먹는 게 문제였다.
+        그래서 잎 비율이 가장 높은 가로 구간을 계산으로 골라 잘랐고(0.056~0.676),
+        위아래로 딸려 오던 카드 배경·다음 사진은 색·밝기 경계를 찾아 제거했다.
+        재촬영 때는 밭에서 일하는 사람 컷으로 바꾸는 게 맞다.
       */}
       <section className="rise bg-paper-2">
+        <div className="relative aspect-[2.11/1] w-full">
+          <Image
+            src="/images/thistle-field.jpg"
+            alt="검정 멀칭 사이로 줄지어 자라는 절굿대"
+            fill
+            sizes="100vw"
+            quality={90}
+            className="object-cover"
+          />
+        </div>
         <div className="section-y mx-auto max-w-6xl px-5 lg:px-8">
           <p className="text-caption text-mint-link lg:text-small">
             사회적기업 인증 제2023-247호
