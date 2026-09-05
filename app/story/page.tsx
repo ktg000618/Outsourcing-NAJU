@@ -238,14 +238,16 @@ export default function StoryPage() {
             <span className="font-thin tracking-tight">Since </span>
             <span className="font-black tracking-tighter tabular-nums">2016</span>
           </h2>
-          {/* 연도를 크게 세운 장부. 인증·표창·협약이 연도 옆에 붙어야 사실로 읽힌다. */}
-          <ol className="mt-10">
+          {/* 연도를 크게 세운 장부. 인증·표창·협약이 연도 옆에 붙어야 사실로 읽힌다.
+              모바일(<sm)은 연도를 작게 왼쪽 열에 — 위 연표의 큰 연도를 8번 더 반복하면
+              두 번째 연표로 읽히고 길이도 두 배였다(리더 지적). */}
+          <ol className="mt-8 sm:mt-10">
             {history.map((h) => (
               <li
                 key={h.year}
-                className="grid gap-2 border-t border-ink/10 py-6 sm:grid-cols-[7rem_1fr] sm:gap-8 lg:py-7"
+                className="grid grid-cols-[3.5rem_minmax(0,1fr)] gap-4 border-t border-ink/10 py-4 sm:grid-cols-[7rem_1fr] sm:gap-8 sm:py-6 lg:py-7"
               >
-                <p className="font-black tracking-tighter tabular-nums text-h2 lg:text-h2-lg">
+                <p className="text-lead font-bold tabular-nums sm:font-black sm:tracking-tighter sm:text-h2 lg:text-h2-lg">
                   {h.year}
                 </p>
                 <ul className="space-y-2 text-small leading-relaxed text-ink-soft sm:pt-2">

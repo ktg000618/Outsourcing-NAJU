@@ -82,19 +82,28 @@ export default function VisitPage() {
               제품 가격과 같은 규칙이다. lib/site.ts 만 고치면 여기가 채워진다.
             */}
             <dl className="mt-9 divide-y divide-ink/10 border-y border-ink/10">
-              {rows.map((r) => (
-                <div key={r.label} className="flex gap-6 py-4">
-                  <dt className="w-24 shrink-0 text-small text-ink-faint">
-                    {r.label}
-                  </dt>
-                  <dd className="text-small">
-                    {r.value ?? (
-                      <span className="text-ink-soft">전화로 문의해 주세요</span>
-                    )}
-                  </dd>
-                </div>
-              ))}
+              {rows
+                .filter((r) => r.value !== null)
+                .map((r) => (
+                  <div key={r.label} className="flex gap-6 py-4">
+                    <dt className="w-24 shrink-0 text-small text-ink-faint">
+                      {r.label}
+                    </dt>
+                    <dd className="text-small">{r.value}</dd>
+                  </div>
+                ))}
             </dl>
+            {/* 값이 없는 항목은 줄마다 '전화로 문의' 를 반복하지 않고 한 문장으로 —
+                같은 문구 다섯 줄은 벽이었다(모바일 전수 확인). 값이 채워지면 줄이 위 표로 올라간다. */}
+            {rows.some((r) => r.value === null) && (
+              <p className="mt-4 text-small text-ink-soft">
+                {rows
+                  .filter((r) => r.value === null)
+                  .map((r) => r.label)
+                  .join("·")}
+                은 전화로 문의해 주세요.
+              </p>
+            )}
 
             <a
               aria-label={`전화 걸기 ${site.tel}`}
