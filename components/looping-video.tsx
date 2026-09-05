@@ -50,6 +50,11 @@ export function LoopingVideo({ src, poster, label, round = false }: Props) {
         muted
         onPause={() => setPlaying(false)}
         onPlay={() => setPlaying(true)}
+        // autoplay 가 hydration 보다 먼저 시작되면 play 이벤트를 놓친다. 재생 중엔
+        // timeupdate 가 계속 오므로 그걸로 따라잡는다(같은 값 setState 는 무시된다).
+        onTimeUpdate={() => {
+          if (ref.current && !ref.current.paused) setPlaying(true);
+        }}
         playsInline
         poster={poster}
         preload="metadata"
