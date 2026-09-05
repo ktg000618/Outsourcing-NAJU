@@ -7,6 +7,8 @@ type Props = {
   poster: string;
   /** 화면에 안 보이는 설명. 소리가 없는 영상이라 이것이 유일한 대체 텍스트다. */
   label: string;
+  /** 원형 — 제품 원 옆에 달처럼 걸칠 때. 버튼은 글자 대신 아이콘(원 안에 글자 상자는 튄다). */
+  round?: boolean;
 };
 
 /**
@@ -20,7 +22,7 @@ type Props = {
  * 받는다. effect 안에서 setState 하면 렌더가 한 번 더 돌고, 이 레포의
  * lint 가 그걸 error 로 막는다.
  */
-export function LoopingVideo({ src, poster, label }: Props) {
+export function LoopingVideo({ src, poster, label, round = false }: Props) {
   const ref = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(true);
 
@@ -34,7 +36,9 @@ export function LoopingVideo({ src, poster, label }: Props) {
   }, []);
 
   return (
-    <div className="relative overflow-hidden rounded-2xl bg-paper-2">
+    <div
+      className={`relative overflow-hidden bg-paper-2 ${round ? "aspect-square rounded-full" : "rounded-2xl"}`}
+    >
       <video
         ref={ref}
         aria-label={label}
@@ -50,7 +54,11 @@ export function LoopingVideo({ src, poster, label }: Props) {
         src={src}
       />
       <button
-        className="pressable absolute bottom-3 right-3 border border-paper/60 bg-ink/70 px-3 py-1.5 text-caption text-paper backdrop-blur transition-colors hover:bg-ink/90"
+        className={`pressable absolute border border-paper/60 bg-ink/70 text-paper backdrop-blur transition-colors hover:bg-ink/90 ${
+          round
+            ? "bottom-[9%] left-1/2 grid size-9 -translate-x-1/2 place-items-center rounded-full"
+            : "bottom-3 right-3 px-3 py-1.5 text-caption"
+        }`}
         onClick={() => {
           const v = ref.current;
           if (!v) return;
@@ -59,7 +67,22 @@ export function LoopingVideo({ src, poster, label }: Props) {
         }}
         type="button"
       >
-        {playing ? "일시정지" : "재생"}
+        {round ? (
+          <>
+            <span className="sr-only">{playing ? "일시정지" : "재생"}</span>
+            <svg aria-hidden viewBox="0 0 16 16" className="size-3.5 fill-current">
+              {playing ? (
+                <path d="M3 2h3.5v12H3zM9.5 2H13v12H9.5z" />
+              ) : (
+                <path d="M4 2l10 6-10 6z" />
+              )}
+            </svg>
+          </>
+        ) : playing ? (
+          "일시정지"
+        ) : (
+          "재생"
+        )}
       </button>
     </div>
   );

@@ -70,7 +70,12 @@ export default async function ProductPage({
       </div>
 
       <article className="section-y-tight mx-auto grid max-w-6xl gap-10 px-5 lg:grid-cols-2 lg:gap-16 lg:px-8">
-        <div>
+        {/*
+          질감 영상은 큰 원 오른쪽 아래에 걸친 작은 원 — 달이 걸린 모양. 원 밑에 정사각형으로
+          두면 "붙여넣은 영상"이 됐다(리더 지적). 종이색 링으로 두 원을 떼어 놓는다.
+          영상이 있는 제품은 이 자리가 차므로 아래 여백(pb)을 그만큼 둔다.
+        */}
+        <div className={`relative ${product.video ? "pb-8 lg:pb-12" : ""}`}>
           <ViewTransition name={`product-${product.slug}`} share="morph" default="none">
             <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-inset ring-ink/8 transition-[box-shadow] duration-300 group-hover:ring-mint">
             <Image
@@ -85,8 +90,8 @@ export default async function ProductPage({
             </div>
           </ViewTransition>
           {product.video && (
-            <div className="mt-4 aspect-square">
-              <LoopingVideo {...product.video} />
+            <div className="absolute bottom-0 right-0 w-[44%] rounded-full ring-[6px] ring-paper lg:-right-4 lg:w-[40%] lg:ring-8">
+              <LoopingVideo {...product.video} round />
             </div>
           )}
           {product.gallery && (
