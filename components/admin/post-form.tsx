@@ -64,6 +64,7 @@ export function PostForm({ action, initial }: Props) {
     setUploading(false);
   }
 
+  const tiles = images.length + (images.length < MAX_IMAGES ? 1 : 0);
   const label = "mb-2 block text-caption tracking-[0.04em] text-ink-faint";
   const field =
     "w-full border border-ink/20 bg-paper px-3.5 py-3 text-body outline-none transition-colors placeholder:text-ink/30 focus:border-ink";
@@ -119,7 +120,10 @@ export function PostForm({ action, initial }: Props) {
               · {MAX_IMAGES}장까지, 장당 5MB · 첫 장이 대표
             </span>
           </p>
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+          {/* 모바일 열 수 = 타일 수(사진 + 드롭존)가 3이면 3열 — 2열이면 셋째가 혼자 남는다(리더 지적). */}
+          <div
+            className={`grid gap-3 sm:grid-cols-3 ${tiles === 3 ? "grid-cols-3" : "grid-cols-2"}`}
+          >
             {images.map((src) => (
               <div
                 key={src}
