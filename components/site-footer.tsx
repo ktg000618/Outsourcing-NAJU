@@ -66,7 +66,8 @@ export function SiteFooter() {
       </div>
 
       <div className="relative border-t border-paper/10">
-        <div className="mx-auto flex max-w-6xl flex-wrap gap-y-1 px-5 py-6 text-caption text-paper/70 lg:px-8 [&>span+span]:before:mx-2 [&>span+span]:before:text-paper/30 [&>span+span]:before:content-['·']">
+        {/* 모바일은 세로로 쌓고 점 없이 — 줄바꿈된 줄 앞에 '·' 가 남으면 글머리 목록으로 읽힌다(375 실측). */}
+        <div className="mx-auto flex max-w-6xl flex-col gap-y-1 px-5 py-6 text-caption text-paper/70 sm:flex-row sm:flex-wrap sm:[&>span+span]:before:mx-2 sm:[&>span+span]:before:text-paper/30 sm:[&>span+span]:before:content-['·'] lg:px-8">
           <span>{site.legalName}</span>
           <span>대표 {site.owner}</span>
           <span>사업자등록번호 {site.businessNumber}</span>
