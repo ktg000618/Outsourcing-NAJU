@@ -22,25 +22,26 @@ export function SiteHeader() {
     /* 맨 위 2px 달노랑 선 — 스크롤 후에도 남는 유일한 브랜드 서명. 넓게 칠하지 않는다. */
     <header className="sticky top-0 z-50 border-b border-ink/10 border-t-2 border-t-moon bg-paper/95 backdrop-blur">
       {/* 로고가 세로로 안 크니 헤더가 두꺼울 이유가 없다 */}
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 lg:h-20 lg:px-8">
+      <div className="mx-auto flex h-20 max-w-6xl items-center justify-between px-5 lg:h-24 lg:px-8">
         {/*
           세로 락업(wordmark)을 헤더 높이에 끼우면 실측 49x56px — 글자가 40px 폭 얼룩이라
           상호를 읽을 수 없었다. 엠블럼은 원이라 40px 에서도 형태가 서고, 상호는 글자로 조판한다.
           36px 아래로 내리지 말 것 — 그 아래서는 엠블럼도 파스텔 뭉치가 된다.
         */}
-        <Link href="/" aria-label={`${site.name} 홈`} className="flex items-center gap-3">
+        {/*
+          기존 세로 락업(리더 지시). 흰 글자+민트 외곽선이라 흰 헤더 위에선 크기가 곧 판독성이다 —
+          56px 에서는 얼룩이었으니 64/80px 로 키우고 헤더도 그만큼 높였다. 토끼는 홈 히어로의
+          달 자리로도 갔으므로 홈에서는 토끼가 두 번 보인다(리더가 그렇게 요청).
+        */}
+        <Link href="/" aria-label={`${site.name} 홈`} className="block">
           <Image
-            src="/brand/emblem.png"
-            alt=""
+            src="/brand/wordmark.png"
+            alt={site.name}
             width={640}
-            height={719}
+            height={735}
             priority
-            className="h-10 w-auto lg:h-11"
+            className="h-16 w-auto lg:h-20"
           />
-          <span className="text-lead font-bold tracking-tight">{site.name}</span>
-          <span className="ml-1 hidden text-caption text-ink-faint lg:inline">
-            {site.tagline}
-          </span>
         </Link>
 
         <nav aria-label="주요 메뉴" className="hidden lg:block">

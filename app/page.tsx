@@ -29,10 +29,23 @@ export default function HomePage() {
             달. 사진을 못 바꾸는 조건에서 홈을 서브페이지와 갈라 놓는 유일한 수단은 구성이다.
             단색 원 + 글로우만 — 테두리·얼굴을 얹는 순간 스티커가 된다. 프레임 밖으로 걸친다.
           */}
+          {/*
+            달 자리에 토끼. 엠블럼 자체가 노란 달 안의 토끼라 단색 원보다 브랜드가 한 번에
+            읽힌다(리더 지시). 글로우는 투명 원의 box-shadow 로 남긴다 — PNG 상자에 걸면 네모가 된다.
+          */}
           <div
             aria-hidden
-            className="enter-moon absolute -right-4 -top-5 z-10 size-20 rounded-full bg-moon shadow-[0_0_60px_12px_rgba(223,192,93,0.35)] lg:-right-10 lg:-top-10 lg:size-36"
-          />
+            className="enter-moon absolute -right-4 -top-5 z-10 size-20 rounded-full shadow-[0_0_60px_12px_rgba(223,192,93,0.35)] lg:-right-10 lg:-top-10 lg:size-36"
+          >
+            <Image
+              src="/brand/emblem.png"
+              alt=""
+              width={640}
+              height={719}
+              priority
+              className="size-full object-contain drop-shadow-[0_6px_18px_rgba(22,22,22,0.25)]"
+            />
+          </div>
           {/* 세로 라벨. 편집 디자인의 여백은 비어 있지 않고 작은 글자가 지킨다. */}
           <p
             aria-hidden
