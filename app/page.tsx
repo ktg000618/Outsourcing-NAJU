@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { ViewTransition } from "react";
 import Link from "next/link";
+import { HeroSlides } from "@/components/hero-slides";
 import { SectionEyebrow } from "@/components/section-eyebrow";
 import { products, site, timeline } from "@/lib/site";
 
@@ -28,14 +29,34 @@ export default function HomePage() {
         */}
         <div className="relative isolate overflow-hidden rounded-2xl bg-ink ring-1 ring-inset ring-ink/5 sm:flex sm:aspect-16/10 sm:items-end lg:aspect-[1.79/1]">
           <div className="relative aspect-4/3 w-full sm:absolute sm:inset-0 sm:aspect-auto">
-            <Image
-              src="/images/hero-maker-wide.jpg"
-              alt="김화수 대표가 갓 쳐낸 절굿대떡 판을 들어 보이고 있다"
-              fill
-              priority
-              quality={92}
-              sizes="(min-width: 1200px) 1152px, 100vw"
-              className="enter-photo object-cover object-[58%_50%] lg:object-center"
+            {/*
+              사진 넷이 이야기 순서로 돈다 — 찻상 위 떡 → 밭의 두 사람 → 손으로 펴는 반죽 → 절굿대 꽃.
+              대표 단독 컷(hero-maker-wide)은 간판의 전화번호가 헤드라인과 겹쳐 뺐다.
+              object-position 은 모바일 4:3(폭 26% 잘림)과 PC 1.79:1 에서 각각 실측해 잡았다.
+            */}
+            <HeroSlides
+              slides={[
+                {
+                  src: "/images/product-gift-scene.jpg",
+                  alt: "찻상에 올린 절굿대떡과 찻주전자",
+                  position: "object-[50%_55%]",
+                },
+                {
+                  src: "/images/owners-field.jpg",
+                  alt: "절굿대 밭에서 잎을 거두는 두 사람",
+                  position: "object-[50%_40%] lg:object-[50%_45%]",
+                },
+                {
+                  src: "/images/making-hands.jpg",
+                  alt: "장갑 낀 손으로 초록 반죽을 펴고 있다",
+                  position: "object-center",
+                },
+                {
+                  src: "/images/jeolgutdae-bloom.jpg",
+                  alt: "밭에서 꽃봉오리를 맺은 절굿대",
+                  position: "object-[50%_38%]",
+                },
+              ]}
             />
             <div
               aria-hidden
