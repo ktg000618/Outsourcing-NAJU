@@ -33,6 +33,9 @@ def cut_points(im, max_h):
             y = target  # 단색 행이 없으면 그냥 자른다
         cuts.append(y)
     cuts.append(H)
+    # 꼬리가 짧으면(600px 미만) 앞 조각에 붙인다 — 82px 짜리 조각이 따로 나온 적 있다
+    if len(cuts) > 2 and cuts[-1] - cuts[-2] < 600:
+        cuts.pop(-2)
     return cuts
 
 args = sys.argv[1:]

@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { LoopingVideo } from "@/components/looping-video";
 import { ReviewVideo } from "@/components/review-video";
 import { DetailReveal } from "@/components/detail-reveal";
+import { HERO_QUALITY, HERO_SIZES } from "@/components/product-image-prefetch";
 import { SectionEyebrow } from "@/components/section-eyebrow";
 import type { Metadata } from "next";
 import { products, site } from "@/lib/site";
@@ -120,8 +121,8 @@ export default async function ProductPage({
               fill
               priority
               fetchPriority="high"
-              sizes="(min-width: 1024px) 440px, 90vw"
-              quality={80}
+              sizes={HERO_SIZES}
+              quality={HERO_QUALITY}
               className="object-cover"
             />
           </div>

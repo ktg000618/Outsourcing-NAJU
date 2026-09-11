@@ -2,6 +2,7 @@ import Image from "next/image";
 import { ViewTransition } from "react";
 import Link from "next/link";
 import { HeroSlides } from "@/components/hero-slides";
+import { ProductImagePrefetch } from "@/components/product-image-prefetch";
 import { SectionEyebrow } from "@/components/section-eyebrow";
 import { products, site, timeline } from "@/lib/site";
 
@@ -21,6 +22,7 @@ export default function HomePage() {
 
   return (
     <ViewTransition enter="page-in" exit="page-out" default="none">
+      <ProductImagePrefetch products={products} />
       {/* 1. 히어로 — 사진 + 88px 헤드라인 */}
       <section className="mx-auto w-full max-w-6xl px-5 pt-6 lg:px-8 lg:pt-8">
         {/*

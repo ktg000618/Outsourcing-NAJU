@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useRef, useState, type ReactNode } from "react";
+import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 
 /**
  * 긴 상세 이미지를 처음엔 일부만 보이고, 「더보기」로 전부 펼친다.
@@ -22,6 +22,16 @@ export function DetailReveal({
   const [open, setOpen] = useState(false);
   const top = useRef<HTMLDivElement>(null);
   const panelId = useId();
+
+  /* 펼치는 순간 조각 전부를 받는다 — 지연 로드로 두면 느린 회선에서 스크롤마다 빈 칸이 먼저 보인다(실측). */
+  useEffect(() => {
+    if (!open) return;
+    top.current
+      ?.querySelectorAll<HTMLImageElement>('img[loading="lazy"]')
+      .forEach((img) => {
+        img.loading = "eager";
+      });
+  }, [open]);
 
   return (
     <div ref={top} className="scroll-mt-28">

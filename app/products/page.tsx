@@ -2,6 +2,7 @@ import Image from "next/image";
 import { ViewTransition } from "react";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { ProductImagePrefetch } from "@/components/product-image-prefetch";
 import { SectionEyebrow } from "@/components/section-eyebrow";
 import { products, site } from "@/lib/site";
 
@@ -44,6 +45,7 @@ export default function ProductsPage() {
 
   return (
     <ViewTransition enter="page-in" exit="page-out" default="none">
+      <ProductImagePrefetch products={products} />
       {/*
           서브페이지 히어로. 홈은 사진 위에 글자이고, 여기는 글자를 사진 밖으로 꺼낸다 —
           4개 페이지가 똑같은 "사진 위 흰 글씨"면 홈의 한 방이 희석된다. 그라디언트를 걷어
