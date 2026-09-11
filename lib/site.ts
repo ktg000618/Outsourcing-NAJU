@@ -88,6 +88,8 @@ export type Product = {
    * 사이트 문법 밖의 디자인이라 접힌 채로 두고 「상세 정보 펼치기」로 연다. 몰 전용 꼬리(고객센터·배송비)는 뺀다.
    */
   detailImages?: { src: string; alt: string; width: number; height: number }[];
+  /** detailImages 가 디자인된 페이지 조각이 아니라 낱장 사진이면 사이를 띄운다. */
+  detailGap?: boolean;
   /** 넣는 것. "넣지 않는 것으로 말한다"의 반대편 — 흰 그릇에 담긴 재료 사진. */
   ingredients?: { src: string; alt: string; label: string }[];
   /** 소리 없는 짧은 루프. 사진으로는 안 보이는 질감을 보여주는 자리다. */
@@ -345,6 +347,33 @@ export const products: Product[] = [
     detail:
       "절굿대떡을 이바지에 쓴 것은 맛도 맛이지만 건강을 생각한 떡이라는 믿음 때문이었습니다. 명절과 예단, 회사 접대에 두루 나갑니다.",
     image: "/images/product-gift-set.jpg",
+    detailGap: true,
+    detailImages: [
+      {
+        src: "/images/detail/gift-01.jpg",
+        alt: "뚜껑을 연 선물 상자 — 낱개 포장한 절굿대떡과 조청",
+        width: 1400,
+        height: 1000,
+      },
+      {
+        src: "/images/detail/gift-02.jpg",
+        alt: "절굿대떡 선물 상자와 접시에 담은 떡",
+        width: 1000,
+        height: 1000,
+      },
+      {
+        src: "/images/detail/gift-03.jpg",
+        alt: "나무 도마 위 낱개 포장 절굿대떡과 절굿대 잎",
+        width: 860,
+        height: 737,
+      },
+      {
+        src: "/images/detail/gift-04.jpg",
+        alt: "노란 보자기 위 접시에 담은 절굿대떡과 차",
+        width: 860,
+        height: 918,
+      },
+    ],
     gallery: [
       {
         src: "/images/product-gift-box.jpg",

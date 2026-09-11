@@ -310,7 +310,9 @@ export default async function ProductPage({
                   <span className="hidden group-open:inline">접기</span>
                 </span>
               </summary>
-              <div className="mx-auto mt-8 max-w-[860px] overflow-hidden rounded-2xl ring-1 ring-inset ring-ink/5">
+              <div
+                className={`mx-auto mt-8 max-w-[860px] ${product.detailGap ? "flex flex-col gap-3" : "overflow-hidden rounded-2xl ring-1 ring-inset ring-ink/5"}`}
+              >
                 {product.detailImages.map((d, i) => (
                   <Image
                     key={d.src}
@@ -321,7 +323,7 @@ export default async function ProductPage({
                     sizes="(min-width: 900px) 860px, 100vw"
                     quality={85}
                     loading={i === 0 ? "eager" : "lazy"}
-                    className="block h-auto w-full"
+                    className={`block h-auto w-full ${product.detailGap ? "rounded-2xl ring-1 ring-inset ring-ink/5" : ""}`}
                   />
                 ))}
               </div>
