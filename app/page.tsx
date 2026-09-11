@@ -333,7 +333,7 @@ export default function HomePage() {
           <h2 className="mt-3 font-black tracking-tight text-h2 lg:text-h2-lg">
             빚는 것들
           </h2>
-          <ul className="mt-12 grid grid-cols-2 gap-x-6 gap-y-12 lg:grid-cols-4 lg:gap-x-10">
+          <ul className="mt-12 grid grid-cols-3 gap-x-4 gap-y-12 sm:gap-x-6 lg:gap-x-10">
             {products.map((p) => (
               <li key={p.slug}>
                 <Link

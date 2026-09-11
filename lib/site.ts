@@ -150,19 +150,6 @@ export const products: Product[] = [
     accent: "signage",
   },
   {
-    slug: "jebissuk",
-    name: "제비쑥떡",
-    summary: "봄 쑥을 그대로 넣은 초록 떡",
-    detail:
-      "절굿대떡과 함께 매장을 지켜 온 또 하나의 주력입니다. 쑥 향이 진하고 뒷맛이 깔끔합니다.",
-    image: "/images/product-jeolgutdae.jpg",
-    price: null,
-    unit: null,
-    occasions: ["선물", "답례"],
-    storeUrl: null,
-    accent: "signage",
-  },
-  {
     slug: "oranda",
     name: "나주배 촉촉오란다",
     summary: "겉은 바삭, 속은 촉촉한 수제 오란다",

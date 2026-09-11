@@ -8,7 +8,7 @@ import { credentials, products, site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "제품",
   description:
-    "절굿대떡, 제비쑥떡, 호박고지떡, 나주배 촉촉오란다, 선물세트. 인공첨가물 없이 재래방식으로 빚습니다.",
+    "절굿대떡, 나주배 촉촉오란다, 선물세트. 인공첨가물 없이 재래방식으로 빚습니다.",
   openGraph: {
     images: [
       {
@@ -242,7 +242,7 @@ export default function ProductsPage() {
         <h2 className="mt-3 text-h3 lg:text-h2-lg">보관과 해동</h2>
         <div className="mt-8 grid gap-x-12 gap-y-8 lg:grid-cols-2">
           <div>
-            <h3 className="text-lead">떡 — 절굿대떡·제비쑥떡</h3>
+            <h3 className="text-lead">떡 — 절굿대떡</h3>
             <dl className="mt-4 divide-y divide-ink/10 border-y border-ink/10 text-small">
               <div className="flex gap-6 py-4">
                 <dt className="w-20 shrink-0 text-ink-faint">보관</dt>

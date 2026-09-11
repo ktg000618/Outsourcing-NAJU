@@ -288,8 +288,8 @@ export default async function ProductPage({
         <div className="section-y-tight mx-auto max-w-6xl px-5 lg:px-8">
           <SectionEyebrow phase={1}>다른 제품</SectionEyebrow>
           <h2 className="mt-3 text-h2 lg:text-h2-lg">다른 제품</h2>
-          {/* 제품 4개 − 현재 1 = 항상 3개. 4열이면 마지막 칸이 늘 빈다. */}
-          <ul className="mt-8 grid grid-cols-3 gap-x-4 gap-y-8 sm:gap-x-5 lg:gap-x-10">
+          {/* 제품 3개 − 현재 1 = 항상 2개. */}
+          <ul className="mt-8 grid grid-cols-2 gap-x-4 gap-y-8 sm:gap-x-5 lg:max-w-3xl lg:gap-x-10">
             {others.map((p) => (
               <li key={p.slug}>
                 <Link
