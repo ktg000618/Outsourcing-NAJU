@@ -241,6 +241,21 @@
   .link-draw:focus-visible {
     background-size: 100% 1px;
   }
+  /*
+    사이트 공통 액션 2종 — 이 둘 외의 링크·버튼 모양을 새로 만들지 않는다(2026-09-11 점검: 텍스트 링크 6종·전화 버튼 5종이 있었다).
+    .text-link  본문 안 텍스트 링크. 폰에서 44px 탭 높이를 갖는다.
+    .btn-primary 채운 버튼(전화·주요 액션). 폰에서는 풀폭, sm 부터 내용 폭.
+  */
+  .text-link {
+    @apply inline-flex min-h-11 items-center gap-1.5 text-small text-ink underline decoration-ink/30 underline-offset-4 transition-colors hover:text-mint-link hover:decoration-mint-link;
+  }
+  .btn-primary {
+    @apply inline-flex w-full items-center justify-center gap-2 border border-ink bg-ink px-7 py-3.5 text-small text-paper hover:bg-ink-soft sm:w-auto;
+    transition: transform 180ms ease-out, box-shadow 180ms ease-out, background-color 160ms;
+  }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 20px -10px rgb(22 22 22 / 0.45); }
+  .btn-primary:active { transform: translateY(0) scale(0.985); box-shadow: none;
+  }
   /* ② 채운 버튼 — 1px 뜬다. pressable 과 같이 붙이지 않는다(transform 충돌). */
   .btn-lift {
     transition: transform 180ms ease-out, box-shadow 180ms ease-out, background-color 160ms;
