@@ -82,7 +82,7 @@ export default function VisitPage() {
             priority
             sizes="(min-width: 1200px) 1152px, 100vw"
             quality={88}
-            className="object-cover object-center"
+            className="enter-photo object-cover object-[50%_40%]"
           />
         </div>
       </section>
@@ -181,18 +181,6 @@ export default function VisitPage() {
                 <p className="mt-2 text-small leading-relaxed text-ink-soft">
                   {step.detail}
                 </p>
-                {step.image && (
-                  <div className="relative mt-5 aspect-4/3 overflow-hidden rounded-2xl bg-paper-2 ring-1 ring-inset ring-ink/5">
-                    <Image
-                      src={step.image}
-                      alt={step.imageAlt ?? ""}
-                      fill
-                      sizes="(min-width: 1024px) 360px, 90vw"
-                      quality={88}
-                      className="object-cover"
-                    />
-                  </div>
-                )}
               </li>
             ))}
           </ol>

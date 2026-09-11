@@ -53,7 +53,7 @@ export default function StoryPage() {
             priority
             sizes="(min-width: 1200px) 1152px, 100vw"
             quality={88}
-            className="object-cover object-[50%_35%]"
+            className="enter-photo object-cover object-[50%_35%]"
           />
         </div>
       </section>
@@ -126,7 +126,7 @@ export default function StoryPage() {
         {/* 워터마크. 큰 활자가 곧 질감이다 — 사진 없이 어두운 면을 채우는 법. */}
         <p
           aria-hidden
-          className="pointer-events-none absolute -right-10 -top-6 select-none font-extralight leading-none tracking-tighter text-paper/[0.06] text-[9rem] lg:-top-16 lg:text-[17rem]"
+          className="pointer-events-none absolute -right-10 -top-6 select-none font-extralight leading-none tracking-tighter text-paper/[0.06] text-[9rem] lg:hidden"
         >
           누로
         </p>
@@ -171,25 +171,20 @@ export default function StoryPage() {
         </div>
       </section>
 
-      {/*
-        사회적기업으로서 하는 일. 클라이언트가 상세페이지에 쓴 원문인데 사이트에는
-        한 줄도 없었다. 인증 배지만 걸어 두는 것보다 무엇을 하는지가 강하다.
-
-        사진은 AI 생성(Higgsfield, 2688x1520)이다 — 제품이 안 나오는 장면이라 오표현 위험이
-        없고, 리더가 승인했다. 실제 절굿대 밭·꽃 사진을 참조로 넣어 만들었다.
-        제품·사람이 나오는 자리는 AI 로 채우지 않는다(제품이 바뀐다, 2026-09-05 확인).
-        재촬영이 되면 실사로 바꾼다.
-      */}
+      {/* 씨앗·재배 — 농가 촬영본(2026-09, 밭에서 잎을 거두는 장면). 이전의 AI 생성 밴드는 이 사진으로 대체됐다. */}
       <section className="rise bg-paper-2">
-        <div className="relative aspect-[2/1] w-full">
-          <Image
-            src="/images/growers-harvest.jpg"
-            alt="절굿대 밭에서 잎을 거두어 바구니에 담고 있다"
-            fill
-            sizes="100vw"
-            quality={88}
-            className="object-cover"
-          />
+        {/* 어두운 패널 바로 아래 풀블리드로 붙이면 초록 사진 두 장이 한 덩어리가 된다 — 컨테이너 안 둥근 사각(장면 규칙). */}
+        <div className="mx-auto max-w-6xl px-5 pt-16 lg:px-8 lg:pt-24">
+          <div className="relative aspect-[2/1] overflow-hidden rounded-2xl bg-paper-2 ring-1 ring-inset ring-ink/5">
+            <Image
+              src="/images/growers-harvest.jpg"
+              alt="절굿대 밭에서 잎을 거두어 바구니에 담고 있다"
+              fill
+              sizes="(min-width: 1200px) 1152px, 100vw"
+              quality={88}
+              className="object-cover object-[50%_30%]"
+            />
+          </div>
         </div>
         <div className="section-y mx-auto max-w-6xl px-5 lg:px-8">
           <SectionEyebrow phase={0.65}>
@@ -273,7 +268,7 @@ export default function StoryPage() {
         {/* 공정 세 장면 — "전통 방식 그대로" 를 말이 아니라 손으로 보여 준다. 순서가 곧 공정이라 번호 없이 왼→오. */}
         <ul
           aria-label="만드는 과정 사진"
-          className="mt-10 grid grid-cols-3 gap-3 lg:gap-5"
+          className="-mx-5 mt-10 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 [scrollbar-width:none] sm:mx-0 sm:grid sm:grid-cols-3 sm:overflow-visible sm:px-0 lg:gap-5 [&::-webkit-scrollbar]:hidden"
         >
           {[
             { src: "/images/process-flour.jpg", alt: "체에 내린 쌀가루" },
@@ -288,7 +283,7 @@ export default function StoryPage() {
           ].map((s) => (
             <li
               key={s.src}
-              className="relative aspect-4/3 overflow-hidden rounded-2xl bg-paper-2 ring-1 ring-inset ring-ink/5"
+              className="relative aspect-4/3 w-[72vw] shrink-0 snap-center overflow-hidden rounded-2xl bg-paper-2 ring-1 ring-inset ring-ink/5 sm:w-auto"
             >
               <Image
                 src={s.src}

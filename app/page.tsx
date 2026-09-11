@@ -80,8 +80,12 @@ export default function HomePage() {
                 이 대비가 표정이 된다. 문구는 클라이언트가 쓰는 표현 그대로.
               */}
               <h1 className="text-h1 text-paper lg:text-hero">
-                <span className="enter-1 block font-thin tracking-tight">50년 만에 돌아온</span>
-                <span className="enter-2 block font-black tracking-tighter">나주의 절굿대떡</span>
+                <span className="enter-1 block font-thin tracking-tight">
+                  50년 만에 돌아온
+                </span>
+                <span className="enter-2 block font-black tracking-tighter">
+                  나주의 절굿대떡
+                </span>
               </h1>
               <p className="enter-3 mt-6 max-w-md text-small leading-relaxed text-paper/85 lg:text-body">
                 목사골 양반들이 이바지로 쓰던 귀한 떡. 깊은 산속에서만 자생하던
@@ -116,7 +120,9 @@ export default function HomePage() {
                   {s.unit}
                 </span>
               </p>
-              <p className="text-right text-small text-ink-soft sm:mt-2 sm:text-left">{s.label}</p>
+              <p className="text-right text-small text-ink-soft sm:mt-2 sm:text-left">
+                {s.label}
+              </p>
             </li>
           ))}
         </ul>
@@ -143,7 +149,9 @@ export default function HomePage() {
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
             <SectionEyebrow phase={0.15}>제품</SectionEyebrow>
-            <h2 className="mt-3 font-black tracking-tight text-h2 lg:text-h2-lg">대표 제품</h2>
+            <h2 className="mt-3 font-black tracking-tight text-h2 lg:text-h2-lg">
+              대표 제품
+            </h2>
           </div>
           <Link
             href="/products"
@@ -156,19 +164,29 @@ export default function HomePage() {
             스크롤바는 숨기고 스냅으로 한 장씩 멈춘다. sm 부터는 3열 그리드. */}
         <ul className="-mx-5 mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-2 [scrollbar-width:none] sm:mx-0 sm:grid sm:grid-cols-3 sm:gap-x-8 sm:gap-y-10 sm:overflow-visible sm:px-0 sm:pb-0 lg:mt-14 lg:gap-x-10 [&::-webkit-scrollbar]:hidden">
           {best.map((p, i) => (
-            <li key={p.slug} className={`w-[72vw] shrink-0 snap-center sm:w-auto ${i === 1 ? "sm:mt-14" : ""}`}>
+            <li
+              key={p.slug}
+              className={`w-[72vw] shrink-0 snap-center sm:w-auto ${i === 1 ? "sm:mt-14" : ""}`}
+            >
               {/* 가운데 원만 내려서 비대칭 — 셋이 나란하면 스톡 템플릿이다 */}
-              <Link href={`/products/${p.slug}`} className="group pressable block">
-                <ViewTransition name={`product-${p.slug}`} share="morph" default="none">
+              <Link
+                href={`/products/${p.slug}`}
+                className="group pressable block"
+              >
+                <ViewTransition
+                  name={`product-${p.slug}`}
+                  share="morph"
+                  default="none"
+                >
                   <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-ink/8 transition-[box-shadow] duration-300 group-hover:ring-2 group-hover:ring-mint-deep group-hover:ring-offset-4 group-hover:ring-offset-paper">
-                  <Image
-                    src={p.image}
-                    alt=""
-                    fill
-                    sizes="(min-width: 640px) 30vw, 90vw"
-                    quality={88}
-                    className="object-cover transition-transform duration-700 ease-[cubic-bezier(.2,.7,.2,1)] group-hover:scale-[1.03]"
-                  />
+                    <Image
+                      src={p.image}
+                      alt=""
+                      fill
+                      sizes="(min-width: 640px) 30vw, 90vw"
+                      quality={88}
+                      className="object-cover transition-transform duration-700 ease-[cubic-bezier(.2,.7,.2,1)] group-hover:scale-[1.03]"
+                    />
                   </div>
                 </ViewTransition>
                 {/*
@@ -209,9 +227,9 @@ export default function HomePage() {
               <span className="font-black">천금누로탕.</span>
             </blockquote>
             <p className="mt-6 max-w-prose text-ink-soft">
-              절굿대의 뿌리는 한방에서 누로(漏蘆)라 부르는 약재입니다. 절굿대떡을
-              이바지에 쓴 것은 맛 때문만이 아니라 건강을 생각한 떡이라는 믿음
-              때문이었습니다.
+              절굿대의 뿌리는 한방에서 누로(漏蘆)라 부르는 약재입니다.
+              절굿대떡을 이바지에 쓴 것은 맛 때문만이 아니라 건강을 생각한
+              떡이라는 믿음 때문이었습니다.
             </p>
             <Link
               href="/story"
@@ -224,9 +242,15 @@ export default function HomePage() {
           <ol className="divide-y divide-ink/10 border-y border-ink/10 lg:mt-2">
             {teaser.map((t) => (
               <li key={t.title} className="flex gap-6 py-6 lg:gap-8">
-                <MoonMark phase={t.phase} size={28} className="mt-1 shrink-0 text-ink" />
+                <MoonMark
+                  phase={t.phase}
+                  size={28}
+                  className="mt-1 shrink-0 text-ink"
+                />
                 <div>
-                  <p className="text-caption tabular-nums tracking-[0.08em] text-ink-faint">{t.when}</p>
+                  <p className="text-caption tabular-nums tracking-[0.08em] text-ink-faint">
+                    {t.when}
+                  </p>
                   <p className="mt-1 text-lead font-bold">{t.title}</p>
                 </div>
               </li>
@@ -257,8 +281,8 @@ export default function HomePage() {
           </h2>
           <p className="mt-6 max-w-md text-small leading-[1.85] text-paper/85 lg:text-body">
             유화제나 인공감미료를 전혀 넣지 않고 전통 방식 그대로 빚습니다. 나주
-            특산 배즙으로 자연스러운 단맛을 더했고, 찹쌀의 쫄깃한 식감은 소화에도
-            부담이 없습니다.
+            특산 배즙으로 자연스러운 단맛을 더했고, 찹쌀의 쫄깃한 식감은
+            소화에도 부담이 없습니다.
           </p>
           <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-caption text-paper/70">
             {credentials.map((c) => (
@@ -292,12 +316,12 @@ export default function HomePage() {
         </div>
         <div className="relative aspect-4/3 lg:order-2 lg:aspect-auto lg:min-h-[32rem]">
           <Image
-            src="/images/making-hands.jpg"
-            alt="장갑 낀 손으로 초록 절굿대 반죽을 틀에 펴고 있다"
+            src="/images/making-cut.jpg"
+            alt="쳐낸 절굿대떡을 칼로 반듯하게 자르는 김화수 대표"
             fill
             sizes="(min-width: 1024px) 50vw, 100vw"
             quality={88}
-            className="object-cover"
+            className="object-cover object-[50%_30%]"
           />
         </div>
       </section>
@@ -306,14 +330,19 @@ export default function HomePage() {
       <section className="rise">
         <div className="section-y mx-auto max-w-6xl px-5 lg:px-8">
           <SectionEyebrow phase={1}>전체 제품</SectionEyebrow>
-          <h2 className="mt-3 font-black tracking-tight text-h2 lg:text-h2-lg">빚는 것들</h2>
+          <h2 className="mt-3 font-black tracking-tight text-h2 lg:text-h2-lg">
+            빚는 것들
+          </h2>
           <ul className="mt-12 grid grid-cols-2 gap-x-6 gap-y-12 lg:grid-cols-4 lg:gap-x-10">
             {products.map((p) => (
               <li key={p.slug}>
-                <Link href={`/products/${p.slug}`} className="group pressable block">
+                <Link
+                  href={`/products/${p.slug}`}
+                  className="group pressable block"
+                >
                   <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-ink/8 transition-[box-shadow] duration-300 group-hover:ring-2 group-hover:ring-mint-deep group-hover:ring-offset-4 group-hover:ring-offset-paper">
                     <Image
-                      src={p.image}
+                      src={p.gallery?.[0]?.src ?? p.image}
                       alt=""
                       fill
                       sizes="(min-width: 1024px) 18vw, 44vw"
@@ -335,7 +364,7 @@ export default function HomePage() {
       <section className="rise mx-auto grid max-w-6xl gap-4 px-5 pb-20 sm:grid-cols-2 lg:px-8 lg:pb-28">
         <Link
           href="/visit"
-          className="group pressable relative isolate flex min-h-56 flex-col justify-end overflow-hidden rounded-t-[6rem] rounded-b-2xl bg-ink p-8"
+          className="group pressable relative isolate flex min-h-64 flex-col justify-end overflow-hidden rounded-t-[6rem] rounded-b-2xl bg-ink p-8 sm:min-h-80"
         >
           <Image
             src="/images/store-front.jpg"
@@ -343,12 +372,12 @@ export default function HomePage() {
             fill
             sizes="(min-width: 640px) 45vw, 90vw"
             quality={88}
-            className="object-cover transition-transform duration-700 ease-[cubic-bezier(.2,.7,.2,1)] group-hover:scale-[1.03]"
+            className="object-cover object-[50%_45%] transition-transform duration-700 ease-[cubic-bezier(.2,.7,.2,1)] group-hover:scale-[1.03]"
           />
           {/* 사진을 30% 로 흐리면 "dim overlay card" 템플릿이 된다. 히어로처럼 아래만 어둡게. */}
           <div
             aria-hidden
-            className="absolute inset-0 bg-[linear-gradient(to_top,rgba(22,22,22,0.88)_0%,rgba(22,22,22,0.35)_45%,rgba(22,22,22,0)_75%)]"
+            className="absolute inset-0 bg-[linear-gradient(to_top,rgba(22,22,22,0.88)_0%,rgba(22,22,22,0.35)_30%,rgba(22,22,22,0)_55%)]"
           />
           <div className="relative">
             <p className="text-caption text-paper/70">방문구매를 원하시면</p>
@@ -359,8 +388,12 @@ export default function HomePage() {
           href={`tel:${site.tel.replace(/-/g, "")}`}
           className="btn-lift moonlit flex min-h-56 flex-col justify-end rounded-2xl bg-ink p-8 text-paper transition-colors hover:bg-ink-soft"
         >
-          <p className="relative text-caption text-paper/70">주문·체험 문의는 전화로</p>
-          <p className="relative mt-1 font-black tracking-tighter tabular-nums text-h2 lg:text-h2-lg">{site.tel}</p>
+          <p className="relative text-caption text-paper/70">
+            주문·체험 문의는 전화로
+          </p>
+          <p className="relative mt-1 font-black tracking-tighter tabular-nums text-h2 lg:text-h2-lg">
+            {site.tel}
+          </p>
         </a>
       </section>
     </ViewTransition>

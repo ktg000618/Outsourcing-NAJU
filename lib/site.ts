@@ -169,6 +169,12 @@ export const products: Product[] = [
     detail:
       "나주배청으로 반죽해 겉은 바삭하고 속은 촉촉합니다. 절굿대 분말을 함께 넣고, 참깨·땅콩·해바라기씨·호박씨를 비롯한 여섯 가지 견과를 더해 고소합니다. 합성첨가물과 색소, 방부제를 넣지 않습니다. 낱개로 포장해 바삭함이 오래갑니다.",
     image: "/images/product-oranda-plate.jpg",
+    gallery: [
+      {
+        src: "/images/product-oranda-pack.jpg",
+        alt: "낱개 포장한 나주배 촉촉오란다",
+      },
+    ],
     ingredients: [
       { src: "/images/ing-pumpkin-seed.jpg", alt: "호박씨", label: "호박씨" },
       {

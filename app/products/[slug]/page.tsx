@@ -137,7 +137,7 @@ export default async function ProductPage({
             {product.occasions.map((o) => (
               <li
                 key={o}
-                className="bg-rose/25 px-3 py-1 text-caption text-ink"
+                className="border border-rose px-3 py-1 text-caption text-ink"
               >
                 {o}
               </li>

@@ -64,19 +64,19 @@ export default function ProductsPage() {
             priority
             sizes="(min-width: 1200px) 1152px, 100vw"
             quality={88}
-            className="object-cover object-center"
+            className="enter-photo object-cover object-center"
           />
         </div>
       </section>
 
       {/* 쓰임새 → 제품. 떡은 "무엇인가"보다 "언제 쓰는가"로 찾는 손님이 많다. */}
-      <section className="rise mx-auto max-w-6xl px-5 pb-16 lg:px-8 lg:pb-20">
+      <section className="rise mx-auto max-w-6xl px-5 pb-16 pt-14 lg:px-8 lg:pb-20 lg:pt-20">
         <SectionEyebrow phase={0.25}>쓰임새</SectionEyebrow>
         <h2 className="mt-3 text-h3 lg:text-h2-lg">쓰임새로 고르기</h2>
         <ul className="mt-8 grid grid-cols-2 gap-x-6 gap-y-7 sm:gap-x-8 lg:grid-cols-3">
           {[...byOccasion.entries()].map(([occasion, list]) => (
             <li key={occasion} className="border-t border-ink/15 pt-4">
-              <p className="inline-block bg-rose/25 px-3 py-1 text-caption text-ink">
+              <p className="inline-block border border-rose px-3 py-1 text-caption text-ink">
                 {occasion}
               </p>
               <ul className="mt-3 flex flex-col gap-1.5">
