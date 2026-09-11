@@ -281,8 +281,8 @@ export default function HomePage() {
           </h2>
           <p className="mt-6 max-w-md text-small leading-[1.85] text-paper/85 lg:text-body">
             유화제나 인공감미료를 전혀 넣지 않고 전통 방식 그대로 빚습니다. 나주
-            특산 배즙으로 자연스러운 단맛을 더했고, 찹쌀의 쫄깃한 식감은
-            소화에도 부담이 없습니다.
+            특산 배즙으로 자연스러운 단맛을 더했고, 손으로 친 찹쌀이라 쫄깃하고
+            부드럽습니다.
           </p>
           <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-caption text-paper/70">
             {credentials.map((c) => (

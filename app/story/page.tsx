@@ -133,16 +133,15 @@ export default function StoryPage() {
         <div className="section-y relative mx-auto grid max-w-6xl gap-12 px-5 lg:grid-cols-2 lg:items-center lg:gap-20 lg:px-8">
           <div>
             <SectionEyebrow phase={0.4} tone="paper">
-              약재로서의 절굿대
+              이름의 뿌리
             </SectionEyebrow>
             <h2 className="mt-3 text-h2 lg:text-h2-lg">
               누로(漏蘆), 천금과 같다는 뿌리
             </h2>
             <div className="mt-6 space-y-5 text-paper/80">
+              {/* 효능·질환 서술은 식품표시광고법에 걸린다 — 이름의 유래만 적는다. */}
               <p className="max-w-prose">
-                절굿대는 예부터 간을 보호하고 피를 맑게 하는 것으로 알려져
-                왔습니다. 한방에서 호흡계·순환계·운동계 질환을 다스릴 때 쓰는
-                약재 누로가 바로 절굿대의 뿌리입니다.
+                절굿대의 뿌리를 옛 의서에서는 누로(漏蘆)라 불렀습니다.
               </p>
               <p className="max-w-prose">
                 이를 달인 탕약을 천금누로탕(千金漏蘆湯)이라 불렀습니다. 천금과
@@ -236,21 +235,17 @@ export default function StoryPage() {
       {/* 만드는 방식 */}
       <section className="section-y rise mx-auto max-w-6xl px-5 lg:px-8">
         <SectionEyebrow phase={0.85}>만드는 방식</SectionEyebrow>
-        <h2 className="mt-3 text-h2 lg:text-h2-lg">
-          정직한 천연 재료만 사용합니다
-        </h2>
+        <h2 className="mt-3 text-h2 lg:text-h2-lg">재료 그대로 빚습니다</h2>
         <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:gap-16">
           <div className="space-y-5 text-ink-soft">
             <p className="max-w-prose">
               절굿대떡은 유화제나 인공감미료를 전혀 넣지 않고, 전통 방식 그대로
               정성껏 빚어냅니다. 나주의 특산물 배즙으로 자연스러운 단맛을
-              더하고, 찹쌀의 쫄깃한 식감은 소화에도 부담이 없습니다.
+              더하고, 손으로 친 찹쌀이라 쫄깃하고 부드럽습니다.
             </p>
             <p className="max-w-prose">
-              아침 식사 대용은 물론 아이들 영양 간식으로도 안심하고 즐기실 수
-              있습니다. 떡에 들어가는 절굿대는 깊은 산속에서만 자생하던 것을
-              육묘에 성공해 직접 기르고, 지금은 마을 어르신들께 위탁해
-              재배합니다.
+              떡에 들어가는 절굿대는 깊은 산속에서만 자생하던 것을 육묘에 성공해
+              직접 기르고, 지금은 마을 어르신들께 위탁해 재배합니다.
             </p>
           </div>
           <div className="relative aspect-[2/1] overflow-hidden rounded-2xl ring-1 ring-inset ring-ink/5 lg:aspect-4/3">

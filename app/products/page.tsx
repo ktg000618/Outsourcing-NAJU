@@ -40,7 +40,7 @@ export default function ProductsPage() {
           </h1>
           <p className="mt-5 max-w-md text-ink-soft lg:mt-0 lg:pb-3">
             이바지·명절·답례에 두루 나갑니다. 낱개 포장이라 나눠 드리기
-            좋습니다. 유화제나 인공감미료 없이 무농약 절굿대와 나주배
+            좋습니다. 유화제나 인공감미료 없이 직접 기른 절굿대와 나주배
             농축액으로만 단맛을 냅니다.
           </p>
         </div>

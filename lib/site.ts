@@ -118,7 +118,7 @@ export const products: Product[] = [
     name: "절굿대떡",
     summary: "콩고물을 입힌 나주의 이바지 떡",
     detail:
-      "유화제나 인공감미료를 전혀 넣지 않고 전통 방식 그대로 빚습니다. 나주 특산 배즙으로 자연스러운 단맛을 더했고, 찹쌀의 쫄깃한 식감은 소화에도 부담이 없습니다. 아침 식사 대용은 물론 아이들 영양 간식으로도 안심하고 드실 수 있습니다.",
+      "유화제나 인공감미료를 전혀 넣지 않고 전통 방식 그대로 빚습니다. 나주 특산 배즙으로 자연스러운 단맛을 더했고, 손으로 친 찹쌀이라 쫄깃하고 부드럽습니다. 아침 식사 대용이나 아이들 간식으로 드십니다.",
     image: "/images/product-jeolgutdae-plate.jpg",
     detailImages: [
       {
@@ -155,13 +155,13 @@ export const products: Product[] = [
         src: "/images/detail/jeolgutdae-06.jpg",
         alt: "절굿대떡 상세 — 50년 만에 돌아온 나주의 이바지 떡, 재료·만드는 방식·보관·제품정보 (6/7)",
         width: 1720,
-        height: 3954,
+        height: 3820,
       },
       {
         src: "/images/detail/jeolgutdae-07.jpg",
         alt: "절굿대떡 상세 — 50년 만에 돌아온 나주의 이바지 떡, 재료·만드는 방식·보관·제품정보 (7/7)",
         width: 1720,
-        height: 415,
+        height: 413,
       },
     ],
     ingredients: [
@@ -238,7 +238,7 @@ export const products: Product[] = [
       },
       {
         src: "/images/detail/oranda-03.jpg",
-        alt: "믿고 먹을 수 있는 건강한 간식, 포인트 넷",
+        alt: "포인트 넷 소개",
         width: 860,
         height: 1349,
       },
@@ -339,12 +339,12 @@ export const products: Product[] = [
       src: "/video/review.mp4",
       poster: "/video/review-poster.jpg",
       label: "나주배 촉촉오란다를 손에 들고 소개하는 후기 영상",
-      caption: "진짜 영양간식임!",
+      caption: "겉바속촉 쫀득한 식감!",
       source: "남도장터 구매 고객이 올린 영상 · 27초 · 자막 있음",
       /* 영상에 박힌 자막을 그대로 옮겼다(1초 간격 프레임 OCR). 시점은 그 말이 시작되는 초. */
       moments: [
         { t: 9, text: "딱딱하지 않고, 겉바속촉 쫀득한 식감에" },
-        { t: 12, text: "6가지 견과류까지 들어가 있어서 진짜 영양간식" },
+        { t: 12, text: "6가지 견과류까지 들어가 있어서" },
         { t: 15, text: "개별 포장이라 가방에 하나씩 넣고 다니기 딱 좋음" },
         { t: 18, text: "쫀득하고 부드럽고, 치아 사이에 끼지 않아서" },
         { t: 21, text: "요즘 아침 식사 대용으로 하나씩 챙겨 먹는 중" },
@@ -388,7 +388,7 @@ export const products: Product[] = [
         src: "/images/detail/gift-05.jpg",
         alt: "선물세트 상세 — 구성·포장·재료·쓰임새·배송·제품정보 (5/5)",
         width: 1720,
-        height: 3893,
+        height: 3757,
       },
     ],
     gallery: [
