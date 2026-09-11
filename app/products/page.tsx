@@ -21,18 +21,6 @@ export const metadata: Metadata = {
   },
 };
 
-/**
- * 쓰임새로 먼저 훑고, 그다음 제품을 고르는 순서다.
- * 목록을 손으로 적지 않고 제품 데이터에서 뽑는다 — 손으로 적으면 제품을
- * 추가할 때 한쪽만 고쳐져서 "그 쓰임새엔 아무것도 없음"이 된다.
- */
-const byOccasion = products
-  .flatMap((p) => p.occasions.map((o) => [o, p] as const))
-  .reduce<Map<string, typeof products>>((m, [o, p]) => {
-    m.set(o, [...(m.get(o) ?? []), p]);
-    return m;
-  }, new Map());
-
 export default function ProductsPage() {
   const [lead, ...rest] = products;
 
@@ -74,41 +62,37 @@ export default function ProductsPage() {
         <SectionEyebrow phase={0.25}>쓰임새</SectionEyebrow>
         <h2 className="mt-3 text-h3 lg:text-h2-lg">쓰임새로 고르기</h2>
         {/*
-          쓰임새는 큰 글자, 제품은 원형 썸네일 — 사이트의 "원=제품" 문법 그대로.
-          칩 + 밑줄 링크 여섯 칸은 PC 에서 텅 비어 보였다(리더 지적). 괘선 행이라 칸 수가 달라도 빈자리가 없다.
+          제품 셋에 쓰임새 여섯 — 쓰임새를 축으로 세우면 표가 제품보다 커진다(리더 지적).
+          제품 한 줄에 쓰임새를 낱말로 붙인다. 원=제품 문법은 그대로.
         */}
-        <ul className="mt-6 border-t border-ink/15 lg:grid lg:grid-cols-3 lg:gap-x-10">
-          {[...byOccasion.entries()].map(([occasion, list]) => (
+        <ul className="mt-6 border-t border-ink/15">
+          {products.map((p) => (
             <li
-              key={occasion}
-              className="grid grid-cols-[5.5rem_1fr] items-center gap-3 border-b border-ink/10 py-3.5 lg:grid-cols-[6rem_1fr] lg:py-4"
+              key={p.slug}
+              className="grid grid-cols-[1fr_auto] items-center gap-4 border-b border-ink/10 py-3.5 sm:grid-cols-[15rem_1fr] lg:py-4"
             >
-              <h3 className="whitespace-nowrap text-body font-black tracking-tight lg:text-h3">
-                {occasion}
-              </h3>
-              <ul className="flex flex-wrap gap-x-4 gap-y-2">
-                {list.map((p) => (
-                  <li key={p.slug}>
-                    <Link
-                      href={`/products/${p.slug}`}
-                      className="group flex items-center gap-2"
-                    >
-                      <span className="relative size-8 shrink-0 overflow-hidden rounded-full bg-paper-2 ring-1 ring-ink/8 transition-[box-shadow] group-hover:ring-2 group-hover:ring-mint-deep lg:size-9">
-                        <Image
-                          src={p.image}
-                          alt=""
-                          fill
-                          sizes="36px"
-                          className="object-cover"
-                        />
-                      </span>
-                      <span className="text-caption text-ink-soft transition-colors group-hover:text-mint-link lg:text-small">
-                        {p.name}
-                      </span>
-                    </Link>
-                  </li>
+              <Link
+                href={`/products/${p.slug}`}
+                className="group flex items-center gap-3"
+              >
+                <span className="relative size-9 shrink-0 overflow-hidden rounded-full bg-paper-2 ring-1 ring-ink/8 transition-[box-shadow] group-hover:ring-2 group-hover:ring-mint-deep lg:size-10">
+                  <Image
+                    src={p.image}
+                    alt=""
+                    fill
+                    sizes="40px"
+                    className="object-cover"
+                  />
+                </span>
+                <span className="text-body font-black tracking-tight transition-colors group-hover:text-mint-link lg:text-h3">
+                  {p.name}
+                </span>
+              </Link>
+              <p className="flex flex-wrap justify-end gap-x-3 gap-y-1 text-caption text-ink-soft sm:justify-start lg:text-small">
+                {p.occasions.map((o) => (
+                  <span key={o}>{o}</span>
                 ))}
-              </ul>
+              </p>
             </li>
           ))}
         </ul>
