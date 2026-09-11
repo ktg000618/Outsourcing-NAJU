@@ -81,7 +81,7 @@ export default function VisitPage() {
             priority
             fetchPriority="high"
             sizes="(min-width: 1200px) 1152px, 100vw"
-            quality={88}
+            quality={80}
             className="enter-photo object-cover object-[50%_40%]"
           />
         </div>
@@ -125,7 +125,6 @@ export default function VisitPage() {
             )}
 
             <a
-              aria-label={`전화 걸기 ${site.tel}`}
               className="btn-primary mt-8"
               href={`tel:${site.tel.replace(/-/g, "")}`}
             >
@@ -145,7 +144,7 @@ export default function VisitPage() {
                 alt="장갑 낀 손으로 초록 절굿대 반죽을 틀에 펴고 있다"
                 fill
                 sizes="(min-width: 1024px) 22vw, 90vw"
-                quality={88}
+                quality={80}
                 className="object-cover"
               />
             </div>
@@ -155,7 +154,7 @@ export default function VisitPage() {
                 alt="절굿대를 넣은 초록 반죽을 틀에 붓는다"
                 fill
                 sizes="(min-width: 1024px) 22vw, 90vw"
-                quality={88}
+                quality={80}
                 className="object-cover"
               />
             </div>
@@ -258,7 +257,7 @@ export default function VisitPage() {
               alt="초록 간판과 달토끼 엠블럼이 걸린 절굿대달토끼 매장 건물"
               fill
               sizes="(min-width: 1024px) 45vw, 90vw"
-              quality={88}
+              quality={80}
               className="object-cover object-[50%_45%]"
             />
           </div>

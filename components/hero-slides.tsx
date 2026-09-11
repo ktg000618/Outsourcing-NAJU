@@ -66,7 +66,7 @@ export function HeroSlides({
               priority={i === 0}
               fetchPriority={i === 0 ? "high" : undefined}
               onLoad={i === 0 ? () => setRest(true) : undefined}
-              quality={i === 0 ? 88 : 84}
+              quality={i === 0 ? 80 : 78}
               sizes="(min-width: 1200px) 1152px, 100vw"
               className={`object-cover transition-opacity duration-[1400ms] ease-[cubic-bezier(0.4,0,0.2,1)] motion-reduce:transition-none ${s.position} ${
                 i === index ? "opacity-100" : "opacity-0"

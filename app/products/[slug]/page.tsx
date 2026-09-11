@@ -121,7 +121,7 @@ export default async function ProductPage({
               priority
               fetchPriority="high"
               sizes="(min-width: 1024px) 440px, 90vw"
-              quality={88}
+              quality={80}
               className="object-cover"
             />
           </div>
@@ -233,7 +233,7 @@ export default async function ProductPage({
                           alt=""
                           fill
                           sizes="(min-width: 1024px) 176px, 30vw"
-                          quality={88}
+                          quality={80}
                           className="object-cover"
                         />
                       </div>
@@ -271,7 +271,7 @@ export default async function ProductPage({
                         alt={g.alt}
                         fill
                         sizes="(min-width: 1024px) 360px, 45vw"
-                        quality={88}
+                        quality={80}
                         className="object-cover"
                       />
                     </li>
@@ -335,7 +335,7 @@ export default async function ProductPage({
                         alt={p.imageAlt}
                         fill
                         sizes="(min-width: 1024px) 300px, 45vw"
-                        quality={88}
+                        quality={80}
                         className="object-cover transition-transform duration-700 ease-[cubic-bezier(.2,.7,.2,1)] group-hover:scale-[1.03]"
                       />
                     </div>

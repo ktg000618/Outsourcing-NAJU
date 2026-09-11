@@ -83,7 +83,7 @@ export default function ProductsPage() {
                       alt=""
                       fill
                       sizes="(min-width: 1024px) 160px, 96px"
-                      quality={88}
+                      quality={80}
                       className="object-cover transition-transform duration-700 ease-[cubic-bezier(.2,.7,.2,1)] group-hover:scale-[1.03]"
                     />
                   </div>
@@ -217,7 +217,7 @@ export default function ProductsPage() {
                 alt="낱개 포장한 절굿대떡을 나무 소반에 담았다"
                 fill
                 sizes="(min-width: 1024px) 660px, 100vw"
-                quality={88}
+                quality={80}
                 className="object-cover"
               />
             </div>

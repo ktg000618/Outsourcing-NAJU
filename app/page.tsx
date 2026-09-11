@@ -142,8 +142,8 @@ export default function HomePage() {
                       src={p.image}
                       alt=""
                       fill
-                      sizes="(min-width: 640px) 30vw, 90vw"
-                      quality={88}
+                      sizes="(min-width: 640px) 30vw, 62vw"
+                      quality={80}
                       className="object-cover transition-transform duration-700 ease-[cubic-bezier(.2,.7,.2,1)] group-hover:scale-[1.03]"
                     />
                   </div>
@@ -224,7 +224,7 @@ export default function HomePage() {
             alt="라탄 매트 위 절굿대떡과 콩고물, 절굿대 잎"
             fill
             sizes="(min-width: 1024px) 50vw, 100vw"
-            quality={88}
+            quality={80}
             className="object-cover object-[50%_100%]"
           />
         </div>
@@ -266,7 +266,7 @@ export default function HomePage() {
             alt="쳐낸 절굿대떡을 칼로 반듯하게 자르는 김화수 대표"
             fill
             sizes="(min-width: 1024px) 50vw, 100vw"
-            quality={88}
+            quality={80}
             className="object-cover object-[50%_30%]"
           />
         </div>

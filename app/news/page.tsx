@@ -115,7 +115,7 @@ export default async function NewsPage() {
                             width={1600}
                             height={1200}
                             sizes="(min-width: 1024px) 635px, calc(100vw - 40px)"
-                            quality={88}
+                            quality={80}
                             className="h-auto max-h-[32rem] w-auto max-w-full"
                           />
                         </div>
@@ -147,7 +147,7 @@ export default async function NewsPage() {
                                     ? "(min-width: 1024px) 310px, 45vw"
                                     : "(min-width: 1024px) 635px, (min-width: 640px) 30vw, 72vw"
                                 }
-                                quality={88}
+                                quality={80}
                                 className="object-cover"
                               />
                             </li>

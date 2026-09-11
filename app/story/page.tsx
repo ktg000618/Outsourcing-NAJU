@@ -83,7 +83,7 @@ export default function StoryPage() {
             priority
             fetchPriority="high"
             sizes="(min-width: 1200px) 1152px, 100vw"
-            quality={88}
+            quality={80}
             className="enter-photo object-cover object-[50%_35%]"
           />
         </div>
@@ -130,7 +130,7 @@ export default function StoryPage() {
               alt="이랑을 따라 자란 절굿대 밭과 마을"
               fill
               sizes="(min-width: 1200px) 1152px, 100vw"
-              quality={88}
+              quality={80}
               className="object-cover"
             />
           </div>
@@ -173,7 +173,7 @@ export default function StoryPage() {
               alt="절굿대 잎과 꽃봉오리 클로즈업"
               fill
               sizes="(min-width: 1024px) 45vw, 90vw"
-              quality={88}
+              quality={80}
               className="object-cover object-center"
             />
           </div>
@@ -208,7 +208,7 @@ export default function StoryPage() {
                 alt="절굿대 밭에서 잎을 거두어 바구니에 담고 있다"
                 fill
                 sizes="(min-width: 1024px) 45vw, 90vw"
-                quality={88}
+                quality={80}
                 className="object-cover object-[55%_50%]"
               />
             </div>
@@ -241,7 +241,7 @@ export default function StoryPage() {
               alt="쳐낸 절굿대떡을 칼로 반듯하게 자르는 김화수 대표"
               fill
               sizes="(min-width: 1024px) 45vw, 90vw"
-              quality={88}
+              quality={80}
               className="object-cover object-[50%_40%]"
             />
           </div>
@@ -280,7 +280,7 @@ export default function StoryPage() {
                 alt={s.alt}
                 fill
                 sizes="(min-width: 1024px) 360px, 30vw"
-                quality={88}
+                quality={80}
                 className={`object-cover ${s.position}`}
               />
             </li>
