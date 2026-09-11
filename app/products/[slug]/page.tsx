@@ -240,7 +240,7 @@ export default async function ProductPage({
             {extras.length > 0 && (
               <div className={product.ingredients ? "mt-14" : ""}>
                 <SectionEyebrow phase={0.5}>더 보기</SectionEyebrow>
-                <ul className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:gap-5">
+                <ul className="mt-6 grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-5">
                   {extras.map((g) => (
                     <li
                       key={g.src}
