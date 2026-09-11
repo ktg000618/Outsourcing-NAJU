@@ -107,7 +107,9 @@ export default function ProductsPage() {
       <section className="rise bg-paper-2">
         <div className="section-y-tight mx-auto max-w-6xl px-5 lg:px-8">
           <SectionEyebrow phase={0.4}>주문</SectionEyebrow>
-          <h2 className="mt-3 text-h3 lg:text-h2-lg">주문하는 방법</h2>
+          <h2 className="mt-3 text-h2 font-black lg:text-h2-lg">
+            주문하는 방법
+          </h2>
           {/* 스토어 주소가 없는 동안은 두 열 — "준비 중입니다" 자리표를 주문 섹션 한가운데 두지 않는다. */}
           <ul
             className={`mt-9 grid gap-8 ${site.storeUrl ? "lg:grid-cols-3" : "lg:grid-cols-2"}`}
@@ -163,7 +165,7 @@ export default function ProductsPage() {
           PC 는 subgrid 로 두 표의 행을 같은 높이에 맞춘다 — 값 길이가 달라도 아래 실선이 나란하다. */}
       <section className="section-y-tight rise mx-auto max-w-6xl px-5 lg:px-8">
         <SectionEyebrow phase={0.7}>보관</SectionEyebrow>
-        <h2 className="mt-3 text-h3 lg:text-h2-lg">보관과 해동</h2>
+        <h2 className="mt-3 text-h2 font-black lg:text-h2-lg">보관과 해동</h2>
         <div className="mt-8 grid gap-x-12 gap-y-10 lg:grid-cols-2">
           {care.map((c) => (
             <div

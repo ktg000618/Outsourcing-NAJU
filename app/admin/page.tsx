@@ -57,10 +57,7 @@ export default async function AdminPage() {
             새 글
           </Link>
           <form action={signOut}>
-            <button
-              type="submit"
-              className="pressable inline-block border border-ink/25 px-4 py-2.5 text-small text-ink-soft transition-colors hover:border-ink hover:text-ink"
-            >
+            <button type="submit" className="text-link">
               로그아웃
             </button>
           </form>

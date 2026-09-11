@@ -91,7 +91,9 @@ export default function VisitPage() {
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
             <SectionEyebrow phase={0.25}>체험</SectionEyebrow>
-            <h2 className="mt-3 text-h2 lg:text-h2-lg">절굿대떡 만들기 체험</h2>
+            <h2 className="mt-3 text-h2 font-black lg:text-h2-lg">
+              절굿대떡 만들기 체험
+            </h2>
             <p className="mt-6 max-w-prose text-ink-soft">
               반죽을 치고 모양을 빚어 콩고물을 입히기까지, 손으로 해 봅니다.
               어린이 단체부터 어른 모임까지 참여할 수 있습니다.
@@ -165,7 +167,9 @@ export default function VisitPage() {
       <section className="rise border-t border-ink/10">
         <div className="section-y-tight mx-auto max-w-6xl px-5 lg:px-8">
           <SectionEyebrow phase={0.55}>진행 순서</SectionEyebrow>
-          <h2 className="mt-3 text-h2 lg:text-h2-lg">이렇게 진행합니다</h2>
+          <h2 className="mt-3 text-h2 font-black lg:text-h2-lg">
+            이렇게 진행합니다
+          </h2>
           {/* 실선 장부 세 줄. 번호는 제목 옆 작은 캡션 — 큰 숫자는 위 연표·페이지 제목과 겨뤘다. */}
           <ol className="mt-9 divide-y divide-ink/10 border-y border-ink/10">
             {experience.steps.map((step, i) => (

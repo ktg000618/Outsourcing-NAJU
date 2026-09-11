@@ -194,7 +194,7 @@ export function SiteHeader() {
               href={site.instagramUrl}
               rel="noreferrer"
               target="_blank"
-              className="link-draw mt-5 inline-block text-small text-ink-soft"
+              className="text-link mt-4"
             >
               인스타그램<span className="sr-only"> (새 창)</span>
             </a>
