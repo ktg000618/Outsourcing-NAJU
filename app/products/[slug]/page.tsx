@@ -203,6 +203,8 @@ export default async function ProductPage({
                       height={d.height}
                       sizes="(min-width: 900px) 860px, 100vw"
                       quality={85}
+                      placeholder="blur"
+                      blurDataURL={d.blur}
                       loading={i === 0 ? "eager" : "lazy"}
                       className="block h-auto w-full"
                     />
