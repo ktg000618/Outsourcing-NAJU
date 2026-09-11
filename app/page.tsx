@@ -144,20 +144,20 @@ export default function HomePage() {
       </div>
       <p className="sr-only">쓰임새: {occasions.join(", ")}</p>
 
-      {/* 4. 대표 제품 — 원 = 제품 */}
+      {/* 4. 빚는 것들 — 원 = 제품. 제품이 셋이라 이 한 섹션이 전체다(옛 §8 「전체 제품」은 중복이라 뺐다). */}
       <section className="rise mx-auto max-w-6xl px-5 pb-20 pt-14 lg:px-8 lg:pb-24 lg:pt-16">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
             <SectionEyebrow phase={0.15}>제품</SectionEyebrow>
             <h2 className="mt-3 font-black tracking-tight text-h2 lg:text-h2-lg">
-              대표 제품
+              빚는 것들
             </h2>
           </div>
           <Link
             href="/products"
             className="link-draw text-small text-ink-soft transition-colors hover:text-mint-link"
           >
-            전체 제품 보기
+            제품 자세히 보기
           </Link>
         </div>
         {/* 모바일은 원 셋을 세로로 쌓으면 1,300px 을 먹는다. 옆으로 넘기는 구조로 — 72vw 원 하나씩.
@@ -272,7 +272,7 @@ export default function HomePage() {
           />
         </div>
         <div className="moonlit relative section-y-tight flex flex-col justify-center bg-bark px-5 text-paper lg:pl-14 lg:pr-[max(3.5rem,calc((100vw-72rem)/2+2rem))]">
-          <SectionEyebrow phase={0.6} tone="paper">
+          <SectionEyebrow phase={0.7} tone="paper">
             재료
           </SectionEyebrow>
           <h2 className="mt-3 text-h2 lg:text-h2-lg">
@@ -298,7 +298,7 @@ export default function HomePage() {
       {/* 7. 브랜드 문구 밴드 — 체험 */}
       <section className="rise grid lg:grid-cols-2">
         <div className="section-y-tight flex flex-col justify-center bg-paper-2 px-5 lg:order-1 lg:pl-[max(3.5rem,calc((100vw-72rem)/2+2rem))] lg:pr-14">
-          <SectionEyebrow phase={0.7}>체험</SectionEyebrow>
+          <SectionEyebrow phase={1}>체험</SectionEyebrow>
           <h2 className="mt-3 text-h2 lg:text-h2-lg">
             <span className="block font-thin">직접 빚어 보는</span>
             <span className="block font-black">자리가 있습니다</span>
@@ -323,40 +323,6 @@ export default function HomePage() {
             quality={88}
             className="object-cover object-[50%_30%]"
           />
-        </div>
-      </section>
-
-      {/* 8. 전체 제품 */}
-      <section className="rise">
-        <div className="section-y mx-auto max-w-6xl px-5 lg:px-8">
-          <SectionEyebrow phase={1}>전체 제품</SectionEyebrow>
-          <h2 className="mt-3 font-black tracking-tight text-h2 lg:text-h2-lg">
-            빚는 것들
-          </h2>
-          <ul className="mt-12 grid grid-cols-3 gap-x-4 gap-y-12 sm:gap-x-6 lg:gap-x-10">
-            {products.map((p) => (
-              <li key={p.slug}>
-                <Link
-                  href={`/products/${p.slug}`}
-                  className="group pressable block"
-                >
-                  <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-ink/8 transition-[box-shadow] duration-300 group-hover:ring-2 group-hover:ring-mint-deep group-hover:ring-offset-4 group-hover:ring-offset-paper">
-                    <Image
-                      src={p.gallery?.[0]?.src ?? p.image}
-                      alt=""
-                      fill
-                      sizes="(min-width: 1024px) 18vw, 44vw"
-                      quality={88}
-                      className="object-cover transition-transform duration-700 ease-[cubic-bezier(.2,.7,.2,1)] group-hover:scale-[1.03]"
-                    />
-                  </div>
-                  <h3 className="mt-5 text-center text-body transition-colors group-hover:text-mint-link">
-                    {p.name}
-                  </h3>
-                </Link>
-              </li>
-            ))}
-          </ul>
         </div>
       </section>
 

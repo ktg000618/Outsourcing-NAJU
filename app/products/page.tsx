@@ -98,7 +98,7 @@ export default function ProductsPage() {
 
       {/* 왼쪽 대표 이미지 + 오른쪽 카드 그리드 */}
       <div className="rise mx-auto max-w-6xl px-5 pb-24 lg:px-8 lg:pb-32">
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)] lg:items-start lg:gap-14">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)] lg:items-center lg:gap-14">
           {/* 이 원이 제품 페이지에서 가장 큰 브랜드 형태다. 글자는 사진 위가 아니라 아래. */}
           <Link
             href={`/products/${lead.slug}`}
@@ -133,7 +133,7 @@ export default function ProductsPage() {
           {/*
             PC 에서는 세로 장부. 작은 원 셋을 위에만 얹으면 큰 원 옆 아래 절반이 비고
             크기 차이(500 vs 110px)가 극단적이었다. 한 줄에 원·이름·가격을 놓아
-            오른쪽 기둥이 큰 원과 같은 높이로 선다.
+            오른쪽 기둥이 큰 원과 같은 높이로 선다. 제품이 셋(장부 2행)이 된 뒤로는 세로 가운데 정렬.
             모바일(<sm)도 장부 행 — 원형 2열은 셋이라 한 칸이 비었다(리더 지적). sm 만 원형 3열.
           */}
           <ul className="flex flex-col divide-y divide-ink/10 border-y border-ink/10 sm:grid sm:grid-cols-3 sm:gap-x-5 sm:gap-y-9 sm:divide-y-0 sm:border-y-0 lg:flex lg:flex-col lg:gap-0 lg:divide-y lg:border-y">
