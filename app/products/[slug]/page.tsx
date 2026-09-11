@@ -40,6 +40,12 @@ export default async function ProductPage({
   if (!product) notFound();
 
   const others = products.filter((p) => p.slug !== product.slug).slice(0, 4);
+  /* 달 자리(큰 원 우하단)는 영상이 먼저다. 영상이 있으면 갤러리 전부가 「더 보기」로, 없으면 첫 장이 달 자리. */
+  const extras = product.gallery
+    ? product.video
+      ? product.gallery
+      : product.gallery.slice(1)
+    : [];
 
   /*
     제품 구조화 데이터. 가격이 없는 제품에는 offers 를 붙이지 않는다 —
@@ -200,8 +206,7 @@ export default async function ProductPage({
       </article>
 
       {/* 넣는 것·더 보기 — 흰 그릇의 재료는 원, 포장·소품은 사각. 값이 있을 때만 선다. */}
-      {(product.ingredients ||
-        (product.gallery && product.gallery.length > 1)) && (
+      {(product.ingredients || extras.length > 0) && (
         <section className="rise border-t border-ink/10">
           <div className="section-y-tight mx-auto max-w-6xl px-5 lg:px-8">
             {product.ingredients && (
@@ -232,11 +237,11 @@ export default async function ProductPage({
                 </ul>
               </>
             )}
-            {product.gallery && product.gallery.length > 1 && (
+            {extras.length > 0 && (
               <div className={product.ingredients ? "mt-14" : ""}>
                 <SectionEyebrow phase={0.5}>더 보기</SectionEyebrow>
                 <ul className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:gap-5">
-                  {product.gallery.slice(1).map((g) => (
+                  {extras.map((g) => (
                     <li
                       key={g.src}
                       className="relative aspect-square overflow-hidden rounded-2xl bg-paper-2 ring-1 ring-inset ring-ink/5"

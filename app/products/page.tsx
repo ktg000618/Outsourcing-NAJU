@@ -290,6 +290,52 @@ export default function ProductsPage() {
       </section>
 
       {/* 신뢰 근거. 홈에만 있고 정작 물건을 고르는 자리엔 없었다. */}
+      {/* 포장·배송 — "낱개 포장이라 나눠 드리기 좋다"를 상자까지 보여 준다. 배송 조건(기간·비용)은 클라이언트 자료 뒤에. */}
+      <section className="rise border-t border-ink/10">
+        <div className="section-y-tight mx-auto max-w-6xl px-5 lg:px-8">
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
+            <div>
+              <SectionEyebrow phase={0.9}>포장·배송</SectionEyebrow>
+              <h2 className="mt-3 text-h2 lg:text-h2-lg">
+                <span className="font-thin tracking-tight">낱개로 싸서, </span>
+                <span className="font-black tracking-tighter">상자에 담아</span>
+              </h2>
+              <p className="mt-5 max-w-prose text-ink-soft">
+                떡과 오란다는 한 개씩 따로 포장합니다. 여럿이 나눠 드시거나
+                답례로 돌리기 좋고, 냉동해 두었다가 하나씩 꺼내기도 편합니다.
+                택배는 보냉 상자에 담아 보냅니다.
+              </p>
+            </div>
+            <ul className="grid grid-cols-2 gap-3 lg:gap-5">
+              {[
+                {
+                  src: "/images/ship-cool-box.jpg",
+                  alt: "신선식품 당일배송 띠를 두른 보냉 상자",
+                },
+                {
+                  src: "/images/ship-carton.jpg",
+                  alt: "테이프를 두른 택배 상자",
+                },
+              ].map((g) => (
+                <li
+                  key={g.src}
+                  className="relative aspect-square overflow-hidden rounded-2xl bg-paper-2 ring-1 ring-inset ring-ink/5"
+                >
+                  <Image
+                    src={g.src}
+                    alt={g.alt}
+                    fill
+                    sizes="(min-width: 1024px) 330px, 45vw"
+                    quality={88}
+                    className="object-cover"
+                  />
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
       <section className="rise border-t border-ink/10">
         <div className="section-y-tight mx-auto max-w-6xl px-5 lg:px-8">
           <ul className="grid grid-cols-2 gap-x-6 gap-y-7 sm:gap-x-8 lg:grid-cols-4">
