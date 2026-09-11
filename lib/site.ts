@@ -174,9 +174,18 @@ export const products: Product[] = [
     image: "/images/product-oranda-plate.jpg",
     gallery: [
       {
-        src: "/images/product-oranda-pack.jpg",
-        alt: "낱개 포장한 나주배 촉촉오란다",
+        src: "/images/gal-oranda-seeds.jpg",
+        alt: "접시에 담은 오란다와 곁들인 견과·씨앗",
       },
+      {
+        src: "/images/gal-oranda-piece.jpg",
+        alt: "호박씨·크랜베리가 박힌 오란다 한 조각",
+      },
+      {
+        src: "/images/gal-oranda-board.jpg",
+        alt: "나무 도마 위 오란다와 크랜베리",
+      },
+      { src: "/images/gal-oranda-tea.jpg", alt: "차와 함께 낸 오란다" },
     ],
     ingredients: [
       { src: "/images/ing-pumpkin-seed.jpg", alt: "호박씨", label: "호박씨" },
@@ -243,11 +252,19 @@ export const products: Product[] = [
         alt: "달토끼가 그려진 절굿대달토끼 선물 상자",
       },
       {
-        src: "/images/product-gift-leaflet.jpg",
-        alt: "상자에 함께 넣는 절굿대달토끼 리플릿",
+        src: "/images/gal-gift-pears.jpg",
+        alt: "나주배·오란다와 함께 놓은 선물 상자",
       },
       {
-        src: "/images/product-gift-bag.jpg",
+        src: "/images/gal-gift-tteok.jpg",
+        alt: "절굿대떡과 차를 곁들인 선물 상자",
+      },
+      {
+        src: "/images/gal-gift-oranda-box.jpg",
+        alt: "낱개 포장한 오란다를 상자에 담았다",
+      },
+      {
+        src: "/images/gal-gift-bag.jpg",
         alt: "선물세트를 담아 드리는 종이 가방",
       },
     ],
