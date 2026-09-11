@@ -77,32 +77,32 @@ export default function ProductsPage() {
           쓰임새는 큰 글자, 제품은 원형 썸네일 — 사이트의 "원=제품" 문법 그대로.
           칩 + 밑줄 링크 여섯 칸은 PC 에서 텅 비어 보였다(리더 지적). 괘선 행이라 칸 수가 달라도 빈자리가 없다.
         */}
-        <ul className="mt-8 border-t border-ink/15 lg:grid lg:grid-cols-2 lg:gap-x-14">
+        <ul className="mt-6 border-t border-ink/15 lg:grid lg:grid-cols-3 lg:gap-x-10">
           {[...byOccasion.entries()].map(([occasion, list]) => (
             <li
               key={occasion}
-              className="grid grid-cols-[6.5rem_1fr] items-center gap-4 border-b border-ink/10 py-5 sm:grid-cols-[8rem_1fr] lg:py-6"
+              className="grid grid-cols-[5.5rem_1fr] items-center gap-3 border-b border-ink/10 py-3.5 lg:grid-cols-[5rem_1fr] lg:py-4"
             >
-              <h3 className="text-h3 font-black tracking-tighter lg:text-h2">
+              <h3 className="text-body font-black tracking-tight lg:text-h3">
                 {occasion}
               </h3>
-              <ul className="flex flex-wrap gap-x-6 gap-y-3">
+              <ul className="flex flex-wrap gap-x-4 gap-y-2">
                 {list.map((p) => (
                   <li key={p.slug}>
                     <Link
                       href={`/products/${p.slug}`}
-                      className="group flex items-center gap-3"
+                      className="group flex items-center gap-2"
                     >
-                      <span className="relative size-11 shrink-0 overflow-hidden rounded-full bg-paper-2 ring-1 ring-ink/8 transition-[box-shadow] group-hover:ring-2 group-hover:ring-mint-deep lg:size-12">
+                      <span className="relative size-8 shrink-0 overflow-hidden rounded-full bg-paper-2 ring-1 ring-ink/8 transition-[box-shadow] group-hover:ring-2 group-hover:ring-mint-deep lg:size-9">
                         <Image
                           src={p.image}
                           alt=""
                           fill
-                          sizes="48px"
+                          sizes="36px"
                           className="object-cover"
                         />
                       </span>
-                      <span className="text-small text-ink-soft transition-colors group-hover:text-mint-link">
+                      <span className="text-caption text-ink-soft transition-colors group-hover:text-mint-link lg:text-small">
                         {p.name}
                       </span>
                     </Link>
