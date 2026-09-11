@@ -191,6 +191,7 @@ export const products: Product[] = [
     detail:
       "절굿대떡을 이바지에 쓴 것은 맛도 맛이지만 건강을 생각한 떡이라는 믿음 때문이었습니다. 명절과 예단, 회사 접대에 두루 나갑니다.",
     image: "/images/product-gift-set.jpg",
+    gallery: [{ src: "/images/product-gift-box.jpg", alt: "달토끼가 그려진 절굿대달토끼 선물 상자" }],
     price: null,
     unit: null,
     occasions: ["이바지", "명절", "예단", "회사 선물"],

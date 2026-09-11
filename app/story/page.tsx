@@ -237,8 +237,8 @@ export default function StoryPage() {
           </div>
           <div className="relative aspect-[2/1] overflow-hidden rounded-2xl ring-1 ring-inset ring-ink/5 lg:aspect-4/3">
             <Image
-              src="/images/board-tteok.jpg"
-              alt="나무 도마에 놓인 절굿대떡과 콩고물, 절굿대 잎"
+              src="/images/tteok-mat.jpg"
+              alt="라탄 매트 위 절굿대떡과 낱개 포장, 콩고물"
               fill
               sizes="(min-width: 1024px) 45vw, 90vw"
               quality={88}
@@ -246,6 +246,38 @@ export default function StoryPage() {
             />
           </div>
         </div>
+
+        {/* 공정 세 장면 — "전통 방식 그대로" 를 말이 아니라 손으로 보여 준다. 순서가 곧 공정이라 번호 없이 왼→오. */}
+        <ul
+          aria-label="만드는 과정 사진"
+          className="mt-10 grid grid-cols-3 gap-3 lg:gap-5"
+        >
+          {[
+            { src: "/images/process-flour.jpg", alt: "체에 내린 쌀가루" },
+            {
+              src: "/images/process-pour.jpg",
+              alt: "절굿대를 넣은 초록 반죽을 틀에 붓는다",
+            },
+            {
+              src: "/images/process-stretch.jpg",
+              alt: "쳐낸 반죽을 양손으로 늘려 본다",
+            },
+          ].map((s) => (
+            <li
+              key={s.src}
+              className="relative aspect-4/3 overflow-hidden rounded-2xl bg-paper-2 ring-1 ring-inset ring-ink/5"
+            >
+              <Image
+                src={s.src}
+                alt={s.alt}
+                fill
+                sizes="(min-width: 1024px) 360px, 30vw"
+                quality={88}
+                className="object-cover"
+              />
+            </li>
+          ))}
+        </ul>
 
         <ul className="mt-16 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-ink/10 pt-12 sm:gap-x-8 lg:grid-cols-4">
           {credentials.map((c) => (

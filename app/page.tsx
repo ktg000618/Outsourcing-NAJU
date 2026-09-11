@@ -239,8 +239,8 @@ export default function HomePage() {
       <section className="rise grid lg:grid-cols-2">
         <div className="relative aspect-16/9 lg:aspect-auto lg:min-h-[32rem]">
           <Image
-            src="/images/ingredients-board.jpg"
-            alt="나무 도마에 올린 절굿대떡과 콩고물"
+            src="/images/ingredients-mat.jpg"
+            alt="라탄 매트 위 절굿대떡과 콩고물, 절굿대 잎"
             fill
             sizes="(min-width: 1024px) 50vw, 100vw"
             quality={88}
