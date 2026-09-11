@@ -83,6 +83,11 @@ export type Product = {
   spec?: { label: string; value: string }[];
   /** 대표 이미지 말고 더 보여줄 컷. 첫 장은 큰 원에 걸친 작은 원, 나머지는 「더 보기」 줄. */
   gallery?: { src: string; alt: string }[];
+  /**
+   * 업체가 이미 만들어 둔 상세페이지(스마트스토어·남도장터용 긴 이미지)를 조각내 쌓는다.
+   * 사이트 문법 밖의 디자인이라 접힌 채로 두고 「상세 정보 펼치기」로 연다. 몰 전용 꼬리(고객센터·배송비)는 뺀다.
+   */
+  detailImages?: { src: string; alt: string; width: number; height: number }[];
   /** 넣는 것. "넣지 않는 것으로 말한다"의 반대편 — 흰 그릇에 담긴 재료 사진. */
   ingredients?: { src: string; alt: string; label: string }[];
   /** 소리 없는 짧은 루프. 사진으로는 안 보이는 질감을 보여주는 자리다. */
@@ -113,6 +118,38 @@ export const products: Product[] = [
     detail:
       "유화제나 인공감미료를 전혀 넣지 않고 전통 방식 그대로 빚습니다. 나주 특산 배즙으로 자연스러운 단맛을 더했고, 찹쌀의 쫄깃한 식감은 소화에도 부담이 없습니다. 아침 식사 대용은 물론 아이들 영양 간식으로도 안심하고 드실 수 있습니다.",
     image: "/images/product-jeolgutdae-plate.jpg",
+    detailImages: [
+      {
+        src: "/images/detail/jeolgutdae-01.jpg",
+        alt: "50년 만에 돌아온 나주의 절굿대떡",
+        width: 1600,
+        height: 2000,
+      },
+      {
+        src: "/images/detail/jeolgutdae-02.jpg",
+        alt: "사라졌던 절굿대떡을 50년 만에 부활시켰습니다",
+        width: 1600,
+        height: 2000,
+      },
+      {
+        src: "/images/detail/jeolgutdae-03.jpg",
+        alt: "정직한 재료만을 사용합니다",
+        width: 1600,
+        height: 2000,
+      },
+      {
+        src: "/images/detail/jeolgutdae-04.jpg",
+        alt: "씨앗을 나누어 드리고 지역 어르신께 일자리를 드립니다",
+        width: 1600,
+        height: 2000,
+      },
+      {
+        src: "/images/detail/jeolgutdae-05.jpg",
+        alt: "절굿대달토끼 매장",
+        width: 1600,
+        height: 2000,
+      },
+    ],
     ingredients: [
       {
         src: "/images/ing-rice.jpg",
@@ -172,6 +209,68 @@ export const products: Product[] = [
     detail:
       "나주배청으로 반죽해 겉은 바삭하고 속은 촉촉합니다. 절굿대 분말을 함께 넣고, 참깨·땅콩·해바라기씨·호박씨를 비롯한 여섯 가지 견과를 더해 고소합니다. 합성첨가물과 색소, 방부제를 넣지 않습니다. 낱개로 포장해 바삭함이 오래갑니다.",
     image: "/images/product-oranda-plate.jpg",
+    detailImages: [
+      {
+        src: "/images/detail/oranda-01.jpg",
+        alt: "나주배청이 들어간 나주배 촉촉오란다",
+        width: 860,
+        height: 1455,
+      },
+      {
+        src: "/images/detail/oranda-02.jpg",
+        alt: "겉바속촉의 쫀득한 식감",
+        width: 860,
+        height: 1687,
+      },
+      {
+        src: "/images/detail/oranda-03.jpg",
+        alt: "믿고 먹을 수 있는 건강한 간식, 포인트 넷",
+        width: 860,
+        height: 1349,
+      },
+      {
+        src: "/images/detail/oranda-04.jpg",
+        alt: "POINT 1 나주배청으로 만든 수제 오란다",
+        width: 860,
+        height: 2201,
+      },
+      {
+        src: "/images/detail/oranda-05.jpg",
+        alt: "POINT 2 6가지 견과류",
+        width: 860,
+        height: 2122,
+      },
+      {
+        src: "/images/detail/oranda-06.jpg",
+        alt: "POINT 3 간편한 개별포장",
+        width: 860,
+        height: 2124,
+      },
+      {
+        src: "/images/detail/oranda-07.jpg",
+        alt: "POINT 4 인공첨가물 ZERO, 만드는 모습",
+        width: 860,
+        height: 1976,
+      },
+      {
+        src: "/images/detail/oranda-08.jpg",
+        alt: "온 가족이 나눠 먹어요, 선물 보자기",
+        width: 860,
+        height: 1863,
+      },
+      {
+        src: "/images/detail/oranda-09.jpg",
+        alt: "맛있게 먹는 방법과 보관 방법",
+        width: 860,
+        height: 1531,
+      },
+      {
+        src: "/images/detail/oranda-10.jpg",
+        alt: "제품정보 표",
+        width: 860,
+        height: 556,
+      },
+    ],
     gallery: [
       {
         src: "/images/gal-oranda-seeds.jpg",
