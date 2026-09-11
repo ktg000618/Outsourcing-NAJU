@@ -41,9 +41,15 @@ export function PostForm({ action, initial }: Props) {
     setUploading(true);
     const supabase = createClient();
     const added: string[] = [];
-    for (const file of Array.from(files).slice(0, room)) {
+    /* 걸러진 이유를 전부 모아 한 줄로 — 마지막 파일의 사정만 남으면 앞서 빠진 파일은 소리 없이 사라진다. */
+    const notes: string[] = [];
+    const picked = Array.from(files);
+    if (picked.length > room) notes.push(`${MAX_IMAGES}장까지만 올렸습니다.`);
+    const tooBig: string[] = [];
+    let failed = false;
+    for (const file of picked.slice(0, room)) {
       if (file.size > MAX_BYTES) {
-        setUploadError("5MB 를 넘는 사진이 있습니다.");
+        tooBig.push(file.name);
         continue;
       }
       const ext = (file.name.split(".").pop() || "jpg").toLowerCase();
@@ -53,13 +59,17 @@ export function PostForm({ action, initial }: Props) {
         cacheControl: "31536000",
       });
       if (error) {
-        setUploadError("사진을 올리지 못했습니다. 다시 시도해 주세요.");
+        failed = true;
         continue;
       }
       added.push(
         supabase.storage.from("news").getPublicUrl(path).data.publicUrl,
       );
     }
+    if (tooBig.length > 0)
+      notes.push(`5MB 를 넘어 올리지 못했습니다: ${tooBig.join(", ")}`);
+    if (failed) notes.push("사진을 올리지 못했습니다. 다시 시도해 주세요.");
+    if (notes.length > 0) setUploadError(notes.join(" "));
     setImages((prev) => [...prev, ...added]);
     setUploading(false);
   }
@@ -67,7 +77,7 @@ export function PostForm({ action, initial }: Props) {
   const tiles = images.length + (images.length < MAX_IMAGES ? 1 : 0);
   const label = "mb-2 block text-caption tracking-[0.04em] text-ink-faint";
   const field =
-    "w-full border border-ink/20 bg-paper px-3.5 py-3 text-body outline-none transition-colors placeholder:text-ink/30 focus:border-ink";
+    "w-full border border-ink/20 bg-paper px-3.5 py-3 text-body outline-none transition-colors placeholder:text-ink/45 focus:border-ink";
 
   /*
     1152 컨테이너 안에서 7/5 스프레드 — 히어로·연표와 같은 격자. 왼쪽은 "쓰는 것"(제목·본문·사진),
@@ -93,12 +103,12 @@ export function PostForm({ action, initial }: Props) {
               maxLength={80}
               defaultValue={initial?.title}
               placeholder="예) 추석 연휴 영업 안내"
-              className="w-full border-0 border-b border-ink/20 bg-transparent px-0 py-2 text-h3 font-bold tracking-[-0.035em] outline-none transition-colors placeholder:font-normal placeholder:text-ink/30 focus:border-ink"
+              className="w-full border-0 border-b border-ink/20 bg-transparent px-0 py-2 text-h3 font-bold tracking-[-0.035em] outline-none transition-colors placeholder:font-normal placeholder:text-ink/45 focus:border-ink"
             />
           </div>
           <div>
             <label htmlFor="post-body" className={label}>
-              본문 <span className="text-ink/40">· 줄바꿈 그대로 표시</span>
+              본문 <span className="text-ink-faint">· 줄바꿈 그대로 표시</span>
             </label>
             <textarea
               id="post-body"
@@ -116,8 +126,9 @@ export function PostForm({ action, initial }: Props) {
         <section className="py-8">
           <p className={label}>
             사진{" "}
-            <span className="text-ink/40">
-              · {MAX_IMAGES}장까지, 장당 5MB · 첫 장이 대표
+            <span className="text-ink-faint">
+              · 가로 사진 권장 · 2장 이상은 4:3으로 잘립니다 · JPG/PNG ·{" "}
+              {MAX_IMAGES}장까지, 장당 5MB
             </span>
           </p>
           {/* 모바일 열 수 = 타일 수(사진 + 드롭존)가 3이면 3열 — 2열이면 셋째가 혼자 남는다(리더 지적). */}
@@ -212,7 +223,8 @@ export function PostForm({ action, initial }: Props) {
           </div>
           <div>
             <label htmlFor="post-link" className={label}>
-              링크 <span className="text-ink/40">· 선택, 인스타 게시물 등</span>
+              링크{" "}
+              <span className="text-ink-faint">· 선택, 인스타 게시물 등</span>
             </label>
             <input
               id="post-link"

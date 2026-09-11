@@ -3,7 +3,8 @@ import { products, site } from "@/lib/site";
 
 /** 제품이 늘면 여기도 따라 늘도록 목록에서 뽑는다. */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
+  /* 요청마다 바뀌는 new Date() 는 신호가 없다 — 내용이 바뀐 배포일을 손으로 올린다. */
+  const now = new Date("2026-09-11");
   const pages = ["", "/story", "/products", "/visit", "/news"];
 
   return [

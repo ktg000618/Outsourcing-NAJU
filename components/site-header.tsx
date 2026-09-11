@@ -30,6 +30,17 @@ export function SiteHeader() {
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
+  // 전면 메뉴가 열린 동안 뒤 페이지가 스크롤되지 않게 body 를 잠근다.
+  // 라우트 이동으로 닫힐 때도 cleanup 이 풀어 준다.
+  useEffect(() => {
+    if (!open) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [open]);
+
   return (
     <>
       {/* 맨 위 2px 달노랑 선 — 스크롤 후에도 남는 유일한 브랜드 서명. 넓게 칠하지 않는다. */}
@@ -39,19 +50,25 @@ export function SiteHeader() {
           엠블럼(원) + 조판 상호. 세로 락업은 흰 글자+민트 외곽선이라 흰 헤더 위에선 64/80px 로
           키워도 안 읽혔다(실측). 락업은 어두운 면(푸터) 전용 — 리더 결정.
         */}
-        <Link href="/" aria-label={`${site.name} 홈`} className="flex items-center gap-3 lg:gap-4">
-          <Image
-            src="/brand/emblem.png"
-            alt=""
-            width={640}
-            height={719}
-            priority
-            className="h-10 w-auto lg:h-12"
-          />
-          <span className="text-lead font-bold tracking-tight lg:text-h3">{site.name}</span>
-        </Link>
+          <Link
+            href="/"
+            aria-label={`${site.name} 홈`}
+            className="flex items-center gap-3 lg:gap-4"
+          >
+            <Image
+              src="/brand/emblem.png"
+              alt=""
+              width={640}
+              height={719}
+              sizes="48px"
+              className="h-10 w-auto lg:h-12"
+            />
+            <span className="text-lead font-bold tracking-tight lg:text-h3">
+              {site.name}
+            </span>
+          </Link>
 
-        <nav aria-label="주요 메뉴" className="hidden lg:block">
+          <nav aria-label="주요 메뉴" className="hidden lg:block">
             <ul className="flex items-center gap-10">
               {nav.map((item) => {
                 const active = pathname.startsWith(item.href);

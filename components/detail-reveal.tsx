@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, type ReactNode } from "react";
+import { useId, useRef, useState, type ReactNode } from "react";
 
 /**
  * 긴 상세 이미지를 처음엔 일부만 보이고, 「더보기」로 전부 펼친다.
@@ -11,6 +11,7 @@ import { useRef, useState, type ReactNode } from "react";
 export function DetailReveal({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
   const top = useRef<HTMLDivElement>(null);
+  const panelId = useId();
 
   return (
     <div ref={top} className="scroll-mt-28">
@@ -19,6 +20,7 @@ export function DetailReveal({ children }: { children: ReactNode }) {
         860px 열 기준 표지가 1,040px 이라 PC 1,180 · 모바일(≈350px 열) 640.
       */}
       <div
+        id={panelId}
         className={`relative overflow-hidden ${open ? "" : "max-h-[640px] lg:max-h-[1180px]"}`}
       >
         {children}
@@ -33,6 +35,7 @@ export function DetailReveal({ children }: { children: ReactNode }) {
         <button
           type="button"
           aria-expanded={open}
+          aria-controls={panelId}
           onClick={() => {
             const next = !open;
             setOpen(next);

@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import { site } from "@/lib/site";
 import { ViewTransition } from "react";
 import Image from "next/image";
-import { MoonMark } from "@/components/moon-mark";
 import { SectionEyebrow } from "@/components/section-eyebrow";
 import { formatNewsDate, getPublishedPosts } from "@/lib/news";
 
 export const metadata: Metadata = {
   title: "소식",
   description: `${site.name}의 휴무·신제품·행사 소식.`,
+  alternates: { canonical: "/news" },
 };
 
 /** 직원이 /admin 에서 쓴 글. 저장 시 revalidatePath 로 바로 갱신되고, 그 밖엔 1시간 캐시. */
@@ -20,7 +20,8 @@ export default async function NewsPage() {
     <ViewTransition enter="page-in" exit="page-out" default="none">
       {/* 형제 페이지와 같은 문법 — 1152 컨테이너, 달 위상, 88px Thin/Black. 이 페이지만 밖에 있었다. */}
       <div className="mx-auto max-w-6xl px-5 pb-24 pt-10 lg:px-8 lg:pb-32 lg:pt-14">
-        <SectionEyebrow phase={0.1}>소식</SectionEyebrow>
+        {/* 이 페이지의 유일한 눈썹이라 보름(1). */}
+        <SectionEyebrow phase={1}>소식</SectionEyebrow>
         <div className="mt-4 lg:grid lg:grid-cols-[7fr_5fr] lg:items-end lg:gap-16">
           <h1 className="max-w-[16ch] text-h1 lg:text-hero">
             <span className="block font-thin tracking-tight">떡집의</span>
@@ -32,41 +33,30 @@ export default async function NewsPage() {
         </div>
 
         {posts.length === 0 ? (
-          /* 빈 상태도 디자인이다 — 목록과 같은 5/7 격자에 빈 달(삭)을 크게. 소식은 인스타에 먼저 올라간다. */
-          <div className="mt-14 border-y border-ink/10 py-16 lg:mt-20 lg:grid lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16 lg:py-24">
-            <MoonMark phase={0} size={64} className="text-ink lg:mt-2" />
-            <div>
-              <p className="mt-6 text-h2 lg:mt-0 lg:text-h2-lg">
-                <span className="block font-thin tracking-tight">
-                  아직 올라온
-                </span>
-                <span className="block font-black tracking-tighter">
-                  소식이 없습니다
-                </span>
-              </p>
-              <p className="mt-5 max-w-prose text-ink-soft">
-                새 소식은 인스타그램에 먼저 올립니다. 급한 문의는 전화가 가장
-                빠릅니다.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                {site.instagramUrl && (
-                  <a
-                    href={site.instagramUrl}
-                    rel="noreferrer"
-                    target="_blank"
-                    className="btn-lift inline-block border border-ink bg-ink px-7 py-3 text-small text-paper transition-colors hover:bg-ink-soft"
-                  >
-                    인스타그램에서 보기<span className="sr-only"> (새 창)</span>
-                  </a>
-                )}
+          /* 빈 상태는 본문 한 줄 — 페이지 제목 아래 두 번째 제목을 세우지 않는다. 소식은 인스타에 먼저 올라간다. */
+          <div className="mt-14 border-t border-ink/10 pt-10 lg:mt-20 lg:pt-14">
+            <p className="max-w-prose text-body text-ink-soft">
+              아직 올라온 소식이 없습니다. 새 소식은 인스타그램에 먼저 올리고,
+              급한 문의는 전화가 가장 빠릅니다.
+            </p>
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-8">
+              {site.instagramUrl && (
                 <a
-                  aria-label={`전화 걸기 ${site.tel}`}
-                  href={`tel:${site.tel.replace(/-/g, "")}`}
-                  className="pressable inline-block border border-ink/25 px-7 py-3 text-small transition-colors hover:border-mint-link hover:text-mint-link"
+                  href={site.instagramUrl}
+                  rel="noreferrer"
+                  target="_blank"
+                  className="btn-primary"
                 >
-                  {site.tel}
+                  인스타그램에서 보기<span className="sr-only"> (새 창)</span>
                 </a>
-              </div>
+              )}
+              <a
+                aria-label={`전화 걸기 ${site.tel}`}
+                href={`tel:${site.tel.replace(/-/g, "")}`}
+                className="text-link"
+              >
+                전화 {site.tel}
+              </a>
             </div>
           </div>
         ) : (
@@ -103,7 +93,7 @@ export default async function NewsPage() {
                         <div className="mt-6 w-fit overflow-hidden rounded-2xl bg-paper-2 ring-1 ring-inset ring-ink/5">
                           <Image
                             src={post.images[0]}
-                            alt=""
+                            alt={post.title}
                             width={1600}
                             height={1200}
                             sizes="(min-width: 1024px) 635px, calc(100vw - 40px)"
@@ -121,7 +111,7 @@ export default async function NewsPage() {
                               : "-mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 [scrollbar-width:none] sm:mx-0 sm:grid sm:grid-cols-3 sm:overflow-visible sm:px-0 lg:grid-cols-2 lg:[&>li:first-child]:col-span-2 [&::-webkit-scrollbar]:hidden"
                           }`}
                         >
-                          {post.images.map((src) => (
+                          {post.images.map((src, i) => (
                             <li
                               key={src}
                               className={`relative aspect-4/3 overflow-hidden rounded-2xl bg-paper-2 ring-1 ring-inset ring-ink/5 ${
@@ -132,7 +122,7 @@ export default async function NewsPage() {
                             >
                               <Image
                                 src={src}
-                                alt=""
+                                alt={`${post.title} 사진 ${i + 1}`}
                                 fill
                                 sizes={
                                   n === 2
@@ -151,7 +141,7 @@ export default async function NewsPage() {
                           href={post.link_url}
                           rel="noreferrer"
                           target="_blank"
-                          className="link-draw mt-5 inline-flex items-center gap-1.5 text-small font-medium text-ink transition-colors hover:text-mint-link"
+                          className="text-link mt-3"
                         >
                           자세히 보기
                           <span aria-hidden>↗</span>

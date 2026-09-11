@@ -15,6 +15,8 @@ export const metadata: Metadata = {
     template: `%s · ${site.name}`,
   },
   description: site.description,
+  /* 루트 canonical. 하위 페이지는 각자 alternates.canonical 을 낸다. */
+  alternates: { canonical: "/" },
   openGraph: {
     title: `${site.name} · ${site.tagline}`,
     description: site.description,
@@ -51,7 +53,7 @@ const businessJsonLd = {
   legalName: site.legalName,
   description: site.description,
   url: site.url,
-  telephone: site.tel,
+  telephone: `+82-${site.tel.replace(/^0/, "")}`,
   image: `${site.url}/og/share-2026-09.jpg`,
   foundingDate: String(site.since),
   address: {

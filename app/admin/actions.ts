@@ -123,17 +123,29 @@ export async function updatePost(
   redirect("/admin");
 }
 
-export async function setPublished(id: string, published: boolean) {
+/* 목록 행 액션도 실패를 화면에 돌려준다 — 콘솔에만 남기면 직원은 버튼이 안 먹는 줄 안다. */
+export async function setPublished(
+  id: string,
+  published: boolean,
+): Promise<ActionState> {
   const { supabase } = await requireUser();
   const { error } = await supabase
     .from("news_posts")
     .update({ published })
     .eq("id", id);
-  if (error) console.error("[admin] setPublished", error.message);
+  if (error) {
+    console.error("[admin] setPublished", error.message);
+    return {
+      error: published
+        ? "게시하지 못했습니다. 잠시 후 다시 시도해 주세요."
+        : "숨기지 못했습니다. 잠시 후 다시 시도해 주세요.",
+    };
+  }
   revalidateNews();
+  return { error: null };
 }
 
-export async function deletePost(id: string) {
+export async function deletePost(id: string): Promise<ActionState> {
   const { supabase } = await requireUser();
   const { data: before } = await supabase
     .from("news_posts")
@@ -141,9 +153,13 @@ export async function deletePost(id: string) {
     .eq("id", id)
     .maybeSingle();
   const { error } = await supabase.from("news_posts").delete().eq("id", id);
-  if (error) console.error("[admin] deletePost", error.message);
-  else await removeImages(supabase, (before?.images as string[] | null) ?? []);
+  if (error) {
+    console.error("[admin] deletePost", error.message);
+    return { error: "삭제하지 못했습니다. 잠시 후 다시 시도해 주세요." };
+  }
+  await removeImages(supabase, (before?.images as string[] | null) ?? []);
   revalidateNews();
+  return { error: null };
 }
 
 export async function signOut() {

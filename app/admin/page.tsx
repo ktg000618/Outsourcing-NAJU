@@ -43,7 +43,10 @@ export default async function AdminPage() {
             {hiddenCount > 0 && ` · 숨김 ${hiddenCount}`}
           </p>
         </div>
-        <div className="flex gap-2">
+        <div className="flex items-center gap-2">
+          <Link href="/news" className="text-link mr-2">
+            사이트에서 보기
+          </Link>
           <Link
             href="/admin/new"
             className="btn-lift inline-flex items-center gap-2 border border-ink bg-ink px-5 py-2.5 text-small text-paper transition-colors hover:bg-ink-soft"

@@ -40,6 +40,8 @@ export const site = {
 
   /** TODO(클라이언트): 인스타그램 등 */
   instagramUrl: "https://www.instagram.com/jeol_gutdae/" as string | null,
+  /** TODO(클라이언트): 문의 이메일. null 이면 푸터 사업자 표기 줄에서 빠진다. */
+  email: null as string | null,
 
   /** 법인명. 화면에 보이는 이름은 site.name(절굿대달토끼), 법적 표기는 이쪽이다. */
   legalName: "농업회사법인주식회사절굿대",
@@ -68,7 +70,9 @@ export type Product = {
   summary: string;
   detail: string;
   image: string;
-  /** TODO(클라이언트): 가격·구성. null 이면 화면에서 가격 줄을 감춘다. */
+  /** 대표 이미지의 대체 텍스트. 제품명만 적으면 사진이 무엇을 보여 주는지 스크린리더가 모른다. */
+  imageAlt: string;
+  /** TODO(클라이언트): 가격·구성. null 이면 가격 줄이 빠지고, 있으면 사양 표의 한 줄로 나간다. */
   price: number | null;
   unit: string | null;
   /** 쓰임새. 떡은 "무엇인가"보다 "언제 쓰는가"로 찾는 손님이 많다. */
@@ -81,15 +85,16 @@ export type Product = {
   storeUrl: string | null;
   /** 제품 사양. 값이 있는 항목만 상세 페이지에 표로 나간다. */
   spec?: { label: string; value: string }[];
-  /** 대표 이미지 말고 더 보여줄 컷. 첫 장은 큰 원에 걸친 작은 원, 나머지는 「더 보기」 줄. */
+  /**
+   * 대표 이미지 말고 더 보여줄 컷. 전부 「더 보기」 격자로 나간다.
+   * 바탕이 흰색·회색 계열인 사진만 싣는다 — 색 바탕(베이지·민트 스튜디오컷)은 균일한 종이색 타일 안에서 튄다.
+   */
   gallery?: { src: string; alt: string }[];
   /**
    * 업체가 이미 만들어 둔 상세페이지(스마트스토어·남도장터용 긴 이미지)를 조각내 쌓는다.
    * 사이트 문법 밖의 디자인이라 접힌 채로 두고 「상세 정보 펼치기」로 연다. 몰 전용 꼬리(고객센터·배송비)는 뺀다.
    */
   detailImages?: { src: string; alt: string; width: number; height: number }[];
-  /** detailImages 가 디자인된 페이지 조각이 아니라 낱장 사진이면 사이를 띄운다. */
-  detailGap?: boolean;
   /** 넣는 것. "넣지 않는 것으로 말한다"의 반대편 — 흰 그릇에 담긴 재료 사진. */
   ingredients?: { src: string; alt: string; label: string }[];
   /** 소리 없는 짧은 루프. 사진으로는 안 보이는 질감을 보여주는 자리다. */
@@ -118,20 +123,21 @@ export const products: Product[] = [
     name: "절굿대떡",
     summary: "콩고물을 입힌 나주의 이바지 떡",
     detail:
-      "유화제나 인공감미료를 전혀 넣지 않고 전통 방식 그대로 빚습니다. 나주 특산 배즙으로 자연스러운 단맛을 더했고, 손으로 친 찹쌀이라 쫄깃하고 부드럽습니다. 아침 식사 대용이나 아이들 간식으로 드십니다.",
+      "유화제나 인공감미료를 전혀 넣지 않고 재래 방식 그대로 빚습니다. 첫맛은 달지 않고 담백하지만, 씹을수록 담백함 속에 감추어진 은은한 달콤함이 느껴집니다. 콩고물 그대로도, 조청에 찍어 드셔도 별미입니다. 아침 식사 대용이나 간식, 회사 접대용으로도 나갑니다.",
     image: "/images/product-jeolgutdae-plate.jpg",
+    imageAlt: "접시에 담은 절굿대떡",
     detailImages: [
       {
         src: "/images/detail/jeolgutdae-01.jpg",
         alt: "절굿대떡 상세 — 50년 만에 돌아온 나주의 이바지 떡, 재료·만드는 방식·보관·제품정보 (1/7)",
         width: 1720,
-        height: 3949,
+        height: 3958,
       },
       {
         src: "/images/detail/jeolgutdae-02.jpg",
         alt: "절굿대떡 상세 — 50년 만에 돌아온 나주의 이바지 떡, 재료·만드는 방식·보관·제품정보 (2/7)",
         width: 1720,
-        height: 3868,
+        height: 3859,
       },
       {
         src: "/images/detail/jeolgutdae-03.jpg",
@@ -149,19 +155,19 @@ export const products: Product[] = [
         src: "/images/detail/jeolgutdae-05.jpg",
         alt: "절굿대떡 상세 — 50년 만에 돌아온 나주의 이바지 떡, 재료·만드는 방식·보관·제품정보 (5/7)",
         width: 1720,
-        height: 3915,
+        height: 4000,
       },
       {
         src: "/images/detail/jeolgutdae-06.jpg",
         alt: "절굿대떡 상세 — 50년 만에 돌아온 나주의 이바지 떡, 재료·만드는 방식·보관·제품정보 (6/7)",
         width: 1720,
-        height: 3820,
+        height: 4000,
       },
       {
         src: "/images/detail/jeolgutdae-07.jpg",
         alt: "절굿대떡 상세 — 50년 만에 돌아온 나주의 이바지 떡, 재료·만드는 방식·보관·제품정보 (7/7)",
         width: 1720,
-        height: 413,
+        height: 82,
       },
     ],
     ingredients: [
@@ -221,8 +227,9 @@ export const products: Product[] = [
     name: "나주배 촉촉오란다",
     summary: "겉은 바삭, 속은 촉촉한 수제 오란다",
     detail:
-      "나주배청으로 반죽해 겉은 바삭하고 속은 촉촉합니다. 절굿대 분말을 함께 넣고, 참깨·땅콩·해바라기씨·호박씨를 비롯한 여섯 가지 견과를 더해 고소합니다. 합성첨가물과 색소, 방부제를 넣지 않습니다. 낱개로 포장해 바삭함이 오래갑니다.",
+      "나주배청으로 반죽해 겉은 바삭하고 속은 촉촉합니다. 절굿대 분말을 함께 넣고, 호박씨·해바라기씨·크랜베리 등 여섯 가지 견과를 더해 고소합니다. 합성첨가물과 색소, 방부제를 넣지 않습니다. 낱개로 포장해 바삭함이 오래갑니다.",
     image: "/images/product-oranda-plate.jpg",
+    imageAlt: "접시에 담은 나주배 촉촉오란다",
     detailImages: [
       {
         src: "/images/detail/oranda-01.jpg",
@@ -294,10 +301,6 @@ export const products: Product[] = [
         src: "/images/gal-oranda-piece.jpg",
         alt: "호박씨·크랜베리가 박힌 오란다 한 조각",
       },
-      {
-        src: "/images/gal-oranda-board.jpg",
-        alt: "나무 도마 위 오란다와 크랜베리",
-      },
       { src: "/images/gal-oranda-tea.jpg", alt: "차와 함께 낸 오란다" },
     ],
     ingredients: [
@@ -359,6 +362,7 @@ export const products: Product[] = [
     detail:
       "절굿대떡을 이바지에 쓴 것은 맛도 맛이지만 건강을 생각한 떡이라는 믿음 때문이었습니다. 명절과 예단, 회사 접대에 두루 나갑니다.",
     image: "/images/product-gift-set.jpg",
+    imageAlt: "상자·나주배와 함께 차린 절굿대떡 선물세트",
     detailImages: [
       {
         src: "/images/detail/gift-01.jpg",
@@ -405,10 +409,6 @@ export const products: Product[] = [
         alt: "절굿대떡과 차를 곁들인 선물 상자",
       },
       {
-        src: "/images/gal-gift-oranda-box.jpg",
-        alt: "낱개 포장한 오란다를 상자에 담았다",
-      },
-      {
         src: "/images/gal-gift-bag.jpg",
         alt: "선물세트를 담아 드리는 종이 가방",
       },
@@ -417,6 +417,16 @@ export const products: Product[] = [
     unit: null,
     occasions: ["이바지", "명절", "선물"],
     storeUrl: null,
+    /* 제품 페이지·이 파일의 두 제품 사양에 이미 있는 사실만 옮겼다. 수량·가격은 클라이언트 확인 대기. */
+    spec: [
+      {
+        label: "구성",
+        value: "절굿대떡 · 나주배 촉촉오란다 (수량은 주문 시 상의)",
+      },
+      { label: "포장", value: "낱개 포장 · 달토끼 상자 · 보자기(선택)" },
+      { label: "보관", value: "떡은 냉동, 오란다는 냉장·냉동" },
+      { label: "배송", value: "보냉 상자 택배" },
+    ],
     accent: "gift",
   },
 ];
@@ -536,24 +546,9 @@ export const experience = {
   takeaway: null as string | null,
   /** 진행 순서. 클라이언트 문안과 체험 사진에서 확인된 것만 적는다. */
   steps: [
-    {
-      title: "반죽 치기",
-      detail: "쌀 반죽을 손으로 칩니다.",
-      image: "/images/step-knead.jpg",
-      imageAlt: "장갑 낀 손으로 초록 반죽을 틀에 눌러 펴고 있다",
-    },
-    {
-      title: "모양 빚기",
-      detail: "빚은 떡에 나무 떡살로 문양을 찍습니다.",
-      image: "/images/step-shape.jpg",
-      imageAlt: "쳐낸 떡을 칼로 반듯하게 자르고 있다",
-    },
-    {
-      title: "콩고물 입히기",
-      detail: "고물을 입혀 마무리합니다.",
-      image: null,
-      imageAlt: null,
-    },
+    { title: "반죽 치기", detail: "쌀 반죽을 손으로 칩니다." },
+    { title: "모양 빚기", detail: "빚은 떡에 나무 떡살로 문양을 찍습니다." },
+    { title: "콩고물 입히기", detail: "고물을 입혀 마무리합니다." },
   ],
 } as const;
 
@@ -562,5 +557,6 @@ export const credentials = [
   { label: "맛의방주 등재", detail: "2022년 국제슬로푸드생물다양성재단" },
   { label: "사회적기업 인증", detail: "제2023-247호 고용노동부" },
   { label: "고향사랑 답례품", detail: "2024년 나주시 선정" },
+  { label: "상표등록", detail: "제40-2515456호 · 2026년 지식재산처" },
   { label: "인공첨가물 무사용", detail: "유화제·인공감미료를 넣지 않습니다" },
 ] as const;

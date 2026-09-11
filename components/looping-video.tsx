@@ -7,7 +7,7 @@ type Props = {
   poster: string;
   /** 화면에 안 보이는 설명. 소리가 없는 영상이라 이것이 유일한 대체 텍스트다. */
   label: string;
-  /** 원형 — 제품 원 옆에 달처럼 걸칠 때. 버튼은 글자 대신 아이콘(원 안에 글자 상자는 튄다). */
+  /** 원형 — 달처럼 걸칠 때. 버튼은 글자 대신 아이콘(원 안에 글자 상자는 튄다). 기본은 부모 타일(정사각)을 채우는 사각. */
   round?: boolean;
 };
 
@@ -39,7 +39,7 @@ export function LoopingVideo({ src, poster, label, round = false }: Props) {
 
   return (
     <div
-      className={`relative overflow-hidden bg-paper-2 ${round ? "aspect-square rounded-full" : "rounded-2xl"}`}
+      className={`relative overflow-hidden bg-paper-2 ${round ? "aspect-square rounded-full" : "h-full rounded-2xl"}`}
     >
       <video
         ref={ref}
@@ -77,7 +77,11 @@ export function LoopingVideo({ src, poster, label, round = false }: Props) {
         {round ? (
           <>
             <span className="sr-only">{playing ? "일시정지" : "재생"}</span>
-            <svg aria-hidden viewBox="0 0 16 16" className="size-3.5 fill-current">
+            <svg
+              aria-hidden
+              viewBox="0 0 16 16"
+              className="size-3.5 fill-current"
+            >
               {playing ? (
                 <path d="M3 2h3.5v12H3zM9.5 2H13v12H9.5z" />
               ) : (

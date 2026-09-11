@@ -8,12 +8,13 @@ import { experience, site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "체험·매장",
   description: `${site.address}. 절굿대떡 만들기 체험과 떡카페를 함께 운영합니다.`,
+  alternates: { canonical: "/visit" },
   openGraph: {
     images: [
       {
-        url: "/images/owners-field.jpg",
-        width: 3000,
-        height: 2000,
+        url: "/og/visit-2026-09.jpg",
+        width: 1200,
+        height: 630,
         alt: "절굿대 밭에서 잎을 거두는 절굿대달토끼 부부",
       },
     ],
@@ -61,9 +62,7 @@ export default function VisitPage() {
           사진이 그대로 보이고, 글자는 먹색으로 흰 종이 위에 앉는다.
         */}
       <section className="mx-auto w-full max-w-6xl px-5 pt-10 lg:px-8 lg:pt-14">
-        <SectionEyebrow phase={0.1}>
-          {site.addressLocality} 징고샅길
-        </SectionEyebrow>
+        <SectionEyebrow phase={0.1}>체험·매장</SectionEyebrow>
         <div className="mt-4 lg:grid lg:grid-cols-[7fr_5fr] lg:items-end lg:gap-16">
           <h1 className="max-w-[16ch] text-h1 lg:text-hero">
             <span className="block font-thin tracking-tight">빚어 보러</span>
@@ -118,17 +117,13 @@ export default function VisitPage() {
                 같은 문구 다섯 줄은 벽이었다(모바일 전수 확인). 값이 채워지면 줄이 위 표로 올라간다. */}
             {rows.some((r) => r.value === null) && (
               <p className="mt-4 text-small text-ink-soft">
-                {rows
-                  .filter((r) => r.value === null)
-                  .map((r) => r.label)
-                  .join("·")}
-                은 전화로 문의해 주세요.
+                인원·시간·참가비는 전화로 문의해 주세요.
               </p>
             )}
 
             <a
               aria-label={`전화 걸기 ${site.tel}`}
-              className="btn-lift mt-8 inline-block border border-ink bg-ink px-7 py-3 text-small text-paper transition-colors hover:bg-ink-soft"
+              className="btn-primary mt-8"
               href={`tel:${site.tel.replace(/-/g, "")}`}
             >
               체험 문의 {site.tel}
@@ -138,9 +133,10 @@ export default function VisitPage() {
           {/*
             체험 사진은 얼굴이 들어오지 않는 두 컷만 쓴다. 나머지 자료 사진은
             참가자 얼굴이 정면으로 크게 나와 초상권 동의 없이는 못 올린다.
+            홈 히어로의 대표 사진(칼로 자르는 컷)은 같은 사람이 두 번 나와 손·반죽 컷으로 바꿨다.
           */}
           <div className="grid gap-4 self-start sm:grid-cols-2">
-            <div className="relative aspect-16/10 overflow-hidden rounded-2xl sm:aspect-square ring-1 ring-inset ring-ink/5">
+            <div className="relative aspect-4/3 overflow-hidden rounded-2xl ring-1 ring-inset ring-ink/5">
               <Image
                 src="/images/making-hands.jpg"
                 alt="장갑 낀 손으로 초록 절굿대 반죽을 틀에 펴고 있다"
@@ -150,10 +146,10 @@ export default function VisitPage() {
                 className="object-cover"
               />
             </div>
-            <div className="relative aspect-3/4 overflow-hidden rounded-2xl sm:mt-10 sm:aspect-square ring-1 ring-inset ring-ink/5">
+            <div className="relative aspect-4/3 overflow-hidden rounded-2xl ring-1 ring-inset ring-ink/5">
               <Image
-                src="/images/making-cut.jpg"
-                alt="쳐낸 절굿대떡을 칼로 반듯하게 자르고 있다"
+                src="/images/process-pour.jpg"
+                alt="절굿대를 넣은 초록 반죽을 틀에 붓는다"
                 fill
                 sizes="(min-width: 1024px) 22vw, 90vw"
                 quality={88}
@@ -166,19 +162,21 @@ export default function VisitPage() {
 
       {/* 진행 순서. 실제로 손이 무엇을 하는지가 인솔자에겐 프로그램 설명이다.
           문안과 체험 사진으로 확인된 세 단계만 적는다. */}
-      <section className="rise bg-paper-2">
+      <section className="rise border-t border-ink/10">
         <div className="section-y-tight mx-auto max-w-6xl px-5 lg:px-8">
           <SectionEyebrow phase={0.55}>진행 순서</SectionEyebrow>
           <h2 className="mt-3 text-h3 lg:text-h2-lg">이렇게 진행합니다</h2>
-          <ol className="mt-9 grid gap-8 lg:grid-cols-3">
+          {/* 실선 장부 세 줄. 번호는 제목 옆 작은 캡션 — 큰 숫자는 위 연표·페이지 제목과 겨뤘다. */}
+          <ol className="mt-9 divide-y divide-ink/10 border-y border-ink/10">
             {experience.steps.map((step, i) => (
-              <li key={step.title} className="border-t-2 border-moon pt-5">
-                {/* 번호가 곧 밀도다. 작은 캡션이 아니라 80px 로 세운다. */}
-                <p className="font-black leading-none tracking-tighter tabular-nums text-h1-lg lg:text-num">
-                  {String(i + 1).padStart(2, "0")}
-                </p>
-                <h3 className="mt-4 text-lead font-bold">{step.title}</h3>
-                <p className="mt-2 text-small leading-relaxed text-ink-soft">
+              <li key={step.title} className="py-5 lg:py-6">
+                <h3 className="flex items-baseline gap-3 text-h3">
+                  <span className="text-small font-normal tabular-nums tracking-normal text-ink-faint">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  {step.title}
+                </h3>
+                <p className="mt-1 text-small leading-relaxed text-ink-soft lg:pl-[calc(2ch+0.75rem)]">
                   {step.detail}
                 </p>
               </li>
@@ -187,36 +185,26 @@ export default function VisitPage() {
         </div>
       </section>
 
-      {/* 오시는 길 */}
-      <section className="moonlit rise bg-ink text-paper">
-        <div className="section-y relative mx-auto grid max-w-6xl gap-12 px-5 lg:grid-cols-2 lg:gap-16 lg:px-8">
+      {/* 오시는 길. 바로 아래 푸터가 먹색이라 여기까지 먹색이면 한 덩어리가 된다 — 종이색 위에 먹 글자. */}
+      <section className="rise bg-paper-2">
+        <div className="mx-auto grid max-w-6xl gap-12 px-5 pb-8 pt-16 sm:pb-10 sm:pt-20 lg:grid-cols-2 lg:gap-16 lg:px-8 lg:pb-14 lg:pt-28">
           <div>
-            <SectionEyebrow phase={1} tone="paper">
-              매장
-            </SectionEyebrow>
-            <h2 className="mt-3 text-h2 lg:text-h2-lg">오시는 길</h2>
+            <SectionEyebrow phase={1}>매장</SectionEyebrow>
+            <h2 className="mt-3 text-h2 lg:text-h2-lg">
+              <span className="block font-thin">나주읍성 안,</span>
+              <span className="block font-black">오시는 길</span>
+            </h2>
             <address className="mt-8 space-y-5 not-italic">
               <div>
-                <p className="text-caption text-paper/50">주소</p>
-                <p className="mt-2 max-w-[18ch] font-light tracking-tight text-h3 lg:text-h2">
-                  {site.address}
-                </p>
-              </div>
-              <div>
-                <p className="text-caption text-paper/50">전화</p>
-                <p className="mt-2 font-black tracking-tighter tabular-nums text-h3 lg:text-h2">
-                  <a
-                    aria-label={`전화 걸기 ${site.tel}`}
-                    className="underline decoration-paper/40 decoration-2 underline-offset-8 transition-colors hover:decoration-moon"
-                    href={`tel:${site.tel.replace(/-/g, "")}`}
-                  >
-                    {site.tel}
-                  </a>
+                <p className="text-caption text-ink-faint">주소</p>
+                {/* 마지막 어절(번지)만 앞 어절에 붙여 "7-1" 이 홀로 남지 않게 한다. PC 는 한 줄. */}
+                <p className="mt-2 font-light tracking-tight text-h3 lg:whitespace-nowrap lg:text-h2">
+                  {site.address.replace(/ (\S+)$/, "\u00A0$1")}
                 </p>
               </div>
               {site.hours && (
                 <div>
-                  <p className="text-caption text-paper/50">영업시간</p>
+                  <p className="text-caption text-ink-faint">영업시간</p>
                   <p className="mt-2 font-light tracking-tight text-h3 lg:text-h2">
                     {site.hours}
                   </p>
@@ -224,39 +212,40 @@ export default function VisitPage() {
               )}
               {site.closedDays && (
                 <div>
-                  <p className="text-caption text-paper/50">휴무</p>
+                  <p className="text-caption text-ink-faint">휴무</p>
                   <p className="mt-1 text-lead">{site.closedDays}</p>
                 </div>
               )}
             </address>
 
-            <div className="mt-9 flex flex-wrap gap-3">
+            {/* 전화 버튼은 위 체험 섹션에 하나뿐이다 — 번호는 바로 아래 푸터에 크게 있다. */}
+            <div className="mt-9 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:items-center sm:gap-6">
               <a
                 href={`https://map.kakao.com/?q=${mapQuery}`}
                 target="_blank"
                 rel="noreferrer"
-                className="btn-lift border border-paper bg-paper px-7 py-3 text-small text-ink transition-colors hover:border-paper/80 hover:bg-paper/80"
+                className="btn-primary"
               >
-                카카오맵으로 길찾기
+                카카오맵 길찾기<span className="sr-only"> (새 창)</span>
               </a>
               <a
                 href={`https://map.naver.com/p/search/${mapQuery}`}
                 target="_blank"
                 rel="noreferrer"
-                className="border border-paper/50 px-7 py-3 text-small transition-colors hover:border-mint hover:text-mint"
+                className="text-link justify-center"
               >
-                네이버 지도
+                네이버 지도<span className="sr-only"> (새 창)</span>
               </a>
             </div>
           </div>
 
           {/* TODO(개발): 카카오맵 SDK 임베드. 지금은 지도 앱으로 넘긴다. */}
-          {/* 아치 = 장소. 브랜드 라벨(public/brand/label.png)의 아치형 문에서 온 형태다. 매장 사진 한 종류에만 쓴다. */}
-          <div className="relative aspect-4/5 overflow-hidden rounded-t-full lg:aspect-auto lg:min-h-96">
+          {/* 매장 사진은 장면이라 사각. 간판 「절굿대 달토끼」가 통째로 들어오는 위치로 자른다. */}
+          <div className="relative aspect-4/5 overflow-hidden rounded-2xl ring-1 ring-inset ring-ink/5 sm:aspect-square">
             {/*
               지도 임베드는 뺐다. 카카오·네이버는 키가 있어야 하고, 키 없이 되는
               구글은 나주 시골 지역 데이터가 거의 없어 검은 섹션에 빈 사각형만
-              뚫렸다(배포본 확인). 길찾기는 아래 버튼이 카카오·네이버로 넘긴다.
+              뚫렸다(배포본 확인). 길찾기는 옆 버튼이 카카오·네이버로 넘긴다.
               키를 받으면 이 자리에 카카오 지도를 넣는다.
             */}
             <Image
@@ -265,7 +254,7 @@ export default function VisitPage() {
               fill
               sizes="(min-width: 1024px) 45vw, 90vw"
               quality={88}
-              className="object-cover"
+              className="object-cover object-[50%_45%]"
             />
           </div>
         </div>

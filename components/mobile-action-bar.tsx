@@ -8,17 +8,19 @@ const mapQuery = encodeURIComponent(`${site.address} ${site.name}`);
  * 이 사업의 전환은 전화와 방문 둘뿐인데, 여태 둘 다 페이지를 끝까지
  * 내려야 나왔다. 스크롤 어디에서든 닿게 한다.
  *
- * 화면을 가리지 않도록 body 아래쪽에 같은 높이의 여백을 준다
- * (app/globals.css 의 .has-action-bar). 고정 요소는 자리를 차지하지
+ * 화면을 가리지 않도록 body 아래쪽에 같은 높이(3.5rem)의 여백을 준다
+ * (app/globals.css 의 body padding-bottom). 고정 요소는 자리를 차지하지
  * 않으므로 여백을 따로 만들지 않으면 푸터 마지막 줄이 가려진다.
+ * 안쪽 높이는 그 3.5rem(56px)에 고정하고, 홈 인디케이터 영역(safe-area)은
+ * 같은 바탕색으로 그 아래에 덧붙는다 — body 여백과 어긋나지 않는다.
  */
 export function MobileActionBar() {
   return (
-    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-ink/10 bg-paper/95 backdrop-blur lg:hidden">
-      <div className="grid grid-cols-2">
+    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-ink/10 bg-paper/95 pb-[env(safe-area-inset-bottom)] backdrop-blur lg:hidden">
+      <div className="grid h-14 grid-cols-2">
         <a
           aria-label={`전화 걸기 ${site.tel}`}
-          className="pressable flex min-h-14 items-center justify-center gap-2 border-r border-ink/10 text-small font-medium transition-colors hover:text-mint-link"
+          className="pressable flex h-full items-center justify-center gap-2 border-r border-ink/10 text-small font-medium transition-colors hover:text-mint-link"
           href={`tel:${site.tel.replace(/-/g, "")}`}
         >
           <svg
@@ -37,7 +39,7 @@ export function MobileActionBar() {
           전화 주문
         </a>
         <a
-          className="pressable flex min-h-14 items-center justify-center gap-2 text-small font-medium transition-colors hover:text-mint-link"
+          className="pressable flex h-full items-center justify-center gap-2 text-small font-medium transition-colors hover:text-mint-link"
           href={`https://map.kakao.com/?q=${mapQuery}`}
           rel="noreferrer"
           target="_blank"

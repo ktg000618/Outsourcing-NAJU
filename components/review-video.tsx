@@ -14,7 +14,8 @@ type Props = {
   children: ReactNode;
 };
 
-const mmss = (t: number) => `${Math.floor(t / 60)}:${String(t % 60).padStart(2, "0")}`;
+const mmss = (t: number) =>
+  `${Math.floor(t / 60)}:${String(t % 60).padStart(2, "0")}`;
 
 /**
  * 후기 영상 — 영상 속 "말한 대목" 목록 + 포스터/원형 재생 버튼.
@@ -34,10 +35,22 @@ export function ReviewVideo({ src, poster, label, moments, children }: Props) {
     ? moments.reduce((acc, m, i) => (time >= m.t ? i : acc), -1)
     : -1;
 
+  /* 대목을 누르면 그 시점부터 재생. 아직 시작 전이면 play 가 onPlay 로 started 를 올려 컨트롤이 나타난다.
+     메타데이터 전이면 currentTime 대입이 무시되므로 한 번 기다렸다가 다시 맞춘다(모바일 preload 지연). */
   const seek = (t: number) => {
     const v = ref.current;
     if (!v) return;
-    v.currentTime = t;
+    if (v.readyState >= 1) {
+      v.currentTime = t;
+    } else {
+      v.addEventListener(
+        "loadedmetadata",
+        () => {
+          v.currentTime = t;
+        },
+        { once: true },
+      );
+    }
     void v.play();
   };
 
@@ -60,12 +73,16 @@ export function ReviewVideo({ src, poster, label, moments, children }: Props) {
                 >
                   <span
                     className={`w-10 shrink-0 text-caption tabular-nums ${
-                      active ? "text-moon" : "text-paper/45"
+                      active ? "text-moon" : "text-paper/60"
                     }`}
                   >
                     {mmss(m.t)}
                   </span>
-                  <span className={`text-body ${active ? "font-semibold" : ""}`}>{m.text}</span>
+                  <span
+                    className={`text-body ${active ? "font-semibold" : ""}`}
+                  >
+                    {m.text}
+                  </span>
                 </button>
               </li>
             );
@@ -95,7 +112,11 @@ export function ReviewVideo({ src, poster, label, moments, children }: Props) {
               className="group absolute inset-0 grid place-items-center"
             >
               <span className="grid size-16 place-items-center rounded-full border border-paper/70 bg-ink/55 text-paper backdrop-blur transition-transform duration-300 group-hover:scale-105">
-                <svg aria-hidden viewBox="0 0 16 16" className="ml-0.5 size-5 fill-current">
+                <svg
+                  aria-hidden
+                  viewBox="0 0 16 16"
+                  className="ml-0.5 size-5 fill-current"
+                >
                   <path d="M4 2l10 6-10 6z" />
                 </svg>
               </span>
