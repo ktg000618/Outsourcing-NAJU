@@ -40,3 +40,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 tools/detail-pages/out/
+
+# 예시 env 는 커밋한다
+!.env.example

@@ -119,6 +119,7 @@ export default async function ProductPage({
               alt={product.imageAlt}
               fill
               priority
+              fetchPriority="high"
               sizes="(min-width: 1024px) 440px, 90vw"
               quality={88}
               className="object-cover"
@@ -229,7 +230,7 @@ export default async function ProductPage({
                       <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-ink/8">
                         <Image
                           src={ing.src}
-                          alt={ing.alt}
+                          alt=""
                           fill
                           sizes="(min-width: 1024px) 176px, 30vw"
                           quality={88}

@@ -79,6 +79,7 @@ export default function VisitPage() {
             alt="절굿대 밭에서 잎을 거두는 절굿대달토끼 부부"
             fill
             priority
+            fetchPriority="high"
             sizes="(min-width: 1200px) 1152px, 100vw"
             quality={88}
             className="enter-photo object-cover object-[50%_40%]"

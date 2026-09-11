@@ -81,6 +81,7 @@ export default function StoryPage() {
             alt="밭에서 꽃봉오리를 맺은 절굿대"
             fill
             priority
+            fetchPriority="high"
             sizes="(min-width: 1200px) 1152px, 100vw"
             quality={88}
             className="enter-photo object-cover object-[50%_35%]"

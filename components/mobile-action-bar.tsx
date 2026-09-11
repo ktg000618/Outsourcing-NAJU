@@ -19,7 +19,6 @@ export function MobileActionBar() {
     <div className="fixed inset-x-0 bottom-0 z-40 border-t border-ink/10 bg-paper/95 pb-[env(safe-area-inset-bottom)] backdrop-blur lg:hidden">
       <div className="grid h-14 grid-cols-2">
         <a
-          aria-label={`전화 걸기 ${site.tel}`}
           className="pressable flex h-full items-center justify-center gap-2 border-r border-ink/10 text-small font-medium transition-colors hover:text-mint-link"
           href={`tel:${site.tel.replace(/-/g, "")}`}
         >
@@ -36,7 +35,7 @@ export function MobileActionBar() {
               strokeLinejoin="round"
             />
           </svg>
-          전화 주문
+          전화 주문<span className="sr-only"> {site.tel}</span>
         </a>
         <a
           className="pressable flex h-full items-center justify-center gap-2 text-small font-medium transition-colors hover:text-mint-link"

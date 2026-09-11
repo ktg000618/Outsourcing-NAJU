@@ -273,7 +273,7 @@ export const products: Product[] = [
       },
       {
         src: "/images/detail/oranda-08.jpg",
-        alt: "온 가족이 나눠 먹어요, 선물 보자기",
+        alt: "온 가족이 나눠 먹는 선물 보자기",
         width: 860,
         height: 1863,
       },

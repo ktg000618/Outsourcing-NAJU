@@ -24,6 +24,8 @@ export function HeroSlides({
   interval?: number;
 }) {
   const [index, setIndex] = useState(0);
+  /* 2~4장은 첫 장이 그려진 뒤에 붙인다 — 넷이 한꺼번에 내려오면 LCP 가 밀린다(모바일 5.5s 실측). */
+  const [rest, setRest] = useState(false);
 
   useEffect(() => {
     if (slides.length < 2) return;
@@ -53,20 +55,25 @@ export function HeroSlides({
 
   return (
     <>
-      {slides.map((s, i) => (
-        <Image
-          key={s.src}
-          src={s.src}
-          alt={i === index ? s.alt : ""}
-          fill
-          priority={i === 0}
-          quality={i === 0 ? 92 : 86}
-          sizes="(min-width: 1200px) 1152px, 100vw"
-          className={`object-cover transition-opacity duration-[1400ms] ease-[cubic-bezier(0.4,0,0.2,1)] motion-reduce:transition-none ${s.position} ${
-            i === index ? "opacity-100" : "opacity-0"
-          } ${i === 0 ? "enter-photo" : ""}`}
-        />
-      ))}
+      {slides.map(
+        (s, i) =>
+          (i === 0 || rest) && (
+            <Image
+              key={s.src}
+              src={s.src}
+              alt={i === index ? s.alt : ""}
+              fill
+              priority={i === 0}
+              fetchPriority={i === 0 ? "high" : undefined}
+              onLoad={i === 0 ? () => setRest(true) : undefined}
+              quality={i === 0 ? 88 : 84}
+              sizes="(min-width: 1200px) 1152px, 100vw"
+              className={`object-cover transition-opacity duration-[1400ms] ease-[cubic-bezier(0.4,0,0.2,1)] motion-reduce:transition-none ${s.position} ${
+                i === index ? "opacity-100" : "opacity-0"
+              } ${i === 0 ? "enter-photo" : ""}`}
+            />
+          ),
+      )}
       {slides.length > 1 && (
         /* 진행 표시 — 짧은 선 넷. 아이콘·점 대신 괘선 문법. 누르면 그 장으로. */
         <div className="absolute right-5 top-5 z-10 flex gap-1.5 sm:right-7 sm:top-7">
