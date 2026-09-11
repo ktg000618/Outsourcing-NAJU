@@ -81,9 +81,9 @@ export default function ProductsPage() {
           {[...byOccasion.entries()].map(([occasion, list]) => (
             <li
               key={occasion}
-              className="grid grid-cols-[5.5rem_1fr] items-center gap-3 border-b border-ink/10 py-3.5 lg:grid-cols-[5rem_1fr] lg:py-4"
+              className="grid grid-cols-[5.5rem_1fr] items-center gap-3 border-b border-ink/10 py-3.5 lg:grid-cols-[6rem_1fr] lg:py-4"
             >
-              <h3 className="text-body font-black tracking-tight lg:text-h3">
+              <h3 className="whitespace-nowrap text-body font-black tracking-tight lg:text-h3">
                 {occasion}
               </h3>
               <ul className="flex flex-wrap gap-x-4 gap-y-2">
