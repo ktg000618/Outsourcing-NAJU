@@ -27,14 +27,14 @@ export default async function AdminPage() {
   const hiddenCount = posts.length - publishedCount;
 
   return (
-    <div className="mx-auto max-w-6xl px-5 pb-28 pt-10 lg:px-8 lg:pb-32 lg:pt-14">
+    <div className="page-top page-bottom mx-auto max-w-6xl px-5 lg:px-8">
       {/* 머리: 누가 들어왔고, 무엇을 할 수 있나 */}
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <SectionEyebrow phase={0.1}>
             소식 관리 · {auth.user?.email}
           </SectionEyebrow>
-          <h1 className="mt-3 text-h1 lg:text-h1-lg">
+          <h1 className="mt-3 text-h1 lg:text-h2-lg">
             <span className="font-thin tracking-tight">올린 </span>
             <span className="font-black tracking-tighter">소식</span>
           </h1>
@@ -47,10 +47,7 @@ export default async function AdminPage() {
           <Link href="/news" className="text-link mr-2">
             사이트에서 보기
           </Link>
-          <Link
-            href="/admin/new"
-            className="btn-lift inline-flex items-center gap-2 border border-ink bg-ink px-5 py-2.5 text-small text-paper transition-colors hover:bg-ink-soft"
-          >
+          <Link href="/admin/new" className="btn-primary btn-primary-sm">
             <span aria-hidden className="text-lead font-thin leading-none">
               +
             </span>
@@ -65,15 +62,12 @@ export default async function AdminPage() {
       </div>
 
       {posts.length === 0 ? (
-        <div className="mt-10 max-w-3xl border border-dashed border-ink/30 px-6 py-14 text-center lg:mt-12">
+        <div className="mt-10 max-w-3xl border border-dashed border-ink/20 px-6 py-14 text-center lg:mt-12">
           <p className="text-lead font-bold">아직 글이 없습니다</p>
           <p className="mt-2 text-small text-ink-soft">
             휴무·신제품·행사 소식을 올리면 사이트 「소식」에 바로 보입니다.
           </p>
-          <Link
-            href="/admin/new"
-            className="btn-lift mt-6 inline-block border border-ink bg-ink px-7 py-3 text-small text-paper transition-colors hover:bg-ink-soft"
-          >
+          <Link href="/admin/new" className="btn-primary mt-6">
             첫 소식 쓰기
           </Link>
         </div>

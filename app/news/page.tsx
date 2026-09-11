@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { site } from "@/lib/site";
 import { ViewTransition } from "react";
 import Image from "next/image";
-import { SectionEyebrow } from "@/components/section-eyebrow";
+import { SectionHead } from "@/components/section-head";
 import { formatNewsDate, getPublishedPosts } from "@/lib/news";
 
 export const metadata: Metadata = {
@@ -22,7 +22,7 @@ function linkifyTel(text: string) {
       <a
         key={i}
         href={`tel:${part.replace(/-/g, "")}`}
-        className="whitespace-nowrap underline decoration-ink/30 underline-offset-4 hover:text-mint-link"
+        className="text-link-inline whitespace-nowrap"
       >
         {part}
       </a>
@@ -37,18 +37,15 @@ export default async function NewsPage() {
   return (
     <ViewTransition enter="page-in" exit="page-out" default="none">
       {/* 형제 페이지와 같은 문법 — 1152 컨테이너, 달 위상, 88px Thin/Black. 이 페이지만 밖에 있었다. */}
-      <div className="mx-auto max-w-6xl px-5 pb-24 pt-10 lg:px-8 lg:pb-32 lg:pt-14">
+      <div className="page-top page-bottom mx-auto max-w-6xl px-5 lg:px-8">
         {/* 이 페이지의 유일한 눈썹이라 보름(1). */}
-        <SectionEyebrow phase={1}>소식</SectionEyebrow>
-        <div className="mt-4 lg:grid lg:grid-cols-[7fr_5fr] lg:items-end lg:gap-16">
-          <h1 className="max-w-[16ch] text-h1 lg:text-hero">
-            <span className="block font-thin tracking-tight">떡집의</span>
-            <span className="block font-black tracking-tighter">소식</span>
-          </h1>
-          <p className="mt-5 max-w-md text-ink-soft lg:mt-0 lg:pb-3">
-            휴무와 신제품, 행사 소식을 이곳에 올립니다.
-          </p>
-        </div>
+        <SectionHead
+          as="h1"
+          phase={1}
+          eyebrow="소식"
+          title={{ thin: "떡집의", black: "소식" }}
+          lead="휴무와 신제품, 행사 소식을 이곳에 올립니다."
+        />
 
         {posts.length === 0 ? (
           /* 빈 상태는 본문 한 줄 — 페이지 제목 아래 두 번째 제목을 세우지 않는다. 소식은 인스타에 먼저 올라간다. */
@@ -70,7 +67,7 @@ export default async function NewsPage() {
               )}
               <a
                 aria-label={`전화 걸기 ${site.tel}`}
-                href={`tel:${site.tel.replace(/-/g, "")}`}
+                href={site.telHref}
                 className="text-link"
               >
                 전화 {site.tel}
@@ -94,21 +91,21 @@ export default async function NewsPage() {
                   <article className="grid gap-3 py-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16 lg:py-14">
                     <time
                       dateTime={post.published_on}
-                      className="text-caption tabular-nums tracking-[0.08em] text-ink-faint lg:pt-1 lg:text-h3 lg:font-bold lg:tracking-normal lg:text-ink"
+                      className="text-caption tabular-nums text-ink-faint lg:pt-1 lg:text-title lg:font-bold lg:tracking-normal lg:text-ink"
                     >
                       {formatNewsDate(post.published_on)}
                     </time>
                     <div className="min-w-0">
-                      <h2 className="text-h3 font-bold lg:text-h2">
+                      <h2 className="text-title font-bold lg:text-h2">
                         {post.title}
                       </h2>
                       {post.body && (
-                        <p className="mt-4 max-w-prose whitespace-pre-line leading-relaxed text-ink-soft">
+                        <p className="mt-4 max-w-prose whitespace-pre-line text-ink-soft">
                           {linkifyTel(post.body)}
                         </p>
                       )}
                       {n === 1 && (
-                        <div className="mt-6 w-fit overflow-hidden rounded-2xl bg-paper-2 ring-1 ring-inset ring-ink/5">
+                        <div className="photo mt-6 w-fit">
                           <Image
                             src={post.images[0]}
                             alt={post.title}
@@ -132,7 +129,7 @@ export default async function NewsPage() {
                           {post.images.map((src, i) => (
                             <li
                               key={src}
-                              className={`relative aspect-4/3 overflow-hidden rounded-2xl bg-paper-2 ring-1 ring-inset ring-ink/5 ${
+                              className={`photo aspect-4/3 ${
                                 n >= 2
                                   ? "w-[72%] shrink-0 snap-start sm:w-auto"
                                   : ""

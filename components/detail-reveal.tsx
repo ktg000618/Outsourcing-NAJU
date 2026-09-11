@@ -61,7 +61,7 @@ export function DetailReveal({
             setOpen(next);
             if (!next) top.current?.scrollIntoView({ block: "start" });
           }}
-          className="btn-lift inline-flex items-center gap-2 border border-ink bg-paper px-8 py-3 text-small text-ink transition-colors hover:bg-ink hover:text-paper"
+          className="btn-secondary"
         >
           {open ? "접기" : "상세 더보기"}
           <svg

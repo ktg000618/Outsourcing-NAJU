@@ -14,8 +14,8 @@ export const metadata: Metadata = {
 export default function NotFound() {
   return (
     <section className="mx-auto flex max-w-3xl flex-col items-center px-5 pb-28 pt-20 text-center lg:px-8 lg:pb-36 lg:pt-28">
-      <p className="text-caption tracking-widest text-ink-faint">404</p>
-      <h1 className="mt-3 text-h1 lg:text-h1-lg">여기엔 떡이 없습니다</h1>
+      <p className="text-caption text-ink-faint">404</p>
+      <h1 className="mt-3 text-h1 lg:text-h2-lg">여기엔 떡이 없습니다</h1>
       <p className="mt-5 max-w-prose text-ink-soft">
         주소가 바뀌었거나 잘못 적혔을 수 있습니다. 아래에서 다시 찾아 주세요.
       </p>
@@ -29,7 +29,7 @@ export default function NotFound() {
         <a
           aria-label={`전화 걸기 ${site.tel}`}
           className="text-link"
-          href={`tel:${site.tel.replace(/-/g, "")}`}
+          href={site.telHref}
         >
           전화 주문 {site.tel}
         </a>

@@ -75,9 +75,6 @@ export function PostForm({ action, initial }: Props) {
   }
 
   const tiles = images.length + (images.length < MAX_IMAGES ? 1 : 0);
-  const label = "mb-2 block text-caption tracking-[0.04em] text-ink-faint";
-  const field =
-    "w-full border border-ink/20 bg-paper px-3.5 py-3 text-body outline-none transition-colors placeholder:text-ink/45 focus:border-ink";
 
   /*
     1152 컨테이너 안에서 7/5 스프레드 — 히어로·연표와 같은 격자. 왼쪽은 "쓰는 것"(제목·본문·사진),
@@ -90,10 +87,10 @@ export function PostForm({ action, initial }: Props) {
       className="mt-8 lg:mt-12 lg:grid lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:items-start lg:gap-16"
     >
       <div className="divide-y divide-ink/10">
-        {/* 1. 글 — 제목은 상자가 아니라 밑줄 위의 헤드라인. 실릴 크기(text-h3 bold) 그대로 보인다. */}
+        {/* 1. 글 — 제목은 상자가 아니라 밑줄 위의 헤드라인. 실릴 크기(text-title bold) 그대로 보인다. */}
         <section className="space-y-7 pb-8">
           <div>
-            <label htmlFor="post-title" className={label}>
+            <label htmlFor="post-title" className="field-label">
               제목
             </label>
             <input
@@ -103,11 +100,11 @@ export function PostForm({ action, initial }: Props) {
               maxLength={80}
               defaultValue={initial?.title}
               placeholder="예) 추석 연휴 영업 안내"
-              className="w-full border-0 border-b border-ink/20 bg-transparent px-0 py-2 text-h3 font-bold tracking-[-0.035em] outline-none transition-colors placeholder:font-normal placeholder:text-ink/45 focus:border-ink"
+              className="w-full border-0 border-b border-ink/20 bg-transparent px-0 py-2 text-title font-bold tracking-heading outline-none transition-colors placeholder:font-normal placeholder:text-ink-faint focus:border-ink"
             />
           </div>
           <div>
-            <label htmlFor="post-body" className={label}>
+            <label htmlFor="post-body" className="field-label">
               본문 <span className="text-ink-faint">· 줄바꿈 그대로 표시</span>
             </label>
             <textarea
@@ -117,14 +114,14 @@ export function PostForm({ action, initial }: Props) {
               maxLength={4000}
               defaultValue={initial?.body}
               placeholder="손님에게 전할 내용을 적어 주세요."
-              className={`${field} min-h-48 leading-relaxed field-sizing-content`}
+              className="field-input min-h-48 field-sizing-content"
             />
           </div>
         </section>
 
         {/* 2. 사진 — 손님이 보는 것과 같은 4:3·둥근 모서리·링. 모바일 2열, 비어 있으면 넓은 드롭존. */}
         <section className="py-8">
-          <p className={label}>
+          <p className="field-label">
             사진{" "}
             <span className="text-ink-faint">
               · 가로 사진 권장 · 2장 이상은 4:3으로 잘립니다 · JPG/PNG ·{" "}
@@ -136,10 +133,7 @@ export function PostForm({ action, initial }: Props) {
             className={`grid gap-3 sm:grid-cols-3 ${tiles === 3 ? "grid-cols-3" : "grid-cols-2"}`}
           >
             {images.map((src) => (
-              <div
-                key={src}
-                className="relative aspect-4/3 overflow-hidden rounded-2xl bg-paper-2 ring-1 ring-inset ring-ink/5"
-              >
+              <div key={src} className="photo aspect-4/3">
                 {/* 관리 화면 미리보기 — 최적화 불필요, 원본 URL 그대로 */}
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={src} alt="" className="size-full object-cover" />
@@ -150,7 +144,7 @@ export function PostForm({ action, initial }: Props) {
                   onClick={() =>
                     setImages((prev) => prev.filter((s) => s !== src))
                   }
-                  className="absolute right-2 top-2 grid size-7 place-items-center rounded-full bg-ink/75 text-paper backdrop-blur transition-colors hover:bg-ink"
+                  className="absolute right-2 top-2 grid size-7 place-items-center rounded-full bg-ink/70 text-paper backdrop-blur transition-colors hover:bg-ink"
                 >
                   <svg
                     aria-hidden
@@ -166,7 +160,7 @@ export function PostForm({ action, initial }: Props) {
             ))}
             {images.length < MAX_IMAGES && (
               <label
-                className={`grid cursor-pointer place-items-center rounded-2xl border border-dashed border-ink/30 text-center text-small text-ink-soft transition-colors hover:border-ink hover:text-ink ${
+                className={`grid cursor-pointer place-items-center rounded-2xl border border-dashed border-ink/20 text-center text-small text-ink-soft transition-colors hover:border-ink hover:text-ink ${
                   images.length === 0
                     ? "col-span-full aspect-[3/1] sm:col-span-1 sm:aspect-4/3"
                     : "aspect-4/3"
@@ -175,7 +169,7 @@ export function PostForm({ action, initial }: Props) {
                 <span>
                   <span
                     aria-hidden
-                    className="block text-h3 font-thin leading-none"
+                    className="block text-title font-thin leading-none"
                   >
                     +
                   </span>
@@ -209,7 +203,7 @@ export function PostForm({ action, initial }: Props) {
       <aside className="divide-y divide-ink/10 lg:sticky lg:top-28">
         <section className="grid gap-6 py-8 sm:grid-cols-[11rem_minmax(0,1fr)] lg:grid-cols-1 lg:pt-0">
           <div>
-            <label htmlFor="post-date" className={label}>
+            <label htmlFor="post-date" className="field-label">
               날짜
             </label>
             <input
@@ -218,11 +212,11 @@ export function PostForm({ action, initial }: Props) {
               type="date"
               required
               defaultValue={initial?.published_on ?? todayKst()}
-              className={`${field} tabular-nums`}
+              className="field-input tabular-nums"
             />
           </div>
           <div>
-            <label htmlFor="post-link" className={label}>
+            <label htmlFor="post-link" className="field-label">
               링크{" "}
               <span className="text-ink-faint">· 선택, 인스타 게시물 등</span>
             </label>
@@ -232,7 +226,7 @@ export function PostForm({ action, initial }: Props) {
               type="url"
               placeholder="https://"
               defaultValue={initial?.link_url ?? ""}
-              className={field}
+              className="field-input"
             />
           </div>
         </section>
@@ -266,14 +260,11 @@ export function PostForm({ action, initial }: Props) {
             <button
               type="submit"
               disabled={pending || uploading}
-              className="btn-lift flex-1 border border-ink bg-ink px-7 py-3.5 text-small text-paper transition-colors hover:bg-ink-soft disabled:opacity-60"
+              className="btn-primary flex-1"
             >
               {pending ? "저장 중…" : initial ? "수정 저장" : "올리기"}
             </button>
-            <Link
-              href="/admin"
-              className="pressable border border-ink/30 px-6 py-3.5 text-center text-small transition-colors hover:border-mint-link hover:text-mint-link"
-            >
+            <Link href="/admin" className="btn-secondary">
               취소
             </Link>
           </div>

@@ -1,8 +1,6 @@
 import Image from "next/image";
 import { site } from "@/lib/site";
 
-const telHref = `tel:${site.tel.replace(/-/g, "")}`;
-
 /**
  * 주소·전화·영업시간은 매장에 오려는 사람이 어느 페이지에서든 찾는 정보라
  * '오시는 길'을 따로 두지 않고 모든 페이지 하단에 고정한다.
@@ -15,7 +13,7 @@ const telHref = `tel:${site.tel.replace(/-/g, "")}`;
 export function SiteFooter() {
   const instagram = site.instagramUrl && (
     <a
-      className="text-link text-paper/80 decoration-paper/30 hover:text-moon hover:decoration-moon"
+      className="text-link hover:text-moon"
       href={site.instagramUrl}
       rel="noreferrer"
       target="_blank"
@@ -25,7 +23,7 @@ export function SiteFooter() {
   );
 
   return (
-    <footer className="moonlit border-t border-paper/10 bg-ink text-paper/80">
+    <footer className="moonlit border-t border-paper/15 bg-ink text-paper-soft">
       <div className="relative mx-auto grid max-w-6xl gap-8 px-5 py-10 sm:grid-cols-2 sm:gap-12 sm:py-14 lg:grid-cols-[auto_1fr_1fr] lg:gap-16 lg:px-8 lg:py-20">
         {/*
           세로 락업은 원래 헤더용이 아니라 이 비율(1:1.14)로 크게 놓는 자리가 맞다.
@@ -41,14 +39,16 @@ export function SiteFooter() {
             sizes="240px"
             className="h-36 w-auto lg:h-60"
           />
-          <p className="mt-6 max-w-xs text-small leading-relaxed">
+          <p className="mt-6 max-w-xs text-small">
             {site.tagline} · {site.since}년부터 나주에서
           </p>
         </div>
 
         <div>
-          <h2 className="text-body text-paper">찾아오시는 길</h2>
-          <address className="mt-3 space-y-1 text-small not-italic leading-relaxed">
+          <h2 className="text-caption font-normal text-paper-faint">
+            찾아오시는 길
+          </h2>
+          <address className="mt-3 space-y-1 text-small not-italic">
             <p>{site.address}</p>
             {site.closedDays && <p>휴무 {site.closedDays}</p>}
           </address>
@@ -60,29 +60,29 @@ export function SiteFooter() {
           모바일 메뉴 하단과 같은 문의 블록 — 푸터에 닿은 손님이 다음에 할 일은 전화다.
         */}
         <div>
-          <p className="text-caption text-paper/55">주문·체험 문의</p>
+          <p className="text-caption text-paper-faint">주문·체험 문의</p>
           <a
             aria-label={`전화 걸기 ${site.tel}`}
-            href={telHref}
+            href={site.telHref}
             className="mt-2 block font-black tracking-tighter tabular-nums text-paper text-h2 transition-colors hover:text-moon lg:text-h2-lg"
           >
             {site.tel}
           </a>
           {site.hours && (
-            <p className="mt-2 text-small text-paper/70">{site.hours}</p>
+            <p className="mt-2 text-small text-paper-soft">{site.hours}</p>
           )}
-          <p className="mt-2 text-small text-paper/60">
-            <span className="text-paper/45">문의 </span>
+          <p className="mt-2 text-small text-paper-faint">
+            <span>문의 </span>
             <span className="tabular-nums">
               <a
-                href={`tel:${site.mobile.replace(/-/g, "")}`}
+                href={site.mobileHref}
                 className="whitespace-nowrap hover:text-paper"
               >
                 {site.mobile}
               </a>
               {" · "}
               <a
-                href={`tel:${site.mobile2.replace(/-/g, "")}`}
+                href={site.mobile2Href}
                 className="whitespace-nowrap hover:text-paper"
               >
                 {site.mobile2}
@@ -93,9 +93,9 @@ export function SiteFooter() {
         </div>
       </div>
 
-      <div className="relative border-t border-paper/10">
+      <div className="relative border-t border-paper/15">
         {/* 모바일은 세로로 쌓고 점 없이 — 줄바꿈된 줄 앞에 '·' 가 남으면 글머리 목록으로 읽힌다(375 실측). */}
-        <div className="mx-auto flex max-w-6xl flex-col gap-y-1 px-5 py-6 text-caption text-paper/70 sm:flex-row sm:flex-wrap sm:[&>span+span]:before:mx-2 sm:[&>span+span]:before:text-paper/30 sm:[&>span+span]:before:content-['·'] lg:px-8">
+        <div className="mx-auto flex max-w-6xl flex-col gap-y-1 px-5 py-6 text-caption text-paper-faint sm:flex-row sm:flex-wrap sm:[&>span+span]:before:mx-2 sm:[&>span+span]:before:text-paper/30 sm:[&>span+span]:before:content-['·'] lg:px-8">
           <span>{site.legalName}</span>
           <span>대표 {site.owner}</span>
           <span>사업자등록번호 {site.businessNumber}</span>

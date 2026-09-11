@@ -2,7 +2,7 @@ import Image from "next/image";
 import { ViewTransition } from "react";
 
 import type { Metadata } from "next";
-import { SectionEyebrow } from "@/components/section-eyebrow";
+import { SectionHead } from "@/components/section-head";
 import { experience, site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -61,19 +61,15 @@ export default function VisitPage() {
           4개 페이지가 똑같은 "사진 위 흰 글씨"면 홈의 한 방이 희석된다. 그라디언트를 걷어
           사진이 그대로 보이고, 글자는 먹색으로 흰 종이 위에 앉는다.
         */}
-      <section className="mx-auto w-full max-w-6xl px-5 pt-10 lg:px-8 lg:pt-14">
-        <SectionEyebrow phase={0.1}>체험·매장</SectionEyebrow>
-        <div className="mt-4 lg:grid lg:grid-cols-[7fr_5fr] lg:items-end lg:gap-16">
-          <h1 className="max-w-[16ch] text-h1 lg:text-hero">
-            <span className="block font-thin tracking-tight">빚어 보러</span>
-            <span className="block font-black tracking-tighter">오세요</span>
-          </h1>
-          <p className="mt-5 max-w-md text-ink-soft lg:mt-0 lg:pb-3">
-            떡을 파는 데 그치지 않고, 직접 만들고 맛보는 체험장을 함께
-            운영합니다. 학교와 단체가 자주 찾습니다.
-          </p>
-        </div>
-        <div className="relative mt-10 aspect-4/3 overflow-hidden rounded-2xl bg-paper-2 sm:aspect-16/9 lg:aspect-[2.6/1] lg:mt-12 ring-1 ring-inset ring-ink/5">
+      <section className="page-top mx-auto w-full max-w-6xl px-5 lg:px-8">
+        <SectionHead
+          as="h1"
+          phase={0.1}
+          eyebrow="체험·매장"
+          title={{ thin: "빚어 보러", black: "오세요" }}
+          lead="떡을 파는 데 그치지 않고, 직접 만들고 맛보는 체험장을 함께 운영합니다. 학교와 단체가 자주 찾습니다."
+        />
+        <div className="photo mt-10 aspect-4/3 sm:aspect-16/9 lg:mt-12 lg:aspect-[2.6/1]">
           <Image
             src="/images/owners-field.jpg"
             alt="절굿대 밭에서 잎을 거두는 절굿대달토끼 부부"
@@ -91,10 +87,11 @@ export default function VisitPage() {
       <section className="section-y rise mx-auto max-w-6xl px-5 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
-            <SectionEyebrow phase={0.25}>체험</SectionEyebrow>
-            <h2 className="mt-3 text-h2 font-black lg:text-h2-lg">
-              절굿대떡 만들기 체험
-            </h2>
+            <SectionHead
+              phase={0.25}
+              eyebrow="체험"
+              title="절굿대떡 만들기 체험"
+            />
             <p className="mt-6 max-w-prose text-ink-soft">
               반죽을 치고 모양을 빚어 콩고물을 입히기까지, 손으로 해 봅니다.
               어린이 단체부터 어른 모임까지 참여할 수 있습니다.
@@ -124,10 +121,7 @@ export default function VisitPage() {
               </p>
             )}
 
-            <a
-              className="btn-primary mt-8"
-              href={`tel:${site.tel.replace(/-/g, "")}`}
-            >
+            <a className="btn-primary mt-8" href={site.telHref}>
               체험 문의 {site.tel}
             </a>
           </div>
@@ -138,7 +132,7 @@ export default function VisitPage() {
             홈 히어로의 대표 사진(칼로 자르는 컷)은 같은 사람이 두 번 나와 손·반죽 컷으로 바꿨다.
           */}
           <div className="grid gap-4 self-start sm:grid-cols-2">
-            <div className="relative aspect-4/3 overflow-hidden rounded-2xl ring-1 ring-inset ring-ink/5">
+            <div className="photo aspect-4/3">
               <Image
                 src="/images/making-hands.jpg"
                 alt="장갑 낀 손으로 초록 절굿대 반죽을 틀에 펴고 있다"
@@ -148,7 +142,7 @@ export default function VisitPage() {
                 className="object-cover"
               />
             </div>
-            <div className="relative aspect-4/3 overflow-hidden rounded-2xl ring-1 ring-inset ring-ink/5">
+            <div className="photo aspect-4/3">
               <Image
                 src="/images/process-pour.jpg"
                 alt="절굿대를 넣은 초록 반죽을 틀에 붓는다"
@@ -166,10 +160,11 @@ export default function VisitPage() {
           문안과 체험 사진으로 확인된 세 단계만 적는다. */}
       <section className="rise border-t border-ink/10">
         <div className="section-y-tight mx-auto max-w-6xl px-5 lg:px-8">
-          <SectionEyebrow phase={0.55}>진행 순서</SectionEyebrow>
-          <h2 className="mt-3 text-h2 font-black lg:text-h2-lg">
-            이렇게 진행합니다
-          </h2>
+          <SectionHead
+            phase={0.55}
+            eyebrow="진행 순서"
+            title="이렇게 진행합니다"
+          />
           {/* 실선 장부 세 줄. 번호는 제목 옆 작은 캡션 — 큰 숫자는 위 연표·페이지 제목과 겨뤘다. */}
           <ol className="mt-9 divide-y divide-ink/10 border-y border-ink/10">
             {experience.steps.map((step, i) => (
@@ -180,7 +175,7 @@ export default function VisitPage() {
                   </span>
                   {step.title}
                 </h3>
-                <p className="mt-1 text-small leading-relaxed text-ink-soft lg:pl-[calc(2ch+0.75rem)]">
+                <p className="mt-1 text-small text-ink-soft lg:pl-[calc(2ch+0.75rem)]">
                   {step.detail}
                 </p>
               </li>
@@ -193,23 +188,23 @@ export default function VisitPage() {
       <section className="rise bg-paper-2">
         <div className="mx-auto grid max-w-6xl gap-12 px-5 pb-8 pt-16 sm:pb-10 sm:pt-20 lg:grid-cols-2 lg:gap-16 lg:px-8 lg:pb-14 lg:pt-28">
           <div>
-            <SectionEyebrow phase={1}>매장</SectionEyebrow>
-            <h2 className="mt-3 text-h2 lg:text-h2-lg">
-              <span className="block font-thin">나주읍성 안,</span>
-              <span className="block font-black">오시는 길</span>
-            </h2>
+            <SectionHead
+              phase={1}
+              eyebrow="매장"
+              title={{ thin: "나주읍성 안,", black: "오시는 길" }}
+            />
             <address className="mt-8 space-y-5 not-italic">
               <div>
                 <p className="text-caption text-ink-faint">주소</p>
                 {/* 마지막 어절(번지)만 앞 어절에 붙여 "7-1" 이 홀로 남지 않게 한다. PC 는 한 줄. */}
-                <p className="mt-2 font-light tracking-tight text-h3 lg:whitespace-nowrap lg:text-h2">
+                <p className="mt-2 font-light tracking-tight text-title lg:whitespace-nowrap lg:text-h2">
                   {site.address.replace(/ (\S+)$/, "\u00A0$1")}
                 </p>
               </div>
               {site.hours && (
                 <div>
                   <p className="text-caption text-ink-faint">영업시간</p>
-                  <p className="mt-2 font-light tracking-tight text-h3 lg:text-h2">
+                  <p className="mt-2 font-light tracking-tight text-title lg:text-h2">
                     {site.hours}
                   </p>
                 </div>
@@ -245,7 +240,7 @@ export default function VisitPage() {
 
           {/* TODO(개발): 카카오맵 SDK 임베드. 지금은 지도 앱으로 넘긴다. */}
           {/* 매장 사진은 장면이라 사각. 간판 「절굿대 달토끼」가 통째로 들어오는 위치로 자른다. */}
-          <div className="relative aspect-4/5 overflow-hidden rounded-2xl ring-1 ring-inset ring-ink/5 sm:aspect-square">
+          <div className="photo aspect-4/5 sm:aspect-square">
             {/*
               지도 임베드는 뺐다. 카카오·네이버는 키가 있어야 하고, 키 없이 되는
               구글은 나주 시골 지역 데이터가 거의 없어 검은 섹션에 빈 사각형만

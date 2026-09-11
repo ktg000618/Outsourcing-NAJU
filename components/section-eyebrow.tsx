@@ -22,7 +22,7 @@ export function SectionEyebrow({ phase, children, tone = "ink" }: Props) {
   return (
     <p
       className={`flex items-center gap-2.5 text-caption ${
-        tone === "paper" ? "text-paper/70" : "text-ink-faint"
+        tone === "paper" ? "text-paper-faint" : "text-ink-faint"
       }`}
     >
       <MoonMark

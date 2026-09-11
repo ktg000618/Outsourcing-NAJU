@@ -4,6 +4,7 @@ import { ViewTransition } from "react";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { SectionEyebrow } from "@/components/section-eyebrow";
+import { SectionHead } from "@/components/section-head";
 import { MoonMark } from "@/components/moon-mark";
 import { credentials, site, timeline } from "@/lib/site";
 
@@ -60,22 +61,15 @@ export default function StoryPage() {
           4개 페이지가 똑같은 "사진 위 흰 글씨"면 홈의 한 방이 희석된다. 그라디언트를 걷어
           사진이 그대로 보이고, 글자는 먹색으로 흰 종이 위에 앉는다.
         */}
-      <section className="mx-auto w-full max-w-6xl px-5 pt-10 lg:px-8 lg:pt-14">
-        <SectionEyebrow phase={0.1}>이야기</SectionEyebrow>
-        <div className="mt-4 lg:grid lg:grid-cols-[7fr_5fr] lg:items-end lg:gap-16">
-          <h1 className="max-w-[16ch] text-h1 lg:text-hero">
-            <span className="block font-thin tracking-tight">
-              천금의 가치가
-            </span>
-            <span className="block font-black tracking-tighter">있다던 떡</span>
-          </h1>
-          <p className="mt-5 max-w-md text-ink-soft lg:mt-0 lg:pb-3">
-            한때 지역에서 으뜸가는 떡이라 하여 목사골 양반들의 이바지에 올랐고,
-            세월이 흐르며 자취를 감춰 어르신들의 기억 속 전설로만 남았던
-            떡입니다.
-          </p>
-        </div>
-        <div className="relative mt-10 aspect-4/3 overflow-hidden rounded-2xl bg-paper-2 sm:aspect-16/9 lg:aspect-[2.6/1] lg:mt-12 ring-1 ring-inset ring-ink/5">
+      <section className="page-top mx-auto w-full max-w-6xl px-5 lg:px-8">
+        <SectionHead
+          as="h1"
+          phase={0.1}
+          eyebrow="이야기"
+          title={{ thin: "천금의 가치가", black: "있다던 떡" }}
+          lead="한때 지역에서 으뜸가는 떡이라 하여 목사골 양반들의 이바지에 올랐고, 세월이 흐르며 자취를 감춰 어르신들의 기억 속 전설로만 남았던 떡입니다."
+        />
+        <div className="photo mt-10 aspect-4/3 sm:aspect-16/9 lg:mt-12 lg:aspect-[2.6/1]">
           <Image
             src="/images/jeolgutdae-bloom.jpg"
             alt="밭에서 꽃봉오리를 맺은 절굿대"
@@ -105,7 +99,7 @@ export default function StoryPage() {
                     size={24}
                     className="shrink-0 text-ink"
                   />
-                  <p className="font-black tracking-tighter tabular-nums text-h3 lg:text-h2">
+                  <p className="font-black tracking-tighter tabular-nums text-title lg:text-h2">
                     {t.when.replace(/년$/, "")}
                     <span className="ml-1 text-lead font-light tracking-normal text-ink-soft">
                       년
@@ -113,18 +107,18 @@ export default function StoryPage() {
                   </p>
                 </div>
                 <div className="lg:pt-1">
-                  <h2 className="text-lead font-bold lg:text-h3">{t.title}</h2>
+                  <h2 className="text-lead font-bold lg:text-title">
+                    {t.title}
+                  </h2>
                   {t.body && (
-                    <p className="mt-3 max-w-prose leading-relaxed text-ink-soft">
-                      {t.body}
-                    </p>
+                    <p className="mt-3 max-w-prose text-ink-soft">{t.body}</p>
                   )}
                 </div>
               </li>
             ))}
           </ol>
           {/* 글만 서 있던 연표에 증거 한 장 — 국내 최초 육묘를 밭 이랑이 말한다. 행 안에 두면 그 행만 세 배로 길어져 밖으로 뺐다. */}
-          <div className="relative mt-10 aspect-[2/1] overflow-hidden rounded-2xl bg-paper-2 ring-1 ring-inset ring-ink/5 lg:mt-14 lg:aspect-[2.6/1]">
+          <div className="photo mt-10 aspect-[2/1] lg:mt-14 lg:aspect-[2.6/1]">
             <Image
               src="/images/field-rows.jpg"
               alt="이랑을 따라 자란 절굿대 밭과 마을"
@@ -141,14 +135,13 @@ export default function StoryPage() {
       <section className="moonlit rise bg-ink text-paper">
         <div className="section-y relative mx-auto grid max-w-6xl gap-12 px-5 lg:grid-cols-2 lg:items-center lg:gap-20 lg:px-8">
           <div>
-            <SectionEyebrow phase={0.4} tone="paper">
-              이름의 뿌리
-            </SectionEyebrow>
-            <h2 className="mt-3 text-h2 lg:text-h2-lg">
-              <span className="block font-thin">누로(漏蘆),</span>
-              <span className="block font-black">천금과 같다는 뿌리</span>
-            </h2>
-            <div className="mt-6 space-y-5 text-paper/80">
+            <SectionHead
+              phase={0.4}
+              eyebrow="이름의 뿌리"
+              tone="paper"
+              title={{ thin: "누로(漏蘆),", black: "천금과 같다는 뿌리" }}
+            />
+            <div className="mt-6 space-y-5 text-paper-soft">
               {/* 효능·질환 서술은 식품표시광고법에 걸린다 — 이름의 유래만 적는다. */}
               <p className="max-w-prose">
                 절굿대의 뿌리를 옛 의서에서는 누로(漏蘆)라 불렀습니다.
@@ -167,7 +160,7 @@ export default function StoryPage() {
             </div>
           </div>
           {/* 이름의 유래 절이라 잎·꽃 클로즈업. 밭의 사람들은 아래 「씨앗」 절로. */}
-          <div className="relative aspect-4/5 overflow-hidden rounded-2xl ring-1 ring-inset ring-ink/5">
+          <div className="photo aspect-4/5">
             <Image
               src="/images/jeolgutdae-closeup.jpg"
               alt="절굿대 잎과 꽃봉오리 클로즈업"
@@ -183,11 +176,11 @@ export default function StoryPage() {
       {/* 씨앗·재배. 협약 연도 목록은 위 연표로 합쳤다. */}
       <section className="rise bg-paper-2">
         <div className="section-y mx-auto max-w-6xl px-5 lg:px-8">
-          <SectionEyebrow phase={0.65}>씨앗과 일자리</SectionEyebrow>
-          <h2 className="mt-3 max-w-[16ch] text-h2 lg:text-h2-lg">
-            <span className="block font-thin">씨앗을 나누고,</span>
-            <span className="block font-black">일자리로 돌려드립니다</span>
-          </h2>
+          <SectionHead
+            phase={0.65}
+            eyebrow="씨앗과 일자리"
+            title={{ thin: "씨앗을 나누고,", black: "일자리로 돌려드립니다" }}
+          />
           <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:gap-16">
             <div className="space-y-5 text-ink-soft">
               <p className="max-w-prose">
@@ -202,7 +195,7 @@ export default function StoryPage() {
                 일부를 지역에 환원하며 선순환 구조를 만들어 가고자 합니다.
               </p>
             </div>
-            <div className="relative aspect-[2/1] overflow-hidden rounded-2xl ring-1 ring-inset ring-ink/5 lg:aspect-4/3">
+            <div className="photo aspect-[2/1] lg:aspect-4/3">
               <Image
                 src="/images/growers-harvest.jpg"
                 alt="절굿대 밭에서 잎을 거두어 바구니에 담고 있다"
@@ -218,11 +211,11 @@ export default function StoryPage() {
 
       {/* 만드는 방식 */}
       <section className="section-y rise mx-auto max-w-6xl px-5 lg:px-8">
-        <SectionEyebrow phase={1}>만드는 방식</SectionEyebrow>
-        <h2 className="mt-3 text-h2 lg:text-h2-lg">
-          <span className="block font-thin">재료 그대로</span>
-          <span className="block font-black">빚습니다</span>
-        </h2>
+        <SectionHead
+          phase={1}
+          eyebrow="만드는 방식"
+          title={{ thin: "재료 그대로", black: "빚습니다" }}
+        />
         <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:gap-16">
           {/* 재료 무첨가 설명은 제품 페이지에 있다. 여기는 재배 이야기만. */}
           <div className="space-y-5 text-ink-soft">
@@ -235,7 +228,7 @@ export default function StoryPage() {
               그렇게 기른 절굿대를 넣은 반죽을 손으로 쳐서 빚습니다.
             </p>
           </div>
-          <div className="relative aspect-[2/1] overflow-hidden rounded-2xl ring-1 ring-inset ring-ink/5 lg:aspect-4/3">
+          <div className="photo aspect-[2/1] lg:aspect-4/3">
             <Image
               src="/images/making-cut.jpg"
               alt="쳐낸 절굿대떡을 칼로 반듯하게 자르는 김화수 대표"
@@ -273,7 +266,7 @@ export default function StoryPage() {
           ].map((s) => (
             <li
               key={s.src}
-              className="relative aspect-4/3 w-[72vw] shrink-0 snap-center overflow-hidden rounded-2xl bg-paper-2 ring-1 ring-inset ring-ink/5 sm:w-auto"
+              className="photo aspect-4/3 w-[72vw] shrink-0 snap-center sm:w-auto"
             >
               <Image
                 src={s.src}
@@ -294,10 +287,8 @@ export default function StoryPage() {
               key={c.label}
               className="grid gap-1 py-4 sm:grid-cols-[12rem_minmax(0,1fr)] sm:gap-6 sm:py-5"
             >
-              <p className="font-semibold">{c.label}</p>
-              <p className="text-small leading-relaxed text-ink-soft">
-                {c.detail}
-              </p>
+              <p className="font-bold">{c.label}</p>
+              <p className="text-small text-ink-soft">{c.detail}</p>
             </li>
           ))}
         </ul>

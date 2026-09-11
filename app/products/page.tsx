@@ -3,7 +3,7 @@ import { ViewTransition } from "react";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { ProductImagePrefetch } from "@/components/product-image-prefetch";
-import { SectionEyebrow } from "@/components/section-eyebrow";
+import { SectionHead } from "@/components/section-head";
 import { products, site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -51,22 +51,18 @@ export default function ProductsPage() {
           4개 페이지가 똑같은 "사진 위 흰 글씨"면 홈의 한 방이 희석된다. 그라디언트를 걷어
           사진이 그대로 보이고, 글자는 먹색으로 흰 종이 위에 앉는다.
         */}
-      <section className="mx-auto w-full max-w-6xl px-5 pt-10 lg:px-8 lg:pt-14">
-        <SectionEyebrow phase={0.1}>제품</SectionEyebrow>
-        <div className="mt-4 lg:grid lg:grid-cols-[7fr_5fr] lg:items-end lg:gap-16">
-          <h1 className="max-w-[16ch] text-h1 lg:text-hero">
-            <span className="block font-thin tracking-tight">나주에서</span>
-            <span className="block font-black tracking-tighter">빚는 것들</span>
-          </h1>
-          <p className="mt-5 max-w-md text-ink-soft lg:mt-0 lg:pb-3">
-            이바지·명절·답례에 두루 나갑니다. 낱개 포장이라 나눠 드리기
-            좋습니다.
-          </p>
-        </div>
+      <section className="page-top mx-auto w-full max-w-6xl px-5 lg:px-8">
+        <SectionHead
+          as="h1"
+          phase={0.1}
+          eyebrow="제품"
+          title={{ thin: "나주에서", black: "빚는 것들" }}
+          lead="이바지·명절·답례에 두루 나갑니다. 낱개 포장이라 나눠 드리기 좋습니다."
+        />
       </section>
 
       {/* 제품 목록 — 같은 크기의 실선 행 셋. 원은 상세의 큰 원으로 이어진다(ViewTransition). */}
-      <div className="rise mx-auto max-w-6xl px-5 pb-24 pt-14 lg:px-8 lg:pb-32 lg:pt-20">
+      <div className="page-bottom rise mx-auto max-w-6xl px-5 pt-14 lg:px-8 lg:pt-20">
         <ul className="divide-y divide-ink/10 border-y border-ink/10">
           {products.map((p) => (
             <li key={p.slug}>
@@ -79,24 +75,22 @@ export default function ProductsPage() {
                   share="morph"
                   default="none"
                 >
-                  <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-ink/8 transition-[box-shadow] duration-300 group-hover:ring-2 group-hover:ring-mint-deep group-hover:ring-offset-4 group-hover:ring-offset-paper">
+                  <div className="photo-circle photo-circle-hover aspect-square">
                     <Image
                       src={p.image}
                       alt=""
                       fill
                       sizes="(min-width: 1024px) 160px, 96px"
                       quality={80}
-                      className="object-cover transition-transform duration-700 ease-[cubic-bezier(.2,.7,.2,1)] group-hover:scale-[1.03]"
+                      className="object-cover transition-transform duration-slow ease-brand group-hover:scale-[1.03]"
                     />
                   </div>
                 </ViewTransition>
                 <div>
-                  <h2 className="text-h3 transition-colors group-hover:text-mint-link">
+                  <h2 className="text-title transition-colors group-hover:text-mint-link">
                     {p.name}
                   </h2>
-                  <p className="mt-1 text-small leading-relaxed text-ink-soft">
-                    {p.summary}
-                  </p>
+                  <p className="mt-1 text-small text-ink-soft">{p.summary}</p>
                   {/* 가격이 없으면 자리표('전화 문의')도 없다 — 가격은 나중에 들어온다(리더 지시). */}
                 </div>
               </Link>
@@ -108,33 +102,27 @@ export default function ProductsPage() {
       {/* 주문 경로. 전화 주문 비중이 큰 곳이다. 열마다 번호·제목·한 줄·액션 하나, 구조 동일. */}
       <section className="rise bg-paper-2">
         <div className="section-y-tight mx-auto max-w-6xl px-5 lg:px-8">
-          <SectionEyebrow phase={0.4}>주문</SectionEyebrow>
-          <h2 className="mt-3 text-h2 font-black lg:text-h2-lg">
-            주문하는 방법
-          </h2>
+          <SectionHead phase={0.4} eyebrow="주문" title="주문하는 방법" />
           {/* 스토어 주소가 없는 동안은 두 열 — "준비 중입니다" 자리표를 주문 섹션 한가운데 두지 않는다. */}
           <ul
             className={`mt-9 grid gap-8 ${site.storeUrl ? "lg:grid-cols-3" : "lg:grid-cols-2"}`}
           >
-            <li className="flex flex-col items-start border-t border-ink/15 pt-5">
+            <li className="flex flex-col items-start border-t border-ink/10 pt-5">
               <p className="text-caption tabular-nums text-ink-faint">01</p>
               <h3 className="mt-2 text-lead">전화 주문</h3>
-              <p className="mt-2 text-small leading-relaxed text-ink-soft">
+              <p className="mt-2 text-small text-ink-soft">
                 수량과 구성을 상의해 정합니다. 이바지·예단처럼 구성이 정해지지
                 않은 주문은 이쪽이 빠릅니다.
               </p>
-              <a
-                className="btn-primary mt-5"
-                href={`tel:${site.tel.replace(/-/g, "")}`}
-              >
+              <a className="btn-primary mt-5" href={site.telHref}>
                 전화 주문 {site.tel}
               </a>
             </li>
             {site.storeUrl && (
-              <li className="flex flex-col items-start border-t border-ink/15 pt-5">
+              <li className="flex flex-col items-start border-t border-ink/10 pt-5">
                 <p className="text-caption tabular-nums text-ink-faint">02</p>
                 <h3 className="mt-2 text-lead">네이버 스마트스토어</h3>
-                <p className="mt-2 text-small leading-relaxed text-ink-soft">
+                <p className="mt-2 text-small text-ink-soft">
                   구성이 정해진 제품은 스토어에서 바로 결제하실 수 있습니다.
                 </p>
                 <a
@@ -147,12 +135,12 @@ export default function ProductsPage() {
                 </a>
               </li>
             )}
-            <li className="flex flex-col items-start border-t border-ink/15 pt-5">
+            <li className="flex flex-col items-start border-t border-ink/10 pt-5">
               <p className="text-caption tabular-nums text-ink-faint">
                 {visitNo}
               </p>
               <h3 className="mt-2 text-lead">매장 방문</h3>
-              <p className="mt-2 text-small leading-relaxed text-ink-soft">
+              <p className="mt-2 text-small text-ink-soft">
                 {site.address} · {site.hours}
               </p>
               <Link className="text-link mt-3" href="/visit">
@@ -166,8 +154,7 @@ export default function ProductsPage() {
       {/* 제품별 spec 에만 흩어져 있던 보관·해동을 한자리에. 가장 많이 묻는 것이다.
           PC 는 subgrid 로 두 표의 행을 같은 높이에 맞춘다 — 값 길이가 달라도 아래 실선이 나란하다. */}
       <section className="section-y-tight rise mx-auto max-w-6xl px-5 lg:px-8">
-        <SectionEyebrow phase={0.7}>보관</SectionEyebrow>
-        <h2 className="mt-3 text-h2 font-black lg:text-h2-lg">보관과 해동</h2>
+        <SectionHead phase={0.7} eyebrow="보관" title="보관과 해동" />
         <div className="mt-8 grid gap-x-12 gap-y-10 lg:grid-cols-2">
           {care.map((c) => (
             <div
@@ -202,18 +189,19 @@ export default function ProductsPage() {
         <div className="section-y-tight mx-auto max-w-6xl px-5 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
             <div>
-              <SectionEyebrow phase={1}>포장·배송</SectionEyebrow>
-              <h2 className="mt-3 text-h2 lg:text-h2-lg">
-                <span className="font-thin tracking-tight">낱개로 싸서, </span>
-                <span className="font-black tracking-tighter">상자에 담아</span>
-              </h2>
+              <SectionHead
+                phase={1}
+                eyebrow="포장·배송"
+                split="inline"
+                title={{ thin: "낱개로 싸서, ", black: "상자에 담아" }}
+              />
               <p className="mt-5 max-w-prose text-ink-soft">
                 떡과 오란다는 한 개씩 따로 포장합니다. 여럿이 나눠 드시거나
                 답례로 돌리기 좋고, 냉동해 두었다가 하나씩 꺼내기도 편합니다.
                 택배는 보냉 상자에 담아 보냅니다.
               </p>
             </div>
-            <div className="relative aspect-4/3 overflow-hidden rounded-2xl bg-white">
+            <div className="photo aspect-4/3">
               <Image
                 src="/images/product-jeolgutdae-pack.jpg"
                 alt="낱개 포장한 절굿대떡을 나무 소반에 담았다"

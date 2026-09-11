@@ -11,10 +11,6 @@ export function LoginForm({ next }: { next: string }) {
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
 
-  const label = "mb-2 block text-caption tracking-[0.04em] text-ink-faint";
-  const field =
-    "w-full border border-ink/20 bg-paper px-3.5 py-3 text-body outline-none transition-colors placeholder:text-ink/30 focus:border-ink";
-
   return (
     <form
       className="mt-8 space-y-5"
@@ -37,7 +33,7 @@ export function LoginForm({ next }: { next: string }) {
       }}
     >
       <div>
-        <label htmlFor="login-email" className={label}>
+        <label htmlFor="login-email" className="field-label">
           이메일
         </label>
         <input
@@ -48,11 +44,11 @@ export function LoginForm({ next }: { next: string }) {
           inputMode="email"
           required
           placeholder="name@example.com"
-          className={field}
+          className="field-input"
         />
       </div>
       <div>
-        <label htmlFor="login-password" className={label}>
+        <label htmlFor="login-password" className="field-label">
           비밀번호
         </label>
         <input
@@ -61,7 +57,7 @@ export function LoginForm({ next }: { next: string }) {
           type="password"
           autoComplete="current-password"
           required
-          className={field}
+          className="field-input"
         />
       </div>
       {error && (
@@ -69,11 +65,7 @@ export function LoginForm({ next }: { next: string }) {
           {error}
         </p>
       )}
-      <button
-        type="submit"
-        disabled={busy}
-        className="btn-lift w-full border border-ink bg-ink px-7 py-3.5 text-small text-paper transition-colors hover:bg-ink-soft disabled:opacity-60"
-      >
+      <button type="submit" disabled={busy} className="btn-primary sm:w-full">
         {busy ? "확인 중…" : "들어가기"}
       </button>
     </form>

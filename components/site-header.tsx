@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { nav, site } from "@/lib/site";
+import { PhoneIcon } from "./icons";
 import { MoonMark } from "./moon-mark";
 
 export function SiteHeader() {
@@ -63,7 +64,7 @@ export function SiteHeader() {
               sizes="48px"
               className="h-10 w-auto lg:h-12"
             />
-            <span className="text-lead font-bold tracking-tight lg:text-h3">
+            <span className="text-lead font-bold tracking-tight lg:text-title">
               {site.name}
             </span>
           </Link>
@@ -77,7 +78,7 @@ export function SiteHeader() {
                     <Link
                       href={item.href}
                       aria-current={active ? "page" : undefined}
-                      className={`relative pb-1 text-small transition-colors after:absolute after:left-1/2 after:top-full after:size-1.5 after:-translate-x-1/2 after:rounded-full after:bg-mint-deep after:transition-opacity after:duration-200 ${
+                      className={`relative pb-1 text-small transition-colors after:absolute after:left-1/2 after:top-full after:size-1.5 after:-translate-x-1/2 after:rounded-full after:bg-mint-deep after:transition-opacity after:duration-fast ${
                         active
                           ? "text-ink after:opacity-100"
                           : "text-ink-soft after:opacity-0 hover:text-ink hover:after:opacity-50"
@@ -93,22 +94,10 @@ export function SiteHeader() {
               <li className="ml-2">
                 <a
                   aria-label={`전화 걸기 ${site.tel}`}
-                  href={`tel:${site.tel.replace(/-/g, "")}`}
-                  className="btn-lift inline-flex items-center gap-2 bg-ink px-4 py-2.5 text-small tabular-nums tracking-tight text-paper transition-colors hover:bg-ink-soft"
+                  href={site.telHref}
+                  className="btn-lift inline-flex items-center gap-2 bg-ink px-4 py-2.5 text-small tabular-nums tracking-tight text-paper hover:bg-ink-soft"
                 >
-                  <svg
-                    aria-hidden
-                    className="size-4"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.6"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M4.5 5.5c0-.6.4-1 1-1h2.6c.4 0 .8.3.9.7l1 3c.1.4 0 .8-.3 1l-1.4 1.2a12 12 0 0 0 5.3 5.3l1.2-1.4c.2-.3.6-.4 1-.3l3 1c.4.1.7.5.7.9v2.6c0 .6-.4 1-1 1A15.5 15.5 0 0 1 4.5 5.5Z"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                  <PhoneIcon />
                   {site.tel}
                 </a>
               </li>
@@ -125,17 +114,17 @@ export function SiteHeader() {
             <span className="sr-only">{open ? "메뉴 닫기" : "메뉴 열기"}</span>
             <span aria-hidden className="relative block h-4 w-6">
               <span
-                className={`absolute left-0 block h-px w-6 bg-ink transition-transform duration-200 ${
+                className={`absolute left-0 block h-px w-6 bg-ink transition-transform duration-fast ${
                   open ? "top-2 rotate-45" : "top-0"
                 }`}
               />
               <span
-                className={`absolute left-0 top-2 block h-px w-6 bg-ink transition-opacity duration-200 ${
+                className={`absolute left-0 top-2 block h-px w-6 bg-ink transition-opacity duration-fast ${
                   open ? "opacity-0" : "opacity-100"
                 }`}
               />
               <span
-                className={`absolute left-0 block h-px w-6 bg-ink transition-transform duration-200 ${
+                className={`absolute left-0 block h-px w-6 bg-ink transition-transform duration-fast ${
                   open ? "top-2 -rotate-45" : "top-4"
                 }`}
               />
@@ -154,7 +143,7 @@ export function SiteHeader() {
         id="mobile-nav"
         aria-label="주요 메뉴"
         hidden={!open}
-        className="fixed inset-x-0 bottom-0 top-16 z-[45] flex flex-col overflow-y-auto bg-paper lg:hidden"
+        className="fixed inset-x-0 bottom-0 top-16 z-45 flex flex-col overflow-y-auto bg-paper lg:hidden"
       >
         <ul className="flex flex-col px-5 pt-6">
           {nav.map((item, i) => {
@@ -183,7 +172,7 @@ export function SiteHeader() {
           <p className="text-caption text-ink-faint">주문·체험 문의</p>
           <a
             aria-label={`전화 걸기 ${site.tel}`}
-            href={`tel:${site.tel.replace(/-/g, "")}`}
+            href={site.telHref}
             className="mt-1 block font-black tracking-tighter tabular-nums text-h1"
           >
             {site.tel}

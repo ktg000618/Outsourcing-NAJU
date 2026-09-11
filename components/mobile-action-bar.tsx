@@ -1,3 +1,4 @@
+import { PhoneIcon, PinIcon } from "./icons";
 import { site } from "@/lib/site";
 
 const mapQuery = encodeURIComponent(`${site.address} ${site.name}`);
@@ -19,44 +20,19 @@ export function MobileActionBar() {
     <div className="fixed inset-x-0 bottom-0 z-40 border-t border-ink/10 bg-paper/95 pb-[env(safe-area-inset-bottom)] backdrop-blur lg:hidden">
       <div className="grid h-14 grid-cols-2">
         <a
-          className="pressable flex h-full items-center justify-center gap-2 border-r border-ink/10 text-small font-medium transition-colors hover:text-mint-link"
-          href={`tel:${site.tel.replace(/-/g, "")}`}
+          className="pressable flex h-full items-center justify-center gap-2 border-r border-ink/10 text-small transition-colors hover:text-mint-link"
+          href={site.telHref}
         >
-          <svg
-            aria-hidden
-            className="size-4"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.6"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M4.5 5.5c0-.6.4-1 1-1h2.6c.4 0 .8.3.9.7l1 3c.1.4 0 .8-.3 1l-1.4 1.2a12 12 0 0 0 5.3 5.3l1.2-1.4c.2-.3.6-.4 1-.3l3 1c.4.1.7.5.7.9v2.6c0 .6-.4 1-1 1A15.5 15.5 0 0 1 4.5 5.5Z"
-              strokeLinejoin="round"
-            />
-          </svg>
+          <PhoneIcon />
           전화 주문<span className="sr-only"> {site.tel}</span>
         </a>
         <a
-          className="pressable flex h-full items-center justify-center gap-2 text-small font-medium transition-colors hover:text-mint-link"
+          className="pressable flex h-full items-center justify-center gap-2 text-small transition-colors hover:text-mint-link"
           href={`https://map.kakao.com/?q=${mapQuery}`}
           rel="noreferrer"
           target="_blank"
         >
-          <svg
-            aria-hidden
-            className="size-4"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.6"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M12 21s6.5-5.6 6.5-10.2A6.5 6.5 0 0 0 5.5 10.8C5.5 15.4 12 21 12 21Z"
-              strokeLinejoin="round"
-            />
-            <circle cx="12" cy="10.5" r="2.4" />
-          </svg>
+          <PinIcon />
           길찾기
           <span className="sr-only"> (새 창)</span>
         </a>

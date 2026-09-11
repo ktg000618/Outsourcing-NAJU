@@ -8,6 +8,12 @@
  * 통째로 감추도록 만들어 두었으니, 값이 오면 여기만 채우면 된다.
  */
 
+/* 전화 링크는 하이픈을 뺀 번호다. 화면마다 replace 를 되풀이하지 않도록 여기서 한 번 만든다. */
+const tel = "061-336-6969";
+const mobile = "010-6603-0848";
+const mobile2 = "010-5141-0103";
+const telHref = (n: string) => `tel:${n.replace(/-/g, "")}`;
+
 export const site = {
   name: "절굿대달토끼",
   fullName: "나주시 여행자플랫폼 절굿대달토끼",
@@ -21,9 +27,12 @@ export const site = {
      데이터가 전부 이 값을 쓴다. */
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://naju-daltokki.vercel.app",
 
-  tel: "061-336-6969",
-  mobile: "010-6603-0848",
-  mobile2: "010-5141-0103",
+  tel,
+  mobile,
+  mobile2,
+  telHref: telHref(tel),
+  mobileHref: telHref(mobile),
+  mobile2Href: telHref(mobile2),
   address: "전라남도 나주시 징고샅길 7-1",
   addressRegion: "전라남도",
   addressLocality: "나주시",

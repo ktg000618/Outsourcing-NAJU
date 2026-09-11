@@ -24,6 +24,10 @@
 
   --color-paper: #ffffff;
   --color-paper-2: #f6f4f0;
+  /* 어두운 면 위 글자 2단 — 본문(soft)·캡션(faint). 투명도(paper/85·/55 …)로 흩어지던 것을 두 값으로 모은다.
+     대비: soft #cfcfcf 11.6:1 · faint #a3a3a3 7.3:1 (ink 위). */
+  --color-paper-soft: #cfcfcf;
+  --color-paper-faint: #a3a3a3;
 
   /*
     브랜드 색 — 브랜드 가이드 정본값.
@@ -35,11 +39,6 @@
   --color-rose: #c6a3a8;
   /* 오류 문구용 — 로즈를 흰 바탕에서 읽히게 어둡힌 값(대비 4.6:1). 장식엔 쓰지 말 것. */
   --color-rose-deep: #9a5f68;
-  /* 가이드에는 없지만 엠블럼 테두리·워드마크 갈색 버전에 쓰인 보조색 */
-  --color-mocha: #a48a76;
-  /* 어두운 패널용. 근검정 슬래브는 파스텔 아이덴티티와 따로 논다 —
-     엠블럼 테두리색(모카)을 어둡게 내린 나무빛으로 대신한다. 흰 글씨 대비 8:1. */
-  --color-bark: #4f3f34;
   /*
     민트 위에 흰 글씨는 대비가 안 나온다. 어둡게 파생한 값.
     ⚠️ 배경마다 값이 다르다 — 하나로 흰 바탕 4.5:1 과 어두운 면을 동시에 못 맞춘다.
@@ -51,7 +50,6 @@
   */
   --color-mint-deep: #4f8a8b;
   --color-mint-link: #3d6f70;
-  --color-oxblood: #5d080d;
 
   /*
     글자 크기. 이전에는 임의값이 15단계로 흩어져 있었고, 같은 값을 두 표기로
@@ -59,27 +57,44 @@
     행간을 토큰에 묶어 두면 leading-[...] 임의값도 함께 사라진다.
   */
   --text-caption: 0.875rem; /* 14 — 라벨·메타·법적 표기 */
+  --text-caption--line-height: 1.5;
+  --text-caption--letter-spacing: 0.04em;
   --text-small: 0.9375rem; /* 15 — 보조 본문·버튼·내비 */
+  --text-small--line-height: 1.7;
   --text-body: 1.0625rem; /* 17 — body 와 같은 값 */
+  --text-body--line-height: 1.8;
   --text-lead: 1.125rem; /* 18 — 카드 제목·주소 */
-  --text-h3: 1.75rem;
-  --text-h3--line-height: 1.2; /* 28 */
+  --text-lead--line-height: 1.5;
+  --text-title: 1.75rem;
+  --text-title--line-height: 1.2; /* 28 — 목록 제목·주소 등 h2 아래 한 단 */
   --text-h2: 2rem;
   --text-h2--line-height: 1.25; /* 32 */
   --text-h2-lg: 2.875rem;
   --text-h2-lg--line-height: 1.25; /* 46 */
   --text-h1: 2.25rem;
   --text-h1--line-height: 1.2; /* 36 */
-  --text-h1-lg: 3rem;
-  --text-h1-lg--line-height: 1.2; /* 48 */
-  --text-display: 3.75rem;
-  --text-display--line-height: 1.1; /* 60 — 서브 히어로 상한 */
   --text-hero: 5.5rem;
   --text-hero--line-height: 1.02; /* 88 — 홈 히어로 한 곳. 굵기 100↔900 대비가 이 크기부터 표정이 된다 */
   --text-quote: 3.25rem;
   --text-quote--line-height: 1.3; /* 52 — 인용문. 얇은 굵기로 크게 */
-  --text-num: 5rem;
-  --text-num--line-height: 1; /* 80 — 숫자 밴드 */
+
+  /* 한글 제목 자간. h1–h3 기본 규칙과 관리 화면 제목 입력창이 같은 값을 쓴다. */
+  --tracking-heading: -0.035em;
+
+  /*
+    움직임. 곡선은 하나(brand), 길이는 넷 — 반응(fast)·전환(base)·사진(slow)·앰비언트(ambient).
+    Tailwind 의 duration-* 는 --transition-duration-* 네임스페이스를 읽는다.
+  */
+  --ease-brand: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --default-transition-timing-function: var(--ease-brand);
+  --default-transition-duration: 160ms;
+  --transition-duration-fast: 160ms;
+  --transition-duration-base: 320ms;
+  --transition-duration-slow: 700ms;
+  --transition-duration-ambient: 1400ms;
+
+  /* 채운 버튼이 1px 뜰 때의 그림자 */
+  --shadow-lift: 0 8px 20px -10px rgb(22 22 22 / 0.45);
 
   --font-sans:
     "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", system-ui,
@@ -126,7 +141,7 @@
   h2,
   h3 {
     font-weight: 700;
-    letter-spacing: -0.035em;
+    letter-spacing: var(--tracking-heading);
     line-height: 1.3;
     word-break: keep-all;
   }
@@ -220,6 +235,13 @@
       padding-block: calc(var(--spacing) * 24);
     }
   }
+  /* 페이지 머리·꼬리 — 서브페이지 히어로 위, 마지막 섹션 아래. */
+  .page-top {
+    @apply pt-10 lg:pt-14;
+  }
+  .page-bottom {
+    @apply pb-24 lg:pb-32;
+  }
 
   /*
     달빛. 어두운 면이 단색 슬래브면 "템플릿의 dark section"으로 읽힌다.
@@ -252,67 +274,93 @@
   }
 
   /*
-    마이크로 인터랙션 세 가지 — 이 셋 외에는 추가하지 않는다.
+    마이크로 인터랙션 — 이 셋 외에는 추가하지 않는다.
     움직임이 넷을 넘으면 "애니메이션 많은 사이트"가 된다.
     비싼 사이트의 공통점은 반응에 방향이 있다는 것: 어디서 시작해 어디로 가는지.
+    ① 텍스트 링크 색 전환 ② 채운 버튼이 1px 뜬다 ③ 눌림(pressable)
   */
-  /* ① 텍스트 링크 — 밑줄이 왼쪽에서 그어진다 */
-  .link-draw {
-    background-image: linear-gradient(currentColor, currentColor);
-    background-repeat: no-repeat;
-    background-size: 0% 1px;
-    background-position: 0 100%;
-    padding-bottom: 2px;
-    transition:
-      background-size 320ms cubic-bezier(0.2, 0.7, 0.2, 1),
-      color 160ms;
-  }
-  .link-draw:hover,
-  .link-draw:focus-visible {
-    background-size: 100% 1px;
-  }
   /*
     사이트 공통 액션 2종 — 이 둘 외의 링크·버튼 모양을 새로 만들지 않는다(2026-09-11 점검: 텍스트 링크 6종·전화 버튼 5종이 있었다).
-    .text-link  본문 안 텍스트 링크. 폰에서 44px 탭 높이를 갖는다.
-    .btn-primary 채운 버튼(전화·주요 액션). 폰에서는 풀폭, sm 부터 내용 폭.
+    .text-link        본문 안 텍스트 링크. 폰에서 44px 탭 높이를 갖는다. 색은 물려받는다 — 어두운 면에서 색을 덮어쓸 필요가 없다.
+    .text-link-inline 문장 속 링크(소식 본문의 전화번호). 밑줄·색만, 탭 높이 없음.
+    .btn-primary      채운 버튼(전화·주요 액션). 폰에서는 풀폭, sm 부터 내용 폭. -sm 은 관리 화면 머리용.
+    .btn-secondary    외곽선 버튼(더보기·취소). .btn-sm 을 붙이면 목록 행 크기.
   */
   .text-link {
-    @apply inline-flex min-h-11 items-center gap-1.5 text-small text-ink underline decoration-ink/30 underline-offset-4 transition-colors hover:text-mint-link hover:decoration-mint-link;
+    @apply inline-flex min-h-11 items-center gap-1.5 text-small underline underline-offset-4 transition-colors hover:text-mint-link;
+    color: inherit;
+    text-decoration-color: color-mix(in oklab, currentColor 30%, transparent);
+  }
+  .text-link-inline {
+    @apply underline underline-offset-4 transition-colors hover:text-mint-link;
+    color: inherit;
+    text-decoration-color: color-mix(in oklab, currentColor 30%, transparent);
   }
   .btn-primary {
     @apply inline-flex w-full items-center justify-center gap-2 border border-ink bg-ink px-7 py-3.5 text-small text-paper hover:bg-ink-soft sm:w-auto;
-    transition:
-      transform 180ms ease-out,
-      box-shadow 180ms ease-out,
-      background-color 160ms;
   }
-  .btn-primary:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 8px 20px -10px rgb(22 22 22 / 0.45);
+  .btn-primary-sm {
+    @apply w-auto px-5 py-2.5;
   }
-  .btn-primary:active {
-    transform: translateY(0) scale(0.985);
-    box-shadow: none;
+  .btn-secondary {
+    @apply inline-flex w-full items-center justify-center gap-2 border border-ink/20 bg-paper px-7 py-3.5 text-small text-ink-soft hover:border-ink hover:text-ink sm:w-auto;
   }
-  /* ② 채운 버튼 — 1px 뜬다. pressable 과 같이 붙이지 않는다(transform 충돌). */
-  .btn-lift {
-    transition:
-      transform 180ms ease-out,
-      box-shadow 180ms ease-out,
-      background-color 160ms;
+  .btn-sm {
+    @apply w-auto px-3 py-1.5 text-caption;
   }
+  /* 채운 버튼은 1px 뜬다(.btn-lift 는 채운 모양을 직접 그린 자리용). pressable 과 같이 붙이지 않는다(transform 충돌). */
+  .btn-primary,
+  .btn-lift,
+  .btn-secondary {
+    transition-property:
+      transform, box-shadow, background-color, border-color, color;
+    transition-duration: var(--transition-duration-fast);
+    transition-timing-function: var(--ease-brand);
+  }
+  .btn-primary:hover,
   .btn-lift:hover {
     transform: translateY(-1px);
-    box-shadow: 0 8px 20px -10px rgb(22 22 22 / 0.45);
+    box-shadow: var(--shadow-lift);
   }
+  .btn-primary:active,
   .btn-lift:active {
     transform: translateY(0) scale(0.985);
     box-shadow: none;
   }
+  .btn-secondary:active {
+    transform: scale(0.985);
+  }
+  .btn-primary:disabled,
+  .btn-secondary:disabled {
+    opacity: 0.6;
+  }
+
+  /*
+    사진 상자 2종. 사각은 장면·소품, 원은 제품(원=제품 규칙).
+    bg-paper-2 는 사진이 뜨기 전 자리색 — 흰 바탕 위 흰 칸은 빈 자리로 읽힌다.
+  */
+  .photo {
+    @apply relative overflow-hidden rounded-2xl bg-paper-2 ring-1 ring-ink/5 ring-inset;
+  }
+  .photo-circle {
+    @apply relative overflow-hidden rounded-full bg-paper-2 ring-1 ring-ink/10;
+  }
+  /* 목록의 원 — 부모 .group 에 hover 하면 민트 링이 한 단 밖으로 뜬다 */
+  .photo-circle-hover {
+    @apply transition-[box-shadow] duration-base group-hover:ring-2 group-hover:ring-mint-deep group-hover:ring-offset-4 group-hover:ring-offset-paper;
+  }
+
+  /* 관리 화면 폼 — 라벨·입력창. 로그인·글쓰기 폼이 같은 것을 쓴다. */
+  .field-label {
+    @apply mb-2 block text-caption text-ink-faint;
+  }
+  .field-input {
+    @apply w-full border border-ink/20 bg-paper px-3.5 py-3 text-body outline-none transition-colors placeholder:text-ink-faint focus:border-ink;
+  }
 
   /*
     첫 화면 등장. 사이트에서 유일한 로드 시퀀스 — 홈 히어로에만 쓴다.
-    사진 → 얇은 줄 → 굵은 줄 → 본문 → 달 순서로, 총 1.1초 안에 끝난다.
+    사진 → 얇은 줄 → 굵은 줄 → 본문 순서로, 총 1.2초 안에 끝난다.
     스크롤 페이드업(.rise)과 달리 시간 기반이라 @supports 가 필요 없고,
     prefers-reduced-motion 은 전역 규칙이 0.01ms 로 죽인다.
     `both` 라 로드 전에도 시작 상태(투명)로 잡히지만 히어로는 priority 이미지라
@@ -336,30 +384,20 @@
       opacity: 1;
     }
   }
-  @keyframes enter-moon {
-    from {
-      opacity: 0;
-      transform: scale(0.6);
-    }
-    to {
-      opacity: 1;
-      transform: none;
-    }
-  }
   .enter-photo {
-    animation: enter-fade 900ms ease-out both;
+    animation: enter-fade var(--transition-duration-slow) ease-out both;
   }
   .enter-1 {
-    animation: enter-up 700ms cubic-bezier(0.2, 0.7, 0.2, 1) 250ms both;
+    animation: enter-up var(--transition-duration-slow) var(--ease-brand)
+      var(--transition-duration-fast) both;
   }
   .enter-2 {
-    animation: enter-up 700ms cubic-bezier(0.2, 0.7, 0.2, 1) 400ms both;
+    animation: enter-up var(--transition-duration-slow) var(--ease-brand)
+      var(--transition-duration-base) both;
   }
   .enter-3 {
-    animation: enter-up 700ms cubic-bezier(0.2, 0.7, 0.2, 1) 560ms both;
-  }
-  .enter-moon {
-    animation: enter-moon 900ms cubic-bezier(0.2, 0.7, 0.2, 1) 700ms both;
+    animation: enter-up var(--transition-duration-slow) var(--ease-brand) 480ms
+      both;
   }
 
   /*
@@ -367,13 +405,13 @@
     ① 제품 원 모프 — 목록의 원이 상세의 큰 원으로 이어지며 커진다. "같은 물건"이라는
        연속성이 생긴다. 이름은 product-<slug>, 한 문서 안에 같은 이름이 둘이면 안 되므로
        홈에서는 대표 제품 셋만 이름을 갖고 「빚는 것들」은 갖지 않는다.
-    ② 페이지 페이드 — 이동마다 옛 화면이 빨리 빠지고(150ms) 새 화면이 살짝 떠오른다(300ms).
+    ② 페이지 페이드 — 이동마다 옛 화면이 빨리 빠지고(fast) 새 화면이 살짝 떠오른다(base).
        비대칭이 의도다: 나가는 건 빨리, 들어오는 건 천천히.
     미지원 브라우저는 그냥 즉시 바뀐다. reduced-motion 은 전역 규칙이 죽인다.
   */
   ::view-transition-group(.morph) {
-    animation-duration: 420ms;
-    animation-timing-function: cubic-bezier(0.2, 0.7, 0.2, 1);
+    animation-duration: var(--transition-duration-base);
+    animation-timing-function: var(--ease-brand);
   }
   ::view-transition-image-pair(.morph) {
     animation-name: via-blur;
@@ -385,7 +423,7 @@
   }
   /* 옛 화면은 0.35 까지만 흐려진다 — 완전히 지우면 새 화면이 늦게 올 때 흰 화면이 먼저 보인다(느린 회선 실측). */
   ::view-transition-old(.page-out) {
-    animation: 150ms ease-in both page-dim;
+    animation: var(--transition-duration-fast) ease-in both page-dim;
   }
   @keyframes page-dim {
     to {
@@ -394,8 +432,8 @@
   }
   ::view-transition-new(.page-in) {
     animation:
-      300ms ease-out 120ms both page-fade,
-      420ms cubic-bezier(0.2, 0.7, 0.2, 1) both page-rise;
+      var(--transition-duration-base) ease-out 120ms both page-fade,
+      var(--transition-duration-base) var(--ease-brand) both page-rise;
   }
   @keyframes page-fade {
     from {
@@ -417,8 +455,8 @@
   /* 눌림 피드백. 터치 기기에는 hover 가 없어 이것 말고는 단서가 없다. */
   .pressable {
     transition:
-      transform 140ms ease-out,
-      opacity 140ms ease-out;
+      transform var(--transition-duration-fast) var(--ease-brand),
+      opacity var(--transition-duration-fast) var(--ease-brand);
   }
   .pressable:active {
     transform: scale(0.985);

@@ -9,7 +9,7 @@
  */
 export function MoonMark({
   phase,
-  size = 28,
+  size = 16,
   className = "",
 }: {
   phase: number;
@@ -34,7 +34,13 @@ export function MoonMark({
       aria-hidden
       className={className}
     >
-      <circle r={r} fill="none" stroke="currentColor" strokeWidth="1" opacity="0.35" />
+      <circle
+        r={r}
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1"
+        opacity="0.35"
+      />
       {p > 0.01 && (
         <path
           d={`M 0,${-r} A ${r},${r} 0 0,1 0,${r} A ${rx},${r} 0 0,${sweep} 0,${-r} Z`}

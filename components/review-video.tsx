@@ -68,19 +68,17 @@ export function ReviewVideo({ src, poster, label, moments, children }: Props) {
                   aria-current={active ? "true" : undefined}
                   onClick={() => seek(m.t)}
                   className={`flex w-full items-baseline gap-4 py-3.5 text-left transition-colors hover:text-paper ${
-                    active ? "text-paper" : "text-paper/65"
+                    active ? "text-paper" : "text-paper-faint"
                   }`}
                 >
                   <span
                     className={`w-10 shrink-0 text-caption tabular-nums ${
-                      active ? "text-moon" : "text-paper/60"
+                      active ? "text-moon" : "text-paper-faint"
                     }`}
                   >
                     {mmss(m.t)}
                   </span>
-                  <span
-                    className={`text-body ${active ? "font-semibold" : ""}`}
-                  >
+                  <span className={`text-body ${active ? "font-bold" : ""}`}>
                     {m.text}
                   </span>
                 </button>
@@ -111,7 +109,7 @@ export function ReviewVideo({ src, poster, label, moments, children }: Props) {
               onClick={() => void ref.current?.play()}
               className="group absolute inset-0 grid place-items-center"
             >
-              <span className="grid size-16 place-items-center rounded-full border border-paper/70 bg-ink/55 text-paper backdrop-blur transition-transform duration-300 group-hover:scale-105">
+              <span className="grid size-16 place-items-center rounded-full border border-paper/60 bg-ink/70 text-paper backdrop-blur transition-transform duration-base group-hover:scale-105">
                 <svg
                   aria-hidden
                   viewBox="0 0 16 16"

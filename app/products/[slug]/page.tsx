@@ -7,6 +7,7 @@ import { ReviewVideo } from "@/components/review-video";
 import { DetailReveal } from "@/components/detail-reveal";
 import { HERO_QUALITY, HERO_SIZES } from "@/components/product-image-prefetch";
 import { SectionEyebrow } from "@/components/section-eyebrow";
+import { SectionHead } from "@/components/section-head";
 import type { Metadata } from "next";
 import { products, site } from "@/lib/site";
 
@@ -114,7 +115,7 @@ export default async function ProductPage({
           share="morph"
           default="none"
         >
-          <div className="relative aspect-square w-full overflow-hidden rounded-full bg-paper-2 ring-1 ring-ink/8 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:max-w-[440px] lg:self-start">
+          <div className="photo-circle aspect-square w-full lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:max-w-[440px] lg:self-start">
             <Image
               src={product.image}
               alt={product.imageAlt}
@@ -138,9 +139,7 @@ export default async function ProductPage({
           </h1>
           <p className="mt-3 text-lead text-ink-soft">{product.summary}</p>
 
-          <p className="mt-7 max-w-prose leading-relaxed text-ink-soft">
-            {product.detail}
-          </p>
+          <p className="mt-7 max-w-prose text-ink-soft">{product.detail}</p>
 
           {specRows.length > 0 && (
             <dl className="mt-8 divide-y divide-ink/10 border-y border-ink/10 text-small">
@@ -164,10 +163,7 @@ export default async function ProductPage({
                 네이버 스마트스토어에서 구매
               </a>
             ) : (
-              <a
-                href={`tel:${site.tel.replace(/-/g, "")}`}
-                className="btn-primary"
-              >
+              <a href={site.telHref} className="btn-primary">
                 전화 주문 {site.tel}
               </a>
             )}
@@ -186,14 +182,15 @@ export default async function ProductPage({
         */
         <section className="border-t border-ink/10">
           <div className="section-y-tight mx-auto max-w-6xl px-5 lg:px-8">
-            <SectionEyebrow phase={0.3}>상세 정보</SectionEyebrow>
-            <h2 className="mt-3 text-h2 lg:text-h2-lg">
-              <span className="font-thin tracking-tight">더 자세한 </span>
-              <span className="font-black tracking-tighter">제품 이야기</span>
-            </h2>
+            <SectionHead
+              phase={0.3}
+              eyebrow="상세 정보"
+              split="inline"
+              title={{ thin: "더 자세한 ", black: "제품 이야기" }}
+            />
             <div className="mx-auto mt-8 max-w-[860px]">
               <DetailReveal collapsedClass={product.detailCollapsed}>
-                <div className="overflow-hidden rounded-2xl ring-1 ring-inset ring-ink/5">
+                <div className="photo">
                   {product.detailImages.map((d, i) => (
                     <Image
                       key={d.src}
@@ -222,15 +219,16 @@ export default async function ProductPage({
           <div className="section-y-tight mx-auto max-w-6xl px-5 lg:px-8">
             {product.ingredients && (
               <>
-                <SectionEyebrow phase={0.5}>재료</SectionEyebrow>
-                <h2 className="mt-3 text-h2 lg:text-h2-lg">
-                  <span className="font-thin tracking-tight">넣는 것은 </span>
-                  <span className="font-black tracking-tighter">이것뿐</span>
-                </h2>
+                <SectionHead
+                  phase={0.5}
+                  eyebrow="재료"
+                  split="inline"
+                  title={{ thin: "넣는 것은 ", black: "이것뿐" }}
+                />
                 <ul className="mt-8 grid grid-cols-3 gap-4 sm:gap-6 lg:grid-cols-[repeat(3,11rem)] lg:gap-10">
                   {product.ingredients.map((ing) => (
                     <li key={ing.src}>
-                      <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-ink/8">
+                      <div className="photo-circle aspect-square">
                         <Image
                           src={ing.src}
                           alt=""
@@ -250,11 +248,12 @@ export default async function ProductPage({
             )}
             {tileCount > 0 && (
               <div className={product.ingredients ? "mt-14" : ""}>
-                <SectionEyebrow phase={0.6}>더 보기</SectionEyebrow>
-                <h2 className="mt-3 text-h2 lg:text-h2-lg">
-                  <span className="font-thin tracking-tight">가까이서 </span>
-                  <span className="font-black tracking-tighter">본 모습</span>
-                </h2>
+                <SectionHead
+                  phase={0.6}
+                  eyebrow="더 보기"
+                  split="inline"
+                  title={{ thin: "가까이서 ", black: "본 모습" }}
+                />
                 <ul
                   className={`mt-8 grid grid-cols-2 gap-3 lg:gap-5 ${tileCols}`}
                 >
@@ -265,10 +264,7 @@ export default async function ProductPage({
                     </li>
                   )}
                   {extras.map((g) => (
-                    <li
-                      key={g.src}
-                      className="relative aspect-square overflow-hidden rounded-2xl bg-paper-2 ring-1 ring-inset ring-ink/5"
-                    >
+                    <li key={g.src} className="photo aspect-square">
                       <Image
                         src={g.src}
                         alt={g.alt}
@@ -304,7 +300,7 @@ export default async function ProductPage({
                   “{product.reviewVideo.caption}”
                 </span>
               </p>
-              <p className="mt-5 text-caption text-paper/55">
+              <p className="mt-5 text-caption text-paper-faint">
                 {product.reviewVideo.source}
               </p>
             </ReviewVideo>
@@ -314,11 +310,12 @@ export default async function ProductPage({
 
       <section className="rise border-t border-ink/10">
         <div className="section-y-tight mx-auto max-w-6xl px-5 lg:px-8">
-          <SectionEyebrow phase={1}>제품</SectionEyebrow>
-          <h2 className="mt-3 text-h2 lg:text-h2-lg">
-            <span className="font-thin tracking-tight">함께 보는 </span>
-            <span className="font-black tracking-tighter">다른 제품</span>
-          </h2>
+          <SectionHead
+            phase={1}
+            eyebrow="제품"
+            split="inline"
+            title={{ thin: "함께 보는 ", black: "다른 제품" }}
+          />
           {/* 제품 3개 − 현재 1 = 항상 2개. 2열 등분. */}
           <ul className="mt-8 grid grid-cols-2 gap-x-4 gap-y-8 sm:gap-x-5 lg:max-w-3xl lg:gap-x-12">
             {others.map((p) => (
@@ -332,18 +329,18 @@ export default async function ProductPage({
                     share="morph"
                     default="none"
                   >
-                    <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-ink/8 transition-[box-shadow] duration-300 group-hover:ring-2 group-hover:ring-mint-deep group-hover:ring-offset-4 group-hover:ring-offset-paper">
+                    <div className="photo-circle photo-circle-hover aspect-square">
                       <Image
                         src={p.image}
                         alt={p.imageAlt}
                         fill
                         sizes="(min-width: 1024px) 300px, 45vw"
                         quality={80}
-                        className="object-cover transition-transform duration-700 ease-[cubic-bezier(.2,.7,.2,1)] group-hover:scale-[1.03]"
+                        className="object-cover transition-transform duration-slow ease-brand group-hover:scale-[1.03]"
                       />
                     </div>
                   </ViewTransition>
-                  <p className="mt-3 text-small transition-colors group-hover:text-mint-link sm:mt-4 sm:text-lg">
+                  <p className="mt-3 text-small transition-colors group-hover:text-mint-link sm:mt-4 sm:text-lead">
                     {p.name}
                   </p>
                 </Link>

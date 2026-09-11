@@ -19,9 +19,7 @@ export default async function AdminLoginPage({
       {/* 관리 화면 폼과 같은 문법 — 캡션·굵은 제목·한 줄 설명. 카드 상자는 두지 않는다(사이트 어디에도 없다). */}
       <div className="flex items-center gap-3">
         <MoonMark phase={0.5} size={20} className="text-ink" />
-        <p className="text-caption tracking-[0.04em] text-ink-faint">
-          {site.name} · 직원용
-        </p>
+        <p className="text-caption text-ink-faint">{site.name} · 직원용</p>
       </div>
       <h1 className="mt-4 text-h2 font-black tracking-tighter">
         소식 관리 로그인

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { HeroSlides } from "@/components/hero-slides";
 import { ProductImagePrefetch } from "@/components/product-image-prefetch";
 import { SectionEyebrow } from "@/components/section-eyebrow";
+import { SectionHead } from "@/components/section-head";
 import { products, site, timeline } from "@/lib/site";
 
 /**
@@ -30,7 +31,7 @@ export default function HomePage() {
           모바일(<sm)은 구조를 바꾼다 — 사진은 4:3 으로 위에(잘림 26%), 글은 같은 먹색 카드
           안 아래에. sm 부터는 사진 위에 글을 얹는 원래 구성(16:10 이면 잘림 11%).
         */}
-        <div className="relative isolate overflow-hidden rounded-2xl bg-ink ring-1 ring-inset ring-ink/5 sm:flex sm:aspect-16/10 sm:items-end lg:aspect-[1.79/1]">
+        <div className="relative isolate overflow-hidden rounded-2xl bg-ink ring-1 ring-inset ring-paper/15 sm:flex sm:aspect-16/10 sm:items-end lg:aspect-[1.79/1]">
           <div className="relative aspect-4/3 w-full sm:absolute sm:inset-0 sm:aspect-auto">
             {/*
               사진 넷이 이야기 순서로 돈다 — 찻상 위 떡 → 밭의 두 사람 → 손으로 펴는 반죽 → 절굿대 꽃.
@@ -63,7 +64,7 @@ export default function HomePage() {
             />
             <div
               aria-hidden
-              className="absolute inset-0 hidden bg-[linear-gradient(to_top,rgba(22,22,22,0.92)_0%,rgba(22,22,22,0.58)_46%,rgba(22,22,22,0)_78%)] sm:block"
+              className="absolute inset-0 hidden bg-linear-to-t from-ink/92 via-ink/58 via-46% to-transparent to-78% sm:block"
             />
           </div>
           <div className="relative w-full px-6 pb-9 pt-7 sm:pb-10 sm:pt-0 lg:px-12 lg:pb-14">
@@ -79,7 +80,7 @@ export default function HomePage() {
                 나주의 절굿대떡
               </span>
             </h1>
-            <p className="enter-3 mt-6 max-w-md text-small leading-relaxed text-paper/85 lg:text-body">
+            <p className="enter-3 mt-6 max-w-md text-small text-paper-soft lg:text-body">
               목사골 양반들이 이바지로 쓰던 귀한 떡. 깊은 산속에서만 자생하던
               절굿대를 육묘에 성공해 되살렸습니다.
             </p>
@@ -89,7 +90,7 @@ export default function HomePage() {
 
       {/* 2. 숫자 밴드 — 전부 연표에 있는 사실이다. 숫자는 헤드라인보다 크지 않다.
           <sm 은 장부 행(숫자·설명 한 줄), sm 부터 균등 3열·왼쪽 정렬. */}
-      <section className="rise mx-auto max-w-6xl px-5 pt-16 lg:px-8 lg:pt-20">
+      <section className="section-y-tight rise mx-auto max-w-6xl px-5 lg:px-8">
         <ul className="border-y border-ink/10 sm:grid sm:grid-cols-3 sm:gap-x-8 sm:py-10 lg:py-12">
           {[
             { n: "2016", unit: "년", label: "절굿대 육묘 국내 최초 성공" },
@@ -100,7 +101,7 @@ export default function HomePage() {
               key={s.label}
               className="flex items-baseline gap-4 border-t border-ink/10 py-4 first:border-t-0 sm:block sm:border-t-0 sm:py-0"
             >
-              <p className="shrink-0 font-black tracking-tighter tabular-nums text-h2 lg:text-h1-lg">
+              <p className="shrink-0 font-black tracking-tighter tabular-nums text-h2 lg:text-h2-lg">
                 {s.n}
                 <span className="ml-1 align-baseline text-small font-light tracking-normal text-ink-soft lg:text-lead">
                   {s.unit}
@@ -113,18 +114,17 @@ export default function HomePage() {
       </section>
 
       {/* 3. 빚는 것들 — 원 = 제품. 제품이 셋이라 이 한 섹션이 전체다. */}
-      <section className="rise mx-auto max-w-6xl px-5 pb-20 pt-16 lg:px-8 lg:pb-24 lg:pt-20">
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <div>
-            <SectionEyebrow phase={0.15}>제품</SectionEyebrow>
-            <h2 className="mt-3 font-black tracking-tight text-h2 lg:text-h2-lg">
-              빚는 것들
-            </h2>
-          </div>
-          <Link href="/products" className="text-link">
-            제품 보러 가기
-          </Link>
-        </div>
+      <section className="section-y-tight rise mx-auto max-w-6xl px-5 lg:px-8">
+        <SectionHead
+          phase={0.15}
+          eyebrow="제품"
+          title="빚는 것들"
+          aside={
+            <Link href="/products" className="text-link">
+              제품 보러 가기
+            </Link>
+          }
+        />
         {/* 모바일은 원 셋을 세로로 쌓으면 1,300px 을 먹는다. 옆으로 넘기는 구조로 — 72vw 원 하나씩.
             스크롤바는 숨기고 스냅으로 한 장씩 멈춘다. sm 부터는 3열 그리드, 원 셋 윗선 동일. */}
         <ul className="-mx-5 mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-2 [scrollbar-width:none] sm:mx-0 sm:grid sm:grid-cols-3 sm:gap-x-8 sm:overflow-visible sm:px-0 sm:pb-0 lg:mt-14 lg:gap-x-10 [&::-webkit-scrollbar]:hidden">
@@ -139,14 +139,14 @@ export default function HomePage() {
                   share="morph"
                   default="none"
                 >
-                  <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-ink/8 transition-[box-shadow] duration-300 group-hover:ring-2 group-hover:ring-mint-deep group-hover:ring-offset-4 group-hover:ring-offset-paper">
+                  <div className="photo-circle photo-circle-hover aspect-square">
                     <Image
                       src={p.image}
                       alt=""
                       fill
                       sizes="(min-width: 640px) 30vw, 62vw"
                       quality={80}
-                      className="object-cover transition-transform duration-700 ease-[cubic-bezier(.2,.7,.2,1)] group-hover:scale-[1.03]"
+                      className="object-cover transition-transform duration-slow ease-brand group-hover:scale-[1.03]"
                     />
                   </div>
                 </ViewTransition>
@@ -157,9 +157,7 @@ export default function HomePage() {
                       {p.name}
                     </span>
                   </p>
-                  <p className="mt-1 text-small leading-relaxed text-ink-soft">
-                    {p.summary}
-                  </p>
+                  <p className="mt-1 text-small text-ink-soft">{p.summary}</p>
                 </div>
               </Link>
             </li>
@@ -173,7 +171,7 @@ export default function HomePage() {
           <div>
             <SectionEyebrow phase={0.45}>이야기</SectionEyebrow>
             {/* 큰 인용은 얇게. 굵으면 구호가 되고, 얇으면 인용이 된다. */}
-            <blockquote className="mt-6 font-extralight tracking-tight text-h2 lg:text-quote">
+            <blockquote className="mt-6 font-thin tracking-tight text-h2 lg:text-quote">
               천금과 같은 값어치가
               <br />
               있다 하여 붙은 이름,
@@ -203,7 +201,7 @@ export default function HomePage() {
                   className="size-1.5 shrink-0 translate-y-[-0.15em] rounded-full bg-ink"
                 />
                 <div>
-                  <p className="text-caption tabular-nums tracking-[0.08em] text-ink-faint">
+                  <p className="text-caption tabular-nums text-ink-faint">
                     {t.when}
                   </p>
                   <p className="mt-1 text-lead font-bold">{t.title}</p>
@@ -231,33 +229,25 @@ export default function HomePage() {
           />
         </div>
         <div className="moonlit relative section-y-tight flex flex-col justify-center bg-ink px-5 text-paper lg:pl-14 lg:pr-[max(3.5rem,calc((100vw-72rem)/2+2rem))]">
-          <SectionEyebrow phase={0.7} tone="paper">
-            재료
-          </SectionEyebrow>
-          <h2 className="mt-3 text-h2 lg:text-h2-lg">
-            <span className="block font-thin">넣지 않는 것으로</span>
-            <span className="block font-black">말합니다</span>
-          </h2>
-          <p className="mt-6 max-w-md text-small leading-[1.85] text-paper/85 lg:text-body">
-            유화제나 인공감미료를 전혀 넣지 않고 전통 방식 그대로 빚습니다. 나주
-            특산 배즙으로 자연스러운 단맛을 더했고, 손으로 친 찹쌀이라 쫄깃하고
-            부드럽습니다.
-          </p>
+          <SectionHead
+            phase={0.7}
+            eyebrow="재료"
+            tone="paper"
+            title={{ thin: "넣지 않는 것으로", black: "말합니다" }}
+            lead="유화제나 인공감미료를 전혀 넣지 않고 전통 방식 그대로 빚습니다. 나주 특산 배즙으로 자연스러운 단맛을 더했고, 손으로 친 찹쌀이라 쫄깃하고 부드럽습니다."
+          />
         </div>
       </section>
 
       {/* 6. 브랜드 문구 밴드 — 체험 */}
       <section className="rise grid lg:grid-cols-2">
         <div className="section-y-tight flex flex-col justify-center bg-paper-2 px-5 lg:order-1 lg:pl-[max(3.5rem,calc((100vw-72rem)/2+2rem))] lg:pr-14">
-          <SectionEyebrow phase={1}>체험</SectionEyebrow>
-          <h2 className="mt-3 text-h2 lg:text-h2-lg">
-            <span className="block font-thin">직접 빚어 보는</span>
-            <span className="block font-black">자리가 있습니다</span>
-          </h2>
-          <p className="mt-6 max-w-md text-small leading-[1.85] text-ink-soft lg:text-body">
-            반죽을 치고 모양을 빚어 콩고물을 입히기까지 손으로 해 봅니다. 학교와
-            단체가 자주 찾고, 여행길에 들르는 분들도 참여할 수 있습니다.
-          </p>
+          <SectionHead
+            phase={1}
+            eyebrow="체험"
+            title={{ thin: "직접 빚어 보는", black: "자리가 있습니다" }}
+            lead="반죽을 치고 모양을 빚어 콩고물을 입히기까지 손으로 해 봅니다. 학교와 단체가 자주 찾고, 여행길에 들르는 분들도 참여할 수 있습니다."
+          />
           <Link href="/visit" className="text-link mt-6 self-start">
             체험·매장 보러 가기
           </Link>
@@ -279,10 +269,7 @@ export default function HomePage() {
         <ul className="divide-y divide-ink/10 border-y border-ink/10">
           <li className="flex flex-col gap-3 py-5 sm:flex-row sm:items-center sm:justify-between sm:gap-8 lg:py-6">
             <p className="text-lead font-bold">주문·체험 문의</p>
-            <a
-              href={`tel:${site.tel.replace(/-/g, "")}`}
-              className="btn-primary"
-            >
+            <a href={site.telHref} className="btn-primary">
               전화 주문 {site.tel}
             </a>
           </li>

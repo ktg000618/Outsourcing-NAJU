@@ -23,20 +23,14 @@ export function PostRowActions({
       const result = await action();
       setError(result.error);
     });
-  const base =
-    "pressable px-3 py-1.5 text-caption transition-colors disabled:opacity-50 border";
-  const quiet = `${base} border-ink/20 text-ink-soft hover:border-ink hover:text-ink`;
+  const quiet = "btn-secondary btn-sm";
   return (
     <div>
       <div className={`flex gap-1.5 ${pending ? "opacity-60" : ""}`}>
         <button
           type="button"
           disabled={pending}
-          className={
-            published
-              ? quiet
-              : `${base} border-ink bg-ink text-paper hover:bg-ink-soft`
-          }
+          className={published ? quiet : "btn-primary btn-sm"}
           onClick={() => run(() => setPublished(id, !published))}
         >
           {published ? "숨기기" : "게시"}
@@ -47,7 +41,7 @@ export function PostRowActions({
         <button
           type="button"
           disabled={pending}
-          className={`${base} border-transparent text-ink-faint hover:border-rose-deep hover:text-rose-deep`}
+          className="btn-secondary btn-sm border-transparent text-ink-faint hover:border-rose-deep hover:text-rose-deep"
           onClick={() => {
             if (window.confirm("이 글을 삭제하시겠습니까? 되돌릴 수 없습니다."))
               run(() => deletePost(id));
