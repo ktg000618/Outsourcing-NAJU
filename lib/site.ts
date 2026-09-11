@@ -95,6 +95,8 @@ export type Product = {
    * 사이트 문법 밖의 디자인이라 접힌 채로 두고 「상세 정보 펼치기」로 연다. 몰 전용 꼬리(고객센터·배송비)는 뺀다.
    */
   detailImages?: { src: string; alt: string; width: number; height: number }[];
+  /** 상세 이미지 접힌 높이 클래스. 표지 구성이 다른 제품만 준다(기본값은 DetailReveal). */
+  detailCollapsed?: string;
   /** 넣는 것. "넣지 않는 것으로 말한다"의 반대편 — 흰 그릇에 담긴 재료 사진. */
   ingredients?: { src: string; alt: string; label: string }[];
   /** 소리 없는 짧은 루프. 사진으로는 안 보이는 질감을 보여주는 자리다. */
@@ -199,10 +201,6 @@ export const products: Product[] = [
       },
     ],
     gallery: [
-      {
-        src: "/images/product-jeolgutdae-pack.jpg",
-        alt: "낱개 포장한 절굿대떡을 나무 소반에 담았다",
-      },
       {
         src: "/images/gal-jeolgutdae-tea.jpg",
         alt: "나주배와 차를 곁들인 절굿대떡",
@@ -326,7 +324,7 @@ export const products: Product[] = [
       { label: "소비기한", value: "제조일로부터 6개월" },
       { label: "보관", value: "냉장·냉동 보관 권장 (상온 보관 가능)" },
       {
-        label: "먹는 법",
+        label: "드시는 법",
         value: "냉동 보관 시 30분 전 상온 해동, 또는 전자레인지 15초",
       },
       { label: "포장", value: "낱개 포장" },
@@ -357,6 +355,7 @@ export const products: Product[] = [
   },
   {
     slug: "gift",
+    detailCollapsed: "max-h-[700px] lg:max-h-[1420px]",
     name: "선물세트",
     summary: "보자기에 싸는 이바지 구성",
     detail:
@@ -496,7 +495,7 @@ export const history = [
     items: [
       "떡제조기능사 국가자격 취득",
       "전남형 예비사회적기업 지정",
-      "장애인복지관·나주시다문화가족센터 등 사회복지시설 업무협약",
+      "사회복지시설 업무협약 (장애인복지관·다문화가족센터)",
     ],
   },
   { year: "2021", items: ["전라남도지사 표창 (사회복지부문)"] },
@@ -516,7 +515,7 @@ export const history = [
   },
   {
     year: "2024",
-    items: ["나주시 고향사랑 답례품 선정 (절굿대떡, 나주배촉촉오란다)"],
+    items: ["나주시 고향사랑 답례품 선정"],
   },
 ] as const;
 

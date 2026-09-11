@@ -90,7 +90,7 @@ export function ReviewVideo({ src, poster, label, moments, children }: Props) {
         </ol>
       </div>
 
-      <div className="mx-auto w-full max-w-[280px] lg:mx-0 lg:max-w-none">
+      <div className="order-first mx-auto w-full max-w-[280px] lg:order-none lg:mx-0 lg:max-w-none">
         <div className="relative overflow-hidden rounded-2xl bg-ink ring-1 ring-inset ring-paper/15">
           <video
             ref={ref}

@@ -8,7 +8,17 @@ import { useId, useRef, useState, type ReactNode } from "react";
  * 위 절반을 보여 주고 아래를 종이색으로 잦아들게 해 "더 있다"를 사진이 직접 말하게 한다.
  * 접을 때는 섹션 머리로 되돌린다 — 만 픽셀 아래에서 접히면 손님이 어디에 있는지 잃는다.
  */
-export function DetailReveal({ children }: { children: ReactNode }) {
+/**
+ * collapsedClass — 접힌 높이. 기본은 표지(1,040px) 다음 색면에 걸리는 값.
+ * 표지가 사진+먹색 글 블록인 선물세트는 더 길게 줘야 잘린 자리가 글 한가운데·검은 바탕 위가 아니다.
+ */
+export function DetailReveal({
+  children,
+  collapsedClass = "max-h-[640px] lg:max-h-[1180px]",
+}: {
+  children: ReactNode;
+  collapsedClass?: string;
+}) {
   const [open, setOpen] = useState(false);
   const top = useRef<HTMLDivElement>(null);
   const panelId = useId();
@@ -21,7 +31,7 @@ export function DetailReveal({ children }: { children: ReactNode }) {
       */}
       <div
         id={panelId}
-        className={`relative overflow-hidden ${open ? "" : "max-h-[640px] lg:max-h-[1180px]"}`}
+        className={`relative overflow-hidden ${open ? "" : collapsedClass}`}
       >
         {children}
         {!open && (

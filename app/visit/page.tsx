@@ -165,12 +165,12 @@ export default function VisitPage() {
       <section className="rise border-t border-ink/10">
         <div className="section-y-tight mx-auto max-w-6xl px-5 lg:px-8">
           <SectionEyebrow phase={0.55}>진행 순서</SectionEyebrow>
-          <h2 className="mt-3 text-h3 lg:text-h2-lg">이렇게 진행합니다</h2>
+          <h2 className="mt-3 text-h2 lg:text-h2-lg">이렇게 진행합니다</h2>
           {/* 실선 장부 세 줄. 번호는 제목 옆 작은 캡션 — 큰 숫자는 위 연표·페이지 제목과 겨뤘다. */}
           <ol className="mt-9 divide-y divide-ink/10 border-y border-ink/10">
             {experience.steps.map((step, i) => (
               <li key={step.title} className="py-5 lg:py-6">
-                <h3 className="flex items-baseline gap-3 text-h3">
+                <h3 className="flex items-baseline gap-3 text-lead font-bold">
                   <span className="text-small font-normal tabular-nums tracking-normal text-ink-faint">
                     {String(i + 1).padStart(2, "0")}
                   </span>
@@ -219,7 +219,7 @@ export default function VisitPage() {
             </address>
 
             {/* 전화 버튼은 위 체험 섹션에 하나뿐이다 — 번호는 바로 아래 푸터에 크게 있다. */}
-            <div className="mt-9 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:items-center sm:gap-6">
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-6">
               <a
                 href={`https://map.kakao.com/?q=${mapQuery}`}
                 target="_blank"
@@ -232,7 +232,7 @@ export default function VisitPage() {
                 href={`https://map.naver.com/p/search/${mapQuery}`}
                 target="_blank"
                 rel="noreferrer"
-                className="text-link justify-center"
+                className="text-link self-start"
               >
                 네이버 지도<span className="sr-only"> (새 창)</span>
               </a>

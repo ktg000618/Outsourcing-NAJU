@@ -16,7 +16,8 @@ import { products, site, timeline } from "@/lib/site";
 export default function HomePage() {
   const best = products.slice(0, 3);
   // 연표 다섯 중 홈에는 셋만 — 사라짐·복원·등재. 나머지는 이야기 페이지에서.
-  const teaser = [timeline[0], timeline[1], timeline[4]];
+  // 숫자 밴드(2016·2022)와 겹치지 않는 셋 — 한때·2017 부활·2019 떡카페.
+  const teaser = [timeline[0], timeline[2], timeline[3]];
 
   return (
     <ViewTransition enter="page-in" exit="page-out" default="none">
@@ -126,10 +127,7 @@ export default function HomePage() {
             스크롤바는 숨기고 스냅으로 한 장씩 멈춘다. sm 부터는 3열 그리드, 원 셋 윗선 동일. */}
         <ul className="-mx-5 mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-2 [scrollbar-width:none] sm:mx-0 sm:grid sm:grid-cols-3 sm:gap-x-8 sm:overflow-visible sm:px-0 sm:pb-0 lg:mt-14 lg:gap-x-10 [&::-webkit-scrollbar]:hidden">
           {best.map((p) => (
-            <li
-              key={p.slug}
-              className="w-[72vw] shrink-0 snap-center sm:w-auto"
-            >
+            <li key={p.slug} className="w-[62vw] shrink-0 snap-start sm:w-auto">
               <Link
                 href={`/products/${p.slug}`}
                 className="group pressable block"
@@ -156,11 +154,6 @@ export default function HomePage() {
                     <span className="text-lead font-bold transition-colors group-hover:text-mint-link">
                       {p.name}
                     </span>
-                    {p.price !== null && (
-                      <span className="text-small tabular-nums text-ink-soft">
-                        {`${p.price.toLocaleString("ko-KR")}원`}
-                      </span>
-                    )}
                   </p>
                   <p className="mt-1 text-small leading-relaxed text-ink-soft">
                     {p.summary}
@@ -279,15 +272,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 7. 방문·문의 — 실선 두 줄. 홈 본문의 전화 버튼은 이 하나뿐이다(헤더·푸터에 번호가 있다). */}
+      {/* 7. 문의 — 실선 한 줄. 홈 본문의 전화 버튼은 이 하나뿐이다(헤더·푸터에 번호가 있다). 매장 링크는 바로 위 체험 블록에. */}
       <section className="rise mx-auto max-w-6xl px-5 pb-20 pt-12 lg:px-8 lg:pb-28 lg:pt-16">
         <ul className="divide-y divide-ink/10 border-y border-ink/10">
-          <li className="flex flex-col gap-2 py-5 sm:flex-row sm:items-center sm:justify-between sm:gap-8 lg:py-6">
-            <p className="text-lead font-bold">매장 방문</p>
-            <Link href="/visit" className="text-link">
-              오시는 길 보기
-            </Link>
-          </li>
           <li className="flex flex-col gap-3 py-5 sm:flex-row sm:items-center sm:justify-between sm:gap-8 lg:py-6">
             <p className="text-lead font-bold">주문·체험 문의</p>
             <a

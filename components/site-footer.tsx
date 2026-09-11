@@ -15,7 +15,7 @@ const telHref = `tel:${site.tel.replace(/-/g, "")}`;
 export function SiteFooter() {
   const instagram = site.instagramUrl && (
     <a
-      className="link-draw inline-block text-small transition-colors hover:text-mint"
+      className="text-link text-paper/80 decoration-paper/30 hover:text-moon hover:decoration-moon"
       href={site.instagramUrl}
       rel="noreferrer"
       target="_blank"
@@ -74,7 +74,19 @@ export function SiteFooter() {
           <p className="mt-2 text-small text-paper/60">
             <span className="text-paper/45">문의 </span>
             <span className="tabular-nums">
-              {site.mobile} · {site.mobile2}
+              <a
+                href={`tel:${site.mobile.replace(/-/g, "")}`}
+                className="whitespace-nowrap hover:text-paper"
+              >
+                {site.mobile}
+              </a>
+              {" · "}
+              <a
+                href={`tel:${site.mobile2.replace(/-/g, "")}`}
+                className="whitespace-nowrap hover:text-paper"
+              >
+                {site.mobile2}
+              </a>
             </span>
           </p>
           {instagram && <p className="mt-5 lg:hidden">{instagram}</p>}

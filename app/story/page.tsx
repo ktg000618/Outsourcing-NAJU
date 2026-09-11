@@ -36,7 +36,8 @@ const rows: Row[] = [
     .map((t) => ({ when: t.when, title: t.title, body: t.body })),
   {
     when: "2020년",
-    title: "장애인복지관·나주시다문화가족센터 등 사회복지시설 업무협약",
+    title: "사회복지시설과 업무협약",
+    body: "장애인복지관·나주시다문화가족센터 등과 협약을 맺었습니다.",
   },
   { when: "2021년", title: "전라남도지사 표창 (사회복지부문)" },
   {
@@ -46,7 +47,8 @@ const rows: Row[] = [
   },
   {
     when: "2024년",
-    title: "나주시 고향사랑 답례품 선정 (절굿대떡, 나주배촉촉오란다)",
+    title: "나주시 고향사랑 답례품 선정",
+    body: "절굿대떡과 나주배 촉촉오란다가 답례품으로 선정되었습니다.",
   },
 ].sort((a, b) => a.when.localeCompare(b.when));
 
@@ -98,7 +100,7 @@ export default function StoryPage() {
               >
                 <div className="flex items-center gap-4">
                   <MoonMark
-                    phase={(i + 1) / rows.length}
+                    phase={i / (rows.length - 1)}
                     size={24}
                     className="shrink-0 text-ink"
                   />
@@ -163,15 +165,15 @@ export default function StoryPage() {
               </p>
             </div>
           </div>
-          {/* 장면 사진은 사각. 히어로가 이미 꽃이라 여기는 밭 — 같은 꽃이 두 번 나오지 않게. */}
+          {/* 이름의 유래 절이라 잎·꽃 클로즈업. 밭의 사람들은 아래 「씨앗」 절로. */}
           <div className="relative aspect-4/5 overflow-hidden rounded-2xl ring-1 ring-inset ring-ink/5">
             <Image
-              src="/images/growers-harvest.jpg"
-              alt="절굿대 밭에서 잎을 거두어 바구니에 담고 있다"
+              src="/images/jeolgutdae-closeup.jpg"
+              alt="절굿대 잎과 꽃봉오리 클로즈업"
               fill
               sizes="(min-width: 1024px) 45vw, 90vw"
               quality={88}
-              className="object-cover object-[55%_50%]"
+              className="object-cover object-center"
             />
           </div>
         </div>
@@ -185,17 +187,30 @@ export default function StoryPage() {
             <span className="block font-thin">씨앗을 나누고,</span>
             <span className="block font-black">일자리로 돌려드립니다</span>
           </h2>
-          <div className="mt-10 space-y-5 text-ink-soft">
-            <p className="max-w-prose">
-              씨앗을 나누어 드리고, 소규모 농가에서 직접 재배할 수 있도록
-              지원하여 지역 어르신들에게 새로운 일자리를 제공합니다. 이를 통해
-              단순한 생산 활동을 넘어 안정적인 고용 기반을 마련하고, 어르신들이
-              지속적으로 경제활동에 참여할 수 있는 환경을 만들어 가고 있습니다.
-            </p>
-            <p className="max-w-prose">
-              또한 기업의 성장이 지역사회와 함께 이어질 수 있도록 매출의 일부를
-              지역에 환원하며 선순환 구조를 만들어 가고자 합니다.
-            </p>
+          <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:gap-16">
+            <div className="space-y-5 text-ink-soft">
+              <p className="max-w-prose">
+                씨앗을 나누어 드리고, 소규모 농가에서 직접 재배할 수 있도록
+                지원하여 지역 어르신들에게 새로운 일자리를 제공합니다. 이를 통해
+                단순한 생산 활동을 넘어 안정적인 고용 기반을 마련하고,
+                어르신들이 지속적으로 경제활동에 참여할 수 있는 환경을 만들어
+                가고 있습니다.
+              </p>
+              <p className="max-w-prose">
+                또한 기업의 성장이 지역사회와 함께 이어질 수 있도록 매출의
+                일부를 지역에 환원하며 선순환 구조를 만들어 가고자 합니다.
+              </p>
+            </div>
+            <div className="relative aspect-[2/1] overflow-hidden rounded-2xl ring-1 ring-inset ring-ink/5 lg:aspect-4/3">
+              <Image
+                src="/images/growers-harvest.jpg"
+                alt="절굿대 밭에서 잎을 거두어 바구니에 담고 있다"
+                fill
+                sizes="(min-width: 1024px) 45vw, 90vw"
+                quality={88}
+                className="object-cover object-[55%_50%]"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -221,12 +236,12 @@ export default function StoryPage() {
           </div>
           <div className="relative aspect-[2/1] overflow-hidden rounded-2xl ring-1 ring-inset ring-ink/5 lg:aspect-4/3">
             <Image
-              src="/images/tteok-mat.jpg"
-              alt="라탄 매트 위 절굿대떡과 낱개 포장, 콩고물"
+              src="/images/making-cut.jpg"
+              alt="쳐낸 절굿대떡을 칼로 반듯하게 자르는 김화수 대표"
               fill
               sizes="(min-width: 1024px) 45vw, 90vw"
               quality={88}
-              className="object-cover object-right"
+              className="object-cover object-[50%_40%]"
             />
           </div>
         </div>

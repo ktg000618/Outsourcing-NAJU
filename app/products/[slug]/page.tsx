@@ -166,7 +166,7 @@ export default async function ProductPage({
                 href={`tel:${site.tel.replace(/-/g, "")}`}
                 className="btn-primary"
               >
-                전화로 주문 {site.tel}
+                전화 주문 {site.tel}
               </a>
             )}
             <p className="mt-3 text-caption text-ink-faint">
@@ -190,7 +190,7 @@ export default async function ProductPage({
               <span className="font-black tracking-tighter">제품 이야기</span>
             </h2>
             <div className="mx-auto mt-8 max-w-[860px]">
-              <DetailReveal>
+              <DetailReveal collapsedClass={product.detailCollapsed}>
                 <div className="overflow-hidden rounded-2xl ring-1 ring-inset ring-ink/5">
                   {product.detailImages.map((d, i) => (
                     <Image
@@ -316,7 +316,7 @@ export default async function ProductPage({
             <span className="font-black tracking-tighter">다른 제품</span>
           </h2>
           {/* 제품 3개 − 현재 1 = 항상 2개. 2열 등분. */}
-          <ul className="mt-8 grid grid-cols-2 gap-x-4 gap-y-8 sm:gap-x-5 lg:max-w-2xl lg:gap-x-10">
+          <ul className="mt-8 grid grid-cols-2 gap-x-4 gap-y-8 sm:gap-x-5 lg:max-w-3xl lg:gap-x-12">
             {others.map((p) => (
               <li key={p.slug}>
                 <Link

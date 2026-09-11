@@ -14,6 +14,24 @@ export const metadata: Metadata = {
 /** 직원이 /admin 에서 쓴 글. 저장 시 revalidatePath 로 바로 갱신되고, 그 밖엔 1시간 캐시. */
 export const revalidate = 3600;
 
+/* 본문 속 전화번호는 눌러 걸 수 있게, 하이픈에서 줄이 찢어지지 않게. 직원이 소식에 번호를 자주 적는다. */
+function linkifyTel(text: string) {
+  const parts = text.split(/(0\d{1,2}-\d{3,4}-\d{4})/g);
+  return parts.map((part, i) =>
+    /^0\d{1,2}-\d{3,4}-\d{4}$/.test(part) ? (
+      <a
+        key={i}
+        href={`tel:${part.replace(/-/g, "")}`}
+        className="whitespace-nowrap underline decoration-ink/30 underline-offset-4 hover:text-mint-link"
+      >
+        {part}
+      </a>
+    ) : (
+      part
+    ),
+  );
+}
+
 export default async function NewsPage() {
   const posts = await getPublishedPosts();
   return (
@@ -86,7 +104,7 @@ export default async function NewsPage() {
                       </h2>
                       {post.body && (
                         <p className="mt-4 max-w-prose whitespace-pre-line leading-relaxed text-ink-soft">
-                          {post.body}
+                          {linkifyTel(post.body)}
                         </p>
                       )}
                       {n === 1 && (
@@ -107,7 +125,7 @@ export default async function NewsPage() {
                           aria-label={`사진 ${n}장`}
                           className={`mt-6 ${
                             n === 2
-                              ? "grid grid-cols-2 gap-3"
+                              ? "-mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 [scrollbar-width:none] sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 [&::-webkit-scrollbar]:hidden"
                               : "-mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 [scrollbar-width:none] sm:mx-0 sm:grid sm:grid-cols-3 sm:overflow-visible sm:px-0 lg:grid-cols-2 lg:[&>li:first-child]:col-span-2 [&::-webkit-scrollbar]:hidden"
                           }`}
                         >
@@ -115,7 +133,7 @@ export default async function NewsPage() {
                             <li
                               key={src}
                               className={`relative aspect-4/3 overflow-hidden rounded-2xl bg-paper-2 ring-1 ring-inset ring-ink/5 ${
-                                n === 3
+                                n >= 2
                                   ? "w-[72%] shrink-0 snap-start sm:w-auto"
                                   : ""
                               }`}

@@ -61,21 +61,6 @@ export default function ProductsPage() {
             좋습니다.
           </p>
         </div>
-        {/*
-          사진(3000×2000) 은 아래를 기준으로 채운다 — 가운데 기준이면 2.6:1 에서 접시가 아랫단에서
-          잘렸다. PC 는 1.9:1 까지만 눕혀야 찻주전자 손잡이(위 21%)부터 상 다리까지 다 들어온다.
-        */}
-        <div className="relative mt-10 aspect-4/3 overflow-hidden rounded-2xl bg-paper-2 sm:aspect-16/9 lg:aspect-[1.9/1] lg:mt-12 ring-1 ring-inset ring-ink/5">
-          <Image
-            src="/images/product-gift-scene.jpg"
-            alt="찻상에 올린 절굿대떡과 찻주전자"
-            fill
-            priority
-            sizes="(min-width: 1200px) 1152px, 100vw"
-            quality={88}
-            className="enter-photo object-cover object-[50%_100%]"
-          />
-        </div>
       </section>
 
       {/* 제품 목록 — 같은 크기의 실선 행 셋. 원은 상세의 큰 원으로 이어진다(ViewTransition). */}
@@ -111,11 +96,6 @@ export default function ProductsPage() {
                     {p.summary}
                   </p>
                   {/* 가격이 없으면 자리표('전화 문의')도 없다 — 가격은 나중에 들어온다(리더 지시). */}
-                  {p.price !== null && (
-                    <p className="mt-2 text-small tabular-nums text-ink-soft">
-                      {`${p.price.toLocaleString("ko-KR")}원`}
-                    </p>
-                  )}
                 </div>
               </Link>
             </li>
@@ -231,8 +211,8 @@ export default function ProductsPage() {
             </div>
             <div className="relative aspect-4/3 overflow-hidden rounded-2xl bg-white">
               <Image
-                src="/images/ship-cool-box.jpg"
-                alt="'신선식품' 띠를 두른 보냉 상자"
+                src="/images/product-jeolgutdae-pack.jpg"
+                alt="낱개 포장한 절굿대떡을 나무 소반에 담았다"
                 fill
                 sizes="(min-width: 1024px) 660px, 100vw"
                 quality={88}
