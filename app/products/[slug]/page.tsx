@@ -205,6 +205,51 @@ export default async function ProductPage({
         </div>
       </article>
 
+      {product.detailImages && (
+        /*
+          업체가 만들어 둔 상세페이지 이미지. 다른 문법의 디자인이라 사이트 안에 그대로 펼치면
+          두 사이트가 겹쳐 보인다 — 접어 두고 손님이 열게 한다. 폭은 원본(860px) 그대로, 모바일은 전폭.
+          rise 를 붙이지 않는다: 펼치면 만 픽셀이 넘는 블록이라 view() 타임라인이 끝까지 안 가 흐린 채 남는다(실측).
+          자리는 제품 소개 바로 아래 — 접힌 한 줄이라 재료·후기 위에 있어도 흐름을 막지 않는다.
+        */
+        <section className="border-t border-ink/10">
+          <div className="section-y-tight mx-auto max-w-6xl px-5 lg:px-8">
+            <SectionEyebrow phase={0.9}>상세 정보</SectionEyebrow>
+            <details className="group mt-3">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-2 [&::-webkit-details-marker]:hidden">
+                <h2 className="text-h2 lg:text-h2-lg">
+                  <span className="font-thin tracking-tight">더 자세한 </span>
+                  <span className="font-black tracking-tighter">
+                    제품 이야기
+                  </span>
+                </h2>
+                <span className="shrink-0 border border-ink/30 px-4 py-2 text-small transition-colors group-open:border-ink group-open:bg-ink group-open:text-paper">
+                  <span className="group-open:hidden">펼치기</span>
+                  <span className="hidden group-open:inline">접기</span>
+                </span>
+              </summary>
+              <div
+                className={`mx-auto mt-8 max-w-[860px] ${product.detailGap ? "flex flex-col gap-3" : "overflow-hidden rounded-2xl ring-1 ring-inset ring-ink/5"}`}
+              >
+                {product.detailImages.map((d, i) => (
+                  <Image
+                    key={d.src}
+                    src={d.src}
+                    alt={d.alt}
+                    width={d.width}
+                    height={d.height}
+                    sizes="(min-width: 900px) 860px, 100vw"
+                    quality={85}
+                    loading={i === 0 ? "eager" : "lazy"}
+                    className={`block h-auto w-full ${product.detailGap ? "rounded-2xl ring-1 ring-inset ring-ink/5" : ""}`}
+                  />
+                ))}
+              </div>
+            </details>
+          </div>
+        </section>
+      )}
+
       {/* 넣는 것·더 보기 — 흰 그릇의 재료는 원, 포장·소품은 사각. 값이 있을 때만 선다. */}
       {(product.ingredients || extras.length > 0) && (
         <section className="rise border-t border-ink/10">
@@ -285,49 +330,6 @@ export default async function ProductPage({
                 {product.reviewVideo.source}
               </p>
             </ReviewVideo>
-          </div>
-        </section>
-      )}
-
-      {product.detailImages && (
-        /*
-          업체가 만들어 둔 상세페이지 이미지. 다른 문법의 디자인이라 사이트 안에 그대로 펼치면
-          두 사이트가 겹쳐 보인다 — 접어 두고 손님이 열게 한다. 폭은 원본(860px) 그대로, 모바일은 전폭.
-        */
-        <section className="rise border-t border-ink/10">
-          <div className="section-y-tight mx-auto max-w-6xl px-5 lg:px-8">
-            <SectionEyebrow phase={0.9}>상세 정보</SectionEyebrow>
-            <details className="group mt-3">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-2 [&::-webkit-details-marker]:hidden">
-                <h2 className="text-h2 lg:text-h2-lg">
-                  <span className="font-thin tracking-tight">더 자세한 </span>
-                  <span className="font-black tracking-tighter">
-                    제품 이야기
-                  </span>
-                </h2>
-                <span className="shrink-0 border border-ink/30 px-4 py-2 text-small transition-colors group-open:border-ink group-open:bg-ink group-open:text-paper">
-                  <span className="group-open:hidden">펼치기</span>
-                  <span className="hidden group-open:inline">접기</span>
-                </span>
-              </summary>
-              <div
-                className={`mx-auto mt-8 max-w-[860px] ${product.detailGap ? "flex flex-col gap-3" : "overflow-hidden rounded-2xl ring-1 ring-inset ring-ink/5"}`}
-              >
-                {product.detailImages.map((d, i) => (
-                  <Image
-                    key={d.src}
-                    src={d.src}
-                    alt={d.alt}
-                    width={d.width}
-                    height={d.height}
-                    sizes="(min-width: 900px) 860px, 100vw"
-                    quality={85}
-                    loading={i === 0 ? "eager" : "lazy"}
-                    className={`block h-auto w-full ${product.detailGap ? "rounded-2xl ring-1 ring-inset ring-ink/5" : ""}`}
-                  />
-                ))}
-              </div>
-            </details>
           </div>
         </section>
       )}
