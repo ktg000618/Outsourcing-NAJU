@@ -110,7 +110,7 @@ export const products: Product[] = [
     summary: "콩고물을 입힌 나주의 이바지 떡",
     detail:
       "유화제나 인공감미료를 전혀 넣지 않고 전통 방식 그대로 빚습니다. 나주 특산 배즙으로 자연스러운 단맛을 더했고, 찹쌀의 쫄깃한 식감은 소화에도 부담이 없습니다. 아침 식사 대용은 물론 아이들 영양 간식으로도 안심하고 드실 수 있습니다.",
-    image: "/images/product-tray.jpg",
+    image: "/images/product-jeolgutdae-plate.jpg",
     price: null,
     unit: null,
     occasions: ["이바지", "명절", "선물"],
@@ -123,7 +123,7 @@ export const products: Product[] = [
     gallery: [
       {
         src: "/images/product-jeolgutdae-pack.jpg",
-        alt: "낱개 포장한 절굿대떡과 콩고물을 입힌 떡, 곁에 놓인 쑥",
+        alt: "낱개 포장한 절굿대떡을 나무 소반에 담았다",
       },
     ],
     accent: "signage",
@@ -147,7 +147,7 @@ export const products: Product[] = [
     summary: "겉은 바삭, 속은 촉촉한 수제 오란다",
     detail:
       "나주배청으로 반죽해 겉은 바삭하고 속은 촉촉합니다. 절굿대 분말을 함께 넣고, 참깨·땅콩·해바라기씨·호박씨를 비롯한 여섯 가지 견과를 더해 고소합니다. 합성첨가물과 색소, 방부제를 넣지 않습니다. 낱개로 포장해 바삭함이 오래갑니다.",
-    image: "/images/product-oranda.jpg",
+    image: "/images/product-oranda-plate.jpg",
     price: 30000,
     unit: "1박스",
     occasions: ["답례", "선물"],
@@ -190,7 +190,7 @@ export const products: Product[] = [
     summary: "보자기에 싸는 이바지 구성",
     detail:
       "절굿대떡을 이바지에 쓴 것은 맛도 맛이지만 건강을 생각한 떡이라는 믿음 때문이었습니다. 명절과 예단, 회사 접대에 두루 나갑니다.",
-    image: "/images/product-gift.jpg",
+    image: "/images/product-gift-set.jpg",
     price: null,
     unit: null,
     occasions: ["이바지", "명절", "예단", "회사 선물"],

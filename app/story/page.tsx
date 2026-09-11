@@ -37,8 +37,8 @@ export default function StoryPage() {
         </div>
         <div className="relative mt-10 aspect-4/3 overflow-hidden rounded-2xl bg-paper-2 sm:aspect-16/9 lg:aspect-[2.6/1] lg:mt-12 ring-1 ring-inset ring-ink/5">
           <Image
-            src="/images/thistle-bloom.jpg"
-            alt="보랏빛 구체로 피어난 절굿대 꽃"
+            src="/images/jeolgutdae-bloom.jpg"
+            alt="밭에서 꽃봉오리를 맺은 절굿대"
             fill
             priority
             sizes="(min-width: 1200px) 1152px, 100vw"
@@ -137,8 +137,8 @@ export default function StoryPage() {
           {/* 장면 사진은 사각. 원은 제품, 아치는 매장에만 — 도형이 셋을 넘으면 규칙이 흐려진다. */}
           <div className="relative aspect-4/5 overflow-hidden rounded-2xl ring-1 ring-inset ring-ink/5">
             <Image
-              src="/images/styling-table.jpg"
-              alt="보자기 위에 차와 함께 놓인 절굿대떡"
+              src="/images/jeolgutdae-closeup.jpg"
+              alt="은빛 잎 사이로 올라온 절굿대 꽃봉오리"
               fill
               sizes="(min-width: 1024px) 45vw, 90vw"
               quality={88}
@@ -158,10 +158,10 @@ export default function StoryPage() {
         재촬영이 되면 실사로 바꾼다.
       */}
       <section className="rise bg-paper-2">
-        <div className="relative aspect-[2.11/1] w-full">
+        <div className="relative aspect-[2/1] w-full">
           <Image
-            src="/images/growers-band.jpg"
-            alt="절굿대 밭에서 잎을 따 바구니에 담는 손"
+            src="/images/growers-harvest.jpg"
+            alt="절굿대 밭에서 잎을 거두어 바구니에 담고 있다"
             fill
             sizes="100vw"
             quality={88}

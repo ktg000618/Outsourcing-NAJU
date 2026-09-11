@@ -292,8 +292,8 @@ export default function HomePage() {
         </div>
         <div className="relative aspect-4/3 lg:order-2 lg:aspect-auto lg:min-h-[32rem]">
           <Image
-            src="/images/experience-hands.jpg"
-            alt="체험 테이블에 늘어놓은 갓 빚은 절굿대떡과 나뭇잎 모양 떡"
+            src="/images/making-hands.jpg"
+            alt="장갑 낀 손으로 초록 절굿대 반죽을 틀에 펴고 있다"
             fill
             sizes="(min-width: 1024px) 50vw, 100vw"
             quality={88}

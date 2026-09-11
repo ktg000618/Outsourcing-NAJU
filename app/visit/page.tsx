@@ -55,13 +55,13 @@ export default function VisitPage() {
           </div>
           <div className="relative mt-10 aspect-4/3 overflow-hidden rounded-2xl bg-paper-2 sm:aspect-16/9 lg:aspect-[2.6/1] lg:mt-12 ring-1 ring-inset ring-ink/5">
             <Image
-              src="/images/owners-counter.jpg"
-              alt="떡카페 카운터에 선 절굿대달토끼 부부"
+              src="/images/owners-field.jpg"
+              alt="절굿대 밭에서 잎을 거두는 절굿대달토끼 부부"
               fill
               priority
               sizes="(min-width: 1200px) 1152px, 100vw"
               quality={88}
-              className="object-cover object-[50%_25%]"
+              className="object-cover object-center"
             />
           </div>
       </section>
@@ -123,18 +123,18 @@ export default function VisitPage() {
           <div className="grid gap-4 self-start sm:grid-cols-2">
             <div className="relative aspect-16/10 overflow-hidden rounded-2xl sm:aspect-square ring-1 ring-inset ring-ink/5">
               <Image
-                src="/images/experience-stamp.jpg"
-                alt="장갑 낀 손으로 나무 떡살을 눌러 떡에 문양을 찍고 있다"
+                src="/images/making-hands.jpg"
+                alt="장갑 낀 손으로 초록 절굿대 반죽을 틀에 펴고 있다"
                 fill
                 sizes="(min-width: 1024px) 22vw, 90vw"
                 quality={88}
                 className="object-cover"
               />
             </div>
-            <div className="relative aspect-4/3 overflow-hidden rounded-2xl sm:mt-10 sm:aspect-square ring-1 ring-inset ring-ink/5">
+            <div className="relative aspect-3/4 overflow-hidden rounded-2xl sm:mt-10 sm:aspect-square ring-1 ring-inset ring-ink/5">
               <Image
-                src="/images/experience-hands.jpg"
-                alt="체험 테이블에 늘어놓은 갓 빚은 절굿대떡과 나뭇잎 모양 떡"
+                src="/images/making-cut.jpg"
+                alt="쳐낸 절굿대떡을 칼로 반듯하게 자르고 있다"
                 fill
                 sizes="(min-width: 1024px) 22vw, 90vw"
                 quality={88}

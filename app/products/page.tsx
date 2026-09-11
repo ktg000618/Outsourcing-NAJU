@@ -48,7 +48,7 @@ export default function ProductsPage() {
           <div className="relative mt-10 aspect-4/3 overflow-hidden rounded-2xl bg-paper-2 sm:aspect-16/9 lg:aspect-[2.6/1] lg:mt-12 ring-1 ring-inset ring-ink/5">
             <Image
               src="/images/product-gift-scene.jpg"
-              alt="떡카페 테이블에 놓인 절굿대떡 선물세트"
+              alt="찻상에 올린 절굿대떡과 찻주전자"
               fill
               priority
               sizes="(min-width: 1200px) 1152px, 100vw"
