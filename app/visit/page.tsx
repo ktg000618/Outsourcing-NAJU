@@ -13,14 +13,19 @@ export const metadata: Metadata = {
 const mapQuery = encodeURIComponent(`${site.address} ${site.name}`);
 
 export default function VisitPage() {
-  const { minPeople, maxPeople, duration, pricePerPerson, availability, takeaway } =
-    experience;
+  const {
+    minPeople,
+    maxPeople,
+    duration,
+    pricePerPerson,
+    availability,
+    takeaway,
+  } = experience;
   const rows: { label: string; value: string | null }[] = [
     { label: "대상", value: experience.target },
     {
       label: "인원",
-      value:
-        minPeople && maxPeople ? `${minPeople}~${maxPeople}명` : null,
+      value: minPeople && maxPeople ? `${minPeople}~${maxPeople}명` : null,
     },
     { label: "소요 시간", value: duration },
     {
@@ -32,7 +37,10 @@ export default function VisitPage() {
     },
     { label: "운영", value: availability },
     { label: "가져가는 것", value: takeaway },
-    { label: "예약", value: "인원과 날짜에 따라 준비가 필요합니다. 미리 문의해 주세요." },
+    {
+      label: "예약",
+      value: "인원과 날짜에 따라 준비가 필요합니다. 미리 문의해 주세요.",
+    },
   ];
 
   return (
@@ -43,27 +51,30 @@ export default function VisitPage() {
           사진이 그대로 보이고, 글자는 먹색으로 흰 종이 위에 앉는다.
         */}
       <section className="mx-auto w-full max-w-6xl px-5 pt-10 lg:px-8 lg:pt-14">
-          <SectionEyebrow phase={0.1}>{site.addressLocality} 징고샅길</SectionEyebrow>
-          <div className="mt-4 lg:grid lg:grid-cols-[7fr_5fr] lg:items-end lg:gap-16">
-            <h1 className="max-w-[16ch] text-h1 lg:text-hero">
+        <SectionEyebrow phase={0.1}>
+          {site.addressLocality} 징고샅길
+        </SectionEyebrow>
+        <div className="mt-4 lg:grid lg:grid-cols-[7fr_5fr] lg:items-end lg:gap-16">
+          <h1 className="max-w-[16ch] text-h1 lg:text-hero">
             <span className="block font-thin tracking-tight">빚어 보러</span>
             <span className="block font-black tracking-tighter">오세요</span>
           </h1>
-            <p className="mt-5 max-w-md text-ink-soft lg:mt-0 lg:pb-3">
-            떡을 파는 데 그치지 않고, 직접 만들고 맛보는 체험장을 함께 운영합니다. 학교와 단체가 자주 찾습니다.
+          <p className="mt-5 max-w-md text-ink-soft lg:mt-0 lg:pb-3">
+            떡을 파는 데 그치지 않고, 직접 만들고 맛보는 체험장을 함께
+            운영합니다. 학교와 단체가 자주 찾습니다.
           </p>
-          </div>
-          <div className="relative mt-10 aspect-4/3 overflow-hidden rounded-2xl bg-paper-2 sm:aspect-16/9 lg:aspect-[2.6/1] lg:mt-12 ring-1 ring-inset ring-ink/5">
-            <Image
-              src="/images/owners-field.jpg"
-              alt="절굿대 밭에서 잎을 거두는 절굿대달토끼 부부"
-              fill
-              priority
-              sizes="(min-width: 1200px) 1152px, 100vw"
-              quality={88}
-              className="object-cover object-center"
-            />
-          </div>
+        </div>
+        <div className="relative mt-10 aspect-4/3 overflow-hidden rounded-2xl bg-paper-2 sm:aspect-16/9 lg:aspect-[2.6/1] lg:mt-12 ring-1 ring-inset ring-ink/5">
+          <Image
+            src="/images/owners-field.jpg"
+            alt="절굿대 밭에서 잎을 거두는 절굿대달토끼 부부"
+            fill
+            priority
+            sizes="(min-width: 1200px) 1152px, 100vw"
+            quality={88}
+            className="object-cover object-center"
+          />
+        </div>
       </section>
 
       {/* 체험 */}
@@ -71,9 +82,7 @@ export default function VisitPage() {
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
             <SectionEyebrow phase={0.25}>체험</SectionEyebrow>
-            <h2 className="mt-3 text-h2 lg:text-h2-lg">
-              절굿대떡 만들기 체험
-            </h2>
+            <h2 className="mt-3 text-h2 lg:text-h2-lg">절굿대떡 만들기 체험</h2>
             <p className="mt-6 max-w-prose text-ink-soft">
               반죽을 치고 모양을 빚어 콩고물을 입히기까지, 손으로 해 봅니다.
               어린이 단체부터 어른 모임까지 참여할 수 있습니다.
@@ -150,9 +159,7 @@ export default function VisitPage() {
       <section className="rise bg-paper-2">
         <div className="section-y-tight mx-auto max-w-6xl px-5 lg:px-8">
           <SectionEyebrow phase={0.55}>진행 순서</SectionEyebrow>
-          <h2 className="mt-3 text-h3 lg:text-h2-lg">
-            이렇게 진행합니다
-          </h2>
+          <h2 className="mt-3 text-h3 lg:text-h2-lg">이렇게 진행합니다</h2>
           <ol className="mt-9 grid gap-8 lg:grid-cols-3">
             {experience.steps.map((step, i) => (
               <li key={step.title} className="border-t-2 border-moon pt-5">
@@ -164,6 +171,18 @@ export default function VisitPage() {
                 <p className="mt-2 text-small leading-relaxed text-ink-soft">
                   {step.detail}
                 </p>
+                {step.image && (
+                  <div className="relative mt-5 aspect-4/3 overflow-hidden rounded-2xl bg-paper-2 ring-1 ring-inset ring-ink/5">
+                    <Image
+                      src={step.image}
+                      alt={step.imageAlt ?? ""}
+                      fill
+                      sizes="(min-width: 1024px) 360px, 90vw"
+                      quality={88}
+                      className="object-cover"
+                    />
+                  </div>
+                )}
               </li>
             ))}
           </ol>
@@ -174,7 +193,9 @@ export default function VisitPage() {
       <section className="moonlit rise bg-ink text-paper">
         <div className="section-y relative mx-auto grid max-w-6xl gap-12 px-5 lg:grid-cols-2 lg:gap-16 lg:px-8">
           <div>
-            <SectionEyebrow phase={1} tone="paper">매장</SectionEyebrow>
+            <SectionEyebrow phase={1} tone="paper">
+              매장
+            </SectionEyebrow>
             <h2 className="mt-3 text-h2 lg:text-h2-lg">오시는 길</h2>
             <address className="mt-8 space-y-5 not-italic">
               <div>
@@ -198,7 +219,9 @@ export default function VisitPage() {
               {site.hours && (
                 <div>
                   <p className="text-caption text-paper/50">영업시간</p>
-                  <p className="mt-2 font-light tracking-tight text-h3 lg:text-h2">{site.hours}</p>
+                  <p className="mt-2 font-light tracking-tight text-h3 lg:text-h2">
+                    {site.hours}
+                  </p>
                 </div>
               )}
               {site.closedDays && (

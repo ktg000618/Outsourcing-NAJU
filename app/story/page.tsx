@@ -90,6 +90,19 @@ export default function StoryPage() {
                     <p className="mt-4 max-w-prose leading-relaxed text-ink-soft">
                       {t.body}
                     </p>
+                    {"image" in t && t.image && (
+                      /* 글만 서 있던 연표에 증거 한 장 — 국내 최초 육묘를 밭 이랑이 말한다. */
+                      <div className="relative mt-6 aspect-[2/1] max-w-xl overflow-hidden rounded-2xl bg-paper-2 ring-1 ring-inset ring-ink/5">
+                        <Image
+                          src={t.image}
+                          alt={t.imageAlt}
+                          fill
+                          sizes="(min-width: 1024px) 576px, 90vw"
+                          quality={88}
+                          className="object-cover"
+                        />
+                      </div>
+                    )}
                   </div>
                 </li>
               );

@@ -81,8 +81,10 @@ export type Product = {
   storeUrl: string | null;
   /** 제품 사양. 값이 있는 항목만 상세 페이지에 표로 나간다. */
   spec?: { label: string; value: string }[];
-  /** 대표 이미지 말고 더 보여줄 컷. 상세 페이지에서만 쓴다. */
+  /** 대표 이미지 말고 더 보여줄 컷. 첫 장은 큰 원에 걸친 작은 원, 나머지는 「더 보기」 줄. */
   gallery?: { src: string; alt: string }[];
+  /** 넣는 것. "넣지 않는 것으로 말한다"의 반대편 — 흰 그릇에 담긴 재료 사진. */
+  ingredients?: { src: string; alt: string; label: string }[];
   /** 소리 없는 짧은 루프. 사진으로는 안 보이는 질감을 보여주는 자리다. */
   video?: { src: string; poster: string; label: string };
   /**
@@ -111,14 +113,33 @@ export const products: Product[] = [
     detail:
       "유화제나 인공감미료를 전혀 넣지 않고 전통 방식 그대로 빚습니다. 나주 특산 배즙으로 자연스러운 단맛을 더했고, 찹쌀의 쫄깃한 식감은 소화에도 부담이 없습니다. 아침 식사 대용은 물론 아이들 영양 간식으로도 안심하고 드실 수 있습니다.",
     image: "/images/product-jeolgutdae-plate.jpg",
+    ingredients: [
+      {
+        src: "/images/ing-rice.jpg",
+        alt: "흰 그릇에 담긴 찹쌀",
+        label: "찹쌀",
+      },
+      {
+        src: "/images/ing-jeolgutdae-paste.jpg",
+        alt: "흰 그릇에 담긴 절굿대 잎 반죽",
+        label: "절굿대",
+      },
+    ],
     price: null,
     unit: null,
     occasions: ["이바지", "명절", "선물"],
     storeUrl: null,
     spec: [
       { label: "보관", value: "남은 떡은 굳기 전에 냉동 보관해 주세요" },
-      { label: "해동", value: "실온에서 1~2시간, 또는 찜기·전자레인지로 말랑하게" },
-      { label: "드시는 법", value: "인절미 그대로가 가장 좋지만, 기호에 따라 청이나 콩가루를 곁들이셔도 됩니다" },
+      {
+        label: "해동",
+        value: "실온에서 1~2시간, 또는 찜기·전자레인지로 말랑하게",
+      },
+      {
+        label: "드시는 법",
+        value:
+          "인절미 그대로가 가장 좋지만, 기호에 따라 청이나 콩가루를 곁들이셔도 됩니다",
+      },
     ],
     gallery: [
       {
@@ -148,6 +169,19 @@ export const products: Product[] = [
     detail:
       "나주배청으로 반죽해 겉은 바삭하고 속은 촉촉합니다. 절굿대 분말을 함께 넣고, 참깨·땅콩·해바라기씨·호박씨를 비롯한 여섯 가지 견과를 더해 고소합니다. 합성첨가물과 색소, 방부제를 넣지 않습니다. 낱개로 포장해 바삭함이 오래갑니다.",
     image: "/images/product-oranda-plate.jpg",
+    ingredients: [
+      { src: "/images/ing-pumpkin-seed.jpg", alt: "호박씨", label: "호박씨" },
+      {
+        src: "/images/ing-sunflower-seed.jpg",
+        alt: "해바라기씨",
+        label: "해바라기씨",
+      },
+      {
+        src: "/images/ing-cranberry.jpg",
+        alt: "흰 그릇에 담긴 크랜베리",
+        label: "크랜베리",
+      },
+    ],
     price: 30000,
     unit: "1박스",
     occasions: ["답례", "선물"],
@@ -157,7 +191,10 @@ export const products: Product[] = [
     spec: [
       { label: "소비기한", value: "제조일로부터 6개월" },
       { label: "보관", value: "냉장·냉동 보관 권장 (상온 보관 가능)" },
-      { label: "먹는 법", value: "냉동 보관 시 30분 전 상온 해동, 또는 전자레인지 15초" },
+      {
+        label: "먹는 법",
+        value: "냉동 보관 시 30분 전 상온 해동, 또는 전자레인지 15초",
+      },
       { label: "포장", value: "낱개 포장" },
     ],
     video: {
@@ -191,7 +228,20 @@ export const products: Product[] = [
     detail:
       "절굿대떡을 이바지에 쓴 것은 맛도 맛이지만 건강을 생각한 떡이라는 믿음 때문이었습니다. 명절과 예단, 회사 접대에 두루 나갑니다.",
     image: "/images/product-gift-set.jpg",
-    gallery: [{ src: "/images/product-gift-box.jpg", alt: "달토끼가 그려진 절굿대달토끼 선물 상자" }],
+    gallery: [
+      {
+        src: "/images/product-gift-box.jpg",
+        alt: "달토끼가 그려진 절굿대달토끼 선물 상자",
+      },
+      {
+        src: "/images/product-gift-leaflet.jpg",
+        alt: "상자에 함께 넣는 절굿대달토끼 리플릿",
+      },
+      {
+        src: "/images/product-gift-bag.jpg",
+        alt: "선물세트를 담아 드리는 종이 가방",
+      },
+    ],
     price: null,
     unit: null,
     occasions: ["이바지", "명절", "예단", "회사 선물"],
@@ -215,6 +265,8 @@ export const timeline = [
     phase: 0.3,
     when: "2016년",
     title: "절굿대 육묘에 국내 최초로 성공",
+    image: "/images/field-rows.jpg",
+    imageAlt: "이랑을 따라 자란 절굿대 밭과 마을",
     body: "어린 시절 맛보았던 그 떡을 잊지 못한 김화수 대표가 전국을 돌며 복원에 매달렸습니다. 깊은 산속에서만 자생하던 절굿대의 육묘 재배에 마침내 성공했습니다. 같은 해 나주목사고을시장 안에 절굿대떡屋을 열었습니다.",
   },
   {
@@ -239,8 +291,17 @@ export const timeline = [
 
 /** 연혁 전체. 이야기 페이지 하단에 접어 둔다. */
 export const history = [
-  { year: "2016", items: ["절굿대떡屋 설립 (나주목사고을시장 內)", "국내 최초 절굿대 육묘재배 성공"] },
-  { year: "2017", items: ["50년 만에 사라졌던 남도의 으뜸맛떡 '절굿대떡' 부활"] },
+  {
+    year: "2016",
+    items: [
+      "절굿대떡屋 설립 (나주목사고을시장 內)",
+      "국내 최초 절굿대 육묘재배 성공",
+    ],
+  },
+  {
+    year: "2017",
+    items: ["50년 만에 사라졌던 남도의 으뜸맛떡 '절굿대떡' 부활"],
+  },
   {
     year: "2019",
     items: [
@@ -260,7 +321,10 @@ export const history = [
   { year: "2021", items: ["전라남도지사 표창 (사회복지부문)"] },
   {
     year: "2022",
-    items: ["'절굿대떡' 슬로푸드 맛의방주 등재", "KBS 6시내고향 「나주 전통떡 절굿대떡」 방영"],
+    items: [
+      "'절굿대떡' 슬로푸드 맛의방주 등재",
+      "KBS 6시내고향 「나주 전통떡 절굿대떡」 방영",
+    ],
   },
   {
     year: "2023",
@@ -269,7 +333,10 @@ export const history = [
       "사회적기업 인증 제2023-247 (고용노동부)",
     ],
   },
-  { year: "2024", items: ["나주시 고향사랑 답례품 선정 (절굿대떡, 나주배촉촉오란다)"] },
+  {
+    year: "2024",
+    items: ["나주시 고향사랑 답례품 선정 (절굿대떡, 나주배촉촉오란다)"],
+  },
 ] as const;
 
 /**
@@ -298,9 +365,24 @@ export const experience = {
   takeaway: null as string | null,
   /** 진행 순서. 클라이언트 문안과 체험 사진에서 확인된 것만 적는다. */
   steps: [
-    { title: "반죽 치기", detail: "쌀 반죽을 손으로 칩니다." },
-    { title: "모양 빚기", detail: "빚은 떡에 나무 떡살로 문양을 찍습니다." },
-    { title: "콩고물 입히기", detail: "고물을 입혀 마무리합니다." },
+    {
+      title: "반죽 치기",
+      detail: "쌀 반죽을 손으로 칩니다.",
+      image: "/images/step-knead.jpg",
+      imageAlt: "장갑 낀 손으로 초록 반죽을 틀에 눌러 펴고 있다",
+    },
+    {
+      title: "모양 빚기",
+      detail: "빚은 떡에 나무 떡살로 문양을 찍습니다.",
+      image: "/images/step-shape.jpg",
+      imageAlt: "쳐낸 떡을 칼로 반듯하게 자르고 있다",
+    },
+    {
+      title: "콩고물 입히기",
+      detail: "고물을 입혀 마무리합니다.",
+      image: null,
+      imageAlt: null,
+    },
   ],
 } as const;
 

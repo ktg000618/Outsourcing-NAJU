@@ -22,6 +22,15 @@ export const metadata: Metadata = {
     locale: "ko_KR",
     siteName: site.name,
     url: site.url,
+    /* 파일명에 날짜를 박는다 — 카카오는 og:image 를 URL 단위로 캐시해 같은 경로에 덮으면 안 바뀐다. */
+    images: [
+      {
+        url: "/og/share-2026-09.jpg",
+        width: 1200,
+        height: 630,
+        alt: `${site.name} 찻상 위 절굿대떡`,
+      },
+    ],
   },
 };
 
@@ -43,7 +52,7 @@ const businessJsonLd = {
   description: site.description,
   url: site.url,
   telephone: site.tel,
-  image: `${site.url}/opengraph-image.jpg`,
+  image: `${site.url}/og/share-2026-09.jpg`,
   foundingDate: String(site.since),
   address: {
     "@type": "PostalAddress",

@@ -104,26 +104,20 @@ export default async function ProductPage({
               <LoopingVideo {...product.video} round />
             </div>
           )}
-          {product.gallery && (
-            /* 보조 컷도 영상과 같은 자리 — 큰 원 오른쪽 아래에 걸친 작은 원. 3열 첫 칸에 떨어뜨리면
-               같은 "보조 컷"이 제품마다 다른 문법이 된다. 두 장이면 세로로 쌓인다. */
-            <ul className="absolute bottom-0 right-0 grid w-[44%] gap-3 lg:-right-4 lg:w-[40%]">
-              {product.gallery.map((g) => (
-                <li
-                  key={g.src}
-                  className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-[6px] ring-paper lg:ring-8"
-                >
-                  <Image
-                    src={g.src}
-                    alt={g.alt}
-                    fill
-                    sizes="(min-width: 1024px) 220px, 40vw"
-                    quality={88}
-                    className="object-cover"
-                  />
-                </li>
-              ))}
-            </ul>
+          {!product.video && product.gallery?.[0] && (
+            /* 보조 컷 첫 장은 영상과 같은 자리 — 큰 원 오른쪽 아래에 걸친 작은 원. 나머지는 아래 「더 보기」. */
+            <div className="absolute bottom-0 right-0 w-[44%] overflow-hidden rounded-full bg-paper-2 ring-[6px] ring-paper lg:-right-4 lg:w-[40%] lg:ring-8">
+              <div className="relative aspect-square">
+                <Image
+                  src={product.gallery[0].src}
+                  alt={product.gallery[0].alt}
+                  fill
+                  sizes="(min-width: 1024px) 220px, 40vw"
+                  quality={88}
+                  className="object-cover"
+                />
+              </div>
+            </div>
           )}
         </div>
 
@@ -193,6 +187,65 @@ export default async function ProductPage({
           </div>
         </div>
       </article>
+
+      {/* 넣는 것·더 보기 — 흰 그릇의 재료는 원, 포장·소품은 사각. 값이 있을 때만 선다. */}
+      {(product.ingredients ||
+        (product.gallery && product.gallery.length > 1)) && (
+        <section className="rise border-t border-ink/10">
+          <div className="section-y-tight mx-auto max-w-6xl px-5 lg:px-8">
+            {product.ingredients && (
+              <>
+                <SectionEyebrow phase={0.5}>재료</SectionEyebrow>
+                <h2 className="mt-3 text-h2 lg:text-h2-lg">
+                  <span className="font-thin tracking-tight">넣는 것은 </span>
+                  <span className="font-black tracking-tighter">이것뿐</span>
+                </h2>
+                <ul className="mt-8 grid grid-cols-3 gap-4 sm:gap-6 lg:grid-cols-[repeat(3,11rem)] lg:gap-10">
+                  {product.ingredients.map((ing) => (
+                    <li key={ing.src}>
+                      <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-ink/8">
+                        <Image
+                          src={ing.src}
+                          alt={ing.alt}
+                          fill
+                          sizes="(min-width: 1024px) 176px, 30vw"
+                          quality={88}
+                          className="object-cover"
+                        />
+                      </div>
+                      <p className="mt-3 text-center text-small font-bold">
+                        {ing.label}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+            {product.gallery && product.gallery.length > 1 && (
+              <div className={product.ingredients ? "mt-14" : ""}>
+                <SectionEyebrow phase={0.5}>더 보기</SectionEyebrow>
+                <ul className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:gap-5">
+                  {product.gallery.slice(1).map((g) => (
+                    <li
+                      key={g.src}
+                      className="relative aspect-square overflow-hidden rounded-2xl bg-paper-2 ring-1 ring-inset ring-ink/5"
+                    >
+                      <Image
+                        src={g.src}
+                        alt={g.alt}
+                        fill
+                        sizes="(min-width: 1024px) 360px, 45vw"
+                        quality={88}
+                        className="object-cover"
+                      />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
 
       {product.reviewVideo && (
         /*
