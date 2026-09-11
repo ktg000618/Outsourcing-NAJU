@@ -146,6 +146,22 @@ export const products: Product[] = [
         src: "/images/product-jeolgutdae-pack.jpg",
         alt: "낱개 포장한 절굿대떡을 나무 소반에 담았다",
       },
+      {
+        src: "/images/gal-jeolgutdae-tea.jpg",
+        alt: "나주배와 차를 곁들인 절굿대떡",
+      },
+      {
+        src: "/images/gal-jeolgutdae-flowers.jpg",
+        alt: "마른 절굿대 꽃과 차, 접시에 담은 절굿대떡",
+      },
+      {
+        src: "/images/gal-jeolgutdae-stack.jpg",
+        alt: "긴 접시에 세워 담은 절굿대떡",
+      },
+      {
+        src: "/images/gal-jeolgutdae-mat.jpg",
+        alt: "라탄 매트 위 절굿대떡과 낱개 포장",
+      },
     ],
     accent: "signage",
   },
