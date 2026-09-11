@@ -415,7 +415,7 @@ export const products: Product[] = [
     ],
     price: null,
     unit: null,
-    occasions: ["이바지", "명절", "예단", "회사 선물"],
+    occasions: ["이바지", "명절", "선물"],
     storeUrl: null,
     accent: "gift",
   },

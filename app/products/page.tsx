@@ -57,49 +57,8 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      {/* 쓰임새 → 제품. 떡은 "무엇인가"보다 "언제 쓰는가"로 찾는 손님이 많다. */}
-      <section className="rise mx-auto max-w-6xl px-5 pb-16 pt-14 lg:px-8 lg:pb-20 lg:pt-20">
-        <SectionEyebrow phase={0.25}>쓰임새</SectionEyebrow>
-        <h2 className="mt-3 text-h3 lg:text-h2-lg">쓰임새로 고르기</h2>
-        {/*
-          제품 셋에 쓰임새 여섯 — 쓰임새를 축으로 세우면 표가 제품보다 커진다(리더 지적).
-          제품 한 줄에 쓰임새를 낱말로 붙인다. 원=제품 문법은 그대로.
-        */}
-        <ul className="mt-6 border-t border-ink/15">
-          {products.map((p) => (
-            <li
-              key={p.slug}
-              className="grid grid-cols-[1fr_auto] items-center gap-4 border-b border-ink/10 py-3.5 sm:grid-cols-[15rem_1fr] lg:py-4"
-            >
-              <Link
-                href={`/products/${p.slug}`}
-                className="group flex items-center gap-3"
-              >
-                <span className="relative size-9 shrink-0 overflow-hidden rounded-full bg-paper-2 ring-1 ring-ink/8 transition-[box-shadow] group-hover:ring-2 group-hover:ring-mint-deep lg:size-10">
-                  <Image
-                    src={p.image}
-                    alt=""
-                    fill
-                    sizes="40px"
-                    className="object-cover"
-                  />
-                </span>
-                <span className="text-body font-black tracking-tight transition-colors group-hover:text-mint-link lg:text-h3">
-                  {p.name}
-                </span>
-              </Link>
-              <p className="flex flex-wrap justify-end gap-x-3 gap-y-1 text-caption text-ink-soft sm:justify-start lg:text-small">
-                {p.occasions.map((o) => (
-                  <span key={o}>{o}</span>
-                ))}
-              </p>
-            </li>
-          ))}
-        </ul>
-      </section>
-
       {/* 왼쪽 대표 이미지 + 오른쪽 카드 그리드 */}
-      <div className="rise mx-auto max-w-6xl px-5 pb-24 lg:px-8 lg:pb-32">
+      <div className="rise mx-auto max-w-6xl px-5 pb-24 pt-14 lg:px-8 lg:pb-32 lg:pt-20">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)] lg:items-center lg:gap-14">
           {/* 이 원이 제품 페이지에서 가장 큰 브랜드 형태다. 글자는 사진 위가 아니라 아래. */}
           <Link
