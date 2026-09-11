@@ -11,6 +11,16 @@ export const metadata: Metadata = {
   title: "이야기",
   description:
     "목사골 양반들이 이바지로 쓰던 나주 절굿대떡. 사라졌던 떡이 어떻게 돌아왔고, 왜 맛의방주에 올랐는지.",
+  openGraph: {
+    images: [
+      {
+        url: "/images/jeolgutdae-bloom.jpg",
+        width: 3000,
+        height: 2000,
+        alt: "밭에서 꽃봉오리를 맺은 절굿대",
+      },
+    ],
+  },
 };
 
 export default function StoryPage() {

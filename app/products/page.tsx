@@ -9,6 +9,16 @@ export const metadata: Metadata = {
   title: "제품",
   description:
     "절굿대떡, 제비쑥떡, 호박고지떡, 나주배 촉촉오란다, 선물세트. 인공첨가물 없이 재래방식으로 빚습니다.",
+  openGraph: {
+    images: [
+      {
+        url: "/images/product-gift-scene.jpg",
+        width: 3000,
+        height: 2000,
+        alt: "찻상에 올린 절굿대떡",
+      },
+    ],
+  },
 };
 
 /**
@@ -34,36 +44,35 @@ export default function ProductsPage() {
           사진이 그대로 보이고, 글자는 먹색으로 흰 종이 위에 앉는다.
         */}
       <section className="mx-auto w-full max-w-6xl px-5 pt-10 lg:px-8 lg:pt-14">
-          <SectionEyebrow phase={0.1}>제품</SectionEyebrow>
-          <div className="mt-4 lg:grid lg:grid-cols-[7fr_5fr] lg:items-end lg:gap-16">
-            <h1 className="max-w-[16ch] text-h1 lg:text-hero">
+        <SectionEyebrow phase={0.1}>제품</SectionEyebrow>
+        <div className="mt-4 lg:grid lg:grid-cols-[7fr_5fr] lg:items-end lg:gap-16">
+          <h1 className="max-w-[16ch] text-h1 lg:text-hero">
             <span className="block font-thin tracking-tight">나주에서</span>
             <span className="block font-black tracking-tighter">빚는 것들</span>
           </h1>
-            <p className="mt-5 max-w-md text-ink-soft lg:mt-0 lg:pb-3">
-            이바지·명절·답례에 두루 나갑니다. 낱개 포장이라 나눠 드리기 좋습니다.
-            유화제나 인공감미료 없이 무농약 절굿대와 나주배 농축액으로만 단맛을 냅니다.
+          <p className="mt-5 max-w-md text-ink-soft lg:mt-0 lg:pb-3">
+            이바지·명절·답례에 두루 나갑니다. 낱개 포장이라 나눠 드리기
+            좋습니다. 유화제나 인공감미료 없이 무농약 절굿대와 나주배
+            농축액으로만 단맛을 냅니다.
           </p>
-          </div>
-          <div className="relative mt-10 aspect-4/3 overflow-hidden rounded-2xl bg-paper-2 sm:aspect-16/9 lg:aspect-[2.6/1] lg:mt-12 ring-1 ring-inset ring-ink/5">
-            <Image
-              src="/images/product-gift-scene.jpg"
-              alt="찻상에 올린 절굿대떡과 찻주전자"
-              fill
-              priority
-              sizes="(min-width: 1200px) 1152px, 100vw"
-              quality={88}
-              className="object-cover object-center"
-            />
-          </div>
+        </div>
+        <div className="relative mt-10 aspect-4/3 overflow-hidden rounded-2xl bg-paper-2 sm:aspect-16/9 lg:aspect-[2.6/1] lg:mt-12 ring-1 ring-inset ring-ink/5">
+          <Image
+            src="/images/product-gift-scene.jpg"
+            alt="찻상에 올린 절굿대떡과 찻주전자"
+            fill
+            priority
+            sizes="(min-width: 1200px) 1152px, 100vw"
+            quality={88}
+            className="object-cover object-center"
+          />
+        </div>
       </section>
 
       {/* 쓰임새 → 제품. 떡은 "무엇인가"보다 "언제 쓰는가"로 찾는 손님이 많다. */}
       <section className="rise mx-auto max-w-6xl px-5 pb-16 lg:px-8 lg:pb-20">
         <SectionEyebrow phase={0.25}>쓰임새</SectionEyebrow>
-        <h2 className="mt-3 text-h3 lg:text-h2-lg">
-          쓰임새로 고르기
-        </h2>
+        <h2 className="mt-3 text-h3 lg:text-h2-lg">쓰임새로 고르기</h2>
         <ul className="mt-8 grid grid-cols-2 gap-x-6 gap-y-7 sm:gap-x-8 lg:grid-cols-3">
           {[...byOccasion.entries()].map(([occasion, list]) => (
             <li key={occasion} className="border-t border-ink/15 pt-4">
@@ -91,18 +100,25 @@ export default function ProductsPage() {
       <div className="rise mx-auto max-w-6xl px-5 pb-24 lg:px-8 lg:pb-32">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)] lg:items-start lg:gap-14">
           {/* 이 원이 제품 페이지에서 가장 큰 브랜드 형태다. 글자는 사진 위가 아니라 아래. */}
-          <Link href={`/products/${lead.slug}`} className="group pressable block">
-            <ViewTransition name={`product-${lead.slug}`} share="morph" default="none">
+          <Link
+            href={`/products/${lead.slug}`}
+            className="group pressable block"
+          >
+            <ViewTransition
+              name={`product-${lead.slug}`}
+              share="morph"
+              default="none"
+            >
               <div className="relative aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-ink/8 transition-[box-shadow] duration-300 group-hover:ring-2 group-hover:ring-mint-deep group-hover:ring-offset-4 group-hover:ring-offset-paper">
-              <Image
-                src={lead.image}
-                alt=""
-                fill
-                priority
-                sizes="(min-width: 1024px) 45vw, 90vw"
-                quality={88}
-                className="object-cover transition-transform duration-700 ease-[cubic-bezier(.2,.7,.2,1)] group-hover:scale-[1.03]"
-              />
+                <Image
+                  src={lead.image}
+                  alt=""
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 45vw, 90vw"
+                  quality={88}
+                  className="object-cover transition-transform duration-700 ease-[cubic-bezier(.2,.7,.2,1)] group-hover:scale-[1.03]"
+                />
               </div>
             </ViewTransition>
             <h2 className="mt-6 text-h3 transition-colors group-hover:text-mint-link lg:text-h2">
@@ -127,23 +143,29 @@ export default function ProductsPage() {
                   href={`/products/${p.slug}`}
                   className="group pressable grid grid-cols-[5rem_minmax(0,1fr)] items-center gap-x-5 py-5 sm:block sm:py-0 lg:grid lg:grid-cols-[7rem_minmax(0,1fr)_auto] lg:gap-8 lg:py-7"
                 >
-                  <ViewTransition name={`product-${p.slug}`} share="morph" default="none">
+                  <ViewTransition
+                    name={`product-${p.slug}`}
+                    share="morph"
+                    default="none"
+                  >
                     <div className="relative row-span-2 aspect-square overflow-hidden rounded-full bg-paper-2 ring-1 ring-ink/8 transition-[box-shadow] duration-300 group-hover:ring-2 group-hover:ring-mint-deep group-hover:ring-offset-4 group-hover:ring-offset-paper sm:row-auto">
-                    <Image
-                      src={p.image}
-                      alt=""
-                      fill
-                      sizes="(min-width: 1024px) 112px, (min-width: 640px) 30vw, 80px"
-                      quality={88}
-                      className="object-cover transition-transform duration-700 ease-[cubic-bezier(.2,.7,.2,1)] group-hover:scale-[1.03]"
-                    />
+                      <Image
+                        src={p.image}
+                        alt=""
+                        fill
+                        sizes="(min-width: 1024px) 112px, (min-width: 640px) 30vw, 80px"
+                        quality={88}
+                        className="object-cover transition-transform duration-700 ease-[cubic-bezier(.2,.7,.2,1)] group-hover:scale-[1.03]"
+                      />
                     </div>
                   </ViewTransition>
                   <div className="self-end sm:mt-4 sm:self-auto lg:mt-0">
                     <h2 className="text-lead font-bold transition-colors group-hover:text-mint-link">
                       {p.name}
                     </h2>
-                    <p className="mt-1 text-small leading-relaxed text-ink-soft">{p.summary}</p>
+                    <p className="mt-1 text-small leading-relaxed text-ink-soft">
+                      {p.summary}
+                    </p>
                   </div>
                   {/* 가격이 없으면 자리표('전화 문의')도 없다 — 가격은 나중에 들어온다(리더 지시). */}
                   {p.price !== null && (
@@ -161,11 +183,11 @@ export default function ProductsPage() {
       <section className="rise bg-paper-2">
         <div className="section-y-tight mx-auto max-w-6xl px-5 lg:px-8">
           <SectionEyebrow phase={0.6}>주문</SectionEyebrow>
-          <h2 className="mt-3 text-h3 lg:text-h2-lg">
-            주문하는 방법
-          </h2>
+          <h2 className="mt-3 text-h3 lg:text-h2-lg">주문하는 방법</h2>
           {/* 스토어 주소가 없는 동안은 두 열 — "준비 중입니다" 자리표를 주문 섹션 한가운데 두지 않는다. */}
-          <ul className={`mt-9 grid gap-8 ${site.storeUrl ? "lg:grid-cols-3" : "lg:grid-cols-2"}`}>
+          <ul
+            className={`mt-9 grid gap-8 ${site.storeUrl ? "lg:grid-cols-3" : "lg:grid-cols-2"}`}
+          >
             <li className="border-t-2 border-moon pt-5">
               <h3 className="text-lead">전화 주문</h3>
               <p className="mt-2 text-small leading-relaxed text-ink-soft">
@@ -217,16 +239,16 @@ export default function ProductsPage() {
       {/* 제품별 spec 에만 흩어져 있던 보관·해동을 한자리에. 가장 많이 묻는 것이다. */}
       <section className="section-y-tight rise mx-auto max-w-6xl px-5 lg:px-8">
         <SectionEyebrow phase={1}>보관</SectionEyebrow>
-        <h2 className="mt-3 text-h3 lg:text-h2-lg">
-          보관과 해동
-        </h2>
+        <h2 className="mt-3 text-h3 lg:text-h2-lg">보관과 해동</h2>
         <div className="mt-8 grid gap-x-12 gap-y-8 lg:grid-cols-2">
           <div>
             <h3 className="text-lead">떡 — 절굿대떡·제비쑥떡</h3>
             <dl className="mt-4 divide-y divide-ink/10 border-y border-ink/10 text-small">
               <div className="flex gap-6 py-4">
                 <dt className="w-20 shrink-0 text-ink-faint">보관</dt>
-                <dd className="text-ink-soft">남은 떡은 굳기 전에 냉동해 주세요</dd>
+                <dd className="text-ink-soft">
+                  남은 떡은 굳기 전에 냉동해 주세요
+                </dd>
               </div>
               <div className="flex gap-6 py-4">
                 <dt className="w-20 shrink-0 text-ink-faint">해동</dt>
@@ -283,7 +305,6 @@ export default function ProductsPage() {
           </ul>
         </div>
       </section>
-
     </ViewTransition>
   );
 }

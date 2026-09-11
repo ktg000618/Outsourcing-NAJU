@@ -8,6 +8,16 @@ import { experience, site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "체험·매장",
   description: `${site.address}. 절굿대떡 만들기 체험과 떡카페를 함께 운영합니다.`,
+  openGraph: {
+    images: [
+      {
+        url: "/images/owners-field.jpg",
+        width: 3000,
+        height: 2000,
+        alt: "절굿대 밭에서 잎을 거두는 절굿대달토끼 부부",
+      },
+    ],
+  },
 };
 
 const mapQuery = encodeURIComponent(`${site.address} ${site.name}`);

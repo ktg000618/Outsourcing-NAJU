@@ -18,7 +18,18 @@ export async function generateMetadata({
   const { slug } = await params;
   const product = products.find((p) => p.slug === slug);
   if (!product) return {};
-  return { title: product.name, description: product.summary };
+  return {
+    title: product.name,
+    description: product.summary,
+    /* 카톡·검색 공유 카드에 그 제품 접시컷이 뜨게. 공통 카드(찻상)는 루트 레이아웃이 든다. */
+    openGraph: {
+      title: product.name,
+      description: product.summary,
+      images: [
+        { url: product.image, width: 1600, height: 1600, alt: product.name },
+      ],
+    },
+  };
 }
 
 export default async function ProductPage({
