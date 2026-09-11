@@ -264,7 +264,7 @@ export function PostForm({ action, initial }: Props) {
             >
               {pending ? "저장 중…" : initial ? "수정 저장" : "올리기"}
             </button>
-            <Link href="/admin" className="btn-secondary">
+            <Link href="/admin" className="btn-secondary w-auto shrink-0">
               취소
             </Link>
           </div>
