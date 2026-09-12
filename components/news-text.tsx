@@ -23,3 +23,11 @@ export function newsExcerpt(body: string, max = 120) {
   const flat = body.replace(/\s+/g, " ").trim();
   return flat.length > max ? `${flat.slice(0, max - 1)}…` : flat;
 }
+
+/** 빈 줄(연속 줄바꿈)로 문단을 나눈다. 문단 안의 한 줄 바꿈은 그대로 둔다(전화번호를 따로 두는 줄). */
+export function newsParagraphs(body: string): string[] {
+  return body
+    .split(/\n\s*\n/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+}

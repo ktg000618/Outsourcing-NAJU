@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
+import { NOTICE_MAX } from "@/lib/notice-shared";
 
 export type ActionState = { error: string | null };
 
@@ -201,6 +202,31 @@ export async function deleteRequest(id: string): Promise<ActionState> {
   revalidatePath("/admin/requests");
   revalidatePath("/admin");
   return { error: null };
+}
+
+/** 공지 띠 — 행 하나(id = 1)를 고친다. 켠 채 빈 글은 띄울 게 없으니 막는다. 모든 페이지 머리에 있어 layout 째 갱신. */
+export async function saveNotice(
+  _prev: ActionState,
+  formData: FormData,
+): Promise<ActionState> {
+  const { supabase } = await requireUser();
+  const text = String(formData.get("text") ?? "")
+    .replace(/\s+/g, " ")
+    .trim();
+  const enabled = formData.get("enabled") === "on";
+  if (enabled && !text) return { error: "띄울 문구를 적어 주세요." };
+  if (text.length > NOTICE_MAX)
+    return { error: `공지는 ${NOTICE_MAX}자까지입니다.` };
+  const { error } = await supabase
+    .from("site_notice")
+    .update({ text, enabled, updated_at: new Date().toISOString() })
+    .eq("id", 1);
+  if (error) {
+    console.error("[admin] saveNotice", error.message);
+    return { error: "저장하지 못했습니다. 다시 시도해 주세요." };
+  }
+  revalidatePath("/", "layout");
+  redirect("/admin");
 }
 
 export async function signOut() {

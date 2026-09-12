@@ -15,18 +15,20 @@ export const metadata: Metadata = {
 /** 직원용 목록. 게시·숨김 모두 보인다(RLS: authenticated 는 전부). */
 export default async function AdminPage() {
   const supabase = await createClient();
-  const [{ data }, { count: newRequests }, { data: auth }] = await Promise.all([
-    supabase
-      .from("news_posts")
-      .select(NEWS_SELECT)
-      .order("published_on", { ascending: false })
-      .order("created_at", { ascending: false }),
-    supabase
-      .from("experience_requests")
-      .select("id", { count: "exact", head: true })
-      .eq("status", "new"),
-    supabase.auth.getUser(),
-  ]);
+  const [{ data }, { count: newRequests }, { data: auth }, { data: notice }] =
+    await Promise.all([
+      supabase
+        .from("news_posts")
+        .select(NEWS_SELECT)
+        .order("published_on", { ascending: false })
+        .order("created_at", { ascending: false }),
+      supabase
+        .from("experience_requests")
+        .select("id", { count: "exact", head: true })
+        .eq("status", "new"),
+      supabase.auth.getUser(),
+      supabase.from("site_notice").select("enabled").eq("id", 1).maybeSingle(),
+    ]);
   const posts = (data ?? []) as NewsPost[];
   const publishedCount = posts.filter((p) => p.published).length;
   const hiddenCount = posts.length - publishedCount;
@@ -61,6 +63,9 @@ export default async function AdminPage() {
           </Link>
           <Link href="/admin/requests" className="text-link whitespace-nowrap">
             예약 문의 {newRequests ?? 0}건
+          </Link>
+          <Link href="/admin/notice" className="text-link whitespace-nowrap">
+            공지 띠 {notice?.enabled ? "켜짐" : "꺼짐"}
           </Link>
           <Link href="/news" className="text-link whitespace-nowrap">
             사이트에서 보기

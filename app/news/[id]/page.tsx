@@ -5,7 +5,11 @@ import { notFound } from "next/navigation";
 import { ViewTransition } from "react";
 import { ShareButton } from "@/components/share-button";
 import { NewsPhoto } from "@/components/news-photo";
-import { linkifyTel, newsExcerpt } from "@/components/news-text";
+import {
+  linkifyTel,
+  newsExcerpt,
+  newsParagraphs,
+} from "@/components/news-text";
 import { formatNewsDate, getPublishedPost } from "@/lib/news";
 import { site } from "@/lib/site";
 
@@ -111,9 +115,11 @@ export default async function NewsPostPage({ params }: Props) {
               {post.title}
             </h1>
             {post.body && (
-              <p className="mt-6 max-w-prose whitespace-pre-line text-ink-soft">
-                {linkifyTel(post.body)}
-              </p>
+              <div className="mt-6 max-w-prose space-y-4 whitespace-pre-line text-ink-soft">
+                {newsParagraphs(post.body).map((para, i) => (
+                  <p key={i}>{linkifyTel(para)}</p>
+                ))}
+              </div>
             )}
             {n === 1 && (
               <div className="photo mt-8 w-fit">

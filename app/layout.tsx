@@ -4,6 +4,8 @@ import { SiteFooter } from "@/components/site-footer";
 import { MobileActionBar } from "@/components/mobile-action-bar";
 import { MobileActionBarGate } from "@/components/mobile-action-bar-gate";
 import { site } from "@/lib/site";
+import { getNotice } from "@/lib/notice";
+import { SiteNotice } from "@/components/site-notice";
 import "pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css";
 import "./globals.css";
 
@@ -91,7 +93,9 @@ const businessJsonLd = {
   ...(site.instagramUrl ? { sameAs: [site.instagramUrl] } : {}),
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default async function RootLayout({ children }: LayoutProps<"/">) {
+  /* 공지 띠 — 켜져 있을 때만 값이 온다. 페이지 캐시와 함께 굳고, 관리 화면 저장이 layout 째 갱신한다. */
+  const notice = await getNotice();
   return (
     <html lang="ko" className="h-full">
       <body className="flex min-h-full flex-col">
@@ -107,6 +111,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           본문으로 건너뛰기
         </a>
         <SiteHeader />
+        {notice && <SiteNotice text={notice.text} />}
         <main id="main" className="flex-1">
           {children}
         </main>
