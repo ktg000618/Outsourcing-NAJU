@@ -259,12 +259,12 @@ export default async function ProductPage({
                 >
                   {product.video && (
                     /* 질감 영상은 첫 타일. 사진과 같은 정사각 — 원으로 걸치지 않는다. */
-                    <li className="relative aspect-square">
+                    <li className="relative aspect-4/3">
                       <LoopingVideo {...product.video} />
                     </li>
                   )}
                   {extras.map((g) => (
-                    <li key={g.src} className="photo aspect-square">
+                    <li key={g.src} className="photo aspect-4/3">
                       <Image
                         src={g.src}
                         alt={g.alt}
