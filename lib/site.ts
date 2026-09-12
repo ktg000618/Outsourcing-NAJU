@@ -20,7 +20,8 @@ export const site = {
   tagline: "남도의 으뜸맛떡",
   description:
     "사라졌던 나주 절굿대떡을 되살려 인공첨가물 없이 재래방식으로 빚습니다. 나주 징고샅길의 떡카페에서 맛보고, 만들어 볼 수 있습니다.",
-  owner: "김화수",
+  /* 법적 표기의 대표자 — 사업자등록증·사회적기업 인증서·명함 모두 김은아. 복원자 김화수 대표는 이야기에 나온다. */
+  owner: "김은아",
   since: 2016,
 
   /* 도메인이 정해지면 NEXT_PUBLIC_SITE_URL 만 바꾼다 — sitemap·OG·구조화
@@ -58,7 +59,7 @@ export const site = {
   /** 카카오맵 장소 페이지(장소 ID 302960832). 길찾기·리뷰·지도 퍼가기가 여기서 나온다. */
   kakaoPlaceUrl: "https://place.map.kakao.com/302960832",
   /** TODO(클라이언트): 문의 이메일. null 이면 푸터 사업자 표기 줄에서 빠진다. */
-  email: null as string | null,
+  email: "sunriseea@hanmail.net" as string | null,
 
   /** 법인명. 화면에 보이는 이름은 site.name(절굿대달토끼), 법적 표기는 이쪽이다. */
   legalName: "농업회사법인주식회사절굿대",
@@ -241,45 +242,52 @@ export const products: Product[] = [
     detailImages: [
       {
         src: "/images/detail/jeolgutdae-01.jpg",
-        alt: "절굿대떡 상세 — 50년 만에 돌아온 나주의 이바지 떡, 재료·만드는 방식·보관·제품정보 (1/6)",
+        alt: "절굿대떡 상세 — 50년 만에 돌아온 나주의 이바지 떡, 재료·만드는 방식·보관·제품정보 (1/7)",
         width: 1720,
         height: 3958,
         blur: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAcAAwDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDMTyYYVeCRty4yG7/SrscsPlIJGJYD+FRVZ7XUWh8v+zZBwAWERz+dQf2dqf8Az5XH/fFRZBY7pBtY/nzUtP8AKUdqXYPes+Uu5//Z",
       },
       {
         src: "/images/detail/jeolgutdae-02.jpg",
-        alt: "절굿대떡 상세 — 50년 만에 돌아온 나주의 이바지 떡, 재료·만드는 방식·보관·제품정보 (2/6)",
+        alt: "절굿대떡 상세 — 50년 만에 돌아온 나주의 이바지 떡, 재료·만드는 방식·보관·제품정보 (2/7)",
         width: 1720,
         height: 3859,
         blur: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAbAAwDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDprqS4UqLeJXyeSx6VOm7YN2N3fFMwWOWI69ielPQkL85GfakBUle2tZlEkxRn5Gc4qyMYBDbgRkH1omjSWIiRAwx3FIiqkaKgAUAYAoA//9k=",
       },
       {
         src: "/images/detail/jeolgutdae-03.jpg",
-        alt: "절굿대떡 상세 — 50년 만에 돌아온 나주의 이바지 떡, 재료·만드는 방식·보관·제품정보 (3/6)",
+        alt: "절굿대떡 상세 — 50년 만에 돌아온 나주의 이바지 떡, 재료·만드는 방식·보관·제품정보 (3/7)",
         width: 1720,
         height: 3919,
         blur: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAbAAwDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwC8l5pKXLTJqEKvzg7uhP4Vah1jTI4wp1KNz6s+T/KuEIZwNy8AcY+lROpVsYpWA6CDUYkhhX7cw2oAB5h+U8e/SqmqXkU86MLgSYjAJ3E9zXcIkZkIMceOf4BUvkxf88o/++BSsB//2Q==",
       },
       {
         src: "/images/detail/jeolgutdae-04.jpg",
-        alt: "절굿대떡 상세 — 50년 만에 돌아온 나주의 이바지 떡, 재료·만드는 방식·보관·제품정보 (4/6)",
+        alt: "절굿대떡 상세 — 50년 만에 돌아온 나주의 이바지 떡, 재료·만드는 방식·보관·제품정보 (4/7)",
         width: 1720,
         height: 4000,
-        blur: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAcAAwDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDqtpQ/IqgFueSOO5+tOiLlT5ihTuIGDniubOvyZJLoMHghetPHiAsB+9CkdQQOtRfqMjTQLOciLzrlSNxwNmeDjnipx4StCP8Aj5uPx2/4VqWcIWWdtzsWY8k9B6CroGBiqEf/2Q==",
+        blur: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAcAAwDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDqdpQ/IqgFueccdz9afEXZTvUL8xAwc8Vz515iST5Qx3xnIqQa9uA2si8cjb0NRfqPYpL4egnxGt3KpGTxEM8HHrUw8IRkZ+2yfjEP8a09Ny9xdlmORKyg56AGtIcDrmqEf//Z",
       },
       {
         src: "/images/detail/jeolgutdae-05.jpg",
-        alt: "절굿대떡 상세 — 50년 만에 돌아온 나주의 이바지 떡, 재료·만드는 방식·보관·제품정보 (5/6)",
+        alt: "절굿대떡 상세 — 50년 만에 돌아온 나주의 이바지 떡, 재료·만드는 방식·보관·제품정보 (5/7)",
         width: 1720,
-        height: 4000,
-        blur: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAcAAwDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDdt4St/K/74gqRggAdexrRXJHII+tVlLhyGYkduMVJWXOVYq380kOFt4cswHz9cfhViPf5aeaFD4+bHTNMgnd7lo2I2jPb3q3T5Quf/9k=",
+        height: 3917,
+        blur: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAbAAwDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDdt1YX8p8yVlKnC7cd+xrRU5HII+tVlZw5DPkdsCpMn1NZc5VirfzvBhYIdzsB8/UD8KsR7zGhkAV8fMAeM1JExLMD2qTFPlC5/9k=",
       },
       {
         src: "/images/detail/jeolgutdae-06.jpg",
-        alt: "절굿대떡 상세 — 50년 만에 돌아온 나주의 이바지 떡, 재료·만드는 방식·보관·제품정보 (6/6)",
+        alt: "절굿대떡 상세 — 50년 만에 돌아온 나주의 이바지 떡, 재료·만드는 방식·보관·제품정보 (6/7)",
         width: 1720,
-        height: 4170,
-        blur: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAdAAwDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDfSK9+1sWdfJ5xyD9OKuR7gp3kE54xxxTOjcYAp9SMjOCfmqQDHSvOn1i8ZRsubhMAf8ticnuaj/tbUf8An+uP+/hp2Ef/2Q==",
+        height: 4000,
+        blur: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAcAAwDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDdja6F44+zgJzh9uM+nNX4y5U71wc8Y9Kj3bTgning5qRkbbt3FSDOOaYeDxx9KfQB/9k=",
+      },
+      {
+        src: "/images/detail/jeolgutdae-07.jpg",
+        alt: "절굿대떡 상세 — 50년 만에 돌아온 나주의 이바지 떡, 재료·만드는 방식·보관·제품정보 (7/7)",
+        width: 1720,
+        height: 661,
+        blur: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAFAAwDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDBfUrh1GyWdMAD/XMcnufxqP7fef8AP3P/AN/D/jRRQB//2Q==",
       },
     ],
     ingredients: [
@@ -301,7 +309,13 @@ export const products: Product[] = [
     storeUrl: null,
     spec: [
       { label: "내용량", value: "80g × 20개 · 약 1,600g" },
-      { label: "보관", value: "남은 떡은 굳기 전에 냉동 보관해 주세요" },
+      { label: "식품유형", value: "떡류" },
+      {
+        label: "원재료",
+        value:
+          "국내산 100% — 나주찹쌀 70%, 절굿대 6.6%, 쑥 13%, 나주배즙 8.8%, 소금(신안천일염) 0.9% · 콩고물을 입힙니다",
+      },
+      { label: "보관", value: "냉동 보관 · 남은 떡은 굳기 전에 냉동해 주세요" },
       {
         label: "해동",
         value: "실온에서 1~2시간, 또는 찜기·전자레인지로 말랑하게",
@@ -312,6 +326,10 @@ export const products: Product[] = [
           "인절미 그대로가 가장 좋지만, 기호에 따라 청이나 콩가루를 곁들이셔도 됩니다",
       },
       { label: "포장", value: "낱개 포장" },
+      {
+        label: "제조·판매",
+        value: "절굿대떡屋 · 나주시 청동길 14 (나주목사고을시장 안)",
+      },
     ],
     gallery: [
       {
@@ -499,7 +517,7 @@ export const products: Product[] = [
         alt: "선물세트 상세 — 구성·포장·재료·쓰임새·배송·제품정보 (3/5)",
         width: 1720,
         height: 3667,
-        blur: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAaAAwDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDbtdRSW+kgVJBtLAsWyvHtWkjB1yK5P/hIrSOUTnT7jPJBLjAz1qVPGVsi4FnN/wB9rUq/Up26HNrZ3JVB9nlJcArheueneqjqVbBBz7in/aJgUImkyoGPmPFRkk8kkmn1Ef/Z",
+        blur: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAaAAwDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDbtdRSW+kgVJBtLAsWyvHtWkjB1yK5P/hIrSOUTnT7jPJBLjAz1qVPGVsi4FnN/wB9rUq/Up26HOJZ3O1B9nlJYAqAvUHp3qo6lWIIIPoad9omBQiaTKgY+Y8VGSTySSafUR//2Q==",
       },
       {
         src: "/images/detail/gift-04.jpg",
@@ -602,20 +620,25 @@ export const history = [
   },
   {
     year: "2017",
-    items: ["50년 만에 사라졌던 남도의 으뜸맛떡 '절굿대떡' 부활"],
+    items: [
+      "50년 만에 사라졌던 남도의 으뜸맛떡 '절굿대떡' 부활",
+      "천지일보·MBC 빛날·KBS 생생3도·tvN 놀라운 TV·전남도정방송 등 보도",
+    ],
   },
   {
     year: "2019",
     items: [
       "농업회사법인 주식회사 절굿대 설립",
       "나주읍성 '절굿대달토끼' 떡카페 오픈",
-      "관광두레 선정 (문화체육관광부·한국문화관광연구원·한국관광공사)",
+      "관광두레 주민사업체 선정 (문화체육관광부·한국문화관광연구원·한국관광공사)",
+      "나주시 여행자플랫폼 선정",
     ],
   },
   {
     year: "2020",
     items: [
-      "떡제조기능사 국가자격 취득",
+      "떡제조기능사 국가자격 취득 (김화수)",
+      "여성기업 확인",
       "전남형 예비사회적기업 지정",
       "사회복지시설 업무협약 (장애인복지관·다문화가족센터)",
     ],
@@ -631,7 +654,7 @@ export const history = [
   {
     year: "2023",
     items: [
-      "나주시 여성새로일하기센터·국립나주숲체원 등 업무협약",
+      "나주시 여성새로일하기센터·국립나주숲체원·사회적기업 내일드림·전남지역문제해결플랫폼 업무협약",
       "사회적기업 인증 제2023-247호 · 고용노동부",
     ],
   },
@@ -652,7 +675,7 @@ export const history = [
  * 그래서 이 항목들이 이 사업에서 가장 급한 미수령 자료다.
  */
 export const experience = {
-  name: "'절굿대떡' 만들기 체험",
+  name: "바람떡 만들기 체험",
   target: "학교·단체·가족 (개인 참여도 가능)",
   /** TODO(클라이언트): 최소·최대 인원 */
   minPeople: null as number | null,
@@ -666,10 +689,18 @@ export const experience = {
   /** TODO(클라이언트): 체험 후 가져가는 것 */
   takeaway: null as string | null,
   /** 진행 순서. 클라이언트 문안과 체험 사진에서 확인된 것만 적는다. */
+  /* 클라이언트 체험 자료(바람떡 만들기) 순서 그대로. */
   steps: [
-    { title: "반죽 치기", detail: "쌀 반죽을 손으로 칩니다." },
-    { title: "모양 빚기", detail: "빚은 떡에 나무 떡살로 문양을 찍습니다." },
-    { title: "콩고물 입히기", detail: "고물을 입혀 마무리합니다." },
+    { title: "앙금 나누기", detail: "속에 넣을 앙금을 한 개 분량씩 나눕니다." },
+    { title: "밀대로 떡 밀기", detail: "떡 반죽을 밀대로 둥글게 밉니다." },
+    {
+      title: "앙금 올려 모양 찍기",
+      detail: "앙금을 올려 반달로 접고 바람떡 틀로 찍습니다.",
+    },
+    {
+      title: "꾸며서 상자에 담기",
+      detail: "예쁘게 꾸민 떡을 상자에 담아 가져갑니다.",
+    },
   ],
 } as const;
 
@@ -681,6 +712,27 @@ export const credentials: {
   image?: { src: string; alt: string; width: number; height: number };
 }[] = [
   {
+    label: "관광두레 선정",
+    detail: "2019년 문화체육관광부·한국관광공사 · 나주시 여행자플랫폼",
+    image: {
+      src: "/images/plaque-tourdure.jpg",
+      alt: "2020 관광두레 현판",
+      width: 847,
+      height: 485,
+    },
+  },
+  { label: "떡제조기능사", detail: "2020년 국가기술자격 · 김화수" },
+  {
+    label: "전라남도지사 표창",
+    detail: "2021년 사회복지 부문",
+    image: {
+      src: "/images/award-2021.jpg",
+      alt: "전라남도지사 표창장 — 농업회사법인 주식회사 절굿대, 2021년",
+      width: 664,
+      height: 963,
+    },
+  },
+  {
     label: "맛의방주 등재",
     detail: "2022년 국제슬로푸드생물다양성재단",
     image: {
@@ -690,7 +742,16 @@ export const credentials: {
       height: 1125,
     },
   },
-  { label: "사회적기업 인증", detail: "제2023-247호 · 고용노동부" },
+  {
+    label: "사회적기업 인증",
+    detail: "제2023-247호 · 고용노동부 (2023년 10월 25일)",
+    image: {
+      src: "/images/cert-social.jpg",
+      alt: "농업회사법인 주식회사 절굿대 사회적기업 인증서 — 고용노동부, 제2023-247호",
+      width: 989,
+      height: 1400,
+    },
+  },
   { label: "고향사랑 답례품", detail: "2024년 나주시 선정" },
   {
     label: "상표등록",

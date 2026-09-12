@@ -11,7 +11,7 @@ import { experience, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "체험·매장",
-  description: `${site.address}. 절굿대떡 만들기 체험과 떡카페를 함께 운영합니다.`,
+  description: `${site.address}. 바람떡 만들기 체험과 떡카페를 함께 운영합니다.`,
   alternates: { canonical: "/visit" },
   openGraph: {
     images: [
@@ -28,14 +28,15 @@ export const metadata: Metadata = {
 const mapQuery = encodeURIComponent(`${site.address} ${site.name}`);
 
 /* 체험 사진은 얼굴이 들어오지 않는 두 컷만. 나머지 자료 사진은 참가자 얼굴이 정면으로 크게 나와 초상권 동의 없이는 못 올린다. */
+/* 체험 사진은 클라이언트 체험 자료(바람떡 만들기)에서. 얼굴이 나오는 교육 사진은 초상권 동의 없이 못 올린다. */
 const experiencePhotos = [
   {
     src: "/images/making-hands.jpg",
     alt: "장갑 낀 손으로 초록 절굿대 반죽을 틀에 펴고 있다",
   },
   {
-    src: "/images/process-pour.jpg",
-    alt: "절굿대를 넣은 초록 반죽을 틀에 붓는다",
+    src: "/images/baramtteok-box.jpg",
+    alt: "상자에 담은 색색의 바람떡",
   },
 ];
 /* 매장 사진은 장면이라 사각. 간판 「절굿대 달토끼」가 통째로 들어오는 위치로 자른다. */
@@ -84,6 +85,8 @@ export default function VisitPage() {
           : null,
     },
     { label: "운영", value: availability },
+    { label: "결제", value: "문화누리카드 사용 가능" },
+    { label: "단체", value: "학교·공공기관 단체 주문 환영" },
     { label: "가져가는 것", value: takeaway },
     {
       label: "예약",
@@ -128,12 +131,12 @@ export default function VisitPage() {
             <SectionHead
               phase={0.25}
               eyebrow="체험"
-              title={{ thin: "절굿대떡 ", black: "만들기 체험" }}
+              title={{ thin: "바람떡 ", black: "만들기 체험" }}
               split="inline"
             />
             <p className="mt-6 max-w-prose text-ink-soft">
-              반죽을 치고 모양을 빚어 콩고물을 입히기까지, 손으로 해 봅니다.
-              어린이 단체부터 어른 모임까지 참여할 수 있습니다.
+              떡 반죽을 밀고 앙금을 넣어 바람떡을 찍고, 예쁘게 꾸며 상자에 담아
+              갑니다. 어린이 단체부터 어른 모임까지 참여할 수 있습니다.
             </p>
             {/*
               인솔자는 예산을 짜야 해서 인원·시간·참가비 없이는 전화를 못 건다.

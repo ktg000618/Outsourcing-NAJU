@@ -42,6 +42,15 @@ export function SiteFooter() {
           <p className="mt-6 max-w-xs text-small">
             {site.tagline} · {site.since}년부터 나주에서
           </p>
+          {/* 사회적기업 시그니처(고용노동부 지정 표시). 흰 판 위에 — 지침상 바탕색 위에 직접 놓지 않는다. */}
+          <Image
+            src="/brand/social-enterprise.png"
+            alt="고용노동부 인증 사회적기업 제2023-247호"
+            width={1200}
+            height={341}
+            sizes="160px"
+            className="mt-6 h-12 w-auto rounded-sm bg-paper px-3 py-2"
+          />
         </div>
 
         <div>
@@ -95,15 +104,17 @@ export function SiteFooter() {
 
       <div className="relative border-t border-paper/15">
         {/* 모바일은 세로로 쌓고 점 없이 — 줄바꿈된 줄 앞에 '·' 가 남으면 글머리 목록으로 읽힌다(375 실측). */}
-        <div className="mx-auto flex max-w-6xl flex-col gap-y-1 px-5 py-6 text-caption text-paper-faint sm:flex-row sm:flex-wrap sm:[&>span+span]:before:mx-2 sm:[&>span+span]:before:text-paper/30 sm:[&>span+span]:before:content-['·'] lg:px-8">
+        <div className="mx-auto flex max-w-6xl flex-col gap-y-1 px-5 pt-6 pb-1 text-caption text-paper-faint sm:flex-row sm:flex-wrap sm:[&>span+span]:before:mx-2 sm:[&>span+span]:before:text-paper/30 sm:[&>span+span]:before:content-['·'] lg:px-8">
           <span>{site.legalName}</span>
           <span>대표 {site.owner}</span>
           <span>사업자등록번호 {site.businessNumber}</span>
           <span>통신판매업 {site.mailOrderNumber}</span>
-          {site.email && <span>{site.email}</span>}
+        </div>
+        <div className="mx-auto flex max-w-6xl flex-col gap-y-1 px-5 pb-6 text-caption text-paper-faint sm:flex-row sm:flex-wrap sm:[&>span+span]:before:mx-2 sm:[&>span+span]:before:text-paper/30 sm:[&>span+span]:before:content-['·'] lg:px-8">
           <span>
             ({site.postalCode}) {site.address}
           </span>
+          {site.email && <span>{site.email}</span>}
         </div>
       </div>
     </footer>
