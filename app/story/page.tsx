@@ -43,7 +43,7 @@ const rows: Row[] = [
   { when: "2021년", title: "전라남도지사 표창 (사회복지부문)" },
   {
     when: "2023년",
-    title: "사회적기업 인증 제2023-247 (고용노동부)",
+    title: "사회적기업 인증 제2023-247호 · 고용노동부",
     body: "나주시 여성새로일하기센터·국립나주숲체원 등 업무협약을 맺었습니다.",
   },
   {
@@ -128,6 +128,10 @@ export default function StoryPage() {
               className="object-cover"
             />
           </div>
+          <p className="caption mt-3 text-caption text-ink-faint">
+            이랑을 따라 자란 절굿대 밭. 2016년 육묘에 성공해 지금은 이렇게
+            기릅니다.
+          </p>
         </div>
       </section>
 
@@ -225,7 +229,8 @@ export default function StoryPage() {
               위탁해 재배합니다.
             </p>
             <p className="max-w-prose">
-              그렇게 기른 절굿대를 넣은 반죽을 손으로 쳐서 빚습니다.
+              그렇게 기른 절굿대를 넣은 반죽을 손으로 쳐서 빚습니다. 유화제나
+              인공감미료는 넣지 않고, 단맛은 나주배즙으로만 냅니다.
             </p>
           </div>
           <div className="photo aspect-[2/1] lg:aspect-4/3">

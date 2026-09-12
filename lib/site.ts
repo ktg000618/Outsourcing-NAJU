@@ -199,6 +199,7 @@ export const products: Product[] = [
         alt: "흰 그릇에 담긴 절굿대 잎 반죽",
         label: "절굿대",
       },
+      { src: "/images/ing-pear.jpg", alt: "나주배", label: "나주배즙" },
     ],
     price: null,
     unit: null,
@@ -215,6 +216,7 @@ export const products: Product[] = [
         value:
           "인절미 그대로가 가장 좋지만, 기호에 따라 청이나 콩가루를 곁들이셔도 됩니다",
       },
+      { label: "포장", value: "낱개 포장" },
     ],
     gallery: [
       {
@@ -330,6 +332,10 @@ export const products: Product[] = [
         alt: "「건강하고 촉촉한, 나주배촉촉 오란다」 오란다 선물 상자",
       },
       {
+        src: "/images/gal-oranda-bars.jpg",
+        alt: "접시에 놓은 오란다 두 개",
+      },
+      {
         src: "/images/gal-oranda-seeds.jpg",
         alt: "접시에 담은 오란다와 곁들인 견과·씨앗",
       },
@@ -359,8 +365,8 @@ export const products: Product[] = [
     // 상세페이지 이미지에서 읽어낸 값. 원재료 전체 표기는 판독이 불완전해
     // 클라이언트 확인 전까지 싣지 않는다(식품 표기는 틀리면 법적 문제가 된다).
     spec: [
-      { label: "소비기한", value: "제조일로부터 6개월" },
       { label: "보관", value: "냉장·냉동 보관 권장 (상온 보관 가능)" },
+      { label: "소비기한", value: "제조일로부터 6개월" },
       {
         label: "드시는 법",
         value: "냉동 보관 시 30분 전 상온 해동, 또는 전자레인지 15초",
@@ -378,7 +384,7 @@ export const products: Product[] = [
       src: "/video/review.mp4",
       poster: "/video/review-poster.jpg",
       label: "나주배 촉촉오란다를 손에 들고 소개하는 후기 영상",
-      caption: "겉바속촉 쫀득한 식감!",
+      caption: "겉바속촉 쫀득한 식감",
       source: "남도장터 구매 고객이 올린 영상 · 27초 · 자막 있음",
       /* 영상에 박힌 자막을 그대로 옮겼다(1초 간격 프레임 OCR). 시점은 그 말이 시작되는 초. */
       moments: [
@@ -419,8 +425,8 @@ export const products: Product[] = [
         src: "/images/detail/gift-03.jpg",
         alt: "선물세트 상세 — 구성·포장·재료·쓰임새·배송·제품정보 (3/5)",
         width: 1720,
-        height: 3301,
-        blur: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAXAAwDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDct77detC0Uictgs2QcegrQjfeuelcAdc1PZlL+XPcFF/nio/+Eh1b/n+k/Jf8KlJjbREsdl+7U3bAEAsfKzgnrVN9u75WyPXGKKKYj//Z",
+        height: 3667,
+        blur: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAaAAwDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDbtdRSW+kgVJBtLAsWyvHtWkjB1yK5P/hIrSOUTnT7jPJBLjAz1qVPGVsi4FnN/wB9rUq/Up26HNrZ3JVB9nlJcArheueneqjqVbBBz7jmn/aJgUImkyoGPmPFRkk8kkmn1Ef/2Q==",
       },
       {
         src: "/images/detail/gift-04.jpg",
@@ -447,8 +453,12 @@ export const products: Product[] = [
         alt: "절굿대떡과 차를 곁들인 선물 상자",
       },
       {
-        src: "/images/gal-gift-bag.jpg",
-        alt: "선물세트를 담아 드리는 종이 가방",
+        src: "/images/gal-jeolgutdae-packs.jpg",
+        alt: "바구니에 담은 낱개 포장 절굿대떡",
+      },
+      {
+        src: "/images/gal-gift-plate.jpg",
+        alt: "접시에 담은 절굿대떡과 낱개 포장, 마른 절굿대 꽃",
       },
     ],
     price: null,
@@ -549,7 +559,7 @@ export const history = [
     year: "2023",
     items: [
       "나주시 여성새로일하기센터·국립나주숲체원 등 업무협약",
-      "사회적기업 인증 제2023-247 (고용노동부)",
+      "사회적기업 인증 제2023-247호 · 고용노동부",
     ],
   },
   {
@@ -593,8 +603,7 @@ export const experience = {
 /** 신뢰 근거. 사진이 아니라 사실로 말하는 자리다. */
 export const credentials = [
   { label: "맛의방주 등재", detail: "2022년 국제슬로푸드생물다양성재단" },
-  { label: "사회적기업 인증", detail: "제2023-247호 고용노동부" },
+  { label: "사회적기업 인증", detail: "제2023-247호 · 고용노동부" },
   { label: "고향사랑 답례품", detail: "2024년 나주시 선정" },
   { label: "상표등록", detail: "제40-2515456호 · 2026년 지식재산처" },
-  { label: "인공첨가물 무사용", detail: "유화제·인공감미료를 넣지 않습니다" },
 ] as const;

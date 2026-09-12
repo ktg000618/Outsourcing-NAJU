@@ -50,7 +50,7 @@ export default function VisitPage() {
     { label: "가져가는 것", value: takeaway },
     {
       label: "예약",
-      value: "인원과 날짜에 따라 준비가 필요합니다. 미리 문의해 주세요.",
+      value: "인원과 날짜에 따라 준비가 필요합니다.",
     },
   ];
 
@@ -90,7 +90,8 @@ export default function VisitPage() {
             <SectionHead
               phase={0.25}
               eyebrow="체험"
-              title="절굿대떡 만들기 체험"
+              title={{ thin: "절굿대떡 ", black: "만들기 체험" }}
+              split="inline"
             />
             <p className="mt-6 max-w-prose text-ink-soft">
               반죽을 치고 모양을 빚어 콩고물을 입히기까지, 손으로 해 봅니다.
@@ -163,7 +164,8 @@ export default function VisitPage() {
           <SectionHead
             phase={0.55}
             eyebrow="진행 순서"
-            title="이렇게 진행합니다"
+            title={{ thin: "이렇게 ", black: "진행합니다" }}
+            split="inline"
           />
           {/* 실선 장부 세 줄. 번호는 제목 옆 작은 캡션 — 큰 숫자는 위 연표·페이지 제목과 겨뤘다. */}
           <ol className="mt-9 divide-y divide-ink/10 border-y border-ink/10">

@@ -86,12 +86,17 @@ export default function ProductsPage() {
                     />
                   </div>
                 </ViewTransition>
-                <div>
-                  <h2 className="text-title transition-colors group-hover:text-mint-link">
-                    {p.name}
-                  </h2>
-                  <p className="mt-1 text-small text-ink-soft">{p.summary}</p>
-                  {/* 가격이 없으면 자리표('전화 문의')도 없다 — 가격은 나중에 들어온다(리더 지시). */}
+                <div className="flex items-center justify-between gap-6">
+                  <div>
+                    <h2 className="text-title transition-colors group-hover:text-mint-link">
+                      {p.name}
+                    </h2>
+                    <p className="mt-1 text-small text-ink-soft">{p.summary}</p>
+                    {/* 가격이 없으면 자리표('전화 문의')도 없다 — 가격은 나중에 들어온다(리더 지시). */}
+                  </div>
+                  <span className="text-link hidden shrink-0 sm:inline-flex">
+                    자세히 보기
+                  </span>
                 </div>
               </Link>
             </li>
@@ -102,7 +107,12 @@ export default function ProductsPage() {
       {/* 주문 경로. 전화 주문 비중이 큰 곳이다. 열마다 번호·제목·한 줄·액션 하나, 구조 동일. */}
       <section className="rise bg-paper-2">
         <div className="section-y-tight mx-auto max-w-6xl px-5 lg:px-8">
-          <SectionHead phase={0.4} eyebrow="주문" title="주문하는 방법" />
+          <SectionHead
+            phase={0.4}
+            eyebrow="주문"
+            title={{ thin: "전화로, 매장에서 ", black: "주문하는 방법" }}
+            split="inline"
+          />
           {/* 스토어 주소가 없는 동안은 두 열 — "준비 중입니다" 자리표를 주문 섹션 한가운데 두지 않는다. */}
           <ul
             className={`mt-9 grid gap-8 ${site.storeUrl ? "lg:grid-cols-3" : "lg:grid-cols-2"}`}
@@ -154,7 +164,12 @@ export default function ProductsPage() {
       {/* 제품별 spec 에만 흩어져 있던 보관·해동을 한자리에. 가장 많이 묻는 것이다.
           PC 는 subgrid 로 두 표의 행을 같은 높이에 맞춘다 — 값 길이가 달라도 아래 실선이 나란하다. */}
       <section className="section-y-tight rise mx-auto max-w-6xl px-5 lg:px-8">
-        <SectionHead phase={0.7} eyebrow="보관" title="보관과 해동" />
+        <SectionHead
+          phase={0.7}
+          eyebrow="보관"
+          title={{ thin: "집에서 ", black: "보관과 해동" }}
+          split="inline"
+        />
         <div className="mt-8 grid gap-x-12 gap-y-10 lg:grid-cols-2">
           {care.map((c) => (
             <div

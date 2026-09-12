@@ -67,7 +67,7 @@ export function ReviewVideo({ src, poster, label, moments, children }: Props) {
                   type="button"
                   aria-current={active ? "true" : undefined}
                   onClick={() => seek(m.t)}
-                  className={`flex w-full items-baseline gap-4 py-3.5 text-left transition-colors hover:text-paper ${
+                  className={`flex w-full items-baseline gap-4 py-3.5 text-left text-pretty transition-colors hover:text-paper ${
                     active ? "text-paper" : "text-paper-faint"
                   }`}
                 >

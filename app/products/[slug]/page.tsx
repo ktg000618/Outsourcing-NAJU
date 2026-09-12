@@ -223,7 +223,7 @@ export default async function ProductPage({
                   phase={0.5}
                   eyebrow="재료"
                   split="inline"
-                  title={{ thin: "넣는 것은 ", black: "이것뿐" }}
+                  title={{ thin: "넣는 것 ", black: "가까이서" }}
                 />
                 <ul className="mt-8 grid grid-cols-3 gap-4 sm:gap-6 lg:grid-cols-[repeat(3,11rem)] lg:gap-10">
                   {product.ingredients.map((ing) => (
@@ -295,9 +295,9 @@ export default async function ProductPage({
                 후기 영상
               </SectionEyebrow>
               <p className="mt-5 text-h2 tracking-tight lg:text-h2-lg">
-                <span className="block font-thin">직접 드셔 본 분의 말.</span>
+                <span className="block font-thin">직접 드셔 본 분의 말</span>
                 <span className="block font-black">
-                  “{product.reviewVideo.caption}”
+                  {product.reviewVideo.caption}
                 </span>
               </p>
               <p className="mt-5 text-caption text-paper-faint">

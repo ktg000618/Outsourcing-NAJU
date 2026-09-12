@@ -43,7 +43,7 @@ export default function HomePage() {
                 {
                   src: "/images/product-gift-scene.jpg",
                   alt: "찻상에 올린 절굿대떡과 찻주전자",
-                  position: "object-[50%_55%]",
+                  position: "object-[50%_85%]",
                 },
                 {
                   src: "/images/owners-field.jpg",
@@ -118,7 +118,7 @@ export default function HomePage() {
         <SectionHead
           phase={0.15}
           eyebrow="제품"
-          title="빚는 것들"
+          title={{ thin: "나주에서", black: "빚는 것들" }}
           aside={
             <Link href="/products" className="text-link">
               제품 보러 가기
@@ -127,7 +127,7 @@ export default function HomePage() {
         />
         {/* 모바일은 원 셋을 세로로 쌓으면 1,300px 을 먹는다. 옆으로 넘기는 구조로 — 72vw 원 하나씩.
             스크롤바는 숨기고 스냅으로 한 장씩 멈춘다. sm 부터는 3열 그리드, 원 셋 윗선 동일. */}
-        <ul className="-mx-5 mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-2 [scrollbar-width:none] sm:mx-0 sm:grid sm:grid-cols-3 sm:gap-x-8 sm:overflow-visible sm:px-0 sm:pb-0 lg:mt-14 lg:gap-x-10 [&::-webkit-scrollbar]:hidden">
+        <ul className="-mx-5 mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-2 scroll-pl-5 [scrollbar-width:none] sm:mx-0 sm:grid sm:grid-cols-3 sm:gap-x-8 sm:overflow-visible sm:px-0 sm:pb-0 lg:mt-14 lg:gap-x-10 [&::-webkit-scrollbar]:hidden">
           {best.map((p) => (
             <li key={p.slug} className="w-[62vw] shrink-0 snap-start sm:w-auto">
               <Link
@@ -176,7 +176,7 @@ export default function HomePage() {
               <br />
               있다 하여 붙은 이름,
               <br />
-              <span className="font-black">천금누로탕.</span>
+              <span className="font-black">천금누로탕</span>
             </blockquote>
             <p className="mt-6 max-w-prose text-ink-soft">
               절굿대의 뿌리는 한방에서 누로(漏蘆)라 부르는 약재입니다.
@@ -268,7 +268,12 @@ export default function HomePage() {
       <section className="rise mx-auto max-w-6xl px-5 pb-20 pt-12 lg:px-8 lg:pb-28 lg:pt-16">
         <ul className="divide-y divide-ink/10 border-y border-ink/10">
           <li className="flex flex-col gap-3 py-5 sm:flex-row sm:items-center sm:justify-between sm:gap-8 lg:py-6">
-            <p className="text-lead font-bold">주문·체험 문의</p>
+            <div>
+              <p className="text-lead font-bold">주문·체험 문의</p>
+              <p className="mt-1 text-small text-ink-soft">
+                {site.hours} · 매장에서도 바로 구매하실 수 있습니다.
+              </p>
+            </div>
             <a href={site.telHref} className="btn-primary">
               전화 주문 {site.tel}
             </a>
