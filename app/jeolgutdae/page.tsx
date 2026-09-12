@@ -48,7 +48,7 @@ export default function JeolgutdaePage() {
         <div className="photo aspect-3/2">
           <Image
             src="/images/jeolgutdae-bloom.jpg"
-            alt="공처럼 둥글게 핀 남보라색 절굿대 꽃"
+            alt="둥근 꽃봉오리가 맺힌 절굿대 밭"
             fill
             priority
             sizes="(min-width: 1200px) 1152px, 100vw"
@@ -57,7 +57,7 @@ export default function JeolgutdaePage() {
           />
         </div>
         <p className="mt-3 text-caption text-ink-faint">
-          절굿대 꽃. 꽃송이 하나가 작은 꽃 수십 개가 모인 공입니다.
+          꽃봉오리가 맺힌 절굿대. 여름이면 이 공이 남보라색으로 핍니다.
         </p>
       </div>
 
