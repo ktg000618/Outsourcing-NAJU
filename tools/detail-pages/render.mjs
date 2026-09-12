@@ -1,4 +1,5 @@
-// 상세페이지 HTML → 860px 세로 이미지(2x = 1720px). 처음 한 번 `npx playwright install chromium`.
+// 상세페이지 HTML → 860px 세로 이미지(2x = 1720px).
+// 처음 한 번 `npx playwright install chromium`. 이미 설치된 크롬을 쓰려면 CHROME_PATH=/경로/Chrome 으로.
 //   node render.mjs jeolgutdae gift
 // Chromium 은 한 장의 캡처가 16,384px 을 넘으면 되감긴다 → 6,000px(CSS) 단위로 잘라 찍어 이어 붙인다.
 import { fileURLToPath } from "node:url";
@@ -10,7 +11,9 @@ const out = path.join(here, "out");
 fs.mkdirSync(out, { recursive: true });
 const SCALE = 2,
   CHUNK = 6000;
-const browser = await chromium.launch({});
+const browser = await chromium.launch({
+  executablePath: process.env.CHROME_PATH || undefined,
+});
 for (const name of process.argv.slice(2)) {
   const page = await browser.newPage({
     viewport: { width: 860, height: 1200 },

@@ -11,6 +11,7 @@
 - **제품·문구·연락처**: `lib/site.ts` 한 파일. 가격·소비기한처럼 아직 비어 있는 값은 `null` 로 두었고, 채우면 화면에 자리가 생깁니다.
 - **사진**: `public/images/`. 제품·재료 사진(원형 자리)은 가장자리 복제+블러로 패딩한 정사각(1600·1200px).
 - **상세페이지 이미지**: `tools/detail-pages/` (`*.html` → `node render.mjs` → `python3 stitch.py` → `python3 slice.py`).
+  렌더는 Playwright 크로미움을 씁니다. 처음 한 번 `npx playwright install chromium`, 또는 `CHROME_PATH=/경로/Chrome node render.mjs …`.
 
 ## 개발
 
