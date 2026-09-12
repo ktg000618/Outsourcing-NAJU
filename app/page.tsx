@@ -157,6 +157,11 @@ export default function HomePage() {
                     <span className="text-lead font-bold transition-colors group-hover:text-mint-link">
                       {p.name}
                     </span>
+                    {p.price !== null && (
+                      <span className="text-small tabular-nums text-ink-soft">
+                        {p.price.toLocaleString("ko-KR")}원
+                      </span>
+                    )}
                   </p>
                   <p className="mt-1 text-small text-ink-soft">{p.summary}</p>
                 </div>

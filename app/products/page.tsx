@@ -95,7 +95,15 @@ export default function ProductsPage() {
                     <p className="mt-2 text-caption text-ink-faint">
                       {p.occasions.join(" · ")}
                     </p>
-                    {/* 가격이 없으면 자리표('전화 문의')도 없다 — 가격은 나중에 들어온다(요청 사항). */}
+                    {/* 가격이 없으면 자리표('전화 문의')도 없다(선물세트는 구성에 따라 다르다). */}
+                    {p.price !== null && (
+                      <p className="mt-2 text-small tabular-nums">
+                        {p.price.toLocaleString("ko-KR")}원
+                        {p.unit && (
+                          <span className="text-ink-faint"> · {p.unit}</span>
+                        )}
+                      </p>
+                    )}
                   </div>
                   <span className="text-link hidden shrink-0 sm:inline-flex">
                     자세히 보기
@@ -298,7 +306,7 @@ export default function ProductsPage() {
               <p className="mt-5 max-w-prose text-ink-soft">
                 떡과 오란다는 한 개씩 따로 포장합니다. 여럿이 나눠 드시거나
                 답례로 돌리기 좋고, 냉동해 두었다가 하나씩 꺼내기도 편합니다.
-                택배는 보냉 상자에 담아 보냅니다.
+                택배는 보냉 상자에 담아 보냅니다. 배송비는 3,500원입니다.
               </p>
             </div>
             {/* 상자와 보냉 택배 상자 — "보냉 상자에 담아 보냅니다"를 사진으로. */}

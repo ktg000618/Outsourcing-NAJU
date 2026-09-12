@@ -390,6 +390,14 @@ export default async function ProductPage({
                       <p className="mt-1 text-small text-ink-soft">
                         {p.summary}
                       </p>
+                      {p.price !== null && (
+                        <p className="mt-1 text-small tabular-nums">
+                          {p.price.toLocaleString("ko-KR")}원
+                          {p.unit && (
+                            <span className="text-ink-faint"> · {p.unit}</span>
+                          )}
+                        </p>
+                      )}
                     </div>
                     <span className="text-link hidden shrink-0 sm:inline-flex">
                       자세히 보기
