@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { site } from "@/lib/site";
 import { createClient } from "@/lib/supabase/server";
 import { NEWS_SELECT, formatNewsDate, type NewsPost } from "@/lib/news";
 import { PostRowActions } from "@/components/admin/post-row-actions";
@@ -126,7 +127,11 @@ export default async function AdminPage() {
                 )}
               </div>
               <div className="col-span-2 sm:col-span-1">
-                <PostRowActions id={p.id} published={p.published} />
+                <PostRowActions
+                  id={p.id}
+                  published={p.published}
+                  url={`${site.url}/news/${p.id}`}
+                />
               </div>
             </li>
           ))}
