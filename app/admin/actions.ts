@@ -162,6 +162,42 @@ export async function deletePost(id: string): Promise<ActionState> {
   return { error: null };
 }
 
+/* 예약 문의 — 손님이 /visit 에서 남긴 접수. 처리 표시·삭제만 있고 수정은 없다(손님 말을 직원이 고치지 않는다). */
+export async function setRequestStatus(
+  id: string,
+  status: "new" | "done",
+): Promise<ActionState> {
+  const { supabase } = await requireUser();
+  const { error } = await supabase
+    .from("experience_requests")
+    .update({ status })
+    .eq("id", id);
+  if (error) {
+    console.error("[admin] setRequestStatus", error.message);
+    return {
+      error: "처리 상태를 바꾸지 못했습니다. 잠시 후 다시 시도해 주세요.",
+    };
+  }
+  revalidatePath("/admin/requests");
+  revalidatePath("/admin");
+  return { error: null };
+}
+
+export async function deleteRequest(id: string): Promise<ActionState> {
+  const { supabase } = await requireUser();
+  const { error } = await supabase
+    .from("experience_requests")
+    .delete()
+    .eq("id", id);
+  if (error) {
+    console.error("[admin] deleteRequest", error.message);
+    return { error: "삭제하지 못했습니다. 잠시 후 다시 시도해 주세요." };
+  }
+  revalidatePath("/admin/requests");
+  revalidatePath("/admin");
+  return { error: null };
+}
+
 export async function signOut() {
   const supabase = await createClient();
   await supabase.auth.signOut();

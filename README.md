@@ -7,6 +7,7 @@
 
 - **소식 올리기**: `/admin/login` 에서 직원 계정으로 로그인 → 「새 글」. 제목·본문·날짜·사진(3장, 장당 5MB, 가로 사진 권장)·링크.
   저장하면 `/news` 에 바로 반영됩니다. 목록에서 숨기기·수정·삭제.
+- **체험 예약 문의**: `/visit` 폼 → `/admin/requests` 에서 확인·처리(「처리 완료」·삭제). 처음 한 번 `supabase/002_experience_requests.sql` 을 SQL Editor 에서 실행.
 - **직원 계정**: Supabase 대시보드 → Authentication → Users → Add user(이메일·비밀번호). 회원가입은 꺼 둡니다(켜면 아무나 글을 쓸 수 있음).
 - **제품·문구·연락처**: `lib/site.ts` 한 파일. 가격·소비기한처럼 아직 비어 있는 값은 `null` 로 두었고, 채우면 화면에 자리가 생깁니다.
 - **사진**: `public/images/`. 제품·재료 사진(원형 자리)은 가장자리 복제+블러로 패딩한 정사각(1600·1200px).
@@ -22,4 +23,4 @@ npm run dev
 npm run lint && npm run build
 ```
 
-DB 스키마·RLS·스토리지 버킷은 `supabase/001_news.sql` 하나입니다(대시보드 SQL Editor 에서 실행).
+DB 스키마·RLS·스토리지 버킷은 `supabase/001_news.sql`(소식) · `supabase/002_experience_requests.sql`(예약 문의) 순서로 대시보드 SQL Editor 에서 실행합니다.

@@ -2,7 +2,9 @@ import Image from "next/image";
 import { ViewTransition } from "react";
 
 import type { Metadata } from "next";
+import { KakaoMap } from "@/components/kakao-map";
 import { SectionHead } from "@/components/section-head";
+import { ExperienceRequestForm } from "@/components/experience-request-form";
 import { experience, site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -122,9 +124,8 @@ export default function VisitPage() {
               </p>
             )}
 
-            <a className="btn-primary mt-8" href={site.telHref}>
-              체험 문의 {site.tel}
-            </a>
+            {/* 전화 대신 남기는 길. 폼 아래 전화 링크가 남아 있어 실패해도 막다른 길이 아니다. */}
+            <ExperienceRequestForm tel={site.tel} telHref={site.telHref} />
           </div>
 
           {/*
@@ -222,7 +223,7 @@ export default function VisitPage() {
             {/* 전화 버튼은 위 체험 섹션에 하나뿐이다 — 번호는 바로 아래 푸터에 크게 있다. */}
             <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-6">
               <a
-                href={`https://map.kakao.com/?q=${mapQuery}`}
+                href={site.kakaoPlaceUrl}
                 target="_blank"
                 rel="noreferrer"
                 className="btn-primary"
@@ -240,7 +241,6 @@ export default function VisitPage() {
             </div>
           </div>
 
-          {/* TODO(개발): 카카오맵 SDK 임베드. 지금은 지도 앱으로 넘긴다. */}
           {/* 매장 사진은 장면이라 사각. 간판 「절굿대 달토끼」가 통째로 들어오는 위치로 자른다. */}
           <div className="photo aspect-4/5 sm:aspect-square">
             {/*
@@ -258,6 +258,9 @@ export default function VisitPage() {
               className="object-cover object-[50%_45%]"
             />
           </div>
+        </div>
+        <div className="mt-10 lg:mt-14">
+          <KakaoMap />
         </div>
       </section>
     </ViewTransition>

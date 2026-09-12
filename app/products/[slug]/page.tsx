@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { LoopingVideo } from "@/components/looping-video";
 import { ReviewVideo } from "@/components/review-video";
 import { DetailReveal } from "@/components/detail-reveal";
+import { ShareButton } from "@/components/share-button";
 import { HERO_QUALITY, HERO_SIZES } from "@/components/product-image-prefetch";
 import { SectionEyebrow } from "@/components/section-eyebrow";
 import { SectionHead } from "@/components/section-head";
@@ -94,6 +95,30 @@ export default async function ProductPage({
     <ViewTransition enter="page-in" exit="page-out" default="none">
       <script
         type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "홈", item: site.url },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "제품",
+                item: `${site.url}/products`,
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: product.name,
+                item: `${site.url}/products/${product.slug}`,
+              },
+            ],
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
       />
 
@@ -170,6 +195,12 @@ export default async function ProductPage({
             <p className="mt-3 text-caption text-ink-faint">
               매장에서도 바로 구매하실 수 있습니다.
             </p>
+            <div className="mt-4">
+              <ShareButton
+                title={`${product.name} · ${site.name}`}
+                text={product.summary}
+              />
+            </div>
           </div>
         </div>
       </article>
