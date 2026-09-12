@@ -203,8 +203,8 @@ export default function ProductsPage() {
             </div>
             <div className="photo aspect-4/3">
               <Image
-                src="/images/product-jeolgutdae-pack.jpg"
-                alt="낱개 포장한 절굿대떡을 나무 소반에 담았다"
+                src="/images/product-jeolgutdae-box.jpg"
+                alt="달토끼가 그려진 절굿대떡 선물 상자"
                 fill
                 sizes="(min-width: 1024px) 660px, 100vw"
                 quality={80}

@@ -422,22 +422,17 @@
     }
   }
   /* 옛 화면은 0.35 까지만 흐려진다 — 완전히 지우면 새 화면이 늦게 올 때 흰 화면이 먼저 보인다(느린 회선 실측). */
+  /* 옛 화면은 새 화면이 올 때까지 그대로 둔다 — 흐려 두면 느린 회선에서 "잔상"으로 읽혔다(리더 지적). */
   ::view-transition-old(.page-out) {
-    animation: var(--transition-duration-fast) ease-in both page-dim;
+    animation: none;
   }
-  @keyframes page-dim {
-    to {
-      opacity: 0.35;
-    }
-  }
+  /* 새 화면은 겹치지 않고 바로 들어온다 — 크로스페이드는 두 화면 글자가 0.16초 겹쳐 잔상으로 읽혔다. 제품 원만 morph 로 이어진다. */
   ::view-transition-new(.page-in) {
-    animation:
-      var(--transition-duration-base) ease-out 120ms both page-fade,
-      var(--transition-duration-base) var(--ease-brand) both page-rise;
+    animation: var(--transition-duration-base) var(--ease-brand) both page-rise;
   }
   @keyframes page-fade {
     from {
-      opacity: 0;
+      opacity: 0.6;
     }
     to {
       opacity: 1;
