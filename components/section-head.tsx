@@ -38,7 +38,8 @@ export function SectionHead({
   const pair = typeof title === "string" ? null : title;
   const tightPair = as === "h1" || split === "inline";
   const thinClass = `${split === "block" ? "block " : ""}font-thin${tightPair ? " tracking-tight" : ""}`;
-  const blackClass = `${split === "block" ? "block " : ""}font-black${tightPair ? " tracking-tighter" : ""}`;
+  /* 한 줄로 잇는 제목은 검은 부분이 통째로 다음 줄로 내려가게 — 「주문하는 / 방법」처럼 낱말 하나가 떨어지지 않도록. */
+  const blackClass = `${split === "block" ? "block " : "whitespace-nowrap "}font-black${tightPair ? " tracking-tighter" : ""}`;
   const body: ReactNode = pair ? (
     <>
       <span className={thinClass}>{pair.thin}</span>
