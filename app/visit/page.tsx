@@ -42,8 +42,9 @@ const experiencePhotos = [
 /* 매장 사진은 장면이라 사각. 간판 「절굿대 달토끼」가 통째로 들어오는 위치로 자른다. */
 const storePhotos = [
   {
-    src: "/images/store-front.jpg",
-    alt: "초록 간판과 달토끼 엠블럼이 걸린 절굿대달토끼 매장 건물",
+    /* 2026-09-12 클라이언트가 보낸 낮 사진 — 파란 하늘 아래 「떡 Cafe」 간판까지 한 장에 들어온다. */
+    src: "/images/store-front-day.jpg",
+    alt: "파란 하늘 아래 초록 간판과 달토끼 엠블럼이 걸린 절굿대달토끼 떡카페 건물",
   },
   {
     src: "/images/shop-cutting.jpg",
@@ -344,13 +345,24 @@ export default function VisitPage() {
                   className="photo aspect-[3/4] lg:aspect-[4/3]"
                 >
                   <LightboxButton index={i} label={ph.alt}>
+                    {/* 첫 칸: 폰(세로 칸)은 세로 사진, PC(가로 칸)는 낮 전경 — 가로 사진을 세로 칸에 넣으면 간판이 잘린다. */}
+                    {i === 0 && (
+                      <Image
+                        src="/images/store-front.jpg"
+                        alt={ph.alt}
+                        fill
+                        sizes="45vw"
+                        quality={80}
+                        className="object-cover object-[50%_45%] lg:hidden"
+                      />
+                    )}
                     <Image
                       src={ph.src}
                       alt={ph.alt}
                       fill
                       sizes="(min-width: 1024px) 45vw, 45vw"
                       quality={80}
-                      className={`object-cover ${i === 0 ? "object-[50%_45%]" : "object-[50%_40%]"}`}
+                      className={`object-cover ${i === 0 ? "hidden object-[50%_55%] lg:block" : "object-[50%_40%]"}`}
                     />
                   </LightboxButton>
                 </div>
