@@ -4,6 +4,7 @@ import { ViewTransition } from "react";
 import Image from "next/image";
 import { SectionHead } from "@/components/section-head";
 import Link from "next/link";
+import { NewsPhoto } from "@/components/news-photo";
 import { linkifyTel } from "@/components/news-text";
 import { formatNewsDate, getPublishedPosts } from "@/lib/news";
 
@@ -132,10 +133,9 @@ export default async function NewsPage() {
                                   : ""
                               }`}
                             >
-                              <Image
+                              <NewsPhoto
                                 src={src}
                                 alt={`${post.title} 사진 ${i + 1}`}
-                                fill
                                 sizes={
                                   n === 2
                                     ? "(min-width: 1024px) 310px, 45vw"
@@ -143,8 +143,6 @@ export default async function NewsPage() {
                                       ? "(min-width: 1024px) 635px, (min-width: 640px) 30vw, 72vw"
                                       : "(min-width: 1024px) 310px, (min-width: 640px) 30vw, 72vw"
                                 }
-                                quality={80}
-                                className="object-cover"
                               />
                             </li>
                           ))}

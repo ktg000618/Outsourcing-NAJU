@@ -3,6 +3,7 @@ import { ViewTransition } from "react";
 
 import Link from "next/link";
 import type { Metadata } from "next";
+import { Lightbox, LightboxButton } from "@/components/lightbox";
 import { SectionHead } from "@/components/section-head";
 import { MoonMark } from "@/components/moon-mark";
 import { credentials, site, timeline } from "@/lib/site";
@@ -51,6 +52,11 @@ const rows: Row[] = [
     body: "절굿대떡과 나주배 촉촉오란다가 답례품으로 선정되었습니다.",
   },
 ].sort((a, b) => a.when.localeCompare(b.when));
+
+/* 라이트박스 순서 = 증서가 있는 항목 순서. */
+const certImages = credentials.flatMap((c) =>
+  c.image ? [{ src: c.image.src, alt: c.image.alt }] : [],
+);
 
 export default function StoryPage() {
   return (
@@ -204,12 +210,12 @@ export default function StoryPage() {
             </div>
             <div className="photo aspect-[2/1] lg:order-first lg:aspect-4/3">
               <Image
-                src="/images/growers-harvest.jpg"
-                alt="절굿대 밭에서 잎을 거두어 바구니에 담고 있다"
+                src="/images/harvest-couple.jpg"
+                alt="절굿대 밭에서 두 사람이 잎을 거두어 바구니에 담고 있다"
                 fill
                 sizes="(min-width: 1024px) 45vw, 90vw"
                 quality={80}
-                className="object-cover object-[55%_50%]"
+                className="object-cover object-[50%_45%]"
               />
             </div>
           </div>
@@ -292,17 +298,39 @@ export default function StoryPage() {
         </ul>
 
         {/* 신뢰 근거. 사이트에서 인증·선정이 나오는 유일한 자리 — 카드가 아니라 실선 장부. */}
-        <ul className="mt-16 divide-y divide-ink/10 border-y border-ink/10">
-          {credentials.map((c) => (
-            <li
-              key={c.label}
-              className="grid gap-1 py-4 sm:grid-cols-[12rem_minmax(0,1fr)] sm:gap-6 sm:py-5"
-            >
-              <p className="font-bold">{c.label}</p>
-              <p className="text-small text-ink-soft">{c.detail}</p>
-            </li>
-          ))}
-        </ul>
+        <Lightbox items={certImages}>
+          <ul className="mt-16 divide-y divide-ink/10 border-y border-ink/10">
+            {credentials.map((c) => (
+              <li
+                key={c.label}
+                className="grid grid-cols-[minmax(0,1fr)_6.5rem] gap-x-6 gap-y-1 py-4 sm:grid-cols-[12rem_minmax(0,1fr)_10rem] sm:items-center sm:py-5"
+              >
+                <p className="font-bold">{c.label}</p>
+                <p className="text-small text-ink-soft">{c.detail}</p>
+                {/* 증서 썸네일 — 서류라 비율 그대로(contain), 누르면 크게. */}
+                {c.image && (
+                  <div className="photo relative col-start-2 row-span-2 row-start-1 aspect-[4/3] sm:col-start-3 sm:row-span-1">
+                    <LightboxButton
+                      index={certImages.findIndex(
+                        (i) => i.src === c.image!.src,
+                      )}
+                      label={c.image.alt}
+                    >
+                      <Image
+                        src={c.image.src}
+                        alt={c.image.alt}
+                        fill
+                        sizes="(min-width: 640px) 160px, 104px"
+                        quality={75}
+                        className="object-contain p-1"
+                      />
+                    </LightboxButton>
+                  </div>
+                )}
+              </li>
+            ))}
+          </ul>
+        </Lightbox>
 
         <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-8">
           <Link href="/products" className="btn-primary">

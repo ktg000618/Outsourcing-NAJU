@@ -647,9 +647,32 @@ export const experience = {
 } as const;
 
 /** 신뢰 근거. 사진이 아니라 사실로 말하는 자리다. */
-export const credentials = [
-  { label: "맛의방주 등재", detail: "2022년 국제슬로푸드생물다양성재단" },
+/** 인증·선정. 증서가 있는 항목은 이미지를 같이 — 이야기 페이지 목록 옆에 작게, 누르면 크게. */
+export const credentials: {
+  label: string;
+  detail: string;
+  image?: { src: string; alt: string; width: number; height: number };
+}[] = [
+  {
+    label: "맛의방주 등재",
+    detail: "2022년 국제슬로푸드생물다양성재단",
+    image: {
+      src: "/images/cert-ark.jpg",
+      alt: "나주 절굿대떡 맛의방주 인증서 — 국제슬로푸드생물다양성재단",
+      width: 1625,
+      height: 1125,
+    },
+  },
   { label: "사회적기업 인증", detail: "제2023-247호 · 고용노동부" },
   { label: "고향사랑 답례품", detail: "2024년 나주시 선정" },
-  { label: "상표등록", detail: "제40-2515456호 · 2026년 지식재산처" },
-] as const;
+  {
+    label: "상표등록",
+    detail: "제40-2515456호 · 2026년 지식재산처",
+    image: {
+      src: "/images/cert-trademark.jpg",
+      alt: "절굿대달토끼 상표등록증 — 제40-2515456호, 지식재산처",
+      width: 910,
+      height: 1285,
+    },
+  },
+];

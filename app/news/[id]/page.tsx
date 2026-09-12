@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ViewTransition } from "react";
 import { ShareButton } from "@/components/share-button";
+import { NewsPhoto } from "@/components/news-photo";
 import { linkifyTel, newsExcerpt } from "@/components/news-text";
 import { formatNewsDate, getPublishedPost } from "@/lib/news";
 import { site } from "@/lib/site";
@@ -135,18 +136,15 @@ export default async function NewsPostPage({ params }: Props) {
               >
                 {post.images.map((src, i) => (
                   <li key={src} className="photo aspect-4/3">
-                    <Image
+                    <NewsPhoto
                       src={src}
                       alt={`${post.title} 사진 ${i + 1}`}
-                      fill
                       priority={i === 0}
                       sizes={
                         i === 0
                           ? `(min-width: 1024px) ${n >= 3 ? "635px" : "310px"}, 45vw`
                           : "(min-width: 1024px) 310px, 45vw"
                       }
-                      quality={80}
-                      className="object-cover"
                     />
                   </li>
                 ))}

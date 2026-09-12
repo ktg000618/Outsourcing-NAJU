@@ -39,10 +39,16 @@ const experiencePhotos = [
   },
 ];
 /* 매장 사진은 장면이라 사각. 간판 「절굿대 달토끼」가 통째로 들어오는 위치로 자른다. */
-const storePhoto = {
-  src: "/images/store-front.jpg",
-  alt: "초록 간판과 달토끼 엠블럼이 걸린 절굿대달토끼 매장 건물",
-};
+const storePhotos = [
+  {
+    src: "/images/store-front.jpg",
+    alt: "초록 간판과 달토끼 엠블럼이 걸린 절굿대달토끼 매장 건물",
+  },
+  {
+    src: "/images/shop-cutting.jpg",
+    alt: "매장 안에서 김화수 대표가 절굿대떡을 반듯하게 자르고 있다",
+  },
+];
 /* 검색 결과에 질문이 그대로 뜨게. 화면의 FAQ 와 같은 배열에서 만든다. */
 const faqJsonLd = {
   "@context": "https://schema.org",
@@ -324,18 +330,26 @@ export default function VisitPage() {
             </div>
           </div>
 
-          <Lightbox items={[storePhoto]}>
-            <div className="photo aspect-4/5 sm:aspect-square">
-              <LightboxButton index={0} label={storePhoto.alt}>
-                <Image
-                  src={storePhoto.src}
-                  alt={storePhoto.alt}
-                  fill
-                  sizes="(min-width: 1024px) 45vw, 90vw"
-                  quality={80}
-                  className="object-cover object-[50%_45%]"
-                />
-              </LightboxButton>
+          {/* 매장 앞과 안. 둘 다 세로 컷이라 나란히 — 간판과 떡 자르는 손이 같은 높이에 선다. */}
+          <Lightbox items={storePhotos}>
+            <div className="grid grid-cols-2 gap-3 self-start sm:gap-4 lg:grid-cols-1">
+              {storePhotos.map((ph, i) => (
+                <div
+                  key={ph.src}
+                  className="photo aspect-[3/4] lg:aspect-[4/3]"
+                >
+                  <LightboxButton index={i} label={ph.alt}>
+                    <Image
+                      src={ph.src}
+                      alt={ph.alt}
+                      fill
+                      sizes="(min-width: 1024px) 45vw, 45vw"
+                      quality={80}
+                      className={`object-cover ${i === 0 ? "object-[50%_45%]" : "object-[50%_40%]"}`}
+                    />
+                  </LightboxButton>
+                </div>
+              ))}
             </div>
           </Lightbox>
         </div>

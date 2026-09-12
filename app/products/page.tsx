@@ -301,15 +301,28 @@ export default function ProductsPage() {
                 택배는 보냉 상자에 담아 보냅니다.
               </p>
             </div>
-            <div className="photo aspect-4/3">
-              <Image
-                src="/images/product-jeolgutdae-box.jpg"
-                alt="달토끼가 그려진 절굿대떡 선물 상자"
-                fill
-                sizes="(min-width: 1024px) 660px, 100vw"
-                quality={80}
-                className="object-cover"
-              />
+            {/* 상자와 보냉 택배 상자 — "보냉 상자에 담아 보냅니다"를 사진으로. */}
+            <div className="grid grid-cols-2 gap-3 lg:gap-5">
+              <div className="photo aspect-4/3">
+                <Image
+                  src="/images/product-jeolgutdae-box.jpg"
+                  alt="달토끼가 그려진 절굿대떡 선물 상자"
+                  fill
+                  sizes="(min-width: 1024px) 320px, 45vw"
+                  quality={80}
+                  className="object-cover"
+                />
+              </div>
+              <div className="photo aspect-4/3">
+                <Image
+                  src="/images/shipping-box.jpg"
+                  alt="신선식품 당일배송 띠를 두른 흰 보냉 택배 상자"
+                  fill
+                  sizes="(min-width: 1024px) 320px, 45vw"
+                  quality={80}
+                  className="object-cover"
+                />
+              </div>
             </div>
           </div>
         </div>
