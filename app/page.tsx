@@ -5,6 +5,7 @@ import { HeroSlides } from "@/components/hero-slides";
 import { ProductImagePrefetch } from "@/components/product-image-prefetch";
 import { SectionEyebrow } from "@/components/section-eyebrow";
 import { SectionHead } from "@/components/section-head";
+import { formatNewsDate, getPublishedPosts } from "@/lib/news";
 import { products, site, timeline } from "@/lib/site";
 
 /**
@@ -15,7 +16,11 @@ import { products, site, timeline } from "@/lib/site";
  * 그래서 사진 대신 활자로 밀도를 만든다 — 굵기 100↔900 대비, 88px 헤드라인,
  * 숫자 밴드, 인용문, 실선 목록. 서체는 프리텐다드 한 벌(확정 사항).
  */
-export default function HomePage() {
+/** 최근 소식 셋은 Supabase 에서 온다 — 관리 화면 저장 시 revalidatePath("/") 로 바로, 그 밖엔 1시간. */
+export const revalidate = 3600;
+
+export default async function HomePage() {
+  const latest = (await getPublishedPosts(3)).slice(0, 3);
   const best = products.slice(0, 3);
   // 연표 다섯 중 홈에는 셋만 — 사라짐·복원·등재. 나머지는 이야기 페이지에서.
   // 숫자 밴드(2016·2022)와 겹치지 않는 셋 — 한때·2017 부활·2019 떡카페.
@@ -171,6 +176,56 @@ export default function HomePage() {
         </ul>
       </section>
 
+      {/* 3-b. 최근 소식 셋 — 자주 올리는 곳이라 첫 화면에 보여야 한다. 실선 행, 사진은 작게. */}
+      {latest.length > 0 && (
+        <section className="rise border-t border-ink/10">
+          <div className="section-y-tight mx-auto max-w-6xl px-5 lg:px-8">
+            <SectionHead
+              phase={0.3}
+              eyebrow="소식"
+              title={{ thin: "떡집의 ", black: "요즘" }}
+              split="inline"
+              aside={
+                <Link href="/news" className="text-link">
+                  소식 전체
+                </Link>
+              }
+            />
+            <ul className="mt-8 divide-y divide-ink/10 border-y border-ink/10 lg:mt-10">
+              {latest.map((post) => (
+                <li key={post.id}>
+                  <Link
+                    href={`/news/${post.id}`}
+                    className="group pressable grid grid-cols-[5.5rem_minmax(0,1fr)] items-center gap-x-5 py-4 lg:grid-cols-[7rem_minmax(0,1fr)] lg:gap-x-8 lg:py-5"
+                  >
+                    <div className="photo aspect-4/3">
+                      {post.images[0] && (
+                        <Image
+                          src={post.images[0]}
+                          alt=""
+                          fill
+                          sizes="112px"
+                          quality={75}
+                          className="object-cover"
+                        />
+                      )}
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-caption tabular-nums text-ink-faint">
+                        {formatNewsDate(post.published_on)}
+                      </p>
+                      <p className="mt-1 truncate text-lead font-bold transition-colors group-hover:text-mint-link">
+                        {post.title}
+                      </p>
+                    </div>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
       {/* 4. 인용 + 연표 예고 — 5:7 비대칭. 가운데 정렬 ABOUT 문단을 대신한다 */}
       <section className="rise border-t border-ink/10">
         <div className="section-y mx-auto grid max-w-6xl gap-12 px-5 lg:grid-cols-[5fr_7fr] lg:items-center lg:gap-20 lg:px-8">
@@ -252,7 +307,7 @@ export default function HomePage() {
             phase={1}
             eyebrow="체험"
             title={{ thin: "직접 빚어 보는", black: "자리가 있습니다" }}
-            lead="반죽을 치고 모양을 빚어 콩고물을 입히기까지 손으로 해 봅니다. 학교와 단체가 자주 찾고, 여행길에 들르는 분들도 참여할 수 있습니다."
+            lead="떡 반죽을 밀고 앙금을 넣어 바람떡을 찍고, 예쁘게 꾸며 상자에 담아 갑니다. 학교와 단체가 자주 찾고, 여행길에 들르는 분들도 참여할 수 있습니다."
           />
           <Link href="/visit" className="text-link mt-6 self-start">
             체험·매장 보러 가기

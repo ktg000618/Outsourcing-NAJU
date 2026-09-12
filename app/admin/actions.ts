@@ -71,6 +71,7 @@ async function removeImages(
 }
 
 function revalidateNews() {
+  revalidatePath("/");
   revalidatePath("/news");
   revalidatePath("/news/[id]", "page");
   revalidatePath("/news/feed.xml");
