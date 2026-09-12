@@ -54,10 +54,11 @@ export function SectionHead({
         <SectionEyebrow phase={phase} tone={tone}>
           {eyebrow}
         </SectionEyebrow>
-        <div className="mt-4 lg:grid lg:grid-cols-[7fr_5fr] lg:items-end lg:gap-16">
+        {/* 리드는 검은 줄 윗선에 맞춘다 — 얇은 줄 한 행(88px × 1.02)만큼 내려 시작하고, 글자 윗선 차이 13px 를 빼서 보정(실측). */}
+        <div className="mt-4 lg:grid lg:grid-cols-[7fr_5fr] lg:items-start lg:gap-16">
           <h1 className="max-w-[16ch] text-h1 lg:text-hero">{body}</h1>
           {lead && (
-            <p className="mt-5 max-w-md text-ink-soft lg:mt-0 lg:pb-3">
+            <p className="mt-5 max-w-md text-ink-soft lg:mt-0 lg:pt-[calc(var(--text-hero)*var(--text-hero--line-height)-13px)]">
               {lead}
             </p>
           )}
