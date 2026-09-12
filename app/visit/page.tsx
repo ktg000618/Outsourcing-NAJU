@@ -208,7 +208,9 @@ export default function VisitPage() {
             split="inline"
           />
           {/* 실선 장부 세 줄. 번호는 제목 옆 작은 캡션 — 큰 숫자는 위 연표·페이지 제목과 겨뤘다. */}
-          <ol className="mt-9 divide-y divide-ink/10 border-y border-ink/10 lg:grid lg:grid-cols-3 lg:divide-x lg:divide-y-0">
+          <ol
+            className={`mt-9 divide-y divide-ink/10 border-y border-ink/10 lg:grid lg:divide-x lg:divide-y-0 ${experience.steps.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}
+          >
             {experience.steps.map((step, i) => (
               <li
                 key={step.title}
