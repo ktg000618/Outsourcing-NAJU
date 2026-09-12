@@ -20,7 +20,7 @@ export const site = {
   tagline: "남도의 으뜸맛떡",
   description:
     "사라졌던 나주 절굿대떡을 되살려 인공첨가물 없이 재래방식으로 빚습니다. 나주 징고샅길의 떡카페에서 맛보고, 만들어 볼 수 있습니다.",
-  owner: "김은아",
+  owner: "김화수",
   since: 2016,
 
   /* 도메인이 정해지면 NEXT_PUBLIC_SITE_URL 만 바꾼다 — sitemap·OG·구조화
