@@ -3,6 +3,8 @@ import { site } from "@/lib/site";
 import { ViewTransition } from "react";
 import Image from "next/image";
 import { SectionHead } from "@/components/section-head";
+import Link from "next/link";
+import { linkifyTel } from "@/components/news-text";
 import { formatNewsDate, getPublishedPosts } from "@/lib/news";
 
 export const metadata: Metadata = {
@@ -16,24 +18,6 @@ export const metadata: Metadata = {
 
 /** 직원이 /admin 에서 쓴 글. 저장 시 revalidatePath 로 바로 갱신되고, 그 밖엔 1시간 캐시. */
 export const revalidate = 3600;
-
-/* 본문 속 전화번호는 눌러 걸 수 있게, 하이픈에서 줄이 찢어지지 않게. 직원이 소식에 번호를 자주 적는다. */
-function linkifyTel(text: string) {
-  const parts = text.split(/(0\d{1,2}-\d{3,4}-\d{4})/g);
-  return parts.map((part, i) =>
-    /^0\d{1,2}-\d{3,4}-\d{4}$/.test(part) ? (
-      <a
-        key={i}
-        href={`tel:${part.replace(/-/g, "")}`}
-        className="text-link-inline whitespace-nowrap"
-      >
-        {part}
-      </a>
-    ) : (
-      part
-    ),
-  );
-}
 
 export default async function NewsPage() {
   const posts = await getPublishedPosts();
@@ -99,8 +83,14 @@ export default async function NewsPage() {
                       {formatNewsDate(post.published_on)}
                     </time>
                     <div className="min-w-0">
+                      {/* 제목이 글 주소다 — 카톡으로 이 글만 보낼 수 있게. */}
                       <h2 className="text-title font-bold lg:text-h2">
-                        {post.title}
+                        <Link
+                          href={`/news/${post.id}`}
+                          className="transition-colors hover:text-mint-link"
+                        >
+                          {post.title}
+                        </Link>
                       </h2>
                       {post.body && (
                         <p className="mt-4 max-w-prose whitespace-pre-line text-ink-soft">

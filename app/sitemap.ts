@@ -1,10 +1,12 @@
 import type { MetadataRoute } from "next";
+import { getPublishedPosts } from "@/lib/news";
 import { products, site } from "@/lib/site";
 
 /** 제품이 늘면 여기도 따라 늘도록 목록에서 뽑는다. */
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   /* 요청마다 바뀌는 new Date() 는 신호가 없다 — 내용이 바뀐 배포일을 손으로 올린다. */
   const now = new Date("2026-09-12");
+  const posts = await getPublishedPosts();
   const pages = ["", "/story", "/jeolgutdae", "/products", "/visit", "/news"];
 
   return [
@@ -20,6 +22,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "monthly" as const,
       priority: 0.7,
+    })),
+    ...posts.map((p) => ({
+      url: `${site.url}/news/${p.id}`,
+      lastModified: new Date(p.updated_at),
+      changeFrequency: "monthly" as const,
+      priority: 0.5,
     })),
   ];
 }

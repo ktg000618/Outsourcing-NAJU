@@ -23,8 +23,8 @@ export async function GET() {
     .map(
       (p) => `<item>
   <title>${esc(p.title)}</title>
-  <link>${site.url}/news#${p.id}</link>
-  <guid isPermaLink="false">${p.id}</guid>
+  <link>${site.url}/news/${p.id}</link>
+  <guid isPermaLink="true">${site.url}/news/${p.id}</guid>
   <pubDate>${new Date(`${p.published_on}T09:00:00+09:00`).toUTCString()}</pubDate>
   <description>${esc(p.body)}</description>${p.images[0] ? `\n  <enclosure url="${esc(p.images[0])}" type="image/jpeg" />` : ""}
 </item>`,

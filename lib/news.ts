@@ -43,6 +43,24 @@ export async function getPublishedPosts(limit = 50): Promise<NewsPost[]> {
   return (data ?? []) as NewsPost[];
 }
 
+/** 게시된 글 한 건. 없거나 비공개면 null — 페이지는 404 로. */
+export async function getPublishedPost(id: string): Promise<NewsPost | null> {
+  if (!hasSupabaseEnv()) return null;
+  if (!/^[0-9a-f-]{36}$/i.test(id)) return null;
+  const supabase = createPublicClient();
+  const { data, error } = await supabase
+    .from("news_posts")
+    .select(NEWS_SELECT)
+    .eq("id", id)
+    .eq("published", true)
+    .maybeSingle();
+  if (error) {
+    console.error("[news] getPublishedPost", error.message);
+    return null;
+  }
+  return (data as NewsPost | null) ?? null;
+}
+
 /** "2026. 9. 5. (토)" — 직원·손님 모두 읽는 한국식 날짜. */
 export function formatNewsDate(isoDate: string) {
   const [y, m, d] = isoDate.split("-").map(Number);

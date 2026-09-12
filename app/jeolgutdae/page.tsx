@@ -9,6 +9,16 @@ export const metadata: Metadata = {
   description:
     "절굿대는 국화과 여러해살이풀입니다. 7~8월 둥근 남보라색 꽃이 피고, 뿌리는 옛 의서에서 누로(漏蘆)라 불렀습니다. 절굿대달토끼는 잎을 갈아 떡에 넣습니다.",
   alternates: { canonical: "/jeolgutdae" },
+  openGraph: {
+    images: [
+      {
+        url: "/og/jeolgutdae-2026-09.jpg",
+        width: 1200,
+        height: 630,
+        alt: "꽃봉오리가 맺힌 절굿대 밭",
+      },
+    ],
+  },
 };
 
 /* 공개 자료(위키백과 한국어·영어 「절굿대 / Echinops setifer」)에 적힌 것만 옮겼다. 자생지·이름 유래처럼 출처가 갈리는 항목은 단정하지 않는다. */
