@@ -31,7 +31,7 @@ export default async function AdminRequestsPage() {
   const doneCount = requests.length - newCount;
 
   return (
-    <div className="page-top page-bottom mx-auto max-w-6xl px-5 lg:px-8">
+    <div className="page-top page-bottom mx-auto max-w-4xl px-5 lg:px-8">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <SectionEyebrow phase={0.1}>
@@ -52,14 +52,14 @@ export default async function AdminRequestsPage() {
       </div>
 
       {requests.length === 0 ? (
-        <div className="mt-10 max-w-3xl border border-dashed border-ink/20 px-6 py-14 text-center lg:mt-12">
+        <div className="mt-10 border border-dashed border-ink/20 px-6 py-14 text-center lg:mt-12">
           <p className="text-lead font-bold">아직 문의가 없습니다</p>
           <p className="mt-2 text-small text-ink-soft">
             손님이 사이트 「체험·매장」에서 보낸 예약 문의가 여기에 쌓입니다.
           </p>
         </div>
       ) : (
-        <ul className="mt-8 max-w-3xl divide-y divide-ink/10 border-y border-ink/10 lg:mt-12">
+        <ul className="mt-8 divide-y divide-ink/10 border-y border-ink/10 lg:mt-12">
           {requests.map((r) => (
             <li
               key={r.id}

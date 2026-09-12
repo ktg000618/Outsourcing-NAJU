@@ -23,6 +23,7 @@ type Props = {
   selected?: Date;
   today: Date;
   onSelect: (d?: Date) => void;
+  allowPast?: boolean;
 };
 
 /**
@@ -32,6 +33,7 @@ export default function DatePickerPopover({
   selected,
   today,
   onSelect,
+  allowPast = false,
 }: Props) {
   return (
     <DayPicker
@@ -39,7 +41,7 @@ export default function DatePickerPopover({
       locale={ko}
       selected={selected}
       defaultMonth={selected ?? today}
-      disabled={{ before: today }}
+      disabled={allowPast ? undefined : { before: today }}
       onSelect={onSelect}
       style={BRAND_VARS}
     />

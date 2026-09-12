@@ -2,6 +2,7 @@
 
 import { useActionState, useState } from "react";
 import Link from "next/link";
+import { DateField } from "@/components/date-field";
 import { createClient } from "@/lib/supabase/client";
 import type { ActionState } from "@/app/admin/actions";
 import type { NewsPost } from "@/lib/news";
@@ -206,13 +207,12 @@ export function PostForm({ action, initial }: Props) {
             <label htmlFor="post-date" className="field-label">
               날짜
             </label>
-            <input
+            <DateField
               id="post-date"
               name="published_on"
-              type="date"
-              required
               defaultValue={initial?.published_on ?? todayKst()}
-              className="field-input tabular-nums"
+              allowPast
+              clearable={false}
             />
           </div>
           <div>

@@ -15,6 +15,12 @@ type Props = {
   /** 폼으로 넘어가는 값의 이름. 값은 YYYY-MM-DD 한 가지 꼴이다. */
   name: string;
   placeholder?: string;
+  /** 처음 값(YYYY-MM-DD). 관리 화면의 글 날짜처럼 기본값이 있는 곳. */
+  defaultValue?: string;
+  /** 지난 날도 고를 수 있게(글 날짜). 방문 예약은 오늘부터만. */
+  allowPast?: boolean;
+  /** 「날짜 지우기」 — 값이 필수인 곳(글 날짜)에서는 끈다. */
+  clearable?: boolean;
 };
 
 function todayKst() {
@@ -43,12 +49,23 @@ const labelOf = (d: Date) => `${dateFmt.format(d)} (${weekdayFmt.format(d)})`;
  * 희망 날짜 입력. 브라우저마다 다르게 생긴 기본 날짜 입력 대신, 사이트와 같은 얼굴의 달력을 연다.
  * 지난 날은 고를 수 없고, 고르면 바로 닫힌다. 바깥을 누르거나 Esc 로도 닫힌다.
  */
+function parseIso(v?: string) {
+  if (!v) return undefined;
+  const [y, m, d] = v.split("-").map(Number);
+  return y && m && d ? new Date(y, m - 1, d) : undefined;
+}
+
 export function DateField({
   id,
   name,
   placeholder = "날짜를 고르세요",
+  defaultValue,
+  allowPast = false,
+  clearable = true,
 }: Props) {
-  const [date, setDate] = useState<Date>();
+  const [date, setDate] = useState<Date | undefined>(() =>
+    parseIso(defaultValue),
+  );
   const [open, setOpen] = useState(false);
   const root = useRef<HTMLDivElement>(null);
   /* 시트는 body 로 포털한다 — 섹션의 .rise transform 이 fixed 의 기준점이 되어 화면 밖에 그려지던 것. */
@@ -147,6 +164,7 @@ export function DateField({
               <DatePickerPopover
                 selected={date}
                 today={today}
+                allowPast={allowPast}
                 onSelect={(d) => {
                   setDate(d);
                   if (d) setOpen(false);
@@ -160,7 +178,7 @@ export function DateField({
                 >
                   닫기
                 </button>
-                {date && (
+                {clearable && date && (
                   <button
                     type="button"
                     onClick={() => {

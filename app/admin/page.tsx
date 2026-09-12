@@ -32,7 +32,7 @@ export default async function AdminPage() {
   const hiddenCount = posts.length - publishedCount;
 
   return (
-    <div className="page-top page-bottom mx-auto max-w-6xl px-5 lg:px-8">
+    <div className="page-top page-bottom mx-auto max-w-4xl px-5 lg:px-8">
       {/* 머리: 누가 들어왔고, 무엇을 할 수 있나 */}
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
@@ -48,21 +48,25 @@ export default async function AdminPage() {
             {hiddenCount > 0 && ` · 숨김 ${hiddenCount}`}
           </p>
         </div>
-        <div className="flex items-center gap-2">
-          <Link href="/news" className="text-link mr-2">
-            사이트에서 보기
-          </Link>
-          <Link href="/admin/requests" className="text-link mr-2">
-            예약 문의 {newRequests ?? 0}건
-          </Link>
-          <Link href="/admin/new" className="btn-primary btn-primary-sm">
+        {/* 폰에서는 제목 아래로 내려와 한 줄에 못 들어가면 항목 단위로만 접는다 — 단어 중간에서 끊기지 않게. */}
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
+          <Link
+            href="/admin/new"
+            className="btn-primary btn-primary-sm whitespace-nowrap"
+          >
             <span aria-hidden className="text-lead font-thin leading-none">
               +
             </span>
             새 글
           </Link>
+          <Link href="/admin/requests" className="text-link whitespace-nowrap">
+            예약 문의 {newRequests ?? 0}건
+          </Link>
+          <Link href="/news" className="text-link whitespace-nowrap">
+            사이트에서 보기
+          </Link>
           <form action={signOut}>
-            <button type="submit" className="text-link">
+            <button type="submit" className="text-link whitespace-nowrap">
               로그아웃
             </button>
           </form>
@@ -80,7 +84,7 @@ export default async function AdminPage() {
           </Link>
         </div>
       ) : (
-        <ul className="mt-8 max-w-3xl divide-y divide-ink/10 border-y border-ink/10 lg:mt-12">
+        <ul className="mt-8 divide-y divide-ink/10 border-y border-ink/10 lg:mt-12">
           {posts.map((p) => (
             <li
               key={p.id}

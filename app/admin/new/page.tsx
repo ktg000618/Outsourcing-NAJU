@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function NewPostPage() {
   return (
-    <div className="page-top page-bottom mx-auto max-w-6xl px-5 lg:px-8">
+    <div className="page-top page-bottom mx-auto max-w-4xl px-5 lg:px-8">
       <SectionEyebrow phase={0.1}>소식 관리</SectionEyebrow>
       <h1 className="mt-3 text-h1 lg:text-h2-lg">
         <span className="font-thin tracking-tight">새 </span>

@@ -22,7 +22,7 @@ export default async function AdminLoginPage({
         <p className="text-caption text-ink-faint">{site.name} · 직원용</p>
       </div>
       <h1 className="mt-4 text-h2 font-black tracking-tighter">
-        소식 관리 로그인
+        관리 화면 로그인
       </h1>
       <p className="mt-2 text-small text-ink-soft">
         직원 계정으로만 들어올 수 있습니다. 계정은 관리자에게 받으세요.
