@@ -412,9 +412,13 @@
     animation-duration: var(--transition-duration-base);
     animation-timing-function: var(--ease-brand);
   }
-  ::view-transition-old(.page-out),
+  /* animation:none 만으로는 기본 plus-lighter 블렌딩으로 두 화면이 한 프레임 겹친다 — 옛 화면은 아예 안 그린다. */
+  ::view-transition-old(.page-out) {
+    display: none;
+  }
   ::view-transition-new(.page-in) {
     animation: none;
+    mix-blend-mode: normal;
   }
 
   /* 눌림 피드백. 터치 기기에는 hover 가 없어 이것 말고는 단서가 없다. */
