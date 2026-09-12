@@ -93,7 +93,10 @@ export function Lightbox({
             data-lightbox-backdrop
             className="relative flex h-full w-full flex-col"
           >
-            <div data-lightbox-backdrop className="relative min-h-0 flex-1">
+            <div
+              data-lightbox-backdrop
+              className="relative min-h-0 flex-1 sm:m-8"
+            >
               <Image
                 key={item.src}
                 src={item.src}

@@ -113,7 +113,32 @@ export default function ProductsPage() {
             title={{ thin: "셋 중 ", black: "무엇을 고를까" }}
             split="inline"
           />
-          <div className="-mx-5 mt-8 overflow-x-auto px-5 lg:mx-0 lg:px-0">
+          {/* 폰: 표를 가로로 밀면 열이 잘린다 — 제품별 세로 목록으로. md 부터 표. */}
+          <div className="mt-8 space-y-8 md:hidden">
+            {products.map((p, col) => (
+              <div key={p.slug}>
+                <h3 className="text-lead font-bold">
+                  <Link
+                    href={`/products/${p.slug}`}
+                    className="transition-colors hover:text-mint-link"
+                  >
+                    {p.name}
+                  </Link>
+                </h3>
+                <dl className="mt-3 divide-y divide-ink/10 border-y border-ink/10 text-small">
+                  {productCompare.map((row) => (
+                    <div key={row.label} className="flex gap-5 py-3">
+                      <dt className="w-24 shrink-0 text-ink-faint">
+                        {row.label}
+                      </dt>
+                      <dd className="text-ink-soft">{row.values[col]}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            ))}
+          </div>
+          <div className="mt-8 hidden overflow-x-auto md:block">
             <table className="w-full min-w-[42rem] border-collapse text-small">
               <thead>
                 <tr className="border-b border-ink/20 text-left align-baseline">

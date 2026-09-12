@@ -159,11 +159,11 @@ export default function JeolgutdaePage() {
         <div className="section-y-tight mx-auto max-w-6xl px-5 lg:px-8">
           <p className="max-w-prose text-ink-soft">
             떡카페에서 절굿대떡과 나주배 촉촉오란다를 드실 수 있습니다.{" "}
-            {site.address} · {site.hours}.{" "}
-            <Link href="/visit" className="text-link-inline">
-              오시는 길
-            </Link>
+            {site.address}, {site.hours}.
           </p>
+          <Link href="/visit" className="text-link mt-6 inline-flex">
+            오시는 길 보기
+          </Link>
         </div>
       </section>
     </>
