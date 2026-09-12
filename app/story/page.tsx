@@ -3,7 +3,6 @@ import { ViewTransition } from "react";
 
 import Link from "next/link";
 import type { Metadata } from "next";
-import { SectionEyebrow } from "@/components/section-eyebrow";
 import { SectionHead } from "@/components/section-head";
 import { MoonMark } from "@/components/moon-mark";
 import { credentials, site, timeline } from "@/lib/site";
@@ -85,8 +84,12 @@ export default function StoryPage() {
 
       {/* 연표 — 달이 차오른다. 연도는 페이지 제목보다 크지 않게(PC h2·모바일 h3). */}
       <section className="rise border-b border-ink/10">
-        <div className="mx-auto max-w-6xl px-5 pb-16 pt-14 sm:pb-20 lg:px-8 lg:pb-28 lg:pt-16">
-          <SectionEyebrow phase={0.2}>연표</SectionEyebrow>
+        <div className="section-y mx-auto max-w-6xl px-5 lg:px-8">
+          <SectionHead
+            phase={0.2}
+            eyebrow="연표"
+            title={{ thin: "50년 만에", black: "돌아온 길" }}
+          />
           <ol className="mt-8 divide-y divide-ink/10 border-t border-ink/10">
             {rows.map((t, i) => (
               <li
