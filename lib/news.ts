@@ -29,18 +29,23 @@ export function hasSupabaseEnv() {
 export async function getPublishedPosts(limit = 50): Promise<NewsPost[]> {
   if (!hasSupabaseEnv()) return [];
   const supabase = createPublicClient();
-  const { data, error } = await supabase
-    .from("news_posts")
-    .select(NEWS_SELECT)
-    .eq("published", true)
-    .order("published_on", { ascending: false })
-    .order("created_at", { ascending: false })
-    .limit(limit);
-  if (error) {
+  /*
+    빌드(프리렌더) 중 Supabase 가 한 번 Gateway Timeout 을 내면 홈·RSS 가 빈 채로 1시간 캐시된다
+    (2026-09-13 배포에서 실제로). 한 번은 다시 묻는다.
+  */
+  for (let attempt = 0; ; attempt++) {
+    const { data, error } = await supabase
+      .from("news_posts")
+      .select(NEWS_SELECT)
+      .eq("published", true)
+      .order("published_on", { ascending: false })
+      .order("created_at", { ascending: false })
+      .limit(limit);
+    if (!error) return (data ?? []) as NewsPost[];
     console.error("[news] getPublishedPosts", error.message);
-    return [];
+    if (attempt >= 1) return [];
+    await new Promise((r) => setTimeout(r, 1500));
   }
-  return (data ?? []) as NewsPost[];
 }
 
 /** 게시된 글 한 건. 없거나 비공개면 null — 페이지는 404 로. */
