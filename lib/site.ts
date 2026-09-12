@@ -37,12 +37,12 @@ export const site = {
   addressRegion: "전라남도",
   addressLocality: "나주시",
 
-  hours: "매일 09:00 – 21:00",
+  hours: "매일 09:00 – 18:00",
   /** 요일별로 시간이 같고 정기 휴무가 확인되지 않았다. 값이 null 이면 화면에서 줄이 사라진다. */
   closedDays: null as string | null,
   /** 구조화 데이터(LocalBusiness)용. 화면 표기는 hours 를 쓴다. */
   opensAt: "09:00",
-  closesAt: "21:00",
+  closesAt: "18:00",
 
   /** TODO(클라이언트): 스마트스토어 주소 */
   storeUrl: null as string | null,

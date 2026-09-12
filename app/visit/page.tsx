@@ -125,7 +125,11 @@ export default function VisitPage() {
             )}
 
             {/* 전화 대신 남기는 길. 폼 아래 전화 링크가 남아 있어 실패해도 막다른 길이 아니다. */}
-            <ExperienceRequestForm tel={site.tel} telHref={site.telHref} />
+            <ExperienceRequestForm
+              tel={site.tel}
+              telHref={site.telHref}
+              smsNumber={site.mobile}
+            />
           </div>
 
           {/*

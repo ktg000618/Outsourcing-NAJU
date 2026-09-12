@@ -3,7 +3,12 @@
 import { useActionState } from "react";
 import { submitExperienceRequest } from "@/app/visit/actions";
 
-type Props = { tel: string; telHref: string };
+type Props = {
+  tel: string;
+  telHref: string;
+  /** 문자를 받을 휴대전화. 폰에서는 적은 내용을 그대로 문자창에 채워 보낸다 — 서버 없이도 접수가 된다. */
+  smsNumber: string;
+};
 
 function todayKst() {
   return new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Seoul" }).format(
@@ -15,7 +20,7 @@ function todayKst() {
  * 체험 예약 문의 폼. 전화 대신 남기는 길 — 실패하면 전화 링크가 바로 아래 선다.
  * 접수되면 폼 자리를 짧은 안내 한 줄로 바꾼다(다시 보낼 이유가 없다).
  */
-export function ExperienceRequestForm({ tel, telHref }: Props) {
+export function ExperienceRequestForm({ tel, telHref, smsNumber }: Props) {
   const [state, formAction, pending] = useActionState(submitExperienceRequest, {
     error: null,
   });
@@ -134,6 +139,29 @@ export function ExperienceRequestForm({ tel, telHref }: Props) {
         <a href={telHref} className="text-link self-start">
           전화로 문의 {tel}
         </a>
+        <button
+          type="button"
+          className="text-link self-start sm:hidden"
+          onClick={(e) => {
+            const form = e.currentTarget.form;
+            if (!form) return;
+            const v = (name: string) =>
+              (
+                form.elements.namedItem(name) as HTMLInputElement | null
+              )?.value.trim() ?? "";
+            const lines = [
+              "[체험 예약 문의]",
+              v("name") && `이름: ${v("name")}`,
+              v("phone") && `연락처: ${v("phone")}`,
+              v("wanted_on") && `희망 날짜: ${v("wanted_on")}`,
+              v("people") && `인원: ${v("people")}명`,
+              v("message") && `문의: ${v("message")}`,
+            ].filter(Boolean);
+            window.location.href = `sms:${smsNumber.replace(/-/g, "")}?body=${encodeURIComponent(lines.join("\n"))}`;
+          }}
+        >
+          문자로 보내기
+        </button>
       </div>
     </form>
   );
