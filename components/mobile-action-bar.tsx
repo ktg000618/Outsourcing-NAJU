@@ -20,7 +20,7 @@ export function MobileActionBar() {
     <div className="fixed inset-x-0 bottom-0 z-40 border-t border-ink/10 bg-paper/95 pb-[env(safe-area-inset-bottom)] backdrop-blur lg:hidden">
       <div className="grid h-14 grid-cols-2">
         <a
-          className="pressable flex h-full items-center justify-center gap-2 border-r border-ink/10 text-small transition-colors hover:text-mint-link"
+          className="pressable flex h-full items-center justify-center gap-2 bg-ink text-small text-paper transition-colors hover:bg-ink/90"
           href={site.telHref}
         >
           <PhoneIcon />

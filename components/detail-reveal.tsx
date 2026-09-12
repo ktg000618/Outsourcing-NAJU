@@ -47,7 +47,7 @@ export function DetailReveal({
         {!open && (
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-linear-to-t from-paper via-paper/80 to-transparent"
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-linear-to-t from-paper from-40% to-transparent"
           />
         )}
       </div>

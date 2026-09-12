@@ -68,7 +68,7 @@ export default function ProductsPage() {
             <li key={p.slug}>
               <Link
                 href={`/products/${p.slug}`}
-                className="group pressable grid grid-cols-[6rem_minmax(0,1fr)] items-center gap-x-5 py-6 lg:grid-cols-[10rem_minmax(0,1fr)] lg:gap-x-10 lg:py-8"
+                className="group pressable grid grid-cols-[6rem_minmax(0,1fr)] items-center gap-x-5 py-6 lg:grid-cols-[14rem_minmax(0,1fr)] lg:gap-x-12 lg:py-8"
               >
                 <ViewTransition
                   name={`product-${p.slug}`}
@@ -80,7 +80,7 @@ export default function ProductsPage() {
                       src={p.image}
                       alt=""
                       fill
-                      sizes="(min-width: 1024px) 160px, 96px"
+                      sizes="(min-width: 1024px) 224px, 96px"
                       quality={80}
                       className="object-cover transition-transform duration-slow ease-brand group-hover:scale-[1.03]"
                     />
@@ -92,6 +92,9 @@ export default function ProductsPage() {
                       {p.name}
                     </h2>
                     <p className="mt-1 text-small text-ink-soft">{p.summary}</p>
+                    <p className="mt-2 text-caption text-ink-faint">
+                      {p.occasions.join(" · ")}
+                    </p>
                     {/* 가격이 없으면 자리표('전화 문의')도 없다 — 가격은 나중에 들어온다(요청 사항). */}
                   </div>
                   <span className="text-link hidden shrink-0 sm:inline-flex">

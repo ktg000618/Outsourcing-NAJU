@@ -90,7 +90,8 @@ export default function HomePage() {
 
       {/* 2. 숫자 밴드 — 전부 연표에 있는 사실이다. 숫자는 헤드라인보다 크지 않다.
           <sm 은 장부 행(숫자·설명 한 줄), sm 부터 균등 3열·왼쪽 정렬. */}
-      <section className="section-y-tight rise mx-auto max-w-6xl px-5 lg:px-8">
+      {/* 숫자 밴드는 히어로의 꼬리 — 아래 여백은 다음 섹션이 갖는다. */}
+      <section className="rise mx-auto max-w-6xl px-5 pt-10 lg:px-8 lg:pt-14">
         <ul className="border-y border-ink/10 sm:grid sm:grid-cols-3 sm:gap-x-8 sm:py-10 lg:py-12">
           {[
             { n: "2016", unit: "년", label: "절굿대 육묘 국내 최초 성공" },
@@ -167,7 +168,7 @@ export default function HomePage() {
 
       {/* 4. 인용 + 연표 예고 — 5:7 비대칭. 가운데 정렬 ABOUT 문단을 대신한다 */}
       <section className="rise border-t border-ink/10">
-        <div className="section-y mx-auto grid max-w-6xl gap-12 px-5 lg:grid-cols-[5fr_7fr] lg:gap-20 lg:px-8">
+        <div className="section-y mx-auto grid max-w-6xl gap-12 px-5 lg:grid-cols-[5fr_7fr] lg:items-center lg:gap-20 lg:px-8">
           <div>
             <SectionEyebrow phase={0.45}>이야기</SectionEyebrow>
             {/* 큰 인용은 얇게. 굵으면 구호가 되고, 얇으면 인용이 된다. */}

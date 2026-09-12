@@ -154,17 +154,21 @@ export default function JeolgutdaePage() {
         </div>
       </section>
 
-      {/* 찾아오기 — 풀을 보러 오는 사람도 있다. 밭은 매장과 떨어져 있어 매장으로 안내한다. */}
-      <section className="rise border-t border-ink/10">
-        <div className="section-y-tight mx-auto max-w-6xl px-5 lg:px-8">
-          <p className="max-w-prose text-ink-soft">
-            떡카페에서 절굿대떡과 나주배 촉촉오란다를 드실 수 있습니다.{" "}
-            {site.address}, {site.hours}.
-          </p>
-          <Link href="/visit" className="text-link mt-6 inline-flex">
-            오시는 길 보기
-          </Link>
-        </div>
+      {/* 맺음 — 홈 마지막 「주문·체험 문의」와 같은 실선 행. 풀을 보러 오는 사람도 매장으로 안내한다. */}
+      <section className="rise mx-auto max-w-6xl px-5 pb-20 pt-12 lg:px-8 lg:pb-28 lg:pt-16">
+        <ul className="divide-y divide-ink/10 border-y border-ink/10">
+          <li className="flex flex-col gap-3 py-5 sm:flex-row sm:items-center sm:justify-between sm:gap-8 lg:py-6">
+            <div>
+              <p className="text-lead font-bold">떡카페에서 맛보기</p>
+              <p className="mt-1 text-small text-ink-soft">
+                {site.address} · {site.hours}
+              </p>
+            </div>
+            <Link href="/visit" className="btn-primary">
+              오시는 길
+            </Link>
+          </li>
+        </ul>
       </section>
     </>
   );

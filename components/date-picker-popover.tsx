@@ -12,6 +12,7 @@ import "react-day-picker/dist/style.css";
 const BRAND_VARS = {
   "--rdp-accent-color": "#161616",
   "--rdp-accent-background-color": "#f6f4f0",
+  "--rdp-day_button-border-radius": "0",
   "--rdp-day-width": "2.5rem",
   "--rdp-day-height": "2.5rem",
   "--rdp-day_button-width": "2.5rem",

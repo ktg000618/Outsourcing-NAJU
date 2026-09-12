@@ -215,6 +215,8 @@ export type Product = {
 export const products: Product[] = [
   {
     slug: "jeolgutdae",
+    /* 접힌 높이 = 표지가 끝나는 지점 + 페이드. 렌더 원본(1720px 폭)에서 먹색 표지 끝을 재고 표시 폭(폰 350·PC 860)으로 환산한 뒤 페이드 몫 100~120px 을 더했다. */
+    detailCollapsed: "max-h-[525px] lg:max-h-[1160px]",
     name: "절굿대떡",
     summary: "콩고물을 입힌 나주의 이바지 떡",
     detail:
@@ -326,7 +328,7 @@ export const products: Product[] = [
   {
     slug: "oranda",
     /* 표지가 사진 + 먹색 글 판 구조(선물세트와 같음)라 접힌 높이도 같이 — 기본값이면 PC 에서 제목 글자 중간이 잘린다. */
-    detailCollapsed: "max-h-[700px] lg:max-h-[1420px]",
+    detailCollapsed: "max-h-[710px] lg:max-h-[1610px]",
     name: "나주배 촉촉오란다",
     summary: "겉은 바삭, 속은 촉촉한 수제 오란다",
     detail:
@@ -443,7 +445,7 @@ export const products: Product[] = [
   },
   {
     slug: "gift",
-    detailCollapsed: "max-h-[700px] lg:max-h-[1420px]",
+    detailCollapsed: "max-h-[630px] lg:max-h-[1410px]",
     name: "선물세트",
     summary: "보자기에 싸는 이바지 구성",
     detail:

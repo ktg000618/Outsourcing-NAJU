@@ -47,25 +47,32 @@ export function PostRowActions({
         className={`flex flex-wrap items-center gap-x-3 gap-y-1.5 ${pending ? "opacity-60" : ""}`}
       >
         {published && (
-          <div className="flex gap-1.5">
-            <a href={url} target="_blank" rel="noreferrer" className={quiet}>
+          <div className="flex items-center gap-3">
+            <a
+              href={url}
+              target="_blank"
+              rel="noreferrer"
+              className="text-link text-caption"
+            >
               글 보기<span className="sr-only"> (새 창)</span>
             </a>
             <button
               type="button"
               onClick={copy}
               aria-live="polite"
-              className={quiet}
+              className="text-link text-caption"
             >
               {copied ? "복사했습니다" : "주소 복사"}
             </button>
           </div>
         )}
-        <div className="flex gap-1.5">
+        <div className="flex items-center gap-3">
           <button
             type="button"
             disabled={pending}
-            className={published ? quiet : "btn-primary btn-sm"}
+            className={
+              published ? "text-link text-caption" : "btn-primary btn-sm"
+            }
             onClick={() => run(() => setPublished(id, !published))}
           >
             {published ? "숨기기" : "게시"}
@@ -76,7 +83,7 @@ export function PostRowActions({
           <button
             type="button"
             disabled={pending}
-            className="btn-secondary btn-sm border-transparent text-ink-faint hover:border-rose-deep hover:text-rose-deep"
+            className="text-link text-caption text-rose-deep"
             onClick={() => {
               if (
                 window.confirm("이 글을 삭제하시겠습니까? 되돌릴 수 없습니다.")

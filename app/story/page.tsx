@@ -202,7 +202,7 @@ export default function StoryPage() {
                 일부를 지역에 환원하며 선순환 구조를 만들어 가고자 합니다.
               </p>
             </div>
-            <div className="photo aspect-[2/1] lg:aspect-4/3">
+            <div className="photo aspect-[2/1] lg:order-first lg:aspect-4/3">
               <Image
                 src="/images/growers-harvest.jpg"
                 alt="절굿대 밭에서 잎을 거두어 바구니에 담고 있다"

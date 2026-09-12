@@ -296,12 +296,6 @@ export default async function ProductPage({
                   <ul
                     className={`mt-8 grid grid-cols-2 gap-3 lg:gap-5 ${tileCols}`}
                   >
-                    {product.video && (
-                      /* 질감 영상은 첫 타일. 사진과 같은 정사각 — 원으로 걸치지 않는다. */
-                      <li className="relative aspect-4/3">
-                        <LoopingVideo {...product.video} />
-                      </li>
-                    )}
                     {extras.map((g, i) => (
                       <li key={g.src} className="photo aspect-4/3">
                         <LightboxButton index={i} label={g.alt}>
@@ -316,6 +310,12 @@ export default async function ProductPage({
                         </LightboxButton>
                       </li>
                     ))}
+                    {product.video && (
+                      /* 질감 영상은 마지막 타일 — 폰 화질 스틸이라 스튜디오 컷 사이에서 튄다. 사진과 같은 비율. */
+                      <li className="relative aspect-4/3">
+                        <LoopingVideo {...product.video} />
+                      </li>
+                    )}
                   </ul>
                 </Lightbox>
               </div>
@@ -358,13 +358,13 @@ export default async function ProductPage({
             split="inline"
             title={{ thin: "함께 보는 ", black: "다른 제품" }}
           />
-          {/* 제품 3개 − 현재 1 = 항상 2개. 2열 등분. */}
-          <ul className="mt-8 grid grid-cols-2 gap-x-4 gap-y-8 sm:gap-x-5 lg:max-w-3xl lg:gap-x-12">
+          {/* 제품 목록 페이지와 같은 실선 행 — 원 둘만 놓으면 오른쪽 1/3 이 빈다. */}
+          <ul className="mt-8 divide-y divide-ink/10 border-y border-ink/10">
             {others.map((p) => (
               <li key={p.slug}>
                 <Link
                   href={`/products/${p.slug}`}
-                  className="group pressable block"
+                  className="group pressable grid grid-cols-[6rem_minmax(0,1fr)] items-center gap-x-5 py-5 lg:grid-cols-[10rem_minmax(0,1fr)] lg:gap-x-10 lg:py-6"
                 >
                   <ViewTransition
                     name={`product-${p.slug}`}
@@ -376,15 +376,25 @@ export default async function ProductPage({
                         src={p.image}
                         alt={p.imageAlt}
                         fill
-                        sizes="(min-width: 1024px) 300px, 45vw"
+                        sizes="(min-width: 1024px) 160px, 96px"
                         quality={80}
                         className="object-cover transition-transform duration-slow ease-brand group-hover:scale-[1.03]"
                       />
                     </div>
                   </ViewTransition>
-                  <p className="mt-3 text-center text-small transition-colors group-hover:text-mint-link sm:mt-4 sm:text-lead">
-                    {p.name}
-                  </p>
+                  <div className="flex items-center justify-between gap-6">
+                    <div>
+                      <h3 className="text-title transition-colors group-hover:text-mint-link">
+                        {p.name}
+                      </h3>
+                      <p className="mt-1 text-small text-ink-soft">
+                        {p.summary}
+                      </p>
+                    </div>
+                    <span className="text-link hidden shrink-0 sm:inline-flex">
+                      자세히 보기
+                    </span>
+                  </div>
                 </Link>
               </li>
             ))}

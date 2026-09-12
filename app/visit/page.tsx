@@ -115,8 +115,9 @@ export default function VisitPage() {
       </section>
 
       {/* 체험 */}
+      {/* 세 덩이: 머리글 · 사진+조건 · 폼. 폰은 그 순서대로 쌓여 조건을 읽고 폼을 채우고, PC 는 사진+조건이 오른쪽 열에 서서 폼 옆을 따라 내려온다. */}
       <section className="section-y rise mx-auto max-w-6xl px-5 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="grid gap-10 lg:grid-cols-2 lg:gap-x-16 lg:gap-y-8">
           <div>
             <SectionHead
               phase={0.25}
@@ -133,7 +134,30 @@ export default function VisitPage() {
               값이 아직 없으므로 자리를 만들어 두고 "전화 문의" 로 대체한다 —
               제품 가격과 같은 규칙이다. lib/site.ts 만 고치면 여기가 채워진다.
             */}
-            <dl className="mt-9 divide-y divide-ink/10 border-y border-ink/10">
+          </div>
+
+          {/* 홈 히어로의 대표 사진(칼로 자르는 컷)은 같은 사람이 두 번 나와 손·반죽 컷으로 바꿨다. */}
+          {/* 오른쪽 열: 사진 + 대상·예약. 폼이 길어 PC 에서 열이 비지 않게 따라 내려온다(sticky). */}
+          <div className="self-start lg:sticky lg:top-24 lg:row-span-2">
+            <Lightbox items={experiencePhotos}>
+              <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                {experiencePhotos.map((ph, i) => (
+                  <div key={ph.src} className="photo aspect-4/3">
+                    <LightboxButton index={i} label={ph.alt}>
+                      <Image
+                        src={ph.src}
+                        alt={ph.alt}
+                        fill
+                        sizes="(min-width: 1024px) 22vw, 45vw"
+                        quality={80}
+                        className="object-cover"
+                      />
+                    </LightboxButton>
+                  </div>
+                ))}
+              </div>
+            </Lightbox>
+            <dl className="mt-8 divide-y divide-ink/10 border-y border-ink/10">
               {rows
                 .filter((r) => r.value !== null)
                 .map((r) => (
@@ -146,13 +170,14 @@ export default function VisitPage() {
                 ))}
             </dl>
             {/* 값이 없는 항목은 줄마다 '전화로 문의' 를 반복하지 않고 한 문장으로 —
-                같은 문구 다섯 줄은 벽이었다(모바일 전수 확인). 값이 채워지면 줄이 위 표로 올라간다. */}
+                  같은 문구 다섯 줄은 벽이었다(모바일 전수 확인). 값이 채워지면 줄이 위 표로 올라간다. */}
             {rows.some((r) => r.value === null) && (
               <p className="mt-4 text-small text-ink-soft">
                 인원·시간·참가비는 전화로 문의해 주세요.
               </p>
             )}
-
+          </div>
+          <div className="lg:col-start-1">
             {/* 전화 대신 남기는 길. 폼 아래 전화 링크가 남아 있어 실패해도 막다른 길이 아니다. */}
             <ExperienceRequestForm
               tel={site.tel}
@@ -160,26 +185,6 @@ export default function VisitPage() {
               smsNumber={site.mobile}
             />
           </div>
-
-          {/* 홈 히어로의 대표 사진(칼로 자르는 컷)은 같은 사람이 두 번 나와 손·반죽 컷으로 바꿨다. */}
-          <Lightbox items={experiencePhotos}>
-            <div className="grid grid-cols-2 gap-3 self-start sm:gap-4">
-              {experiencePhotos.map((ph, i) => (
-                <div key={ph.src} className="photo aspect-4/3">
-                  <LightboxButton index={i} label={ph.alt}>
-                    <Image
-                      src={ph.src}
-                      alt={ph.alt}
-                      fill
-                      sizes="(min-width: 1024px) 22vw, 45vw"
-                      quality={80}
-                      className="object-cover"
-                    />
-                  </LightboxButton>
-                </div>
-              ))}
-            </div>
-          </Lightbox>
         </div>
       </section>
 
@@ -194,9 +199,12 @@ export default function VisitPage() {
             split="inline"
           />
           {/* 실선 장부 세 줄. 번호는 제목 옆 작은 캡션 — 큰 숫자는 위 연표·페이지 제목과 겨뤘다. */}
-          <ol className="mt-9 divide-y divide-ink/10 border-y border-ink/10">
+          <ol className="mt-9 divide-y divide-ink/10 border-y border-ink/10 lg:grid lg:grid-cols-3 lg:divide-x lg:divide-y-0">
             {experience.steps.map((step, i) => (
-              <li key={step.title} className="py-5 lg:py-6">
+              <li
+                key={step.title}
+                className="py-5 lg:px-8 lg:py-6 lg:first:pl-0 lg:last:pr-0"
+              >
                 <h3 className="flex items-baseline gap-3 text-lead font-bold">
                   <span className="text-small font-normal tabular-nums tracking-normal text-ink-faint">
                     {String(i + 1).padStart(2, "0")}

@@ -57,7 +57,7 @@ export function LoopingVideo({ src, poster, label }: Props) {
         src={src}
       />
       <button
-        className="pressable absolute bottom-3 right-3 border border-paper/60 bg-ink/70 px-3 py-1.5 text-caption text-paper backdrop-blur transition-colors hover:bg-ink"
+        className="pressable absolute bottom-3 right-3 bg-ink/60 px-3 py-1.5 text-caption text-paper transition-colors hover:bg-ink"
         onClick={() => {
           const v = ref.current;
           if (!v) return;
