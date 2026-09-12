@@ -1,10 +1,13 @@
 "use client";
 
-import { useEffect, useId, useRef, useState, type CSSProperties } from "react";
-import { DayPicker } from "react-day-picker";
-import { ko } from "react-day-picker/locale";
-import { format } from "date-fns";
-import "react-day-picker/dist/style.css";
+import dynamic from "next/dynamic";
+import { useEffect, useId, useRef, useState } from "react";
+
+// 달력(라이브러리 + 스타일시트)은 처음 여는 순간에만 받는다 — 폼을 보기만 하는 방문에는 싣지 않는다.
+const DatePickerPopover = dynamic(() => import("./date-picker-popover"), {
+  ssr: false,
+  loading: () => <div aria-hidden className="h-[21rem] w-[19rem]" />,
+});
 
 type Props = {
   id: string;
@@ -12,19 +15,6 @@ type Props = {
   name: string;
   placeholder?: string;
 };
-
-/**
- * 달력 색은 클래스가 아니라 변수로 준다 — v9 는 `--rdp-*` 변수에서 선택·오늘 색을 전부 파생한다.
- * 먹색 선택 + 흰 글자, 오늘은 먹색 글자.
- */
-const BRAND_VARS = {
-  "--rdp-accent-color": "#161616",
-  "--rdp-accent-background-color": "#f6f4f0",
-  "--rdp-day-width": "2.5rem",
-  "--rdp-day-height": "2.5rem",
-  "--rdp-day_button-width": "2.5rem",
-  "--rdp-day_button-height": "2.5rem",
-} as CSSProperties;
 
 function todayKst() {
   const [y, m, d] = new Intl.DateTimeFormat("en-CA", {
@@ -35,6 +25,18 @@ function todayKst() {
     .map(Number);
   return new Date(y, m - 1, d);
 }
+
+const pad = (n: number) => String(n).padStart(2, "0");
+const toIso = (d: Date) =>
+  `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+const dateFmt = new Intl.DateTimeFormat("ko-KR", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+const weekdayFmt = new Intl.DateTimeFormat("ko-KR", { weekday: "short" });
+/** 「2026년 9월 15일 (화)」 */
+const labelOf = (d: Date) => `${dateFmt.format(d)} (${weekdayFmt.format(d)})`;
 
 /**
  * 희망 날짜 입력. 브라우저마다 다르게 생긴 기본 날짜 입력 대신, 사이트와 같은 얼굴의 달력을 연다.
@@ -67,6 +69,8 @@ export function DateField({
     };
   }, [open]);
 
+  const text = date ? labelOf(date) : placeholder;
+
   return (
     <div ref={root} className="relative">
       <button
@@ -78,11 +82,7 @@ export function DateField({
         onClick={() => setOpen((v) => !v)}
         className={`field-input flex items-center justify-between gap-3 text-left tabular-nums ${date ? "" : "text-ink-faint"}`}
       >
-        <span>
-          {date
-            ? format(date, "yyyy년 M월 d일 (EEE)", { locale: ko })
-            : placeholder}
-        </span>
+        <span>{text}</span>
         <svg
           aria-hidden
           viewBox="0 0 20 20"
@@ -95,11 +95,7 @@ export function DateField({
           <path d="M3 8.5h14M7 2.5v4M13 2.5v4" />
         </svg>
       </button>
-      <input
-        type="hidden"
-        name={name}
-        value={date ? format(date, "yyyy-MM-dd") : ""}
-      />
+      <input type="hidden" name={name} value={date ? toIso(date) : ""} />
       {open && (
         <div
           id={dialogId}
@@ -107,17 +103,13 @@ export function DateField({
           aria-label="희망 날짜 고르기"
           className="absolute left-0 top-full z-20 mt-2 border border-ink/20 bg-paper p-3 shadow-[0_12px_32px_-12px_rgba(22,22,22,0.25)]"
         >
-          <DayPicker
-            mode="single"
-            locale={ko}
+          <DatePickerPopover
             selected={date}
-            defaultMonth={date ?? today}
-            disabled={{ before: today }}
+            today={today}
             onSelect={(d) => {
               setDate(d);
               if (d) setOpen(false);
             }}
-            style={BRAND_VARS}
           />
           {date && (
             <div className="mt-1 flex justify-end border-t border-ink/10 pt-2">

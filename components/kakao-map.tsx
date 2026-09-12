@@ -15,7 +15,7 @@ export function KakaoMap({ className = "" }: { className?: string }) {
       href={site.kakaoPlaceUrl}
       target="_blank"
       rel="noreferrer"
-      aria-label={`카카오맵에서 ${site.name} 위치 보기 (새 창)`}
+      aria-label={`${site.name} 지도 크게 보기 (카카오맵, 새 창)`}
       className={`photo group relative block aspect-4/3 sm:aspect-2/1 lg:aspect-3/1 ${className}`}
     >
       <Image
