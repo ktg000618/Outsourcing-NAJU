@@ -325,6 +325,8 @@ export const products: Product[] = [
   },
   {
     slug: "oranda",
+    /* 표지가 사진 + 먹색 글 판 구조(선물세트와 같음)라 접힌 높이도 같이 — 기본값이면 PC 에서 제목 글자 중간이 잘린다. */
+    detailCollapsed: "max-h-[700px] lg:max-h-[1420px]",
     name: "나주배 촉촉오란다",
     summary: "겉은 바삭, 속은 촉촉한 수제 오란다",
     detail:
