@@ -92,7 +92,7 @@ export default function ProductsPage() {
                       {p.name}
                     </h2>
                     <p className="mt-1 text-small text-ink-soft">{p.summary}</p>
-                    {/* 가격이 없으면 자리표('전화 문의')도 없다 — 가격은 나중에 들어온다(리더 지시). */}
+                    {/* 가격이 없으면 자리표('전화 문의')도 없다 — 가격은 나중에 들어온다(요청 사항). */}
                   </div>
                   <span className="text-link hidden shrink-0 sm:inline-flex">
                     자세히 보기

@@ -49,7 +49,7 @@ export function SiteHeader() {
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 lg:h-20 lg:px-8">
           {/*
           엠블럼(원) + 조판 상호. 세로 락업은 흰 글자+민트 외곽선이라 흰 헤더 위에선 64/80px 로
-          키워도 안 읽혔다(실측). 락업은 어두운 면(푸터) 전용 — 리더 결정.
+          키워도 안 읽혔다(실측). 락업은 어두운 면(푸터) 전용 — 확정 사항.
         */}
           <Link
             href="/"
@@ -89,7 +89,7 @@ export function SiteHeader() {
                   </li>
                 );
               })}
-              {/* 외곽선 상자에 숫자만 두면 입력창으로 읽혔다(리더 지적). 하단 고정 바와 같은
+              {/* 외곽선 상자에 숫자만 두면 입력창으로 읽혔다(검수 의견). 하단 고정 바와 같은
                   전화 아이콘 + 먹색 채움 — 사이트가 이미 쓰는 CTA 언어다. */}
               <li className="ml-2">
                 <a

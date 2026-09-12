@@ -128,7 +128,7 @@ export function PostForm({ action, initial }: Props) {
               {MAX_IMAGES}장까지, 장당 5MB
             </span>
           </p>
-          {/* 모바일 열 수 = 타일 수(사진 + 드롭존)가 3이면 3열 — 2열이면 셋째가 혼자 남는다(리더 지적). */}
+          {/* 모바일 열 수 = 타일 수(사진 + 드롭존)가 3이면 3열 — 2열이면 셋째가 혼자 남는다(검수 의견). */}
           <div
             className={`grid gap-3 sm:grid-cols-3 ${tiles === 3 ? "grid-cols-3" : "grid-cols-2"}`}
           >

@@ -177,7 +177,7 @@ export default async function ProductPage({
       {product.detailImages && (
         /*
           상세페이지 이미지(업체 제작 오란다 · 자체 제작 절굿대떡/선물세트). 접어 두면 손님이 열기 전엔
-          상세가 없는 줄 안다(리더 지적) — 위 일부를 보여 주고 「상세 더보기」로 펼친다.
+          상세가 없는 줄 안다(검수 의견) — 위 일부를 보여 주고 「상세 더보기」로 펼친다.
           rise 를 붙이지 않는다: 펼치면 만 픽셀이 넘는 블록이라 view() 타임라인이 끝까지 안 가 흐린 채 남는다(실측).
         */
         <section className="border-t border-ink/10">
@@ -285,7 +285,7 @@ export default async function ProductPage({
       {product.reviewVideo && (
         /*
           후기는 어두운 달빛 면 위에. 종이색 밴드 안의 기본 <video> 는 사이트 밖 물건처럼
-          보였다(리더 지적). 굵은 줄은 후기 본인의 말, 그 아래 "말한 대목" 목록은 누르면 그
+          보였다(검수 의견). 굵은 줄은 후기 본인의 말, 그 아래 "말한 대목" 목록은 누르면 그
           시점으로 간다. 모바일은 글·대목 먼저, 영상은 가운데 280px.
         */
         <section className="moonlit rise overflow-hidden bg-ink text-paper">

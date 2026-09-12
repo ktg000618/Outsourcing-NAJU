@@ -43,3 +43,9 @@ tools/detail-pages/out/
 
 # 예시 env 는 커밋한다
 !.env.example
+
+# 로컬 도구 설정 — 저장소에 올리지 않는다
+.claude/
+.mcp.json
+CLAUDE.md
+AGENTS.md

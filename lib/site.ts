@@ -79,7 +79,7 @@ export type Product = {
   summary: string;
   detail: string;
   image: string;
-  /** 대표 이미지의 대체 텍스트. 제품명만 적으면 사진이 무엇을 보여 주는지 스크린리더가 모른다. */
+  /** 대표 이미지의 대체 텍스트. 제품명만 적으면 사진이 무엇을 보여 주는지 스크린검수자가 모른다. */
   imageAlt: string;
   /** TODO(클라이언트): 가격·구성. null 이면 가격 줄이 빠지고, 있으면 사양 표의 한 줄로 나간다. */
   price: number | null;

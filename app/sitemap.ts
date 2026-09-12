@@ -11,7 +11,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...pages.map((path) => ({
       url: `${site.url}${path}`,
       lastModified: now,
-      changeFrequency: path === "/news" ? ("weekly" as const) : ("monthly" as const),
+      changeFrequency:
+        path === "/news" ? ("weekly" as const) : ("monthly" as const),
       priority: path === "" ? 1 : 0.8,
     })),
     ...products.map((p) => ({
