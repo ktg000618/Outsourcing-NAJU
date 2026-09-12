@@ -280,7 +280,7 @@ export default function StoryPage() {
                 src={s.src}
                 alt={s.alt}
                 fill
-                sizes="(min-width: 1024px) 360px, 30vw"
+                sizes="(min-width: 1024px) 360px, (min-width: 640px) 30vw, 72vw"
                 quality={80}
                 className={`object-cover ${s.position}`}
               />

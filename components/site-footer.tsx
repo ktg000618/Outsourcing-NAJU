@@ -36,7 +36,7 @@ export function SiteFooter() {
             alt={site.name}
             width={640}
             height={735}
-            sizes="240px"
+            sizes="(min-width: 1024px) 210px, 126px"
             className="h-36 w-auto lg:h-60"
           />
           <p className="mt-6 max-w-xs text-small">

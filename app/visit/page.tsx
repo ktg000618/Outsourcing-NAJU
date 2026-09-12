@@ -143,7 +143,7 @@ export default function VisitPage() {
                 src="/images/making-hands.jpg"
                 alt="장갑 낀 손으로 초록 절굿대 반죽을 틀에 펴고 있다"
                 fill
-                sizes="(min-width: 1024px) 22vw, 90vw"
+                sizes="(min-width: 1024px) 22vw, 45vw"
                 quality={80}
                 className="object-cover"
               />
@@ -153,7 +153,7 @@ export default function VisitPage() {
                 src="/images/process-pour.jpg"
                 alt="절굿대를 넣은 초록 반죽을 틀에 붓는다"
                 fill
-                sizes="(min-width: 1024px) 22vw, 90vw"
+                sizes="(min-width: 1024px) 22vw, 45vw"
                 quality={80}
                 className="object-cover"
               />

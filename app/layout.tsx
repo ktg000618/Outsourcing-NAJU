@@ -3,8 +3,6 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { MobileActionBar } from "@/components/mobile-action-bar";
 import { MobileActionBarGate } from "@/components/mobile-action-bar-gate";
-import { AnalyticsEvents } from "@/components/analytics-events";
-import { Analytics } from "@vercel/analytics/next";
 import { site } from "@/lib/site";
 import "pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css";
 import "./globals.css";
@@ -116,9 +114,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <MobileActionBarGate>
           <MobileActionBar />
         </MobileActionBarGate>
-        {/* 방문·클릭 측정. 개인정보 없이 경로와 이벤트 이름만. Vercel 프로젝트에서 Analytics 를 켜야 집계된다. */}
-        <Analytics />
-        <AnalyticsEvents />
       </body>
     </html>
   );

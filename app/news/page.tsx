@@ -145,7 +145,9 @@ export default async function NewsPage() {
                                 sizes={
                                   n === 2
                                     ? "(min-width: 1024px) 310px, 45vw"
-                                    : "(min-width: 1024px) 635px, (min-width: 640px) 30vw, 72vw"
+                                    : i === 0
+                                      ? "(min-width: 1024px) 635px, (min-width: 640px) 30vw, 72vw"
+                                      : "(min-width: 1024px) 310px, (min-width: 640px) 30vw, 72vw"
                                 }
                                 quality={80}
                                 className="object-cover"

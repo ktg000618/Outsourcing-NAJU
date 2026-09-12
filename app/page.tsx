@@ -144,7 +144,7 @@ export default function HomePage() {
                       src={p.image}
                       alt=""
                       fill
-                      sizes="(min-width: 640px) 30vw, 62vw"
+                      sizes="(min-width: 1200px) 352px, (min-width: 640px) 30vw, 62vw"
                       quality={80}
                       className="object-cover transition-transform duration-slow ease-brand group-hover:scale-[1.03]"
                     />
