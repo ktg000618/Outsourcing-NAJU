@@ -15,22 +15,18 @@ export function KakaoMap({ className = "" }: { className?: string }) {
       href={site.kakaoPlaceUrl}
       target="_blank"
       rel="noreferrer"
-      aria-label={`${site.name} 지도 크게 보기 (카카오맵, 새 창)`}
       className={`photo group relative block aspect-4/3 sm:aspect-2/1 lg:aspect-3/1 ${className}`}
     >
       <Image
         src={MAP}
-        alt={`${site.name} 위치 지도 — ${site.address}`}
+        alt=""
         fill
         unoptimized
         sizes="(min-width: 1200px) 1152px, 100vw"
         className="object-cover object-center"
       />
-      {/* 표식: 달 노랑 점 + 이름. 지도 중심 = 매장. */}
-      <span
-        aria-hidden
-        className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-full flex-col items-center"
-      >
+      {/* 표식: 달 노랑 점 + 이름. 지도 중심 = 매장. 링크 이름은 보이는 글(이름 + 지도 크게 보기)로만 짓는다 — aria-label 로 덮으면 보이는 글과 어긋난다. */}
+      <span className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-full flex-col items-center">
         <span className="bg-ink px-3 py-1.5 text-caption font-bold text-paper">
           {site.name}
         </span>
@@ -38,6 +34,7 @@ export function KakaoMap({ className = "" }: { className?: string }) {
       </span>
       <span className="text-link absolute bottom-4 right-4 bg-paper/95 px-3 py-1 text-caption">
         지도 크게 보기
+        <span className="sr-only"> (카카오맵, 새 창)</span>
       </span>
     </a>
   );
