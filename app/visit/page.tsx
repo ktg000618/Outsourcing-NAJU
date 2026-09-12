@@ -132,7 +132,7 @@ export default function VisitPage() {
             참가자 얼굴이 정면으로 크게 나와 초상권 동의 없이는 못 올린다.
             홈 히어로의 대표 사진(칼로 자르는 컷)은 같은 사람이 두 번 나와 손·반죽 컷으로 바꿨다.
           */}
-          <div className="grid gap-4 self-start sm:grid-cols-2">
+          <div className="grid grid-cols-2 gap-3 self-start sm:gap-4">
             <div className="photo aspect-4/3">
               <Image
                 src="/images/making-hands.jpg"
