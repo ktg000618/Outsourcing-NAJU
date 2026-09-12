@@ -75,7 +75,7 @@ export default async function NewsPostPage({ params }: Props) {
             </time>
           </div>
           <div className="min-w-0">
-            <h1 className="font-black tracking-tighter text-h1 lg:text-hero">
+            <h1 className="font-black tracking-tighter text-h1">
               {post.title}
             </h1>
             {post.body && (
@@ -100,7 +100,7 @@ export default async function NewsPostPage({ params }: Props) {
             {n >= 2 && (
               <ul
                 aria-label={`사진 ${n}장`}
-                className="mt-8 grid grid-cols-2 gap-3 lg:[&>li:first-child]:col-span-2"
+                className={`mt-8 grid grid-cols-2 gap-3 lg:gap-5 ${n >= 3 ? "lg:[&>li:first-child]:col-span-2" : ""}`}
               >
                 {post.images.map((src, i) => (
                   <li key={src} className="photo aspect-4/3">
@@ -111,7 +111,7 @@ export default async function NewsPostPage({ params }: Props) {
                       priority={i === 0}
                       sizes={
                         i === 0
-                          ? "(min-width: 1024px) 635px, 45vw"
+                          ? `(min-width: 1024px) ${n >= 3 ? "635px" : "310px"}, 45vw`
                           : "(min-width: 1024px) 310px, 45vw"
                       }
                       quality={80}
@@ -132,7 +132,11 @@ export default async function NewsPostPage({ params }: Props) {
                   {host} 에서 보기<span className="sr-only"> (새 창)</span>
                 </a>
               )}
-              <ShareButton title={post.title} text={newsExcerpt(post.body)} />
+              <ShareButton
+                title={post.title}
+                text={newsExcerpt(post.body)}
+                label="이 소식 공유하기"
+              />
             </div>
           </div>
         </div>
