@@ -305,8 +305,10 @@ export default function StoryPage() {
                 key={c.label}
                 className="grid grid-cols-[minmax(0,1fr)_6.5rem] gap-x-6 gap-y-1 py-4 sm:grid-cols-[12rem_minmax(0,1fr)_10rem] sm:items-center sm:py-5"
               >
-                <p className="font-bold">{c.label}</p>
-                <p className="text-small text-ink-soft">{c.detail}</p>
+                <p className="col-start-1 font-bold">{c.label}</p>
+                <p className="col-start-1 text-small text-ink-soft sm:col-start-2">
+                  {c.detail}
+                </p>
                 {/* 증서 썸네일 — 서류라 비율 그대로(contain), 누르면 크게. */}
                 {c.image && (
                   <div className="photo relative col-start-2 row-span-2 row-start-1 aspect-[4/3] sm:col-start-3 sm:row-span-1">
