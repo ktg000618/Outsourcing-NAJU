@@ -222,6 +222,23 @@ export default function VisitPage() {
                   <p className="mt-1 text-lead">{site.closedDays}</p>
                 </div>
               )}
+              {/* 오시는 길 — 역·터미널에서 얼마나 걸리는지. 관광객이 주소 다음으로 찾는 정보다. */}
+              <div>
+                <p className="text-caption text-ink-faint">오시는 길</p>
+                <ul className="mt-2 divide-y divide-ink/10 border-y border-ink/10">
+                  {site.directions.map((d) => (
+                    <li
+                      key={d.from}
+                      className="flex flex-col gap-0.5 py-3 sm:flex-row sm:items-baseline sm:gap-6"
+                    >
+                      <span className="text-small text-ink-soft sm:w-44 sm:shrink-0">
+                        {d.from}
+                      </span>
+                      <span className="text-body">{d.how}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </address>
 
             {/* 전화 버튼은 위 체험 섹션에 하나뿐이다 — 번호는 바로 아래 푸터에 크게 있다. */}

@@ -40,6 +40,12 @@ export const site = {
   hours: "매일 09:00 – 18:00",
   /** 요일별로 시간이 같고 정기 휴무가 확인되지 않았다. 값이 null 이면 화면에서 줄이 사라진다. */
   closedDays: null as string | null,
+  /** 오시는 길. 거리·시간은 2026-09-12 경로 실측(도로 2.4km 등)을 넉넉히 반올림한 값 — 교통 상황에 따라 다르다. */
+  directions: [
+    { from: "나주역 (KTX·SRT)", how: "택시 약 5분 · 도보 약 30분 (2.4km)" },
+    { from: "나주시외버스터미널", how: "도보 약 10분 (600m)" },
+    { from: "광주송정역 (KTX)", how: "자동차 약 20분 (15km)" },
+  ],
   /** 구조화 데이터(LocalBusiness)용. 화면 표기는 hours 를 쓴다. */
   opensAt: "09:00",
   closesAt: "18:00",
