@@ -229,7 +229,10 @@ export default function StoryPage() {
             <p className="max-w-prose">
               떡에 들어가는 절굿대는 깊은 산속에서만 자생하던 것을 2016년 육묘에
               성공해 직접 기릅니다. 지금은 씨앗을 나누어 드리고 마을 어르신들께
-              위탁해 재배합니다.
+              위탁해 재배합니다.{" "}
+              <Link href="/jeolgutdae" className="text-link-inline">
+                절굿대는 어떤 풀인가요
+              </Link>
             </p>
             <p className="max-w-prose">
               그렇게 기른 절굿대를 넣은 반죽을 손으로 쳐서 빚습니다. 유화제나

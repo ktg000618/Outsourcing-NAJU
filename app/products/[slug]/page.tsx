@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Lightbox, LightboxButton } from "@/components/lightbox";
 import { ViewTransition } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -165,6 +166,12 @@ export default async function ProductPage({
           <p className="mt-3 text-lead text-ink-soft">{product.summary}</p>
 
           <p className="mt-7 max-w-prose text-ink-soft">{product.detail}</p>
+          {/* 세 제품 모두 절굿대가 들어간다 — 풀 자체가 궁금한 사람에게 한 줄. */}
+          <p className="mt-3 text-small">
+            <Link href="/jeolgutdae" className="text-link-inline">
+              절굿대는 어떤 풀인가요
+            </Link>
+          </p>
 
           {specRows.length > 0 && (
             <dl className="mt-8 divide-y divide-ink/10 border-y border-ink/10 text-small">
@@ -285,28 +292,32 @@ export default async function ProductPage({
                   split="inline"
                   title={{ thin: "가까이서 ", black: "본 모습" }}
                 />
-                <ul
-                  className={`mt-8 grid grid-cols-2 gap-3 lg:gap-5 ${tileCols}`}
-                >
-                  {product.video && (
-                    /* 질감 영상은 첫 타일. 사진과 같은 정사각 — 원으로 걸치지 않는다. */
-                    <li className="relative aspect-4/3">
-                      <LoopingVideo {...product.video} />
-                    </li>
-                  )}
-                  {extras.map((g) => (
-                    <li key={g.src} className="photo aspect-4/3">
-                      <Image
-                        src={g.src}
-                        alt={g.alt}
-                        fill
-                        sizes="(min-width: 1024px) 360px, 45vw"
-                        quality={80}
-                        className="object-cover"
-                      />
-                    </li>
-                  ))}
-                </ul>
+                <Lightbox items={extras}>
+                  <ul
+                    className={`mt-8 grid grid-cols-2 gap-3 lg:gap-5 ${tileCols}`}
+                  >
+                    {product.video && (
+                      /* 질감 영상은 첫 타일. 사진과 같은 정사각 — 원으로 걸치지 않는다. */
+                      <li className="relative aspect-4/3">
+                        <LoopingVideo {...product.video} />
+                      </li>
+                    )}
+                    {extras.map((g, i) => (
+                      <li key={g.src} className="photo aspect-4/3">
+                        <LightboxButton index={i} label={g.alt}>
+                          <Image
+                            src={g.src}
+                            alt={g.alt}
+                            fill
+                            sizes="(min-width: 1024px) 360px, 45vw"
+                            quality={80}
+                            className="object-cover"
+                          />
+                        </LightboxButton>
+                      </li>
+                    ))}
+                  </ul>
+                </Lightbox>
               </div>
             )}
           </div>

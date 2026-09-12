@@ -4,7 +4,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { ProductImagePrefetch } from "@/components/product-image-prefetch";
 import { SectionHead } from "@/components/section-head";
-import { products, site } from "@/lib/site";
+import { productCompare, products, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "제품",
@@ -103,6 +103,63 @@ export default function ProductsPage() {
           ))}
         </ul>
       </div>
+
+      {/* 한눈에 비교 — 선물 고르는 사람이 세 페이지를 오가지 않게. 가격은 확정된 것만 적는 규칙이라 여기에도 없다. 폰은 표를 가로로 민다. */}
+      <section className="rise border-t border-ink/10">
+        <div className="section-y-tight mx-auto max-w-6xl px-5 lg:px-8">
+          <SectionHead
+            phase={0.25}
+            eyebrow="비교"
+            title={{ thin: "셋 중 ", black: "무엇을 고를까" }}
+            split="inline"
+          />
+          <div className="-mx-5 mt-8 overflow-x-auto px-5 lg:mx-0 lg:px-0">
+            <table className="w-full min-w-[42rem] border-collapse text-small">
+              <thead>
+                <tr className="border-b border-ink/20 text-left align-baseline">
+                  <th
+                    scope="col"
+                    className="w-28 py-3 pr-4 font-normal text-ink-faint"
+                  >
+                    <span className="sr-only">항목</span>
+                  </th>
+                  {products.map((p) => (
+                    <th
+                      key={p.slug}
+                      scope="col"
+                      className="py-3 pr-4 text-lead font-bold"
+                    >
+                      <Link
+                        href={`/products/${p.slug}`}
+                        className="transition-colors hover:text-mint-link"
+                      >
+                        {p.name}
+                      </Link>
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-ink/10">
+                {productCompare.map((row) => (
+                  <tr key={row.label} className="align-top">
+                    <th
+                      scope="row"
+                      className="py-3 pr-4 text-left font-normal text-ink-faint"
+                    >
+                      {row.label}
+                    </th>
+                    {row.values.map((v, i) => (
+                      <td key={i} className="py-3 pr-4 text-ink-soft">
+                        {v}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
 
       {/* 주문 경로. 전화 주문 비중이 큰 곳이다. 열마다 번호·제목·한 줄·액션 하나, 구조 동일. */}
       <section className="rise bg-paper-2">

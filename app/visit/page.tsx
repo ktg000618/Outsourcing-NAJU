@@ -3,6 +3,8 @@ import { ViewTransition } from "react";
 
 import type { Metadata } from "next";
 import { KakaoMap } from "@/components/kakao-map";
+import { Lightbox, LightboxButton } from "@/components/lightbox";
+import { faq } from "@/lib/site";
 import { SectionHead } from "@/components/section-head";
 import { ExperienceRequestForm } from "@/components/experience-request-form";
 import { experience, site } from "@/lib/site";
@@ -24,6 +26,33 @@ export const metadata: Metadata = {
 };
 
 const mapQuery = encodeURIComponent(`${site.address} ${site.name}`);
+
+/* 체험 사진은 얼굴이 들어오지 않는 두 컷만. 나머지 자료 사진은 참가자 얼굴이 정면으로 크게 나와 초상권 동의 없이는 못 올린다. */
+const experiencePhotos = [
+  {
+    src: "/images/making-hands.jpg",
+    alt: "장갑 낀 손으로 초록 절굿대 반죽을 틀에 펴고 있다",
+  },
+  {
+    src: "/images/process-pour.jpg",
+    alt: "절굿대를 넣은 초록 반죽을 틀에 붓는다",
+  },
+];
+/* 매장 사진은 장면이라 사각. 간판 「절굿대 달토끼」가 통째로 들어오는 위치로 자른다. */
+const storePhoto = {
+  src: "/images/store-front.jpg",
+  alt: "초록 간판과 달토끼 엠블럼이 걸린 절굿대달토끼 매장 건물",
+};
+/* 검색 결과에 질문이 그대로 뜨게. 화면의 FAQ 와 같은 배열에서 만든다. */
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
 
 export default function VisitPage() {
   const {
@@ -132,33 +161,25 @@ export default function VisitPage() {
             />
           </div>
 
-          {/*
-            체험 사진은 얼굴이 들어오지 않는 두 컷만 쓴다. 나머지 자료 사진은
-            참가자 얼굴이 정면으로 크게 나와 초상권 동의 없이는 못 올린다.
-            홈 히어로의 대표 사진(칼로 자르는 컷)은 같은 사람이 두 번 나와 손·반죽 컷으로 바꿨다.
-          */}
-          <div className="grid grid-cols-2 gap-3 self-start sm:gap-4">
-            <div className="photo aspect-4/3">
-              <Image
-                src="/images/making-hands.jpg"
-                alt="장갑 낀 손으로 초록 절굿대 반죽을 틀에 펴고 있다"
-                fill
-                sizes="(min-width: 1024px) 22vw, 45vw"
-                quality={80}
-                className="object-cover"
-              />
+          {/* 홈 히어로의 대표 사진(칼로 자르는 컷)은 같은 사람이 두 번 나와 손·반죽 컷으로 바꿨다. */}
+          <Lightbox items={experiencePhotos}>
+            <div className="grid grid-cols-2 gap-3 self-start sm:gap-4">
+              {experiencePhotos.map((ph, i) => (
+                <div key={ph.src} className="photo aspect-4/3">
+                  <LightboxButton index={i} label={ph.alt}>
+                    <Image
+                      src={ph.src}
+                      alt={ph.alt}
+                      fill
+                      sizes="(min-width: 1024px) 22vw, 45vw"
+                      quality={80}
+                      className="object-cover"
+                    />
+                  </LightboxButton>
+                </div>
+              ))}
             </div>
-            <div className="photo aspect-4/3">
-              <Image
-                src="/images/process-pour.jpg"
-                alt="절굿대를 넣은 초록 반죽을 틀에 붓는다"
-                fill
-                sizes="(min-width: 1024px) 22vw, 45vw"
-                quality={80}
-                className="object-cover"
-              />
-            </div>
-          </div>
+          </Lightbox>
         </div>
       </section>
 
@@ -188,6 +209,39 @@ export default function VisitPage() {
               </li>
             ))}
           </ol>
+        </div>
+      </section>
+
+      {/* 자주 묻는 질문 — 전화로 가장 많이 오는 것들. 접이식이라 목록은 짧고, 검색에는 FAQPage 로 전부 나간다. */}
+      <section className="rise border-t border-ink/10">
+        <script
+          type="application/ld+json"
+          // 우리가 만든 객체라 외부 입력이 섞이지 않는다.
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+        <div className="section-y-tight mx-auto max-w-6xl px-5 lg:px-8">
+          <SectionHead
+            phase={0.85}
+            eyebrow="자주 묻는 질문"
+            title={{ thin: "전화로 자주 ", black: "묻는 것들" }}
+            split="inline"
+          />
+          <div className="mt-8 divide-y divide-ink/10 border-y border-ink/10 lg:max-w-3xl">
+            {faq.map((f) => (
+              <details key={f.q} className="group py-4">
+                <summary className="flex cursor-pointer list-none items-baseline justify-between gap-6 text-lead font-bold [&::-webkit-details-marker]:hidden">
+                  <span>{f.q}</span>
+                  <span
+                    aria-hidden
+                    className="shrink-0 font-light text-ink-faint transition-transform duration-base ease-brand group-open:rotate-45"
+                  >
+                    +
+                  </span>
+                </summary>
+                <p className="mt-3 max-w-prose text-ink-soft">{f.a}</p>
+              </details>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -262,23 +316,20 @@ export default function VisitPage() {
             </div>
           </div>
 
-          {/* 매장 사진은 장면이라 사각. 간판 「절굿대 달토끼」가 통째로 들어오는 위치로 자른다. */}
-          <div className="photo aspect-4/5 sm:aspect-square">
-            {/*
-              지도 임베드는 뺐다. 카카오·네이버는 키가 있어야 하고, 키 없이 되는
-              구글은 나주 시골 지역 데이터가 거의 없어 검은 섹션에 빈 사각형만
-              뚫렸다(배포본 확인). 길찾기는 옆 버튼이 카카오·네이버로 넘긴다.
-              키를 받으면 이 자리에 카카오 지도를 넣는다.
-            */}
-            <Image
-              src="/images/store-front.jpg"
-              alt="초록 간판과 달토끼 엠블럼이 걸린 절굿대달토끼 매장 건물"
-              fill
-              sizes="(min-width: 1024px) 45vw, 90vw"
-              quality={80}
-              className="object-cover object-[50%_45%]"
-            />
-          </div>
+          <Lightbox items={[storePhoto]}>
+            <div className="photo aspect-4/5 sm:aspect-square">
+              <LightboxButton index={0} label={storePhoto.alt}>
+                <Image
+                  src={storePhoto.src}
+                  alt={storePhoto.alt}
+                  fill
+                  sizes="(min-width: 1024px) 45vw, 90vw"
+                  quality={80}
+                  className="object-cover object-[50%_45%]"
+                />
+              </LightboxButton>
+            </div>
+          </Lightbox>
         </div>
         {/* 지도는 본문 폭 안에 낮은 띠로 — 풀폭으로 깔면 화면을 다 먹는다. 가운데 표식 = 매장. */}
         <div className="mx-auto max-w-6xl px-5 pb-16 sm:pb-20 lg:px-8 lg:pb-24">
