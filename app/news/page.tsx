@@ -73,6 +73,10 @@ export default async function NewsPage() {
               const host = post.link_url
                 ? new URL(post.link_url).hostname.replace(/^www\./, "")
                 : null;
+              /* 우리 사이트 안의 글(제품·체험 안내)은 밖으로 나가는 링크처럼 보이면 어색하다 — 안쪽 링크로. */
+              const internalPath = post.link_url?.startsWith(site.url)
+                ? post.link_url.slice(site.url.length) || "/"
+                : null;
               return (
                 <li key={post.id}>
                   <article className="grid gap-3 py-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16 lg:py-14">
@@ -146,23 +150,28 @@ export default async function NewsPage() {
                           ))}
                         </ul>
                       )}
-                      {post.link_url && (
-                        <a
-                          href={post.link_url}
-                          rel="noreferrer"
-                          target="_blank"
-                          className="text-link mt-3"
-                        >
-                          자세히 보기
-                          <span aria-hidden>↗</span>
-                          {host && (
-                            <span className="font-normal text-ink-faint">
-                              {host}
-                            </span>
-                          )}
-                          <span className="sr-only"> (새 창)</span>
-                        </a>
-                      )}
+                      {post.link_url &&
+                        (internalPath ? (
+                          <Link href={internalPath} className="text-link mt-3">
+                            자세히 보기
+                          </Link>
+                        ) : (
+                          <a
+                            href={post.link_url}
+                            rel="noreferrer"
+                            target="_blank"
+                            className="text-link mt-3"
+                          >
+                            자세히 보기
+                            <span aria-hidden>↗</span>
+                            {host && (
+                              <span className="font-normal text-ink-faint">
+                                {host}
+                              </span>
+                            )}
+                            <span className="sr-only"> (새 창)</span>
+                          </a>
+                        ))}
                     </div>
                   </article>
                 </li>

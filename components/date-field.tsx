@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { useEffect, useId, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 
 // 달력(라이브러리 + 스타일시트)은 처음 여는 순간에만 받는다 — 폼을 보기만 하는 방문에는 싣지 않는다.
 const DatePickerPopover = dynamic(() => import("./date-picker-popover"), {
@@ -50,13 +51,17 @@ export function DateField({
   const [date, setDate] = useState<Date>();
   const [open, setOpen] = useState(false);
   const root = useRef<HTMLDivElement>(null);
+  /* 시트는 body 로 포털한다 — 섹션의 .rise transform 이 fixed 의 기준점이 되어 화면 밖에 그려지던 것. */
+  const sheet = useRef<HTMLDivElement>(null);
   const dialogId = useId();
   const today = todayKst();
 
   useEffect(() => {
     if (!open) return;
     const onDown = (e: PointerEvent) => {
-      if (!root.current?.contains(e.target as Node)) setOpen(false);
+      const t = e.target as Node;
+      if (!root.current?.contains(t) && !sheet.current?.contains(t))
+        setOpen(false);
     };
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setOpen(false);
@@ -66,6 +71,29 @@ export function DateField({
     return () => {
       document.removeEventListener("pointerdown", onDown);
       document.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
+  const [anchor, setAnchor] = useState<{ top: number; left: number } | null>(
+    null,
+  );
+  useEffect(() => {
+    if (!open) return;
+    const place = () => {
+      const r = root.current?.getBoundingClientRect();
+      if (!r) return;
+      setAnchor(
+        window.matchMedia("(min-width: 640px)").matches
+          ? { top: r.bottom + 8, left: r.left }
+          : null,
+      );
+    };
+    place();
+    window.addEventListener("scroll", place, true);
+    window.addEventListener("resize", place);
+    return () => {
+      window.removeEventListener("scroll", place, true);
+      window.removeEventListener("resize", place);
     };
   }, [open]);
 
@@ -96,37 +124,59 @@ export function DateField({
         </svg>
       </button>
       <input type="hidden" name={name} value={date ? toIso(date) : ""} />
-      {open && (
-        <div
-          id={dialogId}
-          role="dialog"
-          aria-label="희망 날짜 고르기"
-          className="absolute left-0 top-full z-20 mt-2 border border-ink/20 bg-paper p-3 shadow-[0_12px_32px_-12px_rgba(22,22,22,0.25)]"
-        >
-          <DatePickerPopover
-            selected={date}
-            today={today}
-            onSelect={(d) => {
-              setDate(d);
-              if (d) setOpen(false);
-            }}
-          />
-          {date && (
-            <div className="mt-1 flex justify-end border-t border-ink/10 pt-2">
-              <button
-                type="button"
-                onClick={() => {
-                  setDate(undefined);
-                  setOpen(false);
+      {open &&
+        createPortal(
+          <>
+            {/* 폰: 어두운 막 + 아래에서 올라오는 시트. 누르면 닫힌다. sm 부터는 입력칸 아래 팝오버라 막이 없다. */}
+            <button
+              type="button"
+              aria-label="달력 닫기"
+              onClick={() => setOpen(false)}
+              className="fixed inset-0 z-[60] bg-ink/40 sm:hidden"
+            />
+            <div
+              ref={sheet}
+              id={dialogId}
+              role="dialog"
+              aria-label="희망 날짜 고르기"
+              style={
+                anchor ? { top: anchor.top, left: anchor.left } : undefined
+              }
+              className="fixed inset-x-0 bottom-0 z-[70] flex flex-col items-center border-t border-ink/20 bg-paper px-3 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3 sm:inset-x-auto sm:bottom-auto sm:items-stretch sm:border sm:p-3 sm:shadow-[0_12px_32px_-12px_rgba(22,22,22,0.25)]"
+            >
+              <DatePickerPopover
+                selected={date}
+                today={today}
+                onSelect={(d) => {
+                  setDate(d);
+                  if (d) setOpen(false);
                 }}
-                className="text-link text-caption"
-              >
-                날짜 지우기
-              </button>
+              />
+              <div className="mt-1 flex w-full justify-between border-t border-ink/10 pt-2 sm:justify-end">
+                <button
+                  type="button"
+                  onClick={() => setOpen(false)}
+                  className="text-link text-caption sm:hidden"
+                >
+                  닫기
+                </button>
+                {date && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setDate(undefined);
+                      setOpen(false);
+                    }}
+                    className="text-link text-caption"
+                  >
+                    날짜 지우기
+                  </button>
+                )}
+              </div>
             </div>
-          )}
-        </div>
-      )}
+          </>,
+          document.body,
+        )}
     </div>
   );
 }

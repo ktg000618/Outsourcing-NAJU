@@ -41,6 +41,33 @@ export default async function NewsPostPage({ params }: Props) {
   const host = post.link_url
     ? new URL(post.link_url).hostname.replace(/^www\./, "")
     : null;
+  const internalPath = post.link_url?.startsWith(site.url)
+    ? post.link_url.slice(site.url.length) || "/"
+    : null;
+  const actions = (
+    <>
+      {post.link_url &&
+        (internalPath ? (
+          <Link href={internalPath} className="btn-primary">
+            자세히 보기
+          </Link>
+        ) : (
+          <a
+            href={post.link_url}
+            rel="noreferrer"
+            target="_blank"
+            className="btn-primary"
+          >
+            {host} 에서 보기<span className="sr-only"> (새 창)</span>
+          </a>
+        ))}
+      <ShareButton
+        title={post.title}
+        text={newsExcerpt(post.body)}
+        label="이 소식 공유하기"
+      />
+    </>
+  );
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "NewsArticle",
@@ -63,6 +90,7 @@ export default async function NewsPostPage({ params }: Props) {
       {/* 목록의 장부 행 하나를 페이지로 편 것 — 같은 5:7 격자. 왼쪽은 날짜와 돌아가기, 오른쪽이 글. */}
       <article className="page-top page-bottom mx-auto max-w-6xl px-5 lg:px-8">
         <div className="grid gap-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
+          {/* 왼쪽 열: 날짜가 머리, 그 아래 목록·공유. PC 에서 빈 열로 남지 않게 행동을 여기로 모은다. 폰은 글 아래에 같은 것을 한 번 더 둔다. */}
           <div className="lg:pt-1">
             <Link href="/news" className="text-link">
               소식 목록
@@ -73,6 +101,9 @@ export default async function NewsPostPage({ params }: Props) {
             >
               {formatNewsDate(post.published_on)}
             </time>
+            <div className="mt-8 hidden flex-col items-start gap-4 lg:flex">
+              {actions}
+            </div>
           </div>
           <div className="min-w-0">
             <h1 className="font-black tracking-tighter text-h1">
@@ -121,22 +152,8 @@ export default async function NewsPostPage({ params }: Props) {
                 ))}
               </ul>
             )}
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-6">
-              {post.link_url && host && (
-                <a
-                  href={post.link_url}
-                  rel="noreferrer"
-                  target="_blank"
-                  className="btn-primary"
-                >
-                  {host} 에서 보기<span className="sr-only"> (새 창)</span>
-                </a>
-              )}
-              <ShareButton
-                title={post.title}
-                text={newsExcerpt(post.body)}
-                label="이 소식 공유하기"
-              />
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-6 lg:hidden">
+              {actions}
             </div>
           </div>
         </div>

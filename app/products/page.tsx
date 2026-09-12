@@ -166,15 +166,15 @@ export default function ProductsPage() {
               </thead>
               <tbody className="divide-y divide-ink/10">
                 {productCompare.map((row) => (
-                  <tr key={row.label} className="align-top">
+                  <tr key={row.label} className="align-baseline">
                     <th
                       scope="row"
-                      className="py-3 pr-4 text-left font-normal text-ink-faint"
+                      className="py-2.5 pr-4 text-left font-normal text-ink-faint"
                     >
                       {row.label}
                     </th>
                     {row.values.map((v, i) => (
-                      <td key={i} className="py-3 pr-4 text-ink-soft">
+                      <td key={i} className="py-2.5 pr-4 text-ink-soft">
                         {v}
                       </td>
                     ))}
