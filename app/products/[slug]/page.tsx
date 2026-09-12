@@ -371,7 +371,7 @@ export default async function ProductPage({
                       />
                     </div>
                   </ViewTransition>
-                  <p className="mt-3 text-small transition-colors group-hover:text-mint-link sm:mt-4 sm:text-lead">
+                  <p className="mt-3 text-center text-small transition-colors group-hover:text-mint-link sm:mt-4 sm:text-lead">
                     {p.name}
                   </p>
                 </Link>

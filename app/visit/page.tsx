@@ -263,8 +263,9 @@ export default function VisitPage() {
             />
           </div>
         </div>
-        <div className="mt-10 lg:mt-14">
-          <KakaoMap />
+        {/* 지도는 본문 폭 안에 낮은 띠로 — 풀폭으로 깔면 화면을 다 먹는다. 가운데 표식 = 매장. */}
+        <div className="mx-auto max-w-6xl px-5 pb-16 sm:pb-20 lg:px-8 lg:pb-24">
+          <KakaoMap className="mt-6 lg:mt-10" />
         </div>
       </section>
     </ViewTransition>

@@ -2,6 +2,7 @@
 
 import { useActionState } from "react";
 import { submitExperienceRequest } from "@/app/visit/actions";
+import { DateField } from "@/components/date-field";
 
 type Props = {
   tel: string;
@@ -9,12 +10,6 @@ type Props = {
   /** 문자를 받을 휴대전화. 폰에서는 적은 내용을 그대로 문자창에 채워 보낸다 — 서버 없이도 접수가 된다. */
   smsNumber: string;
 };
-
-function todayKst() {
-  return new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Seoul" }).format(
-    new Date(),
-  );
-}
 
 /**
  * 체험 예약 문의 폼. 전화 대신 남기는 길 — 실패하면 전화 링크가 바로 아래 선다.
@@ -89,13 +84,7 @@ export function ExperienceRequestForm({ tel, telHref, smsNumber }: Props) {
           <label htmlFor="request-date" className="field-label">
             희망 날짜 <span className="text-ink-faint">· 선택</span>
           </label>
-          <input
-            id="request-date"
-            name="wanted_on"
-            type="date"
-            min={todayKst()}
-            className="field-input tabular-nums"
-          />
+          <DateField id="request-date" name="wanted_on" />
         </div>
         <div>
           <label htmlFor="request-people" className="field-label">

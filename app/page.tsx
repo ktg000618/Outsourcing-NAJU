@@ -150,9 +150,9 @@ export default function HomePage() {
                     />
                   </div>
                 </ViewTransition>
-                {/* 캡션은 왼쪽 정렬 한 덩어리. 가격은 이름 옆 작은 글자 — 없으면 자리표도 없다. */}
-                <div className="mt-5">
-                  <p className="flex flex-wrap items-baseline gap-x-3">
+                {/* 원 아래 캡션은 가운데 — 왼쪽에 붙이면 원의 접점에 걸려 어긋나 보인다. 가격은 이름 옆 작은 글자, 없으면 자리표도 없다. */}
+                <div className="mt-5 text-center">
+                  <p className="flex flex-wrap items-baseline justify-center gap-x-3">
                     <span className="text-lead font-bold transition-colors group-hover:text-mint-link">
                       {p.name}
                     </span>

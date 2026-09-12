@@ -16,7 +16,7 @@ export function KakaoMap({ className = "" }: { className?: string }) {
       target="_blank"
       rel="noreferrer"
       aria-label={`카카오맵에서 ${site.name} 위치 보기 (새 창)`}
-      className={`photo group relative block aspect-4/3 sm:aspect-[1152/520] ${className}`}
+      className={`photo group relative block aspect-4/3 sm:aspect-2/1 lg:aspect-3/1 ${className}`}
     >
       <Image
         src={MAP}
@@ -24,7 +24,7 @@ export function KakaoMap({ className = "" }: { className?: string }) {
         fill
         unoptimized
         sizes="(min-width: 1200px) 1152px, 100vw"
-        className="object-cover"
+        className="object-cover object-center"
       />
       {/* 표식: 달 노랑 점 + 이름. 지도 중심 = 매장. */}
       <span
