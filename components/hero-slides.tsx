@@ -68,9 +68,14 @@ export function HeroSlides({
               onLoad={i === 0 ? () => setRest(true) : undefined}
               quality={i === 0 ? 80 : 78}
               sizes="(min-width: 1200px) 1152px, 100vw"
+              /*
+                첫 장은 페이드 없이 바로 그린다 — LCP 사진인데 enter-fade(0→1) 때문에 내려오고도
+                「그려진」 시점이 늦게 잡혔다(Lighthouse 폰 LCP 5.0s 중 렌더 지연 2.9s, 2026-09-17 실측).
+                제목 두 줄의 떠오름(enter-1·2)이 입장 동작을 맡는다.
+              */
               className={`object-cover transition-opacity duration-ambient ease-in-out motion-reduce:transition-none ${s.position} ${
                 i === index ? "opacity-100" : "opacity-0"
-              } ${i === 0 ? "enter-photo" : ""}`}
+              }`}
             />
           ),
       )}
