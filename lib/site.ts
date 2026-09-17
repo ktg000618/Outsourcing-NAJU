@@ -241,6 +241,12 @@ export const products: Product[] = [
     slug: "jeolgutdae",
     /* 접힌 높이 = 표지가 끝나는 지점 + 페이드. 렌더 원본(1720px 폭)에서 먹색 표지 끝을 재고 표시 폭(폰 350·PC 860)으로 환산한 뒤 페이드 몫 100~120px 을 더했다. */
     detailCollapsed: "max-h-[525px] lg:max-h-[1160px]",
+    /* 2026-09-17 업체가 보낸 매장 영상(절굿대영상7)에서 8초. 목사고을시장 매장에서 떡을 담는 손 — 소리 없음, 포스터는 첫 프레임. */
+    video: {
+      src: "/video/shop-packing.mp4",
+      poster: "/video/shop-packing-poster.jpg",
+      label: "나주목사고을시장 매장에서 떡을 낱개로 담는 대표의 손",
+    },
     name: "절굿대떡",
     summary: "콩고물을 입힌 나주의 이바지 떡",
     detail:
@@ -363,6 +369,11 @@ export const products: Product[] = [
       {
         src: "/images/gal-jeolgutdae-mat.jpg",
         alt: "라탄 매트 위 절굿대떡과 낱개 포장",
+      },
+      {
+        /* 영상 타일과 합쳐 8칸을 채운다 — 7칸이면 마지막 줄에 영상만 홀로 남는다. */
+        src: "/images/packs-tray.jpg",
+        alt: "쟁반에 나란히 담은 낱개 포장 절굿대떡",
       },
     ],
     accent: "signage",
