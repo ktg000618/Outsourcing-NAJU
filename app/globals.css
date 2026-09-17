@@ -392,9 +392,6 @@
       opacity: 1;
     }
   }
-  .enter-photo {
-    animation: enter-fade var(--transition-duration-slow) ease-out both;
-  }
   .enter-1 {
     animation: enter-up var(--transition-duration-slow) var(--ease-brand)
       var(--transition-duration-fast) both;

@@ -119,7 +119,7 @@ export default function VisitPage() {
             fetchPriority="high"
             sizes="(min-width: 1200px) 1152px, 100vw"
             quality={80}
-            className="enter-photo object-cover object-[50%_40%]"
+            className="object-cover object-[50%_40%]"
           />
         </div>
       </section>
