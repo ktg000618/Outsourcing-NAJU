@@ -51,8 +51,12 @@ export const site = {
   opensAt: "09:00",
   closesAt: "18:00",
 
-  /** TODO(클라이언트): 스마트스토어 주소 */
-  storeUrl: null as string | null,
+  /**
+   * 온라인 판매처. 2026-06-22 시민의소리 기사(업체 제공)로 확인한 카카오쇼핑 스토어.
+   * 네이버 스마트스토어가 생기면 그쪽으로 바꾸거나 둘을 나란히 둔다 — 이름은 storeName 이 따라간다.
+   */
+  storeUrl: "https://store.kakao.com/sunriseea" as string | null,
+  storeName: "카카오쇼핑 절굿대 스토어",
 
   /** TODO(클라이언트): 인스타그램 등 */
   instagramUrl: "https://www.instagram.com/jeol_gutdae/" as string | null,
@@ -86,7 +90,7 @@ export const nav = [
 export const faq = [
   {
     q: "주문은 어떻게 하나요?",
-    a: "전화(061-336-6969)로 수량과 구성을 상의해 주문합니다. 이바지·답례처럼 구성이 정해지지 않은 주문은 전화가 빠릅니다. 매장(나주시 징고샅길 7-1)에서도 바로 사실 수 있습니다.",
+    a: "전화(061-336-6969)로 수량과 구성을 상의해 주문합니다. 이바지·답례처럼 구성이 정해지지 않은 주문은 전화가 빠릅니다. 매장(나주시 징고샅길 7-1)에서도 바로 사실 수 있습니다. 나주배 촉촉오란다는 카카오쇼핑 스토어에서도 살 수 있습니다.",
   },
   {
     q: "떡은 어떻게 보관하나요?",
@@ -162,7 +166,11 @@ export const productCompare = [
   },
   {
     label: "주문",
-    values: ["전화 · 매장", "전화 · 매장", "전화 (수량·구성 상의)"],
+    values: [
+      "전화 · 매장",
+      "전화 · 매장 · 카카오쇼핑",
+      "전화 (수량·구성 상의)",
+    ],
   },
 ];
 
@@ -441,7 +449,8 @@ export const products: Product[] = [
     price: 25000,
     unit: "1박스 · 20개",
     occasions: ["답례", "선물"],
-    storeUrl: null,
+    /* 카카오쇼핑 상품 주소(기사 본문의 구매처). 스토어 가격은 행사에 따라 달라 사이트 가격과 다를 수 있다. */
+    storeUrl: "https://store.kakao.com/sunriseea/products/754973247",
     // 2026-09-12 클라이언트가 보낸 표시사항 그대로. 유통기한은 상시 제조라 고정값을 줄 수 없다고 해 포장 표시로 안내.
     spec: [
       { label: "내용량", value: "20개입 · 약 1,700g" },
@@ -772,5 +781,44 @@ export const credentials: {
       width: 910,
       height: 1285,
     },
+  },
+];
+
+/**
+ * 언론 보도 — 업체가 보내 준 기사 세 편(2026-09-17). 이야기 페이지 인증 목록 아래.
+ * 제목을 그대로 옮기지 않고 우리 말로 한 줄 요약한다: 기사 제목에 사이트에서 쓰지 않는 표기가 섞여 있고,
+ * 본문의 효능 서술은 식품표시광고법상 사이트에 옮길 수 없다. 링크는 원문으로.
+ */
+export const press: {
+  outlet: string;
+  /** YYYY-MM-DD */
+  date: string;
+  kind: "기사" | "칼럼";
+  summary: string;
+  url: string;
+}[] = [
+  {
+    outlet: "시민의소리",
+    date: "2026-06-22",
+    kind: "기사",
+    summary:
+      "사회적기업 절굿대가 나주배 촉촉오란다를 카카오쇼핑에서 선보였습니다. 지역 농산물의 판로를 넓히려는 자리라는 김은아 대표의 말이 실렸습니다.",
+    url: "http://www.civilreporter.co.kr/news/articleView.html?idxno=538796",
+  },
+  {
+    outlet: "전남인터넷신문",
+    date: "2025-10-16",
+    kind: "칼럼",
+    summary:
+      "절굿대 잎을 따서 말리고 찧는 느린 과정을 바흐의 샤콘에 빗댄 허북구 농학박사의 칼럼. 「기다림이 풍미를 만든다」고 적었습니다.",
+    url: "http://jnnews.co.kr/m/view.php?idx=414956",
+  },
+  {
+    outlet: "천지일보",
+    date: "2019-01-28",
+    kind: "기사",
+    summary:
+      "사라졌던 나주의 떡이 40~50년 만에 돌아온 이야기. 나주산 쌀과 배즙으로 옛 맛을 되살린 과정과 김화수·김은아 대표의 말이 실렸습니다.",
+    url: "https://www.newscj.com/news/articleView.html?idxno=596278",
   },
 ];

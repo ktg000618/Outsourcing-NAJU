@@ -203,7 +203,12 @@ export default function ProductsPage() {
           <SectionHead
             phase={0.4}
             eyebrow="주문"
-            title={{ thin: "전화로, 매장에서 ", black: "주문하는 방법" }}
+            title={{
+              thin: site.storeUrl
+                ? "전화·매장·온라인으로 "
+                : "전화로, 매장에서 ",
+              black: "주문하는 방법",
+            }}
             split="inline"
           />
           {/* 스토어 주소가 없는 동안은 두 열 — "준비 중입니다" 자리표를 주문 섹션 한가운데 두지 않는다. */}
@@ -224,7 +229,7 @@ export default function ProductsPage() {
             {site.storeUrl && (
               <li className="flex flex-col items-start border-t border-ink/10 pt-5">
                 <p className="text-caption tabular-nums text-ink-faint">02</p>
-                <h3 className="mt-2 text-lead">네이버 스마트스토어</h3>
+                <h3 className="mt-2 text-lead">{site.storeName}</h3>
                 <p className="mt-2 text-small text-ink-soft">
                   구성이 정해진 제품은 스토어에서 바로 결제하실 수 있습니다.
                 </p>

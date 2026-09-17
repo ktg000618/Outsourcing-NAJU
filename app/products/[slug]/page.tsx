@@ -185,18 +185,19 @@ export default async function ProductPage({
           )}
 
           <div className="mt-9">
-            {product.storeUrl ? (
+            <a href={site.telHref} className="btn-primary">
+              전화 주문 {site.tel}
+            </a>
+            {/* 온라인 판매처가 있는 제품만. 전화가 먼저다 — 구성 상의가 필요한 주문이 많다. */}
+            {product.storeUrl && (
               <a
                 href={product.storeUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="btn-primary"
+                className="text-link mt-3 block w-fit"
               >
-                네이버 스마트스토어에서 구매
-              </a>
-            ) : (
-              <a href={site.telHref} className="btn-primary">
-                전화 주문 {site.tel}
+                {site.storeName}에서 구매
+                <span className="sr-only"> (새 창)</span>
               </a>
             )}
             <p className="mt-3 text-caption text-ink-faint">

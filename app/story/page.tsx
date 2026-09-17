@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 import { Lightbox, LightboxButton } from "@/components/lightbox";
 import { SectionHead } from "@/components/section-head";
 import { MoonMark } from "@/components/moon-mark";
-import { credentials, site, timeline } from "@/lib/site";
+import { credentials, press, site, timeline } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "이야기",
@@ -333,6 +333,33 @@ export default function StoryPage() {
             ))}
           </ul>
         </Lightbox>
+
+        {/* 언론 보도 — 인증 목록과 같은 장부 문법. 제목 대신 우리 말 한 줄, 원문은 새 창. */}
+        <p className="mt-14 text-caption text-ink-faint">기사에서</p>
+        <ul className="mt-3 divide-y divide-ink/10 border-y border-ink/10">
+          {press.map((a) => (
+            <li
+              key={a.url}
+              className="grid gap-x-6 gap-y-1 py-4 sm:grid-cols-[12rem_minmax(0,1fr)_auto] sm:items-baseline sm:py-5"
+            >
+              <p className="font-bold">
+                {a.outlet}
+                <span className="block text-caption font-normal tabular-nums text-ink-faint">
+                  {a.date.slice(0, 7).replace("-", ".")} · {a.kind}
+                </span>
+              </p>
+              <p className="text-small text-ink-soft">{a.summary}</p>
+              <a
+                href={a.url}
+                rel="noreferrer"
+                target="_blank"
+                className="text-link"
+              >
+                원문 보기<span className="sr-only"> (새 창)</span>
+              </a>
+            </li>
+          ))}
+        </ul>
 
         <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-8">
           <Link href="/products" className="btn-primary">
