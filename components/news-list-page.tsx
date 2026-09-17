@@ -114,7 +114,7 @@ export async function NewsListPage({ page }: { page: number }) {
               >
                 {page > 1 ? (
                   <Link href={newsPageHref(page - 1)} className="text-link">
-                    최근 소식
+                    이전 페이지
                   </Link>
                 ) : (
                   <span />
@@ -124,7 +124,7 @@ export async function NewsListPage({ page }: { page: number }) {
                 </span>
                 {page < pageCount ? (
                   <Link href={newsPageHref(page + 1)} className="text-link">
-                    지난 소식
+                    다음 페이지
                   </Link>
                 ) : (
                   <span />
