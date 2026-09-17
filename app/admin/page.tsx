@@ -3,6 +3,7 @@ import Link from "next/link";
 import { site } from "@/lib/site";
 import { createClient } from "@/lib/supabase/server";
 import { NEWS_SELECT, formatNewsDate, type NewsPost } from "@/lib/news";
+import { previewUrls } from "@/lib/news-images";
 import { PostRowActions } from "@/components/admin/post-row-actions";
 import { SectionEyebrow } from "@/components/section-eyebrow";
 import { signOut } from "./actions";
@@ -30,6 +31,11 @@ export default async function AdminPage() {
       supabase.from("site_notice").select("enabled").eq("id", 1).maybeSingle(),
     ]);
   const posts = (data ?? []) as NewsPost[];
+  /* 숨긴 글의 사진은 비공개 버킷이라 서명 URL 로 바꿔야 보인다. 첫 장만 쓴다. */
+  const previews = await previewUrls(
+    supabase,
+    posts.map((p) => p.images[0]).filter(Boolean),
+  );
   const publishedCount = posts.filter((p) => p.published).length;
   const hiddenCount = posts.length - publishedCount;
 
@@ -107,7 +113,7 @@ export default async function AdminPage() {
                 {p.images[0] && (
                   /* eslint-disable-next-line @next/next/no-img-element */
                   <img
-                    src={p.images[0]}
+                    src={previews[p.images[0]] ?? p.images[0]}
                     alt=""
                     className="size-full object-cover"
                   />

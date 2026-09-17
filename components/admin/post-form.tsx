@@ -10,6 +10,8 @@ import type { NewsPost } from "@/lib/news";
 type Props = {
   action: (prev: ActionState, formData: FormData) => Promise<ActionState>;
   initial?: NewsPost;
+  /** { 저장된 URL: 보여줄 URL } — 숨긴 글의 비공개 사진은 서명 URL 로만 열린다. 없으면 저장된 URL 그대로. */
+  previews?: Record<string, string>;
 };
 
 const MAX_IMAGES = 3;
@@ -23,9 +25,9 @@ function todayKst() {
 
 /**
  * 새 글·수정 공용 폼. 사진은 브라우저에서 스토리지로 바로 올리고(로그인 세션·RLS),
- * 폼에는 공개 URL 만 hidden 으로 실어 서버 액션이 행에 저장한다.
+ * 폼에는 저장된 URL(공개 또는 비공개 버킷)을 hidden 으로 실어 서버 액션이 게시 상태에 맞는 버킷으로 옮겨 저장한다.
  */
-export function PostForm({ action, initial }: Props) {
+export function PostForm({ action, initial, previews }: Props) {
   const [state, formAction, pending] = useActionState(action, { error: null });
   const [images, setImages] = useState<string[]>(initial?.images ?? []);
   const [uploadError, setUploadError] = useState<string | null>(null);
@@ -137,7 +139,11 @@ export function PostForm({ action, initial }: Props) {
               <div key={src} className="photo aspect-4/3">
                 {/* 관리 화면 미리보기 — 최적화 불필요, 원본 URL 그대로 */}
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={src} alt="" className="size-full object-cover" />
+                <img
+                  src={previews?.[src] ?? src}
+                  alt=""
+                  className="size-full object-cover"
+                />
                 <input type="hidden" name="images" value={src} />
                 <button
                   type="button"

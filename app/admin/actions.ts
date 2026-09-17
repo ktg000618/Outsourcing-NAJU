@@ -5,13 +5,14 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { isStaff } from "@/lib/staff";
 import { NOTICE_MAX } from "@/lib/notice-shared";
+import {
+  imagePath,
+  isOurImage,
+  removeImages,
+  syncImageVisibility,
+} from "@/lib/news-images";
 
 export type ActionState = { error: string | null };
-
-/* 사진은 우리 버킷 URL 만 받는다 — 다른 호스트가 저장되면 next/image 가 /news 렌더에서 throw 해 공개 페이지가 죽는다. */
-const NEWS_PUBLIC_PREFIX = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/news/`;
-const storagePath = (url: string) =>
-  decodeURIComponent(url.slice(NEWS_PUBLIC_PREFIX.length));
 
 /**
  * 폼 → DB 행. 클라이언트 입력은 믿지 않는다 — 길이·형식은 DB CHECK 가 최종 방어선이고
@@ -26,7 +27,7 @@ function parsePost(formData: FormData) {
   const images = formData
     .getAll("images")
     .map((v) => String(v))
-    .filter((v) => v.startsWith(NEWS_PUBLIC_PREFIX))
+    .filter(isOurImage)
     .slice(0, 3);
 
   if (!title) return { error: "제목을 적어 주세요." } as const;
@@ -65,18 +66,6 @@ async function requireUser() {
   return { supabase, user };
 }
 
-/* 글에서 빠진 사진은 버킷에서도 지운다 — 공개 버킷이라 URL 을 아는 사람은 계속 볼 수 있다. */
-async function removeImages(
-  supabase: Awaited<ReturnType<typeof createClient>>,
-  urls: string[],
-) {
-  if (urls.length === 0) return;
-  const { error } = await supabase.storage
-    .from("news")
-    .remove(urls.map(storagePath));
-  if (error) console.error("[admin] removeImages", error.message);
-}
-
 function revalidateNews() {
   revalidatePath("/");
   revalidatePath("/news");
@@ -94,9 +83,15 @@ export async function createPost(
   const { supabase, user } = await requireUser();
   const parsed = parsePost(formData);
   if (parsed.error) return { error: parsed.error };
+  /* 올린 사진은 공개 버킷에 있다 — 숨김으로 저장하면 비공개 버킷으로 옮긴다. */
+  const images = await syncImageVisibility(
+    supabase,
+    parsed.row.images,
+    parsed.row.published,
+  );
   const { error } = await supabase
     .from("news_posts")
-    .insert({ ...parsed.row, created_by: user.id });
+    .insert({ ...parsed.row, images, created_by: user.id });
   if (error) {
     console.error("[admin] createPost", error.message);
     return { error: "저장하지 못했습니다. 잠시 후 다시 시도해 주세요." };
@@ -118,18 +113,27 @@ export async function updatePost(
     .select("images")
     .eq("id", id)
     .maybeSingle();
+  /* 게시 상태에 맞는 버킷으로 — 숨긴 글에 새로 올린 사진(공개 버킷)도 여기서 비공개로 간다. */
+  const images = await syncImageVisibility(
+    supabase,
+    parsed.row.images,
+    parsed.row.published,
+  );
   const { error } = await supabase
     .from("news_posts")
-    .update(parsed.row)
+    .update({ ...parsed.row, images })
     .eq("id", id);
   if (error) {
     console.error("[admin] updatePost", error.message);
     return { error: "저장하지 못했습니다. 잠시 후 다시 시도해 주세요." };
   }
-  const kept = new Set(parsed.row.images);
+  /* 빠진 사진 판정은 경로로 — 버킷을 옮기면 URL 이 바뀌어 URL 비교로는 전부 「빠진 것」이 된다. */
+  const kept = new Set(images.map(imagePath));
   await removeImages(
     supabase,
-    ((before?.images as string[] | null) ?? []).filter((u) => !kept.has(u)),
+    ((before?.images as string[] | null) ?? []).filter(
+      (u) => !kept.has(imagePath(u)),
+    ),
   );
   revalidateNews();
   redirect("/admin");
@@ -141,9 +145,20 @@ export async function setPublished(
   published: boolean,
 ): Promise<ActionState> {
   const { supabase } = await requireUser();
+  const { data: row } = await supabase
+    .from("news_posts")
+    .select("images")
+    .eq("id", id)
+    .maybeSingle();
+  /* 숨기면 사진을 비공개 버킷으로, 게시하면 공개 버킷으로 — 숨긴 글의 사진 URL 이 살아 있지 않게. */
+  const images = await syncImageVisibility(
+    supabase,
+    (row?.images as string[] | null) ?? [],
+    published,
+  );
   const { error } = await supabase
     .from("news_posts")
-    .update({ published })
+    .update({ published, images })
     .eq("id", id);
   if (error) {
     console.error("[admin] setPublished", error.message);

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { NEWS_SELECT, type NewsPost } from "@/lib/news";
+import { previewUrls } from "@/lib/news-images";
 import { PostForm } from "@/components/admin/post-form";
 import { SectionEyebrow } from "@/components/section-eyebrow";
 import { updatePost } from "../actions";
@@ -26,6 +27,7 @@ export default async function EditPostPage({
     .maybeSingle();
   if (!data) notFound();
   const post = data as NewsPost;
+  const previews = await previewUrls(supabase, post.images);
   return (
     <div className="page-top page-bottom mx-auto max-w-4xl px-5 lg:px-8">
       <SectionEyebrow phase={0.1}>소식 관리</SectionEyebrow>
@@ -45,7 +47,11 @@ export default async function EditPostPage({
           </Link>
         )}
       </div>
-      <PostForm action={updatePost.bind(null, post.id)} initial={post} />
+      <PostForm
+        action={updatePost.bind(null, post.id)}
+        initial={post}
+        previews={previews}
+      />
     </div>
   );
 }
