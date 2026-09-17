@@ -26,7 +26,8 @@ export function hasSupabaseEnv() {
 }
 
 /** 게시된 글, 최신순. 공개 화면 전용(anon). */
-export async function getPublishedPosts(limit = 50): Promise<NewsPost[]> {
+/** 상한 500 — 한 해 두 편씩 써도 수십 년 몫. 넘기 전에 목록·RSS 를 나눠 읽는 구조로 바꿀 것. */
+export async function getPublishedPosts(limit = 500): Promise<NewsPost[]> {
   if (!hasSupabaseEnv()) return [];
   const supabase = createPublicClient();
   /*

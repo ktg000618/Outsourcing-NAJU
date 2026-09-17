@@ -10,7 +10,11 @@ import {
   newsExcerpt,
   newsParagraphs,
 } from "@/components/news-text";
-import { formatNewsDate, getPublishedPost } from "@/lib/news";
+import {
+  formatNewsDate,
+  getPublishedPost,
+  getPublishedPosts,
+} from "@/lib/news";
 import { site } from "@/lib/site";
 
 /** 관리 화면에서 저장하면 revalidatePath 로 바로 갱신되고, 그 밖엔 1시간 캐시. */
@@ -43,6 +47,11 @@ export default async function NewsPostPage({ params }: Props) {
   const post = await getPublishedPost(id);
   if (!post) notFound();
   const n = post.images.length;
+  /* 이전·다음 글 — 목록과 같은 순서(최신이 앞). 다 읽은 손님이 목록으로 돌아가지 않고 이어 읽는다. */
+  const all = await getPublishedPosts();
+  const at = all.findIndex((p) => p.id === post.id);
+  const newer = at > 0 ? all[at - 1] : null;
+  const older = at >= 0 && at < all.length - 1 ? all[at + 1] : null;
   const host = post.link_url
     ? new URL(post.link_url).hostname.replace(/^www\./, "")
     : null;
@@ -159,6 +168,38 @@ export default async function NewsPostPage({ params }: Props) {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-6 lg:hidden">
               {actions}
             </div>
+            {(older || newer) && (
+              <nav
+                aria-label="이전·다음 소식"
+                className="mt-12 grid gap-4 border-t border-ink/10 pt-6 sm:grid-cols-2 sm:gap-8"
+              >
+                {older ? (
+                  <Link href={`/news/${older.id}`} className="group min-w-0">
+                    <span className="block text-caption text-ink-faint">
+                      이전 소식
+                    </span>
+                    <span className="mt-1 block truncate font-bold transition-colors group-hover:text-mint-link">
+                      {older.title}
+                    </span>
+                  </Link>
+                ) : (
+                  <span />
+                )}
+                {newer && (
+                  <Link
+                    href={`/news/${newer.id}`}
+                    className="group min-w-0 sm:text-right"
+                  >
+                    <span className="block text-caption text-ink-faint">
+                      다음 소식
+                    </span>
+                    <span className="mt-1 block truncate font-bold transition-colors group-hover:text-mint-link">
+                      {newer.title}
+                    </span>
+                  </Link>
+                )}
+              </nav>
+            )}
           </div>
         </div>
       </article>

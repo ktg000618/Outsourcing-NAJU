@@ -20,7 +20,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     ...pages.map((path) => ({
       url: `${site.url}${path}`,
-      lastModified: now,
+      /* 소식 목록은 글이 올라올 때마다 바뀐다 — 최신 글의 갱신일이 곧 목록의 갱신일. */
+      lastModified:
+        path === "/news" && posts[0] ? new Date(posts[0].updated_at) : now,
       changeFrequency:
         path === "/news" ? ("weekly" as const) : ("monthly" as const),
       priority: path === "" ? 1 : 0.8,
