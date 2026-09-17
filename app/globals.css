@@ -384,14 +384,6 @@
       transform: none;
     }
   }
-  @keyframes enter-fade {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
   .enter-1 {
     animation: enter-up var(--transition-duration-slow) var(--ease-brand)
       var(--transition-duration-fast) both;
