@@ -807,6 +807,11 @@ export const press: {
   kind: "기사" | "칼럼";
   summary: string;
   url: string;
+  /**
+   * 행 왼쪽 썸네일 — 원문 사진이 아니라 우리 사진이다. 원문 사진은 신문사 저작물(워터마크)이거나
+   * 필자 얼굴, 옛 행사가가 박힌 판촉 이미지라 그대로 쓸 수 없다(2026-09-17 확인). 기사가 다룬 것을 우리 사진으로.
+   */
+  image: { src: string; alt: string };
 }[] = [
   {
     outlet: "시민의소리",
@@ -815,6 +820,10 @@ export const press: {
     summary:
       "사회적기업 절굿대가 나주배 촉촉오란다를 카카오쇼핑에서 선보였습니다. 지역 농산물의 판로를 넓히려는 자리라는 김은아 대표의 말이 실렸습니다.",
     url: "http://www.civilreporter.co.kr/news/articleView.html?idxno=538796",
+    image: {
+      src: "/images/product-oranda-plate.jpg",
+      alt: "접시에 담은 나주배 촉촉오란다",
+    },
   },
   {
     outlet: "전남인터넷신문",
@@ -823,6 +832,10 @@ export const press: {
     summary:
       "절굿대 잎을 따서 말리고 찧는 느린 과정을 바흐의 샤콘에 빗댄 허북구 농학박사의 칼럼. 「기다림이 풍미를 만든다」고 적었습니다.",
     url: "http://jnnews.co.kr/m/view.php?idx=414956",
+    image: {
+      src: "/images/jeolgutdae-closeup.jpg",
+      alt: "절굿대 잎과 꽃봉오리",
+    },
   },
   {
     outlet: "천지일보",
@@ -831,5 +844,9 @@ export const press: {
     summary:
       "사라졌던 나주의 떡이 40~50년 만에 돌아온 이야기. 나주산 쌀과 배즙으로 옛 맛을 되살린 과정과 김화수·김은아 대표의 말이 실렸습니다.",
     url: "https://www.newscj.com/news/articleView.html?idxno=596278",
+    image: {
+      src: "/images/product-jeolgutdae-plate.jpg",
+      alt: "접시에 담은 절굿대떡",
+    },
   },
 ];

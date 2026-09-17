@@ -340,8 +340,19 @@ export default function StoryPage() {
           {press.map((a) => (
             <li
               key={a.url}
-              className="grid gap-x-6 gap-y-1 py-4 sm:grid-cols-[12rem_minmax(0,1fr)_auto] sm:items-baseline sm:py-5"
+              className="grid grid-cols-[5.5rem_minmax(0,1fr)] gap-x-5 gap-y-1 py-4 sm:grid-cols-[5.5rem_11rem_minmax(0,1fr)_auto] sm:items-center sm:gap-x-6 sm:py-5"
             >
+              {/* 썸네일은 소식 목록과 같은 4:3 88px. 폰에서는 오른쪽 세 줄(매체·요약·링크)을 다 받친다. */}
+              <div className="photo row-span-3 aspect-4/3 sm:row-span-1">
+                <Image
+                  src={a.image.src}
+                  alt={a.image.alt}
+                  fill
+                  sizes="88px"
+                  quality={75}
+                  className="object-cover"
+                />
+              </div>
               <p className="font-bold">
                 {a.outlet}
                 <span className="block text-caption font-normal tabular-nums text-ink-faint">
