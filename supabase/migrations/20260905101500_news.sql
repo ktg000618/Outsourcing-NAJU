@@ -1,6 +1,7 @@
 -- 소식(news) — 직원이 관리 화면에서 쓰는 글.
 -- 배경: 사이트는 정적이라 저장소·로그인이 없었다. 직원이 휴무·신제품·행사를 직접 올리기로 함.
 -- 설계: 글 1테이블 + 이미지 버킷. 읽기는 게시된 글만 누구나, 쓰기는 로그인한 직원만.
+-- 적용: 2026-09-05 대시보드 SQL Editor 로 실행. 원장에는 2026-09-17 정리 때 20260905101500 으로 기록.
 -- 롤백: drop table public.news_posts; delete from storage.buckets where id = 'news';
 
 create table public.news_posts (

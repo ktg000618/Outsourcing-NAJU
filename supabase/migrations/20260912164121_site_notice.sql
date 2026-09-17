@@ -1,7 +1,7 @@
 -- 공지 띠(site_notice) — 휴무·명절 배송 마감처럼 며칠만 보일 한 줄. 모든 페이지 머리 아래에 뜬다.
 -- 배경: 소식 글은 목록에 묻히고, 휴무 안내는 들어온 그 자리에서 보여야 한다.
 -- 설계: 행 하나짜리 설정 테이블(id = 1 고정). 손님(anon)은 켜진 것만 읽고, 직원(로그인)만 고친다.
--- 적용: 2026-09-13 Supabase MCP apply_migration 으로 프로덕션에 적용됨(이 파일은 기록용).
+-- 적용: 2026-09-13 Supabase MCP apply_migration 으로 프로덕션에 적용됨 — 원장(supabase_migrations.schema_migrations) 버전 20260912164121.
 -- 롤백: drop table public.site_notice;
 
 create table public.site_notice (

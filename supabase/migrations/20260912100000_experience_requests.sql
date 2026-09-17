@@ -1,6 +1,7 @@
 -- 체험 예약 문의(experience_requests) — 손님이 /visit 폼으로 남기는 접수.
 -- 배경: 체험 문의가 전화 한 길뿐이라 영업시간 밖·수업 중 인솔자는 연락을 못 남겼다.
 -- 설계: 접수 1테이블. 손님(anon)은 넣기만, 직원(로그인)만 읽고 처리·삭제한다. 공개 읽기는 없다 — 이름·전화가 든 행이다.
+-- 적용: 2026-09-12 대시보드 SQL Editor 로 실행(리더). 원장에는 2026-09-17 정리 때 20260912100000 으로 기록.
 -- 롤백: drop table public.experience_requests;
 
 create table public.experience_requests (

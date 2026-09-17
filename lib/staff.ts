@@ -2,7 +2,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 
 /**
  * 「로그인했나」가 아니라 「직원인가」 — public.staff 표에 이메일이 있어야 관리 화면·쓰기가 열린다.
- * DB 함수 is_staff() 와 같은 판정이라, RLS 가 막는 것을 화면이 먼저 알려 준다(supabase/004_staff.sql).
+ * DB 함수 is_staff() 와 같은 판정이라, RLS 가 막는 것을 화면이 먼저 알려 준다(supabase/migrations 의 staff 마이그레이션).
  * 함수 호출이 실패하면 직원이 아닌 것으로 본다 — 열어 두는 쪽으로 기울지 않는다.
  */
 export async function isStaff(supabase: SupabaseClient): Promise<boolean> {

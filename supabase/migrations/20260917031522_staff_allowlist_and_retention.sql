@@ -4,8 +4,8 @@
 -- 설계: staff(email) 한 표 + is_staff() 함수. 모든 직원 정책의 using/with check 를 is_staff() 로 바꾼다.
 --       staff 에 넣고 빼는 것은 대시보드·SQL 로만(정책 없음). 로그인 사용자는 자기 행만 읽는다.
 -- 보존: 체험 문의(이름·전화)는 접수일부터 90일 뒤 pg_cron 이 지운다(app/privacy 의 보관 기간과 같은 값).
--- 적용: 2026-09-17 Supabase MCP apply_migration 으로 프로덕션에 적용됨(이 파일은 기록용).
--- 롤백: drop function public.is_staff(); drop table public.staff; 정책은 001~003 의 정의로 되돌린다;
+-- 적용: 2026-09-17 Supabase MCP apply_migration 으로 프로덕션에 적용됨 — 원장 버전 20260917031522.
+-- 롤백: drop function public.is_staff(); drop table public.staff; 정책은 앞선 세 마이그레이션의 정의로 되돌린다;
 --       select cron.unschedule('purge_experience_requests');
 
 create table public.staff (

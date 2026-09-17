@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 /**
  * 개인정보처리방침 — 이 사이트가 개인정보를 받는 자리는 체험 예약 문의 폼 하나뿐이다.
  * 그래서 방침도 그 한 가지만 적는다. 값(항목·기간·담당)은 코드와 DB 가 실제로 하는 것과 같아야 하며,
- * 보유기간 90일은 supabase/004_staff.sql 의 pg_cron 삭제 주기와 같은 숫자다(한쪽만 바꾸지 말 것).
+ * 보유기간 90일은 supabase/migrations 의 직원 허용 목록 마이그레이션(pg_cron 삭제 주기)와 같은 숫자다(한쪽만 바꾸지 말 것).
  */
 const sections: { title: string; body: string[] }[] = [
   {
