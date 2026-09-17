@@ -41,6 +41,8 @@ function parseRequest(formData: FormData) {
     return { error: "인원은 1~200 사이 숫자로 적어 주세요." } as const;
   if (message.length > 1000)
     return { error: "문의 내용은 1,000자까지입니다." } as const;
+  if (formData.get("consent") !== "on")
+    return { error: "개인정보 수집·이용에 동의해 주세요." } as const;
 
   return {
     error: null,

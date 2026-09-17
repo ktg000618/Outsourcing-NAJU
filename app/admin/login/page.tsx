@@ -11,9 +11,9 @@ export const metadata: Metadata = {
 export default async function AdminLoginPage({
   searchParams,
 }: {
-  searchParams: Promise<{ next?: string }>;
+  searchParams: Promise<{ next?: string; denied?: string }>;
 }) {
-  const { next } = await searchParams;
+  const { next, denied } = await searchParams;
   return (
     <div className="mx-auto max-w-md px-5 pb-28 pt-14 lg:pt-20">
       {/* 관리 화면 폼과 같은 문법 — 캡션·굵은 제목·한 줄 설명. 카드 상자는 두지 않는다(사이트 어디에도 없다). */}
@@ -27,7 +27,10 @@ export default async function AdminLoginPage({
       <p className="mt-2 text-small text-ink-soft">
         직원 계정으로만 들어올 수 있습니다. 계정은 관리자에게 받으세요.
       </p>
-      <LoginForm next={next?.startsWith("/admin") ? next : "/admin"} />
+      <LoginForm
+        next={next?.startsWith("/admin") ? next : "/admin"}
+        denied={denied === "1"}
+      />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
+import Link from "next/link";
 import { submitExperienceRequest } from "@/app/visit/actions";
 import { DateField } from "@/components/date-field";
 
@@ -116,6 +117,22 @@ export function ExperienceRequestForm({ tel, telHref, smsNumber }: Props) {
           />
         </div>
       </div>
+      {/* 개인정보 동의 — 이름·연락처를 저장하므로 동의 없이는 보내지 않는다. 자세한 것은 /privacy. */}
+      <label className="mt-6 flex cursor-pointer items-start gap-3 text-small text-ink-soft">
+        <input
+          type="checkbox"
+          name="consent"
+          required
+          className="mt-1 size-4 shrink-0 accent-ink"
+        />
+        <span>
+          개인정보 수집·이용에 동의합니다. 이름과 연락처는 예약 문의 응대에만
+          쓰고 접수일부터 90일 뒤 지웁니다.{" "}
+          <Link href="/privacy" className="text-link-inline">
+            개인정보처리방침
+          </Link>
+        </span>
+      </label>
       {state.error && (
         <p role="alert" className="mt-4 text-caption text-rose-deep">
           {state.error}

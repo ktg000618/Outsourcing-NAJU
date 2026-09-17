@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
+import { isStaff } from "@/lib/staff";
 import { NOTICE_MAX } from "@/lib/notice-shared";
 
 export type ActionState = { error: string | null };
@@ -50,12 +51,17 @@ function parsePost(formData: FormData) {
   } as const;
 }
 
+/** 로그인 + 직원 표 등록. RLS 가 어차피 막지만, 여기서 먼저 걸러 「저장 실패」 대신 로그인 화면으로 보낸다. */
 async function requireUser() {
   const supabase = await createClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
   if (!user) redirect("/admin/login");
+  if (!(await isStaff(supabase))) {
+    await supabase.auth.signOut();
+    redirect("/admin/login?denied=1");
+  }
   return { supabase, user };
 }
 

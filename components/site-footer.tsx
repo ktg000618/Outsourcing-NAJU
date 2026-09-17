@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { site } from "@/lib/site";
 
 /**
@@ -115,6 +116,11 @@ export function SiteFooter() {
             ({site.postalCode}) {site.address}
           </span>
           {site.email && <span>{site.email}</span>}
+          <span>
+            <Link href="/privacy" className="hover:text-paper">
+              개인정보처리방침
+            </Link>
+          </span>
         </div>
       </div>
     </footer>

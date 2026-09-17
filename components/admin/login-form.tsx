@@ -2,13 +2,22 @@
 
 import { useState } from "react";
 import { createClient } from "@/lib/supabase/client";
+import { STAFF_DENIED_MESSAGE, isStaff } from "@/lib/staff";
 
 /**
  * 이메일·비밀번호 로그인. 성공하면 전체 이동(location.assign) — 쿠키가 새로 실린 요청이어야
- * proxy.ts 가드가 통과시킨다. 회원가입 없음: 계정은 Supabase 대시보드에서만 만든다.
+ * proxy.ts 가드가 통과시킨다. 계정은 Supabase 대시보드에서 만들고 public.staff 에 이메일을 넣어야 들어올 수 있다.
  */
-export function LoginForm({ next }: { next: string }) {
-  const [error, setError] = useState<string | null>(null);
+export function LoginForm({
+  next,
+  denied,
+}: {
+  next: string;
+  denied?: boolean;
+}) {
+  const [error, setError] = useState<string | null>(
+    denied ? STAFF_DENIED_MESSAGE : null,
+  );
   const [busy, setBusy] = useState(false);
 
   return (
@@ -26,6 +35,13 @@ export function LoginForm({ next }: { next: string }) {
         });
         if (error) {
           setError("이메일 또는 비밀번호가 맞지 않습니다.");
+          setBusy(false);
+          return;
+        }
+        /* 비밀번호가 맞아도 직원 표에 없으면 들이지 않는다 — proxy 가 다시 막지만 이유를 여기서 말해 준다. */
+        if (!(await isStaff(supabase))) {
+          await supabase.auth.signOut();
+          setError(STAFF_DENIED_MESSAGE);
           setBusy(false);
           return;
         }
