@@ -108,3 +108,59 @@ export async function previewUrls(
   });
   return out;
 }
+
+/**
+ * 고아 사진 정리 — 글쓰기 중에 올리고 저장하지 않은 사진은 어느 글에도 안 붙은 채 버킷에 남는다.
+ * 저장할 때마다 두 버킷을 훑어, 어떤 글도 참조하지 않고 하루가 지난 파일을 지운다.
+ * 하루의 여유는 다른 탭에서 지금 쓰는 중인 글의 사진을 지우지 않기 위해서다.
+ * 저장 자체를 막지 않도록 실패는 콘솔에만 남긴다.
+ */
+const ORPHAN_MIN_AGE_MS = 24 * 60 * 60 * 1000;
+
+export async function sweepOrphanImages(supabase: SupabaseClient) {
+  const { data: rows, error } = await supabase
+    .from("news_posts")
+    .select("images");
+  if (error) {
+    console.error("[admin] sweepOrphanImages posts", error.message);
+    return;
+  }
+  const referenced = new Set<string>();
+  for (const row of rows ?? [])
+    for (const url of (row.images as string[] | null) ?? [])
+      if (isOurImage(url)) referenced.add(imagePath(url));
+
+  const cutoff = Date.now() - ORPHAN_MIN_AGE_MS;
+  for (const bucket of ["news", "news-hidden"] as Bucket[]) {
+    const { data: objects, error: listError } = await supabase.storage
+      .from(bucket)
+      .list("", { limit: 1000 });
+    if (listError) {
+      console.error(
+        "[admin] sweepOrphanImages list",
+        bucket,
+        listError.message,
+      );
+      continue;
+    }
+    const orphans = (objects ?? [])
+      .filter(
+        (o) =>
+          o.id &&
+          !referenced.has(o.name) &&
+          o.created_at &&
+          new Date(o.created_at).getTime() < cutoff,
+      )
+      .map((o) => o.name);
+    if (orphans.length === 0) continue;
+    const { error: removeError } = await supabase.storage
+      .from(bucket)
+      .remove(orphans);
+    if (removeError)
+      console.error(
+        "[admin] sweepOrphanImages remove",
+        bucket,
+        removeError.message,
+      );
+  }
+}

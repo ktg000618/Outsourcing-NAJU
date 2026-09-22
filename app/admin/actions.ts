@@ -9,6 +9,7 @@ import {
   imagePath,
   isOurImage,
   removeImages,
+  sweepOrphanImages,
   syncImageVisibility,
 } from "@/lib/news-images";
 
@@ -96,6 +97,7 @@ export async function createPost(
     console.error("[admin] createPost", error.message);
     return { error: "저장하지 못했습니다. 잠시 후 다시 시도해 주세요." };
   }
+  await sweepOrphanImages(supabase);
   revalidateNews();
   redirect("/admin");
 }
@@ -135,6 +137,7 @@ export async function updatePost(
       (u) => !kept.has(imagePath(u)),
     ),
   );
+  await sweepOrphanImages(supabase);
   revalidateNews();
   redirect("/admin");
 }
