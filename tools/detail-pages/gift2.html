@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<title>절굿대달토끼 선물세트 상세페이지 (외주본 문법)</title>
+<style>
+  /* 외주 제작 오란다·절굿대떡 상세페이지와 같은 문법: 크림·흰 면 교대, 큰 둥근 제목, 손글씨 Point 표기, 점 무늬 장식. */
+  :root {
+    --cream: #fed8b1; --cream-2: #fbf0da; --gray: #f4f4f4; --white: #ffffff;
+    --ink: #3b2a1e; --ink-soft: #5c4a3c; --green: #4f8b3e; --orange: #ef7a33; --brown: #a0683c; --gold: #d9b56a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 860px; background: var(--white); }
+  body { color: var(--ink); font-family: Pretendard, "Pretendard Variable", -apple-system, sans-serif; font-size: 26px; line-height: 1.55; letter-spacing: -0.01em; word-break: keep-all; -webkit-font-smoothing: antialiased; }
+  img { display: block; }
+  section { position: relative; overflow: hidden; }
+  .cream { background: var(--cream); } .cream2 { background: var(--cream-2); } .gray { background: var(--gray); }
+  .pad { padding: 110px 60px; }
+  .center { text-align: center; }
+  .hand { font-family: "Nanum Pen Script", "나눔손글씨 펜", cursive; font-size: 40px; color: var(--brown); letter-spacing: 0; }
+  .bar { display: inline-flex; gap: 0; margin: 10px auto 26px; }
+  .bar i { display: block; width: 26px; height: 8px; }
+  .h1 { font-family: Paperlogy, Pretendard, sans-serif; font-weight: 900; font-size: 96px; line-height: 1.1; letter-spacing: -0.03em; }
+  .h2 { font-family: Paperlogy, Pretendard, sans-serif; font-weight: 900; font-size: 58px; line-height: 1.22; letter-spacing: -0.025em; }
+  .h3 { font-family: Paperlogy, Pretendard, sans-serif; font-weight: 800; font-size: 36px; line-height: 1.3; letter-spacing: -0.02em; }
+  .green { color: var(--green); } .orange { color: var(--orange); } .brown { color: var(--brown); }
+  .lead { font-size: 28px; color: var(--ink-soft); }
+  .mark { background: var(--green); color: #fff; padding: 0 12px; border-radius: 6px; }
+  .mark.o { background: var(--orange); }
+  .dots { position: absolute; width: 260px; height: 260px; border-radius: 50%; background-image: radial-gradient(var(--gold) 2.4px, transparent 2.6px); background-size: 14px 14px; opacity: .55; pointer-events: none; }
+  .photo { width: 100%; object-fit: cover; }
+  .caption { font-size: 22px; color: var(--ink-soft); text-align: center; margin-top: 14px; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .card { background: var(--white); border-radius: 28px; overflow: hidden; box-shadow: 0 10px 30px rgba(59,42,30,.08); }
+  .card .body { padding: 28px 28px 34px; }
+  .card .body .h3 { margin-bottom: 10px; }
+  .card .body p { font-size: 23px; line-height: 1.5; color: var(--ink-soft); }
+  .pill { display: inline-block; background: var(--ink); color: #fff; border-radius: 999px; padding: 8px 26px; font-size: 24px; font-weight: 700; }
+  .circle { width: 300px; height: 300px; border-radius: 50%; background: var(--cream-2); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; margin: 0 auto; }
+  .circle svg { width: 104px; height: 104px; stroke: var(--brown); fill: none; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+  .circle span { font-size: 26px; font-weight: 700; text-align: center; line-height: 1.3; }
+  .wave { height: 90px; background: var(--white); border-radius: 0 0 50% 50% / 0 0 100% 100%; }
+  .tbl { border: 2px solid #c9b58f; border-radius: 22px; overflow: hidden; background: var(--white); }
+  .tbl .head { background: var(--cream-2); text-align: center; font-family: Paperlogy, sans-serif; font-weight: 900; font-size: 44px; padding: 26px; letter-spacing: -0.02em; }
+  .tbl dl { display: grid; grid-template-columns: 200px 1fr; gap: 0; padding: 20px 40px 10px; }
+  .tbl dt { font-weight: 700; font-size: 25px; padding: 16px 0; border-right: 2px solid #e3d7bf; }
+  .tbl dd { font-size: 24px; padding: 16px 0 16px 28px; color: var(--ink-soft); line-height: 1.5; }
+  .store { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .store .ic { width: 150px; height: 150px; border-radius: 50%; background: var(--cream-2); margin: 0 auto 22px; display: flex; align-items: center; justify-content: center; }
+  .store .ic svg { width: 76px; height: 76px; stroke: var(--brown); fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+  .store .t { font-family: Paperlogy, sans-serif; font-weight: 800; font-size: 30px; color: var(--orange); margin-bottom: 8px; }
+  .store p { font-size: 24px; color: var(--ink-soft); line-height: 1.5; }
+  .store p b { color: var(--ink); }
+  .note { font-size: 23px; color: var(--ink-soft); line-height: 1.6; }
+  .note li { list-style: none; padding-left: 40px; position: relative; margin-bottom: 12px; }
+  .note li::before { content: "★"; position: absolute; left: 0; color: var(--gold); }
+</style>
+</head>
+<body>
+
+<!-- 1. 표지 -->
+<section class="gray" style="padding: 120px 60px 0;">
+  <div class="dots" style="top: -60px; right: -60px;"></div>
+  <div class="dots" style="top: 760px; left: -90px; width: 220px; height: 220px;"></div>
+  <img src="../../public/brand/emblem.png" alt="" style="width: 190px; margin: 0 auto 70px;" />
+  <p class="center" style="font-family: Paperlogy, sans-serif; font-weight: 700; font-size: 34px; color: var(--green); margin-bottom: 14px;">정성을 담은 두 가지 맛, 나주에서 보냅니다</p>
+  <h1 class="h1 center" style="margin-bottom: 44px;">절굿대달토끼<br />선물세트</h1>
+  <p class="lead center" style="margin-bottom: 18px;">남도의 전통 떡 <b style="color: var(--ink);">절굿대떡</b>과<br /><b style="color: var(--ink);">나주배 촉촉오란다</b>를 한 상자에 담았습니다.</p>
+  <p class="center" style="font-size: 24px; color: var(--ink-soft); margin-bottom: 70px;">명절 · 이바지 · 답례품 · 기업 선물로</p>
+  <img class="photo" src="../../public/images/product-gift-set.jpg" alt="" style="height: 820px; object-position: center 62%;" />
+</section>
+
+<!-- 2. 구성 -->
+<section class="cream pad">
+  <div class="dots" style="bottom: -70px; right: -70px;"></div>
+  <p class="hand center">상자를 열면</p>
+  <h2 class="h2 center" style="margin-bottom: 20px;">두 가지 맛이<br /><span class="green">나란히</span> 들어 있습니다</h2>
+  <p class="center" style="font-size: 24px; color: var(--ink-soft); margin-bottom: 56px;">수량과 구성은 주문하실 때 상의해 맞춰 드립니다.</p>
+  <div class="grid2">
+    <div class="card">
+      <img src="../../public/images/gal-gift-plate.jpg" alt="" style="width: 100%; height: 330px; object-fit: cover; object-position: 45% 55%;" />
+      <div class="body">
+        <p class="h3 green">절굿대떡</p>
+        <p>맛의 방주에 오른 나주의 전통 떡. 나주찹쌀과 절굿대, 쑥, 배즙으로 빚습니다.</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="../../public/images/gal-gift-pears.jpg" alt="" style="width: 100%; height: 330px; object-fit: cover; object-position: 40% 70%;" />
+      <div class="body">
+        <p class="h3 orange">나주배 촉촉오란다</p>
+        <p>나주배즙으로 반죽해 겉은 바삭하고 속은 촉촉한 수제 오란다입니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Point 01 떡 -->
+<section class="pad" style="background: var(--white);">
+  <div class="dots" style="top: 40px; right: -80px; width: 200px; height: 200px;"></div>
+  <p class="hand center">Point 01</p>
+  <div class="center"><span class="bar"><i style="background:#9fc3e6"></i><i style="background:#d9c6ad"></i><i style="background:#b96a8e"></i><i style="background:#a7d8c6"></i><i style="background:#e36a7c"></i><i style="background:#6c6cb0"></i><i style="background:#8fb2e0"></i><i style="background:#b6823f"></i><i style="background:#f1e38a"></i></span></div>
+  <h2 class="h2 center" style="margin-bottom: 26px;">맛의 방주에 오른<br /><span class="green">나주의 전통 떡</span></h2>
+  <p class="lead center" style="margin-bottom: 60px;">오랜 시간 나주에서 「분추떡」으로 불리며 이어져 온 떡입니다.<br />2022년 국제슬로푸드 「맛의 방주」에 등재되었습니다.</p>
+  <img class="photo" src="../../public/images/product-gift-scene.jpg" alt="" style="height: 560px; border-radius: 28px;" />
+  <p class="caption">찻상 위 절굿대떡 — 차·커피와 잘 어울립니다</p>
+</section>
+
+<!-- 4. Point 02 오란다 -->
+<section class="cream pad">
+  <div class="dots" style="top: 60px; left: -90px;"></div>
+  <p class="hand center">Point 02</p>
+  <div class="center"><span class="bar"><i style="background:#9fc3e6"></i><i style="background:#d9c6ad"></i><i style="background:#b96a8e"></i><i style="background:#a7d8c6"></i><i style="background:#e36a7c"></i><i style="background:#6c6cb0"></i><i style="background:#8fb2e0"></i><i style="background:#b6823f"></i><i style="background:#f1e38a"></i></span></div>
+  <h2 class="h2 center" style="margin-bottom: 26px;">겉은 바삭, 속은 촉촉<br /><span class="orange">나주배 오란다</span></h2>
+  <p class="lead center" style="margin-bottom: 60px;">나주배즙으로 반죽하고 호박씨·해바라기씨·크랜베리를 더했습니다.<br />낱개로 포장해 바삭함이 오래갑니다.</p>
+  <img class="photo" src="../../public/images/gal-gift-pears.jpg" alt="" style="height: 560px; border-radius: 28px; object-position: 50% 60%;" />
+  <p class="caption">나주배 촉촉오란다와 배즙</p>
+</section>
+
+<!-- 5. Point 03 포장 -->
+<section class="pad" style="background: var(--white);">
+  <p class="hand center">Point 03</p>
+  <div class="center"><span class="bar"><i style="background:#9fc3e6"></i><i style="background:#d9c6ad"></i><i style="background:#b96a8e"></i><i style="background:#a7d8c6"></i><i style="background:#e36a7c"></i><i style="background:#6c6cb0"></i><i style="background:#8fb2e0"></i><i style="background:#b6823f"></i><i style="background:#f1e38a"></i></span></div>
+  <h2 class="h2 center" style="margin-bottom: 26px;">받는 순간까지<br />정갈하게</h2>
+  <p class="lead center" style="margin-bottom: 30px;">떡과 오란다를 낱개로 포장해 달토끼 상자에 담습니다.<br />택배는 보냉 상자에 넣어 보냅니다.</p>
+  <p class="center" style="margin-bottom: 56px;"><span class="pill">낱개 포장 · 달토끼 상자 · 보냉 상자 택배</span></p>
+  <div class="grid2">
+    <div><img src="../../public/images/product-jeolgutdae-box.jpg" alt="" style="width: 100%; height: 300px; object-fit: cover; border-radius: 22px;" /><p class="caption">절굿대떡 상자</p></div>
+    <div><img src="../../public/images/product-oranda-box.jpg" alt="" style="width: 100%; height: 300px; object-fit: cover; border-radius: 22px;" /><p class="caption">나주배 촉촉오란다 상자</p></div>
+    <div><img src="../../public/images/packs-tray.jpg" alt="" style="width: 100%; height: 300px; object-fit: cover; border-radius: 22px;" /><p class="caption">낱개 포장</p></div>
+    <div><img src="../../public/images/shipping-box.jpg" alt="" style="width: 100%; height: 300px; object-fit: cover; border-radius: 22px; object-position: center 60%;" /><p class="caption">보냉 상자 택배</p></div>
+  </div>
+  <p class="center" style="font-size: 22px; color: var(--ink-soft); margin-top: 40px;">연출 소품은 구성품이 아닙니다.</p>
+</section>
+
+<!-- 6. 이런 자리에 -->
+<section class="cream" style="padding: 0 60px 110px;">
+  <div class="wave"></div>
+  <h2 class="h2 center" style="margin: 90px 0 24px;"><span class="orange">절굿대달토끼 선물세트,</span><br />이런 자리에 어울립니다</h2>
+  <p class="center" style="font-size: 24px; color: var(--ink-soft); margin-bottom: 60px;">한 상자에 두 가지 맛이라 받는 분이 고르는 재미가 있습니다.</p>
+  <div class="grid2" style="gap: 40px 28px;">
+    <div class="circle"><svg viewBox="0 0 48 48"><rect x="6" y="18" width="36" height="24" rx="3"/><path d="M4 12h40v6H4zM24 12v30M24 12c-4-6-10-6-10-2s6 2 10 2zM24 12c4-6 10-6 10-2s-6 2-10 2"/></svg><span>명절 · 이바지<br />선물</span></div>
+    <div class="circle"><svg viewBox="0 0 48 48"><path d="M8 20l16-12 16 12v20H8z"/><path d="M20 40V28h8v12"/></svg><span>어르신 댁<br />방문 선물</span></div>
+    <div class="circle"><svg viewBox="0 0 48 48"><rect x="6" y="16" width="36" height="24" rx="3"/><path d="M18 16v-4h12v4M6 26h36"/></svg><span>기업 · 단체<br />답례품</span></div>
+    <div class="circle"><svg viewBox="0 0 48 48"><path d="M10 20h22v10a8 8 0 0 1-8 8h-6a8 8 0 0 1-8-8z"/><path d="M32 23h4a4 4 0 0 1 0 8h-4M8 42h28"/><path d="M16 12c0-3 3-3 3-6M24 12c0-3 3-3 3-6"/></svg><span>차와 함께<br />나누는 다과</span></div>
+  </div>
+</section>
+
+<!-- 7. 주문 안내 -->
+<section class="pad center" style="background: var(--white);">
+  <div class="dots" style="top: 30px; left: -70px; width: 200px; height: 200px;"></div>
+  <p class="hand">주문은 이렇게</p>
+  <h2 class="h2" style="margin-bottom: 30px;">전화 한 통이면<br />날짜에 맞춰 준비합니다</h2>
+  <p style="font-family: Paperlogy, sans-serif; font-weight: 900; font-size: 64px; color: var(--green); letter-spacing: -0.02em; margin-bottom: 36px;">061-336-6969</p>
+  <ul class="note" style="display: inline-block; text-align: left;">
+    <li>수량과 구성(떡·오란다 비율)은 주문하실 때 상의합니다.</li>
+    <li>택배는 보냉 상자에 담아 보냅니다. 배송비 3,500원.</li>
+    <li>기업·단체 주문과 답례품 대량 주문도 받습니다.</li>
+    <li>카카오쇼핑 「절굿대 스토어」에서 오란다 단품을 바로 주문하실 수 있습니다.</li>
+  </ul>
+</section>
+
+<!-- 8. 보관 -->
+<section class="cream pad">
+  <h2 class="h2 center" style="margin-bottom: 20px;">맛있게 드시는 방법</h2>
+  <p class="center" style="font-size: 24px; color: var(--ink-soft); margin-bottom: 60px;">소비기한은 낱개 포장에 표시되어 있습니다.</p>
+  <div class="store">
+    <div class="center">
+      <div class="ic"><svg viewBox="0 0 48 48"><rect x="10" y="4" width="28" height="40" rx="3"/><path d="M10 22h28M18 12v4M18 30v4"/></svg></div>
+      <p class="t">절굿대떡</p>
+      <p><b>냉동 보관</b>하고, 드시기 전 실온에서 1~2시간 두거나 찜기·전자레인지로 데우면 말랑해집니다.</p>
+    </div>
+    <div class="center">
+      <div class="ic"><svg viewBox="0 0 48 48"><rect x="4" y="12" width="40" height="26" rx="3"/><path d="M12 20h18v10H12zM36 20v2M36 26v2"/></svg></div>
+      <p class="t">나주배 촉촉오란다</p>
+      <p><b>냉장·냉동 보관</b>을 권합니다. 냉동했다면 30분 전에 상온에 두거나 전자레인지에 15초 데우세요.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 9. 믿고 구매하세요 (업체 제작 블록 그대로) -->
+<img src="assets/trust.jpg" alt="" style="width: 860px;" />
+
+<!-- 10. 제품정보 -->
+<section class="pad" style="background: var(--white); padding-top: 60px;">
+  <div class="tbl">
+    <div class="head">제품정보</div>
+    <dl>
+      <dt>제품명</dt><dd>절굿대달토끼 선물세트</dd>
+      <dt>구성</dt><dd>절굿대떡 · 나주배 촉촉오란다 (수량은 주문 시 상의) · 낱개 포장</dd>
+      <dt>식품유형</dt><dd>떡류 · 과자(유탕처리식품)</dd>
+      <dt>원재료</dt><dd>절굿대떡 — 나주찹쌀 70%, 절굿대 6.6%, 쑥 13%, 나주배즙 8.8%, 신안천일염 0.9% (국내산)<br />오란다 — 퍼핑콩, 미강유, 설탕, 버터, 조청, 물엿, 호박씨, 해바라기씨, 크랜베리·건포도, 볶은깨, 땅콩, 수제 배즙</dd>
+      <dt>소비기한</dt><dd>낱개 포장에 표시</dd>
+      <dt>보관방법</dt><dd>떡은 냉동, 오란다는 냉장·냉동 보관</dd>
+      <dt>생산자</dt><dd>농업회사법인㈜절굿대 · 전라남도 나주시 징고샅길 7-1</dd>
+    </dl>
+  </div>
+</section>
+
+</body>
+</html>
