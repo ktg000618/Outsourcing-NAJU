@@ -7,6 +7,12 @@ type Props = {
   poster: string;
   /** 화면에 안 보이는 설명. 소리가 없는 영상이라 이것이 유일한 대체 텍스트다. */
   label: string;
+  /** 긴 상세 이미지 사이에 끼울 때는 모서리를 깎지 않는다 — 위아래 조각과 한 장처럼 이어져야 한다. */
+  rounded?: boolean;
+  /** detailImages 의 영상 항목이 그대로 펼쳐져 들어오므로 받아서 버린다. */
+  kind?: "video";
+  width?: number;
+  height?: number;
 };
 
 /**
@@ -20,7 +26,7 @@ type Props = {
  * 받는다. effect 안에서 setState 하면 렌더가 한 번 더 돌고, 이 레포의
  * lint 가 그걸 error 로 막는다.
  */
-export function LoopingVideo({ src, poster, label }: Props) {
+export function LoopingVideo({ src, poster, label, rounded = true }: Props) {
   const ref = useRef<HTMLVideoElement>(null);
   // 처음은 "멈춤"으로 둔다. autoplay 가 실제로 시작되면 onPlay 가 true 로 올린다 —
   // 자동재생이 막힌 환경(절전 모드·데이터 절약)에서 ⏸ 를 보여 주던 거짓 상태를 막는다.
@@ -36,7 +42,9 @@ export function LoopingVideo({ src, poster, label }: Props) {
   }, []);
 
   return (
-    <div className="relative h-full overflow-hidden rounded-2xl bg-paper-2">
+    <div
+      className={`relative h-full overflow-hidden bg-paper-2 ${rounded ? "rounded-2xl" : ""}`}
+    >
       <video
         ref={ref}
         aria-label={label}
