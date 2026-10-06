@@ -215,7 +215,7 @@ export default async function ProductPage({
 
       {product.detailImages && (
         /*
-          상세페이지 이미지(업체 제작 오란다·절굿대떡 · 자체 제작 선물세트). GIF 자리는 루프 영상. 접어 두면 손님이 열기 전엔
+          상세페이지 이미지(업체 제작 오란다·절굿대떡 · 자체 제작 선물세트). GIF 자리는 애니메이션 WebP(영상 자동재생이 막히는 환경 때문). 접어 두면 손님이 열기 전엔
           상세가 없는 줄 안다(검수 의견) — 위 일부를 보여 주고 「상세 더보기」로 펼친다.
           rise 를 붙이지 않는다: 펼치면 만 픽셀이 넘는 블록이라 view() 타임라인이 끝까지 안 가 흐린 채 남는다(실측).
         */
@@ -248,6 +248,7 @@ export default async function ProductPage({
                         height={d.height}
                         sizes="(min-width: 900px) 860px, 100vw"
                         quality={85}
+                        unoptimized={d.animated}
                         placeholder="blur"
                         blurDataURL={d.blur}
                         loading={i === 0 ? "eager" : "lazy"}
