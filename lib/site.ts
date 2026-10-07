@@ -26,7 +26,7 @@ export const site = {
 
   /* 도메인이 정해지면 NEXT_PUBLIC_SITE_URL 만 바꾼다 — sitemap·OG·구조화
      데이터가 전부 이 값을 쓴다. */
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://naju-daltokki.vercel.app",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://xn--mf0bs0dqvcjcs95kebm.kr",
 
   tel,
   mobile,

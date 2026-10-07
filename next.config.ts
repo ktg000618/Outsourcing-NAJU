@@ -1,6 +1,17 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  /* 정식 주소는 절굿대달토끼.kr (퓨니코드 xn--mf0bs0dqvcjcs95kebm.kr, 2026-10-07 연결). 옛 vercel.app 주소로 오면 같은 경로로 영구 이동 — 검색엔진이 둘을 다른 사이트로 세지 않게. */
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "naju-daltokki.vercel.app" }],
+        destination: "https://xn--mf0bs0dqvcjcs95kebm.kr/:path*",
+        permanent: true,
+      },
+    ];
+  },
   images: {
     // Next 16 부터 images.qualities 기본값이 [75] 로 좁혀졌다. 목록에 없는 quality 는
     // 조용히 가장 가까운 허용값으로 내려앉는다 — 즉 코드의 quality={88}·{92} 가

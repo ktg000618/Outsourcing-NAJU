@@ -1,7 +1,7 @@
 # 절굿대달토끼 홈페이지
 
 나주 절굿대달토끼(농업회사법인 주식회사 절굿대)의 소개 사이트입니다. Next.js 16 · React 19 · Tailwind 4 · Supabase.
-배포: https://naju-daltokki.vercel.app (Vercel, `main` 푸시 = 배포)
+배포: https://절굿대달토끼.kr (퓨니코드 xn--mf0bs0dqvcjcs95kebm.kr · 옛 naju-daltokki.vercel.app 은 여기로 영구 이동) — Vercel, `main` 푸시 = 배포
 
 ## 운영
 
