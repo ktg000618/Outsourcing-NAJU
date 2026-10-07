@@ -16,14 +16,17 @@ export function NewsPhoto({
   priority = false,
   /** 칸 비율(가로/세로). 목록·글 페이지 타일은 4:3. */
   frame = 4 / 3,
+  /** "contain" 이면 로드 판정 없이 처음부터 통째로 — 글 머리 히어로처럼 서버 첫 그림이 곧 최종이어야 하는 자리. */
+  fit = "auto",
 }: {
   src: string;
   alt: string;
   sizes: string;
   priority?: boolean;
   frame?: number;
+  fit?: "auto" | "contain";
 }) {
-  const [contain, setContain] = useState(false);
+  const [contain, setContain] = useState(fit === "contain");
   return (
     <>
       {contain && (

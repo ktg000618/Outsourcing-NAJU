@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ViewTransition } from "react";
@@ -103,6 +102,18 @@ export default async function NewsPostPage({ params }: Props) {
       />
       {/* 목록의 장부 행 하나를 페이지로 편 것 — 같은 5:7 격자. 왼쪽은 날짜와 돌아가기, 오른쪽이 글. */}
       <article className="page-top page-bottom mx-auto max-w-6xl px-5 lg:px-8">
+        {/* 첫 사진은 격자 위 통폭 히어로 — 소식은 사진 일기라 사진이 주인공인데 7칸 안에선 조연이었다(리더 2026-10-07). 비율이 안 맞는 세로 카드는 흐린 배경 위에 통째로. */}
+        {n >= 1 && (
+          <div className="photo mb-8 aspect-4/3 lg:mb-12 lg:aspect-3/2">
+            <NewsPhoto
+              src={post.images[0]}
+              alt={n === 1 ? post.title : `${post.title} 사진 1`}
+              priority
+              fit="contain"
+              sizes="(min-width: 1216px) 1152px, calc(100vw - 40px)"
+            />
+          </div>
+        )}
         <div className="grid gap-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
           {/* 왼쪽 열: 날짜가 머리, 그 아래 목록·공유. PC 에서 빈 열로 남지 않게 행동을 여기로 모은다. 폰은 글 아래에 같은 것을 한 번 더 둔다. */}
           <div className="lg:pt-1">
@@ -111,7 +122,7 @@ export default async function NewsPostPage({ params }: Props) {
             </Link>
             <time
               dateTime={post.published_on}
-              className="mt-6 block text-caption tabular-nums text-ink-faint lg:text-title lg:font-bold lg:tracking-normal lg:text-ink"
+              className="mt-6 block text-caption tabular-nums text-ink-faint lg:text-body lg:font-bold lg:text-ink"
             >
               {formatNewsDate(post.published_on)}
             </time>
@@ -130,36 +141,18 @@ export default async function NewsPostPage({ params }: Props) {
                 ))}
               </div>
             )}
-            {n === 1 && (
-              <div className="photo mt-8 w-fit">
-                <Image
-                  src={post.images[0]}
-                  alt={post.title}
-                  width={1600}
-                  height={1200}
-                  priority
-                  sizes="(min-width: 1024px) 635px, calc(100vw - 40px)"
-                  quality={80}
-                  className="h-auto max-h-[36rem] w-auto max-w-full"
-                />
-              </div>
-            )}
+            {/* 나머지 사진은 본문 아래 2열 — 첫 장은 위 히어로로 갔다. */}
             {n >= 2 && (
               <ul
-                aria-label={`사진 ${n}장`}
-                className={`mt-8 grid grid-cols-2 gap-3 lg:gap-5 ${n >= 3 ? "lg:[&>li:first-child]:col-span-2" : ""}`}
+                aria-label={`사진 ${n - 1}장 더`}
+                className="mt-8 grid grid-cols-2 gap-3 lg:gap-5"
               >
-                {post.images.map((src, i) => (
+                {post.images.slice(1).map((src, i) => (
                   <li key={src} className="photo aspect-4/3">
                     <NewsPhoto
                       src={src}
-                      alt={`${post.title} 사진 ${i + 1}`}
-                      priority={i === 0}
-                      sizes={
-                        i === 0
-                          ? `(min-width: 1024px) ${n >= 3 ? "635px" : "310px"}, 45vw`
-                          : "(min-width: 1024px) 310px, 45vw"
-                      }
+                      alt={`${post.title} 사진 ${i + 2}`}
+                      sizes="(min-width: 1024px) 310px, 45vw"
                     />
                   </li>
                 ))}
