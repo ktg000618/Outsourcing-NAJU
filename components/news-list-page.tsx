@@ -55,6 +55,16 @@ export async function NewsListPage({ page }: { page: number }) {
                   인스타그램에서 보기<span className="sr-only"> (새 창)</span>
                 </a>
               )}
+              {site.blogUrl && (
+                <a
+                  href={site.blogUrl}
+                  rel="noreferrer"
+                  target="_blank"
+                  className="text-link"
+                >
+                  네이버 블로그<span className="sr-only"> (새 창)</span>
+                </a>
+              )}
               <a
                 aria-label={`전화 걸기 ${site.tel}`}
                 href={site.telHref}

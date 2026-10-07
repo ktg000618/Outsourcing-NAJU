@@ -58,8 +58,9 @@ export const site = {
   storeUrl: "https://store.kakao.com/sunriseea" as string | null,
   storeName: "카카오쇼핑 절굿대 스토어",
 
-  /** TODO(클라이언트): 인스타그램 등 */
+  /** 공식 SNS — 클라이언트(김은아) 확인 2026-10-07. 인스타 주소의 stkn 추적 토큰은 떼고 저장한다. */
   instagramUrl: "https://www.instagram.com/jeol_gutdae/" as string | null,
+  blogUrl: "https://blog.naver.com/sunriseea" as string | null,
   /** 카카오맵 장소 페이지(장소 ID 302960832). 길찾기·리뷰·지도 퍼가기가 여기서 나온다. */
   kakaoPlaceUrl: "https://place.map.kakao.com/302960832",
   /** TODO(클라이언트): 문의 이메일. null 이면 푸터 사업자 표기 줄에서 빠진다. */

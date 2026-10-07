@@ -12,15 +12,29 @@ import { site } from "@/lib/site";
  * 그래서 인스타그램 링크는 두 자리에 렌더하고 한쪽만 보인다(PC 는 주소 열 마지막 줄).
  */
 export function SiteFooter() {
-  const instagram = site.instagramUrl && (
-    <a
-      className="text-link hover:text-moon"
-      href={site.instagramUrl}
-      rel="noreferrer"
-      target="_blank"
-    >
-      인스타그램<span className="sr-only"> (새 창)</span>
-    </a>
+  const instagram = (site.instagramUrl || site.blogUrl) && (
+    <span className="inline-flex flex-wrap gap-x-4 gap-y-1">
+      {site.instagramUrl && (
+        <a
+          className="text-link hover:text-moon"
+          href={site.instagramUrl}
+          rel="noreferrer"
+          target="_blank"
+        >
+          인스타그램<span className="sr-only"> (새 창)</span>
+        </a>
+      )}
+      {site.blogUrl && (
+        <a
+          className="text-link hover:text-moon"
+          href={site.blogUrl}
+          rel="noreferrer"
+          target="_blank"
+        >
+          네이버 블로그<span className="sr-only"> (새 창)</span>
+        </a>
+      )}
+    </span>
   );
 
   return (

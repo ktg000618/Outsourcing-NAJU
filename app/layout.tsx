@@ -90,7 +90,7 @@ const businessJsonLd = {
     },
   ],
   hasMap: `https://map.kakao.com/?q=${encodeURIComponent(`${site.address} ${site.name}`)}`,
-  ...(site.instagramUrl ? { sameAs: [site.instagramUrl] } : {}),
+  sameAs: [site.instagramUrl, site.blogUrl].filter(Boolean),
 };
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {
