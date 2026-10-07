@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { site } from "@/lib/site";
+import { SocialLinks } from "@/components/social-links";
 
 /**
  * 주소·전화·영업시간은 매장에 오려는 사람이 어느 페이지에서든 찾는 정보라
@@ -13,28 +14,7 @@ import { site } from "@/lib/site";
  */
 export function SiteFooter() {
   const instagram = (site.instagramUrl || site.blogUrl) && (
-    <span className="inline-flex flex-wrap gap-x-4 gap-y-1">
-      {site.instagramUrl && (
-        <a
-          className="text-link hover:text-moon"
-          href={site.instagramUrl}
-          rel="noreferrer"
-          target="_blank"
-        >
-          인스타그램<span className="sr-only"> (새 창)</span>
-        </a>
-      )}
-      {site.blogUrl && (
-        <a
-          className="text-link hover:text-moon"
-          href={site.blogUrl}
-          rel="noreferrer"
-          target="_blank"
-        >
-          네이버 블로그<span className="sr-only"> (새 창)</span>
-        </a>
-      )}
-    </span>
+    <SocialLinks linkClassName="hover:text-moon" />
   );
 
   return (

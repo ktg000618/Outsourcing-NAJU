@@ -37,3 +37,37 @@ export function PinIcon({ className = "size-4" }: IconProps) {
     </svg>
   );
 }
+
+/** 공식 SNS 글리프 — 전화·핀과 같은 선 굵기 1.6. 네이버는 초록 원색 로고 대신 둥근 네모 안의 N 선 하나(먹색 푸터에서 원색이 혼자 튄다). */
+export function InstagramIcon({ className = "size-4" }: IconProps) {
+  return (
+    <svg
+      aria-hidden
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      viewBox="0 0 24 24"
+    >
+      <rect x="3.5" y="3.5" width="17" height="17" rx="4.5" />
+      <circle cx="12" cy="12" r="3.8" />
+      <circle cx="17" cy="7" r="0.9" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+export function NaverBlogIcon({ className = "size-4" }: IconProps) {
+  return (
+    <svg
+      aria-hidden
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      viewBox="0 0 24 24"
+    >
+      <rect x="3.5" y="3.5" width="17" height="17" rx="4.5" />
+      <path d="M8.5 15.5v-7l7 7v-7" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}

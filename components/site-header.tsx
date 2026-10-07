@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { nav, site } from "@/lib/site";
 import { PhoneIcon } from "./icons";
+import { SocialLinks } from "./social-links";
 import { MoonMark } from "./moon-mark";
 
 export function SiteHeader() {
@@ -178,28 +179,7 @@ export function SiteHeader() {
             {site.tel}
           </a>
           <p className="mt-2 text-small text-ink-soft">{site.hours}</p>
-          <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
-            {site.instagramUrl && (
-              <a
-                href={site.instagramUrl}
-                rel="noreferrer"
-                target="_blank"
-                className="text-link"
-              >
-                인스타그램<span className="sr-only"> (새 창)</span>
-              </a>
-            )}
-            {site.blogUrl && (
-              <a
-                href={site.blogUrl}
-                rel="noreferrer"
-                target="_blank"
-                className="text-link"
-              >
-                네이버 블로그<span className="sr-only"> (새 창)</span>
-              </a>
-            )}
-          </div>
+          <SocialLinks className="mt-4" />
         </div>
       </nav>
     </>
