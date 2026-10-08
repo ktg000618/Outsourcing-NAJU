@@ -21,6 +21,10 @@ export const metadata: Metadata = {
   description: site.description,
   /* 루트 canonical. 하위 페이지는 각자 alternates.canonical 을 낸다. */
   alternates: { canonical: "/" },
+  /* 검색엔진 소유 확인 — 네이버 서치어드바이저(2026-10-08). 구글은 코드가 오면 `google` 키로. 값은 비밀이 아니다(공개 HTML 에 실린다). */
+  verification: {
+    other: { "naver-site-verification": "8abc1fc35a4f760f42a08ce974b49876602eec1d" },
+  },
   openGraph: {
     title: `${site.name} · ${site.tagline}`,
     description: site.description,
