@@ -932,6 +932,17 @@ export const credentials: {
   },
   { label: "고향사랑 답례품", detail: "2024년 나주시 선정" },
   {
+    label: "생산물배상책임보험",
+    detail: "KB손해보험 · 1인당·1사고당 1억원 · 2026년 5월 9일 ~ 2027년 5월 9일",
+    /* 증권은 1년짜리다 — 2027-05-09 뒤 갱신본으로 바꿔야 한다. 리더가 2026-10-08 보내 준 PDF 렌더(595px)라 해상도가 낮다. */
+    image: {
+      src: "/images/cert-insurance.jpg",
+      alt: "생산물배상책임보험 증권 — KB손해보험, 농업회사법인주식회사절굿대, 2026년 5월 9일부터 1년",
+      width: 595,
+      height: 842,
+    },
+  },
+  {
     label: "상표등록",
     detail: "제40-2515456호 · 2026년 지식재산처",
     image: {
@@ -944,7 +955,7 @@ export const credentials: {
 ];
 
 /**
- * 언론 보도 — 업체가 보내 준 기사 세 편(2026-09-17). 이야기 페이지 인증 목록 아래.
+ * 언론 보도 — 업체가 보내 준 기사 세 편(2026-09-17) + 리더가 보낸 세 편(2026-10-08). 이야기 페이지 인증 목록 아래.
  * 제목을 그대로 옮기지 않고 우리 말로 한 줄 요약한다: 기사 제목에 사이트에서 쓰지 않는 표기가 섞여 있고,
  * 본문의 효능 서술은 식품표시광고법상 사이트에 옮길 수 없다. 링크는 원문으로.
  */
@@ -983,6 +994,42 @@ export const press: {
     image: {
       src: "/images/jeolgutdae-closeup.jpg",
       alt: "절굿대 잎과 꽃봉오리",
+    },
+  },
+  {
+    outlet: "디지털농업",
+    date: "2023-02-01",
+    kind: "기사",
+    summary:
+      "월간 디지털농업 2월호 「남도의 곳간」. 설 명절과 이바지 음식이던 절굿대떡의 유래, 분추라 불리던 풀의 내력, 김은아·김화수 부부가 되살린 과정을 사진과 함께 실었습니다.",
+    url: "https://www.dnong.co.kr/sub21/sub1_1.php?smenu=sub21&ar_id=40002023020003",
+    image: {
+      src: "/images/jeolgutdae-bloom.jpg",
+      alt: "절굿대 꽃",
+    },
+  },
+  {
+    outlet: "시민의소리",
+    date: "2021-08-31",
+    kind: "기사",
+    summary:
+      "전남형 예비사회적기업 절굿대가 사회적협동조합 연리지와 협약해 명절마다 취약계층 어르신께 송편과 수제 식혜를 기증한다는 소식. 지역아동센터 기부와 시식 행사도 함께 다뤘습니다.",
+    url: "https://www.civilreporter.co.kr/news/articleView.html?idxno=86124",
+    image: {
+      src: "/images/harvest-couple.jpg",
+      alt: "밭에서 절굿대 잎을 거두는 두 사람",
+    },
+  },
+  {
+    outlet: "시민의소리",
+    date: "2021-08-09",
+    kind: "기사",
+    summary:
+      "절굿대가 문화누리카드 가맹점으로 등록했다는 소식. 2017년 육묘 성공부터 예비사회적기업 지정까지의 과정과, 떡카롱·티라미수 같은 새 상품 개발 계획을 전했습니다.",
+    url: "https://www.civilreporter.co.kr/news/articleView.html?idxno=85553",
+    image: {
+      src: "/images/store-front.jpg",
+      alt: "절굿대달토끼 매장 외관",
     },
   },
   {

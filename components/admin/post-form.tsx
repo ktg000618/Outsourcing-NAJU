@@ -15,7 +15,8 @@ type Props = {
 };
 
 const MAX_IMAGES = 3;
-const MAX_BYTES = 5 * 1024 * 1024;
+/* 30MB — 휴대폰 원본이 5~12MB 라 5MB 로는 대표님이 올릴 수가 없었다(리더 2026-10-08). 버킷 file_size_limit 도 같은 값. 표시는 next/image 가 줄여 내보낸다. */
+const MAX_BYTES = 30 * 1024 * 1024;
 
 function todayKst() {
   return new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Seoul" }).format(
@@ -70,7 +71,7 @@ export function PostForm({ action, initial, previews }: Props) {
       );
     }
     if (tooBig.length > 0)
-      notes.push(`5MB 를 넘어 올리지 못했습니다: ${tooBig.join(", ")}`);
+      notes.push(`30MB 를 넘어 올리지 못했습니다: ${tooBig.join(", ")}`);
     if (failed) notes.push("사진을 올리지 못했습니다. 다시 시도해 주세요.");
     if (notes.length > 0) setUploadError(notes.join(" "));
     setImages((prev) => [...prev, ...added]);
@@ -128,7 +129,7 @@ export function PostForm({ action, initial, previews }: Props) {
             사진{" "}
             <span className="text-ink-faint">
               · 가로 사진 권장 · 2장 이상은 4:3으로 잘립니다 · JPG/PNG ·{" "}
-              {MAX_IMAGES}장까지, 장당 5MB
+              {MAX_IMAGES}장까지, 장당 30MB
             </span>
           </p>
           {/* 모바일 열 수 = 타일 수(사진 + 드롭존)가 3이면 3열 — 2열이면 셋째가 혼자 남는다(검수 의견). */}
